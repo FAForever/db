@@ -56,7 +56,19 @@ class RepoVersion(LobbyModel):
   url  = CharField(null=True)
   hash = CharField(64, null=True)
 
-  time_added = TimeStampField(null=True)
+  time_added = TimeStampField()
+
+class DefaultVersion(LobbyModel):
+    class Meta:
+        db_table = 'version_default'
+
+    mod = CharField(45)
+    name = CharField(45)
+
+    ver_engine = ForeignKeyField(RepoVersion)
+    ver_main_mod = ForeignKeyField(RepoVersion)
+
+    time_added = TimeStampField()
 
 class User(LobbyModel):
   class Meta:
