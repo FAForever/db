@@ -125,7 +125,7 @@ class MapNoRushOffset(LobbyModel):
     class Meta:
         db_table = 'map_norushoffset'
 
-    map = ForeignKeyField(Map, on_delete='CASCADE')
+    map = ForeignKeyField(Map, related_name='norushoffset', on_delete='CASCADE')
 
     army = CharField(8) #ARMY_1
 
