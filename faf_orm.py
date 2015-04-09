@@ -3,7 +3,7 @@ from datetime import datetime
 
 # Exported names
 __all__ = [
-    'db',
+    'db','faf_orm_init_db',
     'User',
     'RepoVersion','DefaultVersion',
     'Map','MapNoRushOffset','MapVersion','MapNote',
@@ -11,11 +11,13 @@ __all__ = [
     'DoesNotExist'
 ]
 
-# DB is uninitialized. Initialize it at runtime with config, before db.connect()
-db = MySQLDatabase(None)
+# DB is uninitialized. Initialize it at runtime
+db = Proxy()
 
-db.field_overrides['primary_key'] = 'INTEGER UNSIGNED AUTO_INCREMENT'
-db.field_overrides['uint'] = 'INTEGER UNSIGNED'
+def faf_orm_init_db(database):
+    db.initialize(database)
+    db.field_overrides['primary_key'] = 'INTEGER UNSIGNED AUTO_INCREMENT'
+    db.field_overrides['uint'] = 'INTEGER UNSIGNED'
 
 # Unbreak foreign key type
 def _ForeignKeyField_get_db_field(self):
@@ -27,7 +29,6 @@ ForeignKeyField.get_db_field = _ForeignKeyField_get_db_field
 
 class TimeStampField(DateTimeField):
     db_field = 'time'
-
 
 class LobbyModel(Model):
     "Base Model"
