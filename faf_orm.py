@@ -4,7 +4,8 @@ from datetime import datetime
 # Exported names
 __all__ = [
     'db','faf_orm_init_db',
-    'User',
+    'User','Avatar','UserAvatar',
+    'Ladder1v1Rating','GlobalRating',
     'RepoVersion','DefaultVersion',
     'Map','MapNoRushOffset','MapVersion','MapNote',
     'MapProp', 'MapEditorIcon', 'MapMarker',
@@ -52,9 +53,72 @@ class LobbyModel(Model):
 # ============ Models follow ==================
 
 class User(LobbyModel):
-    "User model. Currently dummy."
+    "User model."
     class Meta:
         db_table = 'login'
+
+    # This thing is full of crap
+
+    login = CharField()
+    password = CharField()
+
+    email = CharField()
+
+    ip = CharField(15)
+    uniqueId = CharField()
+
+    session = IntegerField()
+    validated = BooleanField()
+
+    steamid = IntegerField(null=True)
+    steamchecked = BooleanField()
+    ladderCancelled = IntegerField()
+
+class Avatar(LobbyModel):
+    class Meta:
+        db_table = 'avatars_list'
+
+    url = CharField()
+    tooltip = CharField(null=True)
+
+class UserAvatar(LobbyModel):
+    class Meta:
+        db_table = 'avatars'
+
+    # CRAAAAAAP
+
+    user = ForeignKeyField(User, related_name='avatars', db_column='idUser')
+    avatar = ForeignKeyField(Avatar, db_column='idAvatar')
+    selected = BooleanField()
+
+# ======= Rating Models =======
+
+class Ladder1v1Rating(LobbyModel):
+    class Meta:
+        db_table = 'ladder1v1_rating'
+
+    id = ForeignKeyField(User, related_name='ladder1v1', primary_key=True,
+                         db_column='id', on_delete='CASCADE')
+
+    mean = FloatField()
+    deviation = FloatField()
+    numGames = IntegerField()
+    winGames = IntegerField()
+    is_active = BooleanField()
+
+class GlobalRating(LobbyModel):
+    class Meta:
+        db_table = 'global_rating'
+
+    id = ForeignKeyField(User, related_name='global', primary_key=True,
+                         db_column='id', on_delete='CASCADE')
+
+    mean = FloatField()
+    deviation = FloatField()
+    numGames = IntegerField()
+    is_active = BooleanField()
+
+# ======= Base Version Models ========
 
 class RepoVersion(LobbyModel):
     "Represents a specific version of a git repository."
