@@ -274,7 +274,7 @@ class Map(LobbyModel):
     # Non-_scenario.lua attributes
     ident = CharField(64, index=True, unique=True)
 
-    author = IntegerField(null=True)#ForeignKeyField(User)#, null=True, on_delete='SET NULL')
+    author = ForeignKeyField(User, null=True, on_delete='SET NULL')
 
     time_added = TimeStampField()
     time_updated = TimeStampField()
@@ -391,7 +391,7 @@ class Mod(LobbyModel):
     class Meta:
         db_table = 'mod'
 
-    maintainer = IntegerField(null=True)#ForeignKeyField(User, null=True)
+    maintainer = ForeignKeyField(User, null=True, on_delete='SET NULL')
 
     # From mod_info.lua
     uid = CharField(64, null=True) # Latest uid
