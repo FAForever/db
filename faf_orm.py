@@ -428,6 +428,36 @@ class ModDepend(LobbyModel):
 
 __all__ += ['Mod','ModDepend','ModVersion']
 
+# ======= Clan Models ========
+
+class Clan(LobbyModel):
+    class Meta:
+        db_schema = 'fafclans'
+        db_table = 'clans_list'
+
+    name = CharField(db_column='clan_name')
+    tag = CharField(3, null=True, db_column='clan_tag')
+
+    description = TextField(db_column='clan_desc')
+
+    founder = ForeignKeyField(User, null=True, db_column='clan_founder_id')
+
+    create_date = TimeStampField()
+    status = BooleanField() # ?!?!
+
+class ClanMember(LobbyModel):
+    class Meta:
+        db_schema = 'fafclans'
+        db_table = 'clan_members'
+
+    clan = ForeignKeyField(Clan)
+
+    player = ForeignKeyField(User, primary_key=True)
+
+    join_date = TimeStampField(db_column='join_clan_date')
+
+    rank = CharField(20, db_column='clan_rank')
+    
 # ======= Utility table creation functions ========
 
 def create_map_tables():
