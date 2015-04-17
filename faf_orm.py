@@ -12,8 +12,17 @@ __all__ = [
     'RepoVersion','DefaultVersion',
     'Map','MapNoRushOffset','MapVersion','MapNote',
     'MapProp', 'MapEditorIcon', 'MapMarker',
-    'DoesNotExist'
+    'DoesNotExist',
+    'Match'
 ]
+
+def Match(match, against: str, mode='BOOLEAN'):
+    "Create a mysql MATCH () AGAINST () full-text search clause"
+    return Clause(
+        SQL('MATCH'), EnclosedClause(*match),
+        SQL('AGAINST'), EnclosedClause(
+            Clause(Param(against), SQL('IN %s MODE' % mode)))
+    )
 
 # DB is uninitialized. Initialize it at runtime
 db = Proxy()
