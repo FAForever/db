@@ -1,4 +1,5 @@
 from peewee import *
+from peewee import EnclosedClause
 from datetime import datetime
 
 # Exported names
@@ -432,7 +433,7 @@ __all__ += ['Mod','ModDepend','ModVersion']
 
 class Clan(LobbyModel):
     class Meta:
-        db_schema = 'fafclans'
+        schema = 'fafclans'
         db_table = 'clans_list'
 
     name = CharField(db_column='clan_name')
@@ -447,7 +448,7 @@ class Clan(LobbyModel):
 
 class ClanMember(LobbyModel):
     class Meta:
-        db_schema = 'fafclans'
+        schema = 'fafclans'
         db_table = 'clan_members'
 
     clan = ForeignKeyField(Clan)
@@ -457,7 +458,9 @@ class ClanMember(LobbyModel):
     join_date = TimeStampField(db_column='join_clan_date')
 
     rank = CharField(20, db_column='clan_rank')
-    
+
+__all__ += ['Clan','ClanMember']
+
 # ======= Utility table creation functions ========
 
 def create_map_tables():
