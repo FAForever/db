@@ -445,6 +445,7 @@ class Clan(LobbyModel):
         schema = 'fafclans'
         db_table = 'clans_list'
 
+    id = IntegerField(primary_key=True, db_column='clan_id')
     name = CharField(db_column='clan_name')
     tag = CharField(3, null=True, db_column='clan_tag')
 
