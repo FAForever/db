@@ -16,6 +16,8 @@ def faf_orm_init_db(database):
     db.field_overrides['primary_key'] = 'INTEGER UNSIGNED AUTO_INCREMENT'
     db.field_overrides['uint'] = 'INTEGER UNSIGNED'
 
+    db.field_overrides['longblob'] = 'LONGBLOB'
+
 # Exported names
 __all__ = [
     'db', 'faf_orm_init_db'
