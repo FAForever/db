@@ -30,7 +30,8 @@ def import_all(into_scope):
     assert db.obj
     from importlib import import_module
 
-    for sub_mod in ['engine', 'game', 'map', 'mod', 'oauth', 'user', 'version']:
+    for sub_mod in ['engine', 'file', 'game',
+                    'map', 'mod', 'oauth', 'user', 'version']:
         mod = import_module(__name__+'.'+sub_mod)
         for name in mod.__all__:
             into_scope[name] = getattr(mod, name)
