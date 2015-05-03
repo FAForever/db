@@ -33,7 +33,7 @@ class GamePlayer(LobbyModel):
     class Meta:
         db_table = 'game_player_stats'
 
-    game = ForeignKeyField(Game, related_name='players', db_column='gameId', on_delete='CASCADE')
+    game = CascadeFKey(Game, 'players', db_column='gameId')
     player = ForeignKeyField(User, null=True, db_column='playerId', on_delete='SET NULL')
 
     ai = BooleanField()
@@ -55,8 +55,8 @@ class GameReplay(LobbyModel):
     class Meta:
         db_table = 'game_replays'
 
-    UID = PrimaryKeyField()
-    file = BlobField()
+    id = PrimaryKeyField(db_column='UID')
+    file = LongBlobField()
 
 __all__ = [
     'GameFeaturedMod', 'Game', 'GamePlayer', 'GameReplay'

@@ -73,9 +73,9 @@ class OAuthToken(LobbyModel):
     class Meta:
         db_table = 'oauth_token'
 
-    user = ForeignKeyField(User, related_name='oauth_tokens', on_delete='CASCADE')
+    user = CascadeFKey(User, 'oauth_tokens')
 
-    client = ForeignKeyField(OAuthClient, related_name='tokens', on_delete='CASCADE')
+    client = CascadeFKey(OAuthClient, 'tokens')
 
     # Token is always Bearer
 

@@ -51,8 +51,8 @@ class Ladder1v1Rating(LobbyModel):
     class Meta:
         db_table = 'ladder1v1_rating'
 
-    id = ForeignKeyField(User, related_name='ladder1v1', primary_key=True,
-                         db_column='id', on_delete='CASCADE')
+    id = CascadeFKey(User, related_name='ladder1v1', primary_key=True,
+                         db_column='id')
 
     mean = FloatField()
     deviation = FloatField()
@@ -64,8 +64,8 @@ class GlobalRating(LobbyModel):
     class Meta:
         db_table = 'global_rating'
 
-    id = ForeignKeyField(User, related_name='global', primary_key=True,
-                         db_column='id', on_delete='CASCADE')
+    id = CascadeFKey(User, related_name='global', primary_key=True,
+                         db_column='id')
 
     mean = FloatField()
     deviation = FloatField()

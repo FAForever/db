@@ -41,7 +41,7 @@ class MapNoRushOffset(LobbyModel):
     class Meta:
         db_table = 'map_norushoffset'
 
-    map = ForeignKeyField(Map, related_name='norushoffset', on_delete='CASCADE')
+    map = CascadeFKey(Map, 'norushoffset')
 
     army = CharField(8) #ARMY_1
 
@@ -52,7 +52,7 @@ class MapVersion(LobbyModel):
     class Meta:
         db_table = 'map_version'
 
-    map = ForeignKeyField(Map, on_delete='CASCADE')
+    map = CascadeFKey(Map, 'versions')
 
     ver = ForeignKeyField(RepoVersion)
 
@@ -60,7 +60,7 @@ class MapNote(LobbyModel):
     class Meta:
         db_table = 'map_note'
 
-    map = ForeignKeyField(Map, on_delete='CASCADE')
+    map = CascadeFKey(Map, 'notes')
 
     tag = CharField()
 
@@ -85,7 +85,7 @@ class MapMarker(LobbyModel):
     class Meta:
         db_table = 'map_marker'
 
-    map = ForeignKeyField(Map, related_name='markers', on_delete='CASCADE')
+    map = CascadeFKey(Map, 'markers')
 
     type = CharField(32)
 

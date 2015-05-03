@@ -29,8 +29,8 @@ class DefaultVersion(LobbyModel):
     mod = CharField(45,index=True)
     name = CharField(45)
 
-    ver_engine = ForeignKeyField(RepoVersion,related_name='defaultver_eng')
-    ver_main_mod = ForeignKeyField(RepoVersion,related_name='defaultver_mod')
+    ver_engine = ForeignKeyField(RepoVersion, 'defaultver_eng')
+    ver_main_mod = ForeignKeyField(RepoVersion, 'defaultver_mod')
 
     time_added = TimeStampField()
 

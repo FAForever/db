@@ -2,6 +2,7 @@
 from ._base import *
 from .user import User
 from .version import RepoVersion
+from .file import DBFile
 
 # ====== Game Mod Models ======
 
@@ -24,6 +25,8 @@ class Mod(LobbyModel):
     exclusive = BooleanField(default=False)
     ui_only = BooleanField(default=False)
 
+    icon = ForeignKeyField(DBFile,  null=True)
+
     time_added = TimeStampField()
     time_updated = TimeStampField()
 
@@ -31,7 +34,7 @@ class ModVersion(LobbyModel):
     class Meta:
         db_table = 'mod_version'
 
-    mod = ForeignKeyField(Mod, related_name='versions', on_delete='CASCADE')
+    mod = CascadeFKey(Mod, 'versions')
 
     ver = ForeignKeyField(RepoVersion)
 
@@ -41,14 +44,14 @@ class ModDepend(LobbyModel):
     class Meta:
         db_table = 'mod_depend'
 
-    mod_ver = ForeignKeyField(ModVersion, related_name='depends', on_delete='CASCADE')
+    mod_ver = CascadeFKey(ModVersion, 'depends')
     depend = ForeignKeyField(ModVersion)
 
 __all__ = [
     'Mod', 'ModVersion', 'ModDepend'
 ]
 
-def create_mod_tables():
+def create_tables():
     for table in [Mod, ModVersion, ModDepend]:
         table.create_table(fail_silently=True)
 
