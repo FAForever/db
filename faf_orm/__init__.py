@@ -17,6 +17,7 @@ def faf_orm_init_db(database):
     db.field_overrides['uint'] = 'INTEGER UNSIGNED'
 
     db.field_overrides['longblob'] = 'LONGBLOB'
+    db.field_overrides['enum'] = 'ENUM'
 
 # Exported names
 __all__ = [

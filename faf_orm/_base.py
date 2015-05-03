@@ -4,6 +4,7 @@ Base classes for models / fields, overloaded fields.
 
 from . import db
 from peewee import *
+from peewee import EnclosedClause
 from datetime import datetime
 
 # Unbreak foreign key type
@@ -42,6 +43,21 @@ class LongBlobField(BlobField):
 
 class UIntField(IntegerField):
     db_field = 'uint'
+
+class EnumField(CharField):
+    db_field = 'enum'
+
+    def __init__(self, *enum_strings, **kwargs):
+        super(EnumField, self).__init__(**kwargs)
+
+        for enum in enum_strings:
+            assert isinstance(enum, str) and "Enums must be strings."
+
+        self._enum = list(enum_strings)
+
+    def __ddl_column__(self, column_type):
+        return Clause(SQL(column_type),
+                      EnclosedClause(*map(lambda e: Param(e), self._enum)))
 
 class LobbyModel(Model):
     "Base Model"
