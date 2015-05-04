@@ -24,7 +24,7 @@ class CascadeFKey(ForeignKeyField):
             extra=extra, to_field=to_field, **kwargs)
 
 class TimeStampField(DateTimeField):
-    db_field = 'time'
+    db_field = 'timestamp'
 
 class CTimeField(TimeStampField):
     "Created timestamp field."

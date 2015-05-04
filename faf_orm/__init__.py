@@ -18,6 +18,7 @@ def faf_orm_init_db(database):
 
     db.field_overrides['longblob'] = 'LONGBLOB'
     db.field_overrides['enum'] = 'ENUM'
+    db.field_overrides['timestamp'] = 'TIMESTAMP'
 
 # Exported names
 __all__ = [
