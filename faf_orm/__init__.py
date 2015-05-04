@@ -22,17 +22,23 @@ def faf_orm_init_db(database):
 
 # Exported names
 __all__ = [
-    'db', 'faf_orm_init_db'
+    'db', 'faf_orm_init_db',
+    'Match'
 ]
 
-def import_all(into_scope):
-    "Import all ORM Model classes into_scope"
+from .engine import *
+from .file import *
+from .game import *
+from .map import *
+from .mod import *
+from .oauth import *
+from .user import *
+from .version import *
 
-    assert db.obj
-    from importlib import import_module
+from importlib import import_module
 
-    for sub_mod in ['engine', 'file', 'game',
-                    'map', 'mod', 'oauth', 'user', 'version']:
-        mod = import_module(__name__+'.'+sub_mod)
-        for name in mod.__all__:
-            into_scope[name] = getattr(mod, name)
+# Add models to exported names
+for sub_mod in ['engine', 'file', 'game',
+                'map', 'mod', 'oauth', 'user', 'version']:
+    mod = import_module(__name__+'.'+sub_mod)
+    __all__.extend(mod.__all__)
