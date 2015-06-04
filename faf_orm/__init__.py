@@ -1,4 +1,4 @@
-from peewee import Clause, SQL, Param, EnclosedClause, Proxy
+from peewee import Clause, SQL, Param, EnclosedClause, Proxy, DoesNotExist
 
 def Match(match, against: str, mode='BOOLEAN'):
     "Create a mysql MATCH () AGAINST () full-text search clause"
@@ -23,7 +23,7 @@ def faf_orm_init_db(database):
 # Exported names
 __all__ = [
     'db', 'faf_orm_init_db',
-    'Match'
+    'Match', 'DoesNotExist'
 ]
 
 from .engine import *
