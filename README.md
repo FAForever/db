@@ -1,5 +1,15 @@
 # FAForever DB project
 
-Holds database-related tools for the FAForever project.
+Contains a dockerfile to run our database in a contained environment, along with tools for managing the database.
 
-Shared across serverside projects: api, server and various commandline utilities.
+# Installation
+
+Get [docker](http://docker.com).
+
+Build the container using
+
+    docker build -t faf-db .
+
+Run using
+
+    docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=<wanted_password> faf-db
