@@ -1,3 +1,6 @@
+CREATE DATABASE  IF NOT EXISTS `faf`;
+USE `faf`;
+
 -- MySQL dump 10.16  Distrib 10.1.4-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: faf_lobby
