@@ -13,3 +13,7 @@ Build the container using
 Run using
 
     docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=<wanted_password> faf-db
+
+Import Structure
+
+    docker exec -i faf-db mysql -uroot -p<wantedpassword> < db-structure.sql

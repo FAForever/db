@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `faf_test` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `faf_test`;
 -- MySQL dump 10.16  Distrib 10.1.4-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: faf_lobby
