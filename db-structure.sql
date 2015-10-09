@@ -330,8 +330,7 @@ DROP TABLE IF EXISTS `game_min_rating`;
 CREATE TABLE `game_min_rating` (
   `id` bigint(20) unsigned NOT NULL,
   `minRating` float DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `game_min_rating_ibfk_1` FOREIGN KEY (`id`) REFERENCES `game_stats_bak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -386,8 +385,7 @@ DROP TABLE IF EXISTS `game_replays_old`;
 CREATE TABLE `game_replays_old` (
   `UID` bigint(20) unsigned NOT NULL,
   `file` longblob NOT NULL,
-  PRIMARY KEY (`UID`),
-  CONSTRAINT `game_replays_old_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `game_stats_bak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`UID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1867,8 +1865,73 @@ CREATE TABLE `vm_exempt` (
   UNIQUE KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+--
+-- Table structure for table `achievement_definitions`
+--
+
+DROP TABLE IF EXISTS `achievement_definitions`;
+CREATE TABLE `achievement_definitions` (
+  `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the achievement.',
+  `name` VARCHAR(255) NOT NULL COMMENT 'The name of the achievement.',
+  `description` VARCHAR(255) NOT NULL COMMENT 'The description of the achievement.',
+  `type` VARCHAR(20) NOT NULL COMMENT 'The type of the achievement. \nPossible values are:\n\"STANDARD\" - Achievement is either locked or unlocked.\n\"INCREMENTAL\" - Achievement is incremental.',
+  `total_steps` INT UNSIGNED NULL COMMENT 'The total steps for an incremental achievement.',
+  `revealed_icon_url` VARCHAR(2000) NULL COMMENT 'The image URL for the revealed achievement icon.',
+  `unlocked_icon_url` VARCHAR(2000) NULL COMMENT 'The image URL for the unlocked achievement icon.',
+  `initial_state` VARCHAR(20) NOT NULL COMMENT 'The initial state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
+  `experience_points` INT UNSIGNED NOT NULL COMMENT 'Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference:\n5 - Easy to achieve\n20 - Medium\n50 - Hard to achieve',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `event_definitions`
+--
+
+DROP TABLE IF EXISTS `event_definitions`;
+CREATE TABLE `event_definitions` (
+  `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event.',
+  `name` VARCHAR(255) NOT NULL COMMENT 'The name of the event.',
+  `description` VARCHAR(255) NOT NULL COMMENT 'Description of what this event represents.',
+  `imageUrl` VARCHAR(45) NULL COMMENT 'The base URL for the image that represents the event.',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `player_achievements` 
+--
+
+DROP TABLE IF EXISTS `player_achievements`;
+CREATE TABLE `player_achievements` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'The ID of the player achievement.',
+  `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the owning player (FK)',
+  `currentSteps` INT UNSIGNED NULL COMMENT 'The current steps for an incremental achievement.',
+  `state` VARCHAR(45) NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
+  `last_updated` DATETIME NOT NULL COMMENT 'The datetime of the last modification to this achievement\'s state or current steps',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `events_by_player`
+--
+
+DROP TABLE IF EXISTS `events_by_player`;
+CREATE TABLE IF NOT EXISTS `events_by_player` (
+  `id` INT UNSIGNED NOT NULL COMMENT '',
+  `event_id` VARCHAR(36) NULL COMMENT '',
+  `count` INT UNSIGNED NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
