@@ -65,3 +65,39 @@ INSERT INTO `achievement_definitions` (`id`, `name`, `description`, `type`, `tot
 ('ec8faec7-e3e1-436e-a1ac-9f7adc3d0387', 'Grenadier', 'Win 25 games with land dominant army', 'INCREMENTAL', 25, NULL, NULL, 'REVEALED', 10),
 ('f0cde5d8-4933-4074-a2fb-819074d21abd', 'No mercy', 'Build 100 Mercies in total', 'INCREMENTAL', 100, NULL, NULL, 'REVEALED', 10),
 ('ff23024e-f533-4e23-8f8f-ecc21d5283f8', 'Trebuchet', 'Win 50 games with Cybran', 'INCREMENTAL', 50, NULL, NULL, 'REVEALED', 20);
+
+--
+-- Dumping data for table `event_definitions`
+--
+
+INSERT INTO `event_definitions` (`id`, `name`, `image_url`, `type`) VALUES
+('15b6c19a-6084-4e82-ada9-6c30e282191f', 'Seraphim wins', NULL, 'NUMERIC'),
+('1b900d26-90d2-43d0-a64e-ed90b74c3704', 'UEF plays', NULL, 'NUMERIC'),
+('225e9b2e-ae09-4ae1-a198-eca8780b0fcd', 'Fallen air units', NULL, 'NUMERIC'),
+('2c406196-07c6-4de0-9ca7-f6d4fcb03d73', 'Built paragons', NULL, 'NUMERIC'),
+('3a7b3667-0f79-4ac7-be63-ba841fd5ef05', 'Fallen naval units', NULL, 'NUMERIC'),
+('3dd3ed78-ce78-4006-81fd-10926738fbf3', 'Fallen tech 1 units', NULL, 'NUMERIC'),
+('3ebb0c4d-5e92-4446-bf52-d17ba9c5cd3c', 'Built air units', NULL, 'NUMERIC'),
+('4a929def-e347-45b4-b26d-4325a3115859', 'Ranked 1v1 games played', NULL, 'NUMERIC'),
+('56b06197-1890-42d0-8b59-25e1add8dc9a', 'Cybran wins', NULL, 'NUMERIC'),
+('60bb1fc0-601b-45cd-bd26-83b1a1ac979b', 'Built engineers', NULL, 'NUMERIC'),
+('701ca426-0943-4931-85af-6a08d36d9aaa', 'Fallen experimentals', NULL, 'NUMERIC'),
+('7be6fdc5-7867-4467-98ce-f7244a66625a', 'UEF wins', NULL, 'NUMERIC'),
+('7f15c2be-80b7-4573-8f41-135f84773e0f', 'Fallen tech 3 units', NULL, 'NUMERIC'),
+('89d4f391-ed2d-4beb-a1ca-6b93db623c04', 'Built tech 2 units', NULL, 'NUMERIC'),
+('92617974-8c1f-494d-ab86-65c2a95d1486', 'Built tech 3 units', NULL, 'NUMERIC'),
+('96ccc66a-c5a0-4f48-acaa-888b00778b57', 'Aeon plays', NULL, 'NUMERIC'),
+('a1a3fd33-abe2-4e56-800a-b72f4c925825', 'Fallen land units', NULL, 'NUMERIC'),
+('a6b51c26-64e6-4e7a-bda7-ea1cfe771ebb', 'Aeon wins', NULL, 'NUMERIC'),
+('a8ee4f40-1e30-447b-bc2c-b03065219795', 'Built tech 1 units', NULL, 'NUMERIC'),
+('ad193982-e7ca-465c-80b0-5493f9739559', 'Cybran plays', NULL, 'NUMERIC'),
+('aebd750b-770b-4869-8e37-4d4cfdc480d0', 'Fallen tech 2 units', NULL, 'NUMERIC'),
+('b5265b42-1747-4ba1-936c-292202637ce6', 'Built naval units', NULL, 'NUMERIC'),
+('cc791f00-343c-48d4-b5b3-8900b83209c0', 'Hours played', NULL, 'TIME'),
+('cfa449a6-655b-48d5-9a27-6044804fe35c', 'Custom games played', NULL, 'NUMERIC'),
+('d6a699b7-99bc-4a7f-b128-15e1e289a7b3', 'Fallen ACUs', NULL, 'NUMERIC'),
+('e8e99a68-de1b-4676-860d-056ad2207119', 'Fallen engineers', NULL, 'NUMERIC'),
+('ea123d7f-bb2e-4a71-bd31-88859f0c3c00', 'Built land units', NULL, 'NUMERIC'),
+('ed9fd79d-5ec7-4243-9ccf-f18c4f5baef1', 'Built experimentals', NULL, 'NUMERIC'),
+('fefcb392-848f-4836-9683-300b283bc308', 'Seraphim plays', NULL, 'NUMERIC');
+
