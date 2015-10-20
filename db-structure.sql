@@ -1872,8 +1872,8 @@ CREATE TABLE `vm_exempt` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `achievement_definitions` (
   `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the achievement.',
-  `name` VARCHAR(255) NOT NULL COMMENT 'The name of the achievement.',
-  `description` VARCHAR(255) NOT NULL COMMENT 'The description of the achievement.',
+  `name_key` VARCHAR(255) NOT NULL COMMENT 'The name of the achievement.',
+  `description_key` VARCHAR(255) NOT NULL COMMENT 'The description of the achievement.',
   `type` ENUM('STANDARD', 'INCREMENTAL') NOT NULL COMMENT 'The type of the achievement. \nPossible values are:\n\"STANDARD\" - Achievement is either locked or unlocked.\n\"INCREMENTAL\" - Achievement is incremental.',
   `total_steps` INT UNSIGNED NULL COMMENT 'The total steps for an incremental achievement, NULL for standard achievements.',
   `revealed_icon_url` VARCHAR(2000) NULL COMMENT 'The image URL for the revealed achievement icon.',
@@ -1882,7 +1882,7 @@ CREATE TABLE IF NOT EXISTS `achievement_definitions` (
   `experience_points` INT UNSIGNED NOT NULL COMMENT 'Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference:\n5 - Easy to achieve\n20 - Medium\n50 - Hard to achieve',
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC)  COMMENT '')
+  UNIQUE INDEX `name_UNIQUE` (`name_key` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -1898,7 +1898,8 @@ CREATE TABLE IF NOT EXISTS `player_achievements` (
   `create_time` DATETIME NOT NULL COMMENT 'The datetime of the last modification to this achievement\'s state or current steps',
   `update_time` DATETIME NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `player_achievement_UNIQUE` (`player_id` ASC, `achievement_id` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -1929,6 +1930,21 @@ CREATE TABLE IF NOT EXISTS `player_events` (
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `event_player_UNIQUE` (`player_id` ASC, `event_id` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `messages`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
+  `key` VARCHAR(255) NOT NULL COMMENT '',
+  `language` CHAR(2) NOT NULL COMMENT '',
+  `region` CHAR(2) NULL COMMENT '',
+  `value` TEXT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `key_language_region_UNIQUE` (`key` ASC, `language` ASC, `region` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
 
