@@ -1872,7 +1872,7 @@ CREATE TABLE `vm_exempt` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `achievement_definitions` (
   `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the achievement.',
-  `name_key` VARCHAR(255) NOT NULL COMMENT 'The name of the achievement.',
+  `name_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the name of the achievement.',
   `description_key` VARCHAR(255) NOT NULL COMMENT 'The description of the achievement.',
   `type` ENUM('STANDARD', 'INCREMENTAL') NOT NULL COMMENT 'The type of the achievement. \nPossible values are:\n\"STANDARD\" - Achievement is either locked or unlocked.\n\"INCREMENTAL\" - Achievement is incremental.',
   `total_steps` INT UNSIGNED NULL COMMENT 'The total steps for an incremental achievement, NULL for standard achievements.',
@@ -1921,7 +1921,7 @@ ENGINE = InnoDB;
 -- Table `player_events`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `player_events` (
-  `id` INT UNSIGNED NOT NULL COMMENT 'ID of this entry',
+  `id` INT UNSIGNED NOT NULL COMMENT 'ID of this entry.',
   `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the player that triggered this event.',
   `event_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event definition.',
   `count` INT UNSIGNED NOT NULL COMMENT 'The current number of times this event has occurred.',
@@ -1937,11 +1937,11 @@ ENGINE = InnoDB;
 -- Table `messages`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `messages` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
-  `key` VARCHAR(255) NOT NULL COMMENT '',
-  `language` CHAR(2) NOT NULL COMMENT '',
-  `region` CHAR(2) NULL COMMENT '',
-  `value` TEXT NULL COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
+  `key` VARCHAR(255) NOT NULL COMMENT 'The message resource key that identifies this entry along with language and region.',
+  `language` CHAR(2) NOT NULL COMMENT 'The language that identifies this entry along with key and region.',
+  `region` CHAR(2) NULL COMMENT 'The region that identifies this entry along with key and language.',
+  `value` TEXT NULL COMMENT 'The message value.',
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `key_language_region_UNIQUE` (`key` ASC, `language` ASC, `region` ASC)  COMMENT '')
