@@ -1872,6 +1872,7 @@ CREATE TABLE `vm_exempt` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `achievement_definitions` (
   `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the achievement.',
+  `order` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'The order in which the achievement is displayed to the user.',
   `name_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the name of the achievement.',
   `description_key` VARCHAR(255) NOT NULL COMMENT 'The description of the achievement.',
   `type` ENUM('STANDARD', 'INCREMENTAL') NOT NULL COMMENT 'The type of the achievement. \nPossible values are:\n\"STANDARD\" - Achievement is either locked or unlocked.\n\"INCREMENTAL\" - Achievement is incremental.',
@@ -1895,8 +1896,8 @@ CREATE TABLE IF NOT EXISTS `player_achievements` (
   `achievement_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
   `current_steps` INT UNSIGNED NOT NULL COMMENT 'The current steps for an incremental achievement.',
   `state` ENUM('HIDDEN', 'REVEALED', 'UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
-  `create_time` DATETIME NOT NULL COMMENT 'The datetime of the last modification to this achievement\'s state or current steps',
-  `update_time` DATETIME NOT NULL COMMENT '',
+  `create_time` DATETIME NOT NULL COMMENT 'The datetime when the achievement was initially created.',
+  `update_time` DATETIME NOT NULL COMMENT 'The datetime of the last modification to the achievement\'s state or current steps',
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `player_achievement_UNIQUE` (`player_id` ASC, `achievement_id` ASC)  COMMENT '')
