@@ -1922,7 +1922,7 @@ ENGINE = InnoDB;
 -- Table `player_events`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `player_events` (
-  `id` INT UNSIGNED NOT NULL COMMENT 'ID of this entry.',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
   `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the player that triggered this event.',
   `event_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event definition.',
   `count` INT UNSIGNED NOT NULL COMMENT 'The current number of times this event has occurred.',
