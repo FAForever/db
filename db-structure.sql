@@ -1894,7 +1894,7 @@ CREATE TABLE IF NOT EXISTS `player_achievements` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'The ID of the player achievement.',
   `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the owning player (FK).',
   `achievement_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
-  `current_steps` INT UNSIGNED NOT NULL COMMENT 'The current steps for an incremental achievement.',
+  `current_steps` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'The current steps for an incremental achievement.',
   `state` ENUM('HIDDEN', 'REVEALED', 'UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
   `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
