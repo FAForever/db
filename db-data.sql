@@ -121,7 +121,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.techie.title', 'en', 'US', 'Techie'),
 ('achievement.techie.description', 'en', 'US', 'Win 5 games with high usage of experimentals (3 or more)'),
 ('achievement.hattrick.title', 'en', 'US', 'Hattrick'),
-('achievement.hattrick.description', 'en', 'US', 'Kill 3 enemies in one game'),
+('achievement.hattrick.description', 'en', 'US', 'Kill 3 enemies in one game and survive'),
 ('achievement.fieldMarshal.title', 'en', 'US', 'Field marshal'),
 ('achievement.fieldMarshal.description', 'en', 'US', 'Win 50 games with land dominant army'),
 ('achievement.gettingBetter.title', 'en', 'US', 'Getting better'),
