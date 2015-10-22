@@ -14,7 +14,7 @@ INSERT INTO `achievement_definitions` (`id`, `order`, `name_key`, `description_k
 ('e31d04d1-348c-423e-a3aa-d46711538b7b', 8, 'achievement.sergeantMajor.title', 'achievement.sergeantMajor.description', 'INCREMENTAL', 1500, NULL, NULL, 'REVEALED', 50),
 ('01487e60-6d44-409b-83d8-f5f77272c364', 9, 'achievement.gettingStarted.title', 'achievement.gettingStarted.description', 'INCREMENTAL', 500, NULL, NULL, 'REVEALED', 5),
 ('181ea296-207e-4da0-9ebb-2db66c2c7e0c', 10, 'achievement.gettingBetter.title', 'achievement.gettingBetter.description', 'INCREMENTAL', 1000, NULL, NULL, 'REVEALED', 10),
-('5e215a3e-cf54-44f4-9f5a-50cd94258efc', 11, 'achievement.gettingPro.title', 'achievement.gettingPro.description', 'INCREMENTAL', NULL, 1500, NULL, 'REVEALED', 20),
+('5e215a3e-cf54-44f4-9f5a-50cd94258efc', 11, 'achievement.gettingPro.title', 'achievement.gettingPro.description', 'INCREMENTAL', 1500, NULL, NULL, 'REVEALED', 20),
 ('08629902-8e18-4d92-ad14-c8ecde4a8674', 12, 'achievement.hattrick.title', 'achievement.hattrick.description', 'STANDARD', NULL, NULL, NULL, 'REVEALED', 10),
 ('290df67c-eb01-4fe7-9e32-caae1c10442f', 13, 'achievement.thatWasClose.title', 'achievement.thatWasClose.description', 'STANDARD', NULL, NULL, NULL, 'REVEALED', 5),
 ('305a8d34-42fd-42f3-ba91-d9f5e437a9a6', 14, 'achievement.topScore.title', 'achievement.topScore.description', 'STANDARD', NULL, NULL, NULL, 'REVEALED', 10),
