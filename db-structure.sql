@@ -1888,6 +1888,22 @@ CREATE TABLE IF NOT EXISTS `oauth_clients` (
   UNIQUE INDEX `client_secret_UNIQUE` (`client_secret` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `oauth_tokens`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `oauth_tokens` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Auto incremented, technical ID.',
+  `access_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
+  `refresh_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
+  `oauth_client_id` INT UNSIGNED NOT NULL COMMENT 'ID of the client (FK).',
+  `scopes` VARCHAR(45) NOT NULL COMMENT 'A space delimited list of scopes.',
+  `expires` VARCHAR(45) NOT NULL DEFAULT 'CURRENT_TIMESTAMP + 3600' COMMENT 'Expiration time of the token.',
+  `user_id` INT UNSIGNED NOT NULL COMMENT 'ID of the user (FK).',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
