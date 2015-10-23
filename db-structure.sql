@@ -330,7 +330,8 @@ DROP TABLE IF EXISTS `game_min_rating`;
 CREATE TABLE `game_min_rating` (
   `id` bigint(20) unsigned NOT NULL,
   `minRating` float DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `game_min_rating_ibfk_1` FOREIGN KEY (`id`) REFERENCES `game_stats_bak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -385,7 +386,8 @@ DROP TABLE IF EXISTS `game_replays_old`;
 CREATE TABLE `game_replays_old` (
   `UID` bigint(20) unsigned NOT NULL,
   `file` longblob NOT NULL,
-  PRIMARY KEY (`UID`)
+  PRIMARY KEY (`UID`),
+  CONSTRAINT `game_replays_old_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `game_stats_bak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
