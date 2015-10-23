@@ -1898,8 +1898,8 @@ CREATE TABLE IF NOT EXISTS `player_achievements` (
   `achievement_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
   `current_steps` INT UNSIGNED NULL COMMENT 'The current steps for an incremental achievement.',
   `state` ENUM('HIDDEN', 'REVEALED', 'UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
+  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
+  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `player_achievement_UNIQUE` (`player_id` ASC, `achievement_id` ASC)  COMMENT '')
@@ -1928,8 +1928,8 @@ CREATE TABLE IF NOT EXISTS `player_events` (
   `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the player that triggered this event.',
   `event_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event definition.',
   `count` INT UNSIGNED NOT NULL COMMENT 'The current number of times this event has occurred.',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
+  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
+  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `event_player_UNIQUE` (`player_id` ASC, `event_id` ASC)  COMMENT '')
