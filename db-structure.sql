@@ -1873,18 +1873,15 @@ CREATE TABLE `vm_exempt` (
 -- Table `oauth_clients`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `oauth_clients` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Auto incremented, technical ID.',
+  `id` VARCHAR(36) NOT NULL COMMENT 'A string that identifies the client, preferably a UUID.',
   `name` VARCHAR(100) NOT NULL COMMENT 'Human readable client name.',
-  `client_id` VARCHAR(36) NOT NULL COMMENT 'A string that identifies the client, preferably a UUID.',
   `client_secret` VARCHAR(55) NOT NULL COMMENT 'The client\'s secret, a random string.',
   `client_type` ENUM('confidential', 'public') NOT NULL DEFAULT 'public' COMMENT 'A string represents if the client is confidential or public.',
   `redirect_uris` TEXT NOT NULL COMMENT 'A space delimited list of redirect URIs.',
   `default_redirect_uri` VARCHAR(2000) NOT NULL COMMENT 'One of the redirect uris.',
   `default_scopes` TEXT NOT NULL COMMENT 'A space delimited list of default scopes of the client',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `name_UNIQUE` (`name` ASC)  COMMENT '',
-  UNIQUE INDEX `client_id_UNIQUE` (`client_id` ASC)  COMMENT '',
+  UNIQUE INDEX `client_id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `client_secret_UNIQUE` (`client_secret` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
@@ -1894,11 +1891,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `oauth_tokens` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Auto incremented, technical ID.',
+  `token_type` VARCHAR(45) NOT NULL COMMENT '',
   `access_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
   `refresh_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
-  `oauth_client_id` INT UNSIGNED NOT NULL COMMENT 'ID of the client (FK).',
-  `scopes` VARCHAR(45) NOT NULL COMMENT 'A space delimited list of scopes.',
-  `expires` VARCHAR(45) NOT NULL DEFAULT 'CURRENT_TIMESTAMP + 3600' COMMENT 'Expiration time of the token.',
+  `client_id` VARCHAR(36) NOT NULL COMMENT 'ID of the client (FK).',
+  `scopes` TEXT NOT NULL COMMENT 'A space delimited list of scopes.',
+  `expires` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP + 3600 COMMENT 'Expiration time of the token.',
   `user_id` INT UNSIGNED NOT NULL COMMENT 'ID of the user (FK).',
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
