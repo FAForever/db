@@ -1867,6 +1867,42 @@ CREATE TABLE `vm_exempt` (
   UNIQUE KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+-- -----------------------------------------------------
+-- Table `oauth_clients`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `oauth_clients` (
+  `id` VARCHAR(36) NOT NULL COMMENT 'A string that identifies the client, preferably a UUID.',
+  `name` VARCHAR(100) NOT NULL COMMENT 'Human readable client name.',
+  `client_secret` VARCHAR(55) NOT NULL COMMENT 'The client\'s secret, a random string.',
+  `client_type` ENUM('confidential', 'public') NOT NULL DEFAULT 'public' COMMENT 'A string represents if the client is confidential or public.',
+  `redirect_uris` TEXT NOT NULL COMMENT 'A space delimited list of redirect URIs.',
+  `default_redirect_uri` VARCHAR(2000) NOT NULL COMMENT 'One of the redirect uris.',
+  `default_scopes` TEXT NOT NULL COMMENT 'A space delimited list of default scopes of the client.',
+  `icon_url` VARCHAR(2000) NULL COMMENT 'URL to a square image representing the client.',
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC)  COMMENT '',
+  UNIQUE INDEX `client_id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `client_secret_UNIQUE` (`client_secret` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `oauth_tokens`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `oauth_tokens` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Auto incremented, technical ID.',
+  `token_type` VARCHAR(45) NOT NULL COMMENT '',
+  `access_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
+  `refresh_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
+  `client_id` VARCHAR(36) NOT NULL COMMENT 'ID of the client (FK).',
+  `scopes` TEXT NOT NULL COMMENT 'A space delimited list of scopes.',
+  `expires` timestamp NOT NULL COMMENT 'Expiration time of the token.',
+  `user_id` INT UNSIGNED NOT NULL COMMENT 'ID of the user (FK).',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
