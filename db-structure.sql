@@ -1880,7 +1880,7 @@ CREATE TABLE IF NOT EXISTS `oauth_clients` (
   `redirect_uris` TEXT NOT NULL COMMENT 'A space delimited list of redirect URIs.',
   `default_redirect_uri` VARCHAR(2000) NOT NULL COMMENT 'One of the redirect uris.',
   `default_scopes` TEXT NOT NULL COMMENT 'A space delimited list of default scopes of the client',
-  `icon_url` VARCHAR(2000) NOT NULL COMMENT '',
+  `icon_url` VARCHAR(2000) NOT NULL DEFAULT '' COMMENT '',
   UNIQUE INDEX `name_UNIQUE` (`name` ASC)  COMMENT '',
   UNIQUE INDEX `client_id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `client_secret_UNIQUE` (`client_secret` ASC)  COMMENT '')
