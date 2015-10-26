@@ -1879,8 +1879,8 @@ CREATE TABLE IF NOT EXISTS `oauth_clients` (
   `client_type` ENUM('confidential', 'public') NOT NULL DEFAULT 'public' COMMENT 'A string represents if the client is confidential or public.',
   `redirect_uris` TEXT NOT NULL COMMENT 'A space delimited list of redirect URIs.',
   `default_redirect_uri` VARCHAR(2000) NOT NULL COMMENT 'One of the redirect uris.',
-  `default_scopes` TEXT NOT NULL COMMENT 'A space delimited list of default scopes of the client',
-  `icon_url` VARCHAR(2000) NOT NULL DEFAULT '' COMMENT '',
+  `default_scopes` TEXT NOT NULL COMMENT 'A space delimited list of default scopes of the client.',
+  `icon_url` VARCHAR(2000) NULL COMMENT 'URL to a square image representing the client.',
   UNIQUE INDEX `name_UNIQUE` (`name` ASC)  COMMENT '',
   UNIQUE INDEX `client_id_UNIQUE` (`id` ASC)  COMMENT '',
   UNIQUE INDEX `client_secret_UNIQUE` (`client_secret` ASC)  COMMENT '')
