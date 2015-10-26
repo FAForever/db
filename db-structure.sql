@@ -1897,7 +1897,7 @@ CREATE TABLE IF NOT EXISTS `oauth_tokens` (
   `refresh_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
   `client_id` VARCHAR(36) NOT NULL COMMENT 'ID of the client (FK).',
   `scopes` TEXT NOT NULL COMMENT 'A space delimited list of scopes.',
-  `expires` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP + 3600 COMMENT 'Expiration time of the token.',
+  `expires` timestamp NOT NULL COMMENT 'Expiration time of the token.',
   `user_id` INT UNSIGNED NOT NULL COMMENT 'ID of the user (FK).',
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
