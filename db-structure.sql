@@ -1903,6 +1903,117 @@ CREATE TABLE IF NOT EXISTS `oauth_tokens` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `achievement_definitions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `achievement_definitions` (
+  `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the achievement.',
+  `order` INT UNSIGNED NOT NULL COMMENT 'The order in which the achievement is displayed to the user.',
+  `name_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the name of the achievement.',
+  `description_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the description of the achievement.',
+  `type` ENUM('STANDARD', 'INCREMENTAL') NOT NULL COMMENT 'The type of the achievement. \nPossible values are:\n\"STANDARD\" - Achievement is either locked or unlocked.\n\"INCREMENTAL\" - Achievement is incremental.',
+  `total_steps` INT UNSIGNED NULL COMMENT 'The total steps for an incremental achievement, NULL for standard achievements.',
+  `revealed_icon_url` VARCHAR(2000) NULL COMMENT 'The image URL for the revealed achievement icon.',
+  `unlocked_icon_url` VARCHAR(2000) NULL COMMENT 'The image URL for the unlocked achievement icon.',
+  `initial_state` ENUM('HIDDEN', 'REVEALED') NOT NULL COMMENT 'The initial state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
+  `experience_points` INT UNSIGNED NOT NULL COMMENT 'Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference:\n5 - Easy to achieve\n20 - Medium\n50 - Hard to achieve',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `name_key_UNIQUE` (`name_key` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `player_achievements`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `player_achievements` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'The ID of the player achievement.',
+  `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the owning player (FK).',
+  `achievement_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
+  `current_steps` INT UNSIGNED NULL COMMENT 'The current steps for an incremental achievement.',
+  `state` ENUM('HIDDEN', 'REVEALED', 'UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
+  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
+  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `player_achievement_UNIQUE` (`player_id` ASC, `achievement_id` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `event_definitions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `event_definitions` (
+  `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event.',
+  `name_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the name of the event.',
+  `image_url` VARCHAR(45) NULL COMMENT 'The base URL for the image that represents the event.',
+  `type` ENUM('NUMERIC', 'TIME') NOT NULL COMMENT 'The type of the event.\nPossible values are:\n\"NUMERIC\" - Event is a plain number.\n\"TIME\" - Event is a measure of time.',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `name_key_UNIQUE` (`name_key` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `player_events`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `player_events` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
+  `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the player that triggered this event.',
+  `event_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event definition.',
+  `count` INT UNSIGNED NOT NULL COMMENT 'The current number of times this event has occurred.',
+  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
+  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `event_player_UNIQUE` (`player_id` ASC, `event_id` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `messages`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
+  `key` VARCHAR(255) NOT NULL COMMENT 'The message resource key that identifies this entry along with language and region.',
+  `language` CHAR(2) NOT NULL COMMENT 'The language that identifies this entry along with key and region.',
+  `region` CHAR(2) NULL COMMENT 'The region that identifies this entry along with key and language.',
+  `value` TEXT NULL COMMENT 'The message value.',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
+  UNIQUE INDEX `key_language_region_UNIQUE` (`key` ASC, `language` ASC, `region` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+DELIMITER $$
+CREATE DEFINER = CURRENT_USER TRIGGER `player_achievements_BEFORE_INSERT` BEFORE INSERT ON `player_achievements` FOR EACH ROW
+BEGIN
+  SET NEW.create_time = NOW();
+END
+$$
+
+CREATE DEFINER = CURRENT_USER TRIGGER `player_achievements_BEFORE_UPDATE` BEFORE UPDATE ON `player_achievements` FOR EACH ROW
+BEGIN
+  SET NEW.update_time = NOW();
+END
+$$
+
+CREATE DEFINER = CURRENT_USER TRIGGER `player_events_BEFORE_INSERT` BEFORE INSERT ON `player_events` FOR EACH ROW
+BEGIN
+  SET NEW.create_time = NOW();
+END
+$$
+
+CREATE DEFINER = CURRENT_USER TRIGGER `player_events_BEFORE_UPDATE` BEFORE UPDATE ON `player_events` FOR EACH ROW
+BEGIN
+  SET NEW.update_time = NOW();
+END
+$$
+
+
+DELIMITER ;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
