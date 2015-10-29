@@ -1994,6 +1994,7 @@ DELIMITER $$
 CREATE DEFINER = CURRENT_USER TRIGGER `player_achievements_BEFORE_INSERT` BEFORE INSERT ON `player_achievements` FOR EACH ROW
 BEGIN
   SET NEW.create_time = NOW();
+  SET NEW.update_time = NOW();
 END
 $$
 
@@ -2006,6 +2007,7 @@ $$
 CREATE DEFINER = CURRENT_USER TRIGGER `player_events_BEFORE_INSERT` BEFORE INSERT ON `player_events` FOR EACH ROW
 BEGIN
   SET NEW.create_time = NOW();
+  SET NEW.update_time = NOW();
 END
 $$
 
