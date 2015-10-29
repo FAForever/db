@@ -2,6 +2,7 @@
 -- Dumping data for table `achievement_definitions`
 --
 
+TRUNCATE TABLE `achievement_definitions`;
 INSERT INTO `achievement_definitions` (`id`, `order`, `name_key`, `description_key`, `type`, `total_steps`, `revealed_icon_url`, `unlocked_icon_url`, `initial_state`, `experience_points`) VALUES
 ('c6e6039f-c543-424e-ab5f-b34df1336e81', 1, 'achievement.novice.title', 'achievement.novice.description', 'INCREMENTAL', 10, NULL, NULL, 'REVEALED', 5),
 ('d5c759fe-a1a8-4103-888d-3ba319562867', 2, 'achievement.junior.title', 'achievement.junior.description', 'INCREMENTAL', 50, NULL, NULL, 'REVEALED', 10),
@@ -74,6 +75,7 @@ INSERT INTO `achievement_definitions` (`id`, `order`, `name_key`, `description_k
 -- Dumping data for table `event_definitions`
 --
 
+TRUNCATE TABLE `event_definitions`;
 INSERT INTO `event_definitions` (`id`, `name_key`, `image_url`, `type`) VALUES
 ('cfa449a6-655b-48d5-9a27-6044804fe35c', 'event.customGamesPlayed', NULL, 'NUMERIC'),
 ('4a929def-e347-45b4-b26d-4325a3115859', 'event.ranked1v1GamesPlayed', NULL, 'NUMERIC'),
@@ -109,6 +111,7 @@ INSERT INTO `event_definitions` (`id`, `name_key`, `image_url`, `type`) VALUES
 -- Dumping data for table `messages`
 --
 
+TRUNCATE TABLE `messages`;
 INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.gettingStarted.title', 'en', 'US', 'Getting started'),
 ('achievement.gettingStarted.description', 'en', 'US', 'Reach a global rating of 500'),
@@ -264,3 +267,12 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('event.builtLandUnits', 'en', 'US', 'Built land units'),
 ('event.builtExperimentals', 'en', 'US', 'Built experimentals'),
 ('event.seraphimPlays', 'en', 'US', 'Seraphim plays');
+
+
+--
+-- Dumping data for table `messages`
+--
+
+TRUNCATE TABLE `oauth_clients`;
+INSERT INTO `oauth_clients` (`id`, `name`, `client_secret`, `client_type`, `redirect_uris`, `default_redirect_uri`, `default_scope`, `icon_url`) VALUES
+('3bc8282c-7730-11e5-8bcf-feff819cdc9f', 'Downlord\'s FAF Client', '6035bd78-7730-11e5-8bcf-feff819cdc9f', 'public', 'http://localhost', 'http://localhost', 'write_achievements read_achievements write_events', '');
