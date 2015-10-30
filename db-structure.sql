@@ -681,12 +681,30 @@ CREATE TABLE IF NOT EXISTS `login` (
   `email` VARCHAR(254) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `ip` varchar(15) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   `steamid` bigint(20) unsigned DEFAULT NULL,
+  `create_time` timestamp NOT NULL COMMENT 'When the user signed up',
+  `update_time` timestamp NOT NULL COMMENT 'When the user last updated their information',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_login` (`login`),
   UNIQUE KEY `unique_email` (`email`),
   UNIQUE KEY `steamid` (`steamid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=146315 DEFAULT CHARSET=latin1 COMMENT='login';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+DROP TRIGGER IF EXISTS `login_BEFORE_INSERT`;
+DROP TRIGGER IF EXISTS `login_BEFORE_UPDATE`;
+DELIMITER $$
+CREATE TRIGGER login_BEFORE_INSERT BEFORE INSERT ON `login` FOR EACH ROW
+BEGIN
+        SET NEW.create_time = NOW();
+        SET NEW.update_time = NOW();
+END
+$$
+CREATE TRIGGER login_BEFORE_UPDATE BEFORE UPDATE ON `login` FOR EACH ROW
+BEGIN
+        SET NEW.update_time = NOW();
+END
+$$
+DELIMITER ;
 
 --
 -- Table structure for table `login_with_duplicated_users`
