@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `faf_test` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `faf_test`;
 -- MySQL dump 10.16  Distrib 10.1.4-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: faf_lobby
@@ -419,6 +417,7 @@ CREATE TABLE IF NOT EXISTS `game_stats` (
 /*!50003 SET collation_connection  = latin1_swedish_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
+DROP TRIGGER IF EXISTS `map_play_count`;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER map_play_count AFTER INSERT ON game_stats FOR EACH ROW UPDATE table_map_features set times_played = (times_played +1) WHERE map_id = NEW.mapId */;;
 DELIMITER ;
