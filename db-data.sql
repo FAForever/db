@@ -128,7 +128,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.dontMessWitHme.title', 'en', 'US', 'Don''t mess with me'),
 ('achievement.dontMessWitHme.description', 'en', 'US', 'Kill 100 ACUs in total'),
 ('achievement.thatWasClose.title', 'en', 'US', 'That was close'),
-('achievement.thatWasClose.description', 'en', 'US', 'Survive 12000 damage dealt to your ACU'),
+('achievement.thatWasClose.description', 'en', 'US', 'Survive despite your ACU\'s health got below 500hp'),
 ('achievement.seaman.title', 'en', 'US', 'Seaman'),
 ('achievement.seaman.description', 'en', 'US', 'Win 25 games with navy dominant army'),
 ('achievement.topScore.title', 'en', 'US', 'Top score'),
