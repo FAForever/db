@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `faf_test` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `faf_test`;
 -- MySQL dump 10.16  Distrib 10.1.4-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: faf_lobby
@@ -419,6 +417,7 @@ CREATE TABLE IF NOT EXISTS `game_stats` (
 /*!50003 SET collation_connection  = latin1_swedish_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
+DROP TRIGGER IF EXISTS `map_play_count`;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER map_play_count AFTER INSERT ON game_stats FOR EACH ROW UPDATE table_map_features set times_played = (times_played +1) WHERE map_id = NEW.mapId */;;
 DELIMITER ;
@@ -682,12 +681,30 @@ CREATE TABLE IF NOT EXISTS `login` (
   `email` VARCHAR(254) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `ip` varchar(15) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   `steamid` bigint(20) unsigned DEFAULT NULL,
+  `create_time` timestamp NOT NULL COMMENT 'When the user signed up',
+  `update_time` timestamp NOT NULL COMMENT 'When the user last updated their information',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_login` (`login`),
   UNIQUE KEY `unique_email` (`email`),
   UNIQUE KEY `steamid` (`steamid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=146315 DEFAULT CHARSET=latin1 COMMENT='login';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+DROP TRIGGER IF EXISTS `login_BEFORE_INSERT`;
+DROP TRIGGER IF EXISTS `login_BEFORE_UPDATE`;
+DELIMITER $$
+CREATE TRIGGER login_BEFORE_INSERT BEFORE INSERT ON `login` FOR EACH ROW
+BEGIN
+        SET NEW.create_time = NOW();
+        SET NEW.update_time = NOW();
+END
+$$
+CREATE TRIGGER login_BEFORE_UPDATE BEFORE UPDATE ON `login` FOR EACH ROW
+BEGIN
+        SET NEW.update_time = NOW();
+END
+$$
+DELIMITER ;
 
 --
 -- Table structure for table `login_with_duplicated_users`
@@ -1900,6 +1917,19 @@ CREATE TABLE IF NOT EXISTS `oauth_tokens` (
   `expires` timestamp NOT NULL COMMENT 'Expiration time of the token.',
   `user_id` INT UNSIGNED NOT NULL COMMENT 'ID of the user (FK).',
   PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `jwt_users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `jwt_users` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
+  `username` VARCHAR(20) NOT NULL COMMENT '',
+  `public_key` VARCHAR(1000) NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
