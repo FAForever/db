@@ -1920,6 +1920,19 @@ CREATE TABLE IF NOT EXISTS `oauth_tokens` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `jwt_users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `jwt_users` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
+  `username` VARCHAR(20) NOT NULL COMMENT '',
+  `public_key` VARCHAR(1000) NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
+ENGINE = InnoDB;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
