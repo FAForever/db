@@ -1849,7 +1849,7 @@ CREATE TABLE IF NOT EXISTS `vault_admin` (
 CREATE TABLE IF NOT EXISTS `version_lobby` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(100) DEFAULT NULL,
-  `version` int(11) unsigned DEFAULT NULL,
+  `version` VARCHAR(100) NOT NULL COMMENT 'Current version of the official client',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
