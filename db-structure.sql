@@ -313,6 +313,7 @@ CREATE TABLE IF NOT EXISTS `game_featuredMods` (
   `description` text NOT NULL,
   `name` varchar(255) NOT NULL,
   `publish` tinyint(1) NOT NULL DEFAULT '0',
+  `order` smallint(4) NOT NULL DEFAULT '0' COMMENT 'Order in the featured mods list',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mod_name_idx` (`gamemod`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
