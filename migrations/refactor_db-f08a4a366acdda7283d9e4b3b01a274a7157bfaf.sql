@@ -238,7 +238,7 @@ DROP TABLE ladder_map_selection;
 
 # Featured mods that do not have an associated files or updates table cannot exist (all of these
 # rows seem to be fluff anyway, so let's just munch them)
-DELETE FROM game_featuredMods WHERE gamemod IN ("custom", "nftw", "aprilfools");
+DELETE FROM game_featuredMods WHERE gamemod IN ("custom", "nftw", "aprilfools", "supremeDestruction");
 
 # It is unclear why this was not set before...
 UPDATE game_featuredMods SET publish = 1 where gamemod = "faf";
