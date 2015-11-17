@@ -57,7 +57,7 @@ INSERT IGNORE INTO table_map_unranked (SELECT id from table_map where NAME LIKE 
 CREATE UNIQUE INDEX mod_name_idx ON game_featuredMods (gamemod);
 
 # This column contains 2390633 never-read zeroes in LONGBLOB form.
-ALTER TABLE game_replays DROP COLUMN file;
+ALTER TABLE game_replays DROP COLUMN `file`;
 
 
 
