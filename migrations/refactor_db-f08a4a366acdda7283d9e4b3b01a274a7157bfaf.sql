@@ -201,7 +201,15 @@ ALTER TABLE uniqueid ADD hash CHAR(32) AFTER userid;
 UPDATE uniqueid SET hash = MD5(CONCAT(`uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`));
 
 # Discards duplicates.
-ALTER IGNORE TABLE uniqueid ADD UNIQUE INDEX uid_hash_index (hash);
+
+ALTER TABLE uniqueid drop foreign key uniqueid_ibfk_1;
+DROP TABLE IF EXISTS tmp;
+CREATE TABLE tmp LIKE uniqueid;
+alter table tmp ADD UNIQUE INDEX uid_hash_index (hash);
+INSERT IGNORE INTO tmp select * from uniqueid;
+DROP TABLE uniqueid;
+RENAME TABLE tmp to uniqueid;
+ALTER TABLE uniqueid ADD UNIQUE INDEX uid_hash_index (hash);
 
 # Associates user-ids with hardware hashes: provides the relation between users and hardware.
 CREATE TABLE unique_id_users (id mediumint(8) NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id mediumint(8) unsigned NOT NULL, uniqueid_hash CHAR(32) NOT NULL);
@@ -242,7 +250,10 @@ UPDATE game_featuredMods SET publish = 1 where gamemod = "faf";
 # Merge friends and foes tables so "friend and foe" cannot be a thing anymore...
 
 # Turn everyone who is both a friend and a foe of someone into just a foe.
-DELETE FROM friends WHERE idFriend IN (SELECT * FROM (SELECT friends.idFriend FROM friends INNER JOIN foes ON friends.idUser = foes.idUser WHERE friends.idFriend = foes.idFoe) AS TOASTER);
+drop table if exists tmp;
+create table tmp like friends;
+insert into tmp select * from friends;
+DELETE FROM friends WHERE idFriend IN (SELECT * FROM (SELECT tmp.idFriend FROM tmp INNER JOIN foes ON tmp.idUser = foes.idUser WHERE tmp.idFriend = foes.idFoe) AS TOASTER);
 
 # The new table to hold friends/foes
 CREATE TABLE friends_and_foes (
