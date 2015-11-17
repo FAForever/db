@@ -201,15 +201,17 @@ ALTER TABLE login MODIFY email VARCHAR(254) COLLATE latin1_bin NOT NULL;
 # UniqueID system rejig...
 
 # Uniqueid table becomes a place to associate hashes with hardware data.
-ALTER TABLE uniqueid ADD hash CHAR(32) AFTER userid, DROP COLUMN userid;
+ALTER TABLE uniqueid ADD hash CHAR(32) AFTER userid;
 UPDATE uniqueid SET hash = MD5(CONCAT(`uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`));
 
-# Discards duplicates. *cackles insanely*
+# Discards duplicates.
 ALTER IGNORE TABLE uniqueid ADD UNIQUE INDEX uid_hash_index (hash);
 
 # Associates user-ids with hardware hashes: provides the relation between users and hardware.
 CREATE TABLE unique_id_users (id mediumint(8) NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id mediumint(8) unsigned NOT NULL, uniqueid_hash CHAR(32) NOT NULL);
 INSERT INTO unique_id_users (user_id, uniqueid_hash) SELECT userid, MD5( CONCAT( `uuid` , `mem_SerialNumber` , `deviceID` , `manufacturer` , `name` , `processorId` , `SMBIOSBIOSVersion` , `serialNumber` , `volumeSerialNumber` ) ) FROM uniqueid;
+
+ALTER TABLE uniqueid DROP COLUMN `userid`;
 
 # A table for whitelisting ids.
 ALTER TABLE `uniqueid_exempt` CHANGE `idUser` `user_id` MEDIUMINT(8) UNSIGNED;
