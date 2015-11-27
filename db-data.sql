@@ -257,4 +257,4 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 
 TRUNCATE TABLE `oauth_clients`;
 INSERT INTO `oauth_clients` (`id`, `name`, `client_secret`, `client_type`, `redirect_uris`, `default_redirect_uri`, `default_scope`, `icon_url`) VALUES
-('3bc8282c-7730-11e5-8bcf-feff819cdc9f', 'Downlord\'s FAF Client', '6035bd78-7730-11e5-8bcf-feff819cdc9f', 'public', 'http://localhost', 'http://localhost', 'write_achievements read_achievements write_events', '');
+('3bc8282c-7730-11e5-8bcf-feff819cdc9f', 'Downlord\'s FAF Client', '6035bd78-7730-11e5-8bcf-feff819cdc9f', 'public', 'http://localhost', 'http://localhost', 'read_events read_achievements', '');
