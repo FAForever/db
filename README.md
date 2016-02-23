@@ -13,7 +13,7 @@ Build the container using
 
     docker build -t faf-db .
 
-Run using(This will publish on port 3306 of the container)
+Run using
 
     docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=<wanted_password> -e MYSQL_DATABASE=<db_name> -p 3306:3306 faf-db
 
@@ -26,10 +26,6 @@ Find containers IP (Container ID can be found under docker ps)
 
     docker inspect <container_id> (IP is under IPAddress in NetworkSettings)
 
-Connecting to the mysql instance
-
-    mysql -uroot -p -h <ip_address>
-
 Import Structure
 
     docker exec -i faf-db mysql -uroot -p<wantedpassword> <db_name> < db-structure.sql
@@ -39,6 +35,3 @@ Import Data
     docker exec -i faf-db mysql -uroot -p faf_db  < db-data.sql
 
 Now the database should be ready to go!
-
-#EER Diagram
-![EER Diagram of FAF DB](https://raw.githubusercontent.com/FAForever/db/master/documentation/EER_Diagram.png)
