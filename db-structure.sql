@@ -945,11 +945,9 @@ CREATE TABLE IF NOT EXISTS `table_map` (
   `version` decimal(4,0) DEFAULT NULL,
   `filename` varchar(200) DEFAULT NULL,
   `hidden` tinyint(1) NOT NULL DEFAULT '0',
-  `mapuid` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Combo` (`name`,`version`),
   UNIQUE KEY `map_filename` (`filename`),
-  KEY `mapuid` (`mapuid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5692 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
