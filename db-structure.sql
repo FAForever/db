@@ -947,7 +947,7 @@ CREATE TABLE IF NOT EXISTS `table_map` (
   `hidden` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `Combo` (`name`,`version`),
-  UNIQUE KEY `map_filename` (`filename`),
+  UNIQUE KEY `map_filename` (`filename`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5692 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
