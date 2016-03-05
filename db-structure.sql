@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `bugreports` (
   `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   CONSTRAINT `bugreport_target` FOREIGN KEY (`target`) REFERENCES bugreport_targets (`id`)
-);
+) ENGINE=InnoDB;
 
 --
 -- Table structure for table `bugreport_status`
