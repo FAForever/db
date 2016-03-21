@@ -365,21 +365,6 @@ CREATE TABLE IF NOT EXISTS `game_featuredMods` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `game_min_rating`
---
-
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `game_min_rating` (
-  `id` bigint(20) unsigned NOT NULL,
-  `minRating` float DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `game_min_rating_ibfk_1` FOREIGN KEY (`id`) REFERENCES `game_stats_bak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `game_player_stats`
 --
 
@@ -417,21 +402,6 @@ CREATE TABLE IF NOT EXISTS `game_player_stats` (
 CREATE TABLE IF NOT EXISTS `game_replays` (
   `UID` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`UID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `game_replays_old`
---
-
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `game_replays_old` (
-  `UID` bigint(20) unsigned NOT NULL,
-  `file` longblob NOT NULL,
-  PRIMARY KEY (`UID`),
-  CONSTRAINT `game_replays_old_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `game_stats_bak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
