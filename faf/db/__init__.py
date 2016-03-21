@@ -6,6 +6,8 @@ Just PyMYSQL.
 import pymysql
 import sqlalchemy
 
+from . import tables
+
 connection = None
 sa_engine = None
 
