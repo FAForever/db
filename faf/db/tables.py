@@ -12,7 +12,9 @@ class MappingBase:
     Base class for declarative mapping objects that
     allows use of them as if they are dictionaries.
 
-    Specify __ignore__ as a list of keys to ignore during such use.
+    Only properties which are not None and for which the class attribute
+    defines is_attribute to be True are used when considering the object
+    as a mapping.
     """
     def items(self):
         for k in dir(self):
