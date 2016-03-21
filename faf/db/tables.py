@@ -15,9 +15,10 @@ class MappingBase:
     Specify __ignore__ as a list of keys to ignore during such use.
     """
     def items(self):
-        ignore = ['items', 'metadata'] + getattr(self, '__ignore__', [])
         for k in dir(self):
-            if not k.startswith('_') and k not in ignore:
+            if getattr(self, k) is not None \
+                    and k in type(self).__dict__ \
+                    and getattr(type(self).__dict__[k], 'is_attribute', False):
                 yield k, getattr(self, k)
 
     def __iter__(self):
