@@ -1136,11 +1136,23 @@ CREATE TABLE IF NOT EXISTS `tutorials` (
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `unique_id_users` (
-  `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `user_id` mediumint(8) unsigned NOT NULL,
   `uniqueid_hash` char(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=589816 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`user_id`, `uniqueid_hash`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `steam_link_request`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `steam_link_request` (
+  `uid` varchar(255) NOT NULL,
+  `Key` varchar(255) NOT NULL,
+  `expDate` DATETIME
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
