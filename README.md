@@ -17,3 +17,7 @@ Run using
 Import Structure
 
     docker exec -i faf-db mysql -uroot -p<wantedpassword> < db-structure.sql
+
+If you want to execute queries queries and connect to the container try this
+
+    docker exec -ti faf-db mysql -u <username> -p
