@@ -26,16 +26,15 @@ Find containers IP (Container ID can be found under docker ps)
 
     docker inspect <container_id> (IP is under IPAddress in NetworkSettings)
 
-Import Structure
+Import Structure and Data
 
     docker exec -i faf-db mysql -uroot -p<wantedpassword> <db_name> < db-structure.sql
-
-If you want to execute queries queries and connect to the container try this
-
-    docker exec -ti faf-db mysql -u <username> -p
-
-Import Data
-
     docker exec -i faf-db mysql -uroot -p<wantedpassword> <db_name> < db-data.sql
 
 Now the database should be ready to go!
+
+
+To get a shell mysql session where you can execute queries conveniently, use this
+
+    docker exec -ti faf-db mysql -u <username> -p
+
