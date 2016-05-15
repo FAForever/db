@@ -13,7 +13,7 @@ Build the container using
 
     docker build -t faf-db .
 
-Run using
+Run using the following command. We recommand to use our default values (see [config.py](https://github.com/FAForever/server/blob/develop/server/config.py#L43)), as password `banana` and db_name `faf_test`. The port forwarding `-p 3306:3006` is optional to connect easier to the database with externals tools, e.g. with [MySQL Workbench](https://www.mysql.de/products/workbench/).
 
     docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=<wanted_password> -e MYSQL_DATABASE=<db_name> -p 3306:3306 faf-db
 
