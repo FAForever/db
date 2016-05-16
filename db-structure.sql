@@ -292,6 +292,64 @@ CREATE TABLE IF NOT EXISTS `bugreports` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `clan_list`
+--
+
+DROP TABLE IF EXISTS `clan_list`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clan_list` (
+  `clan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(1) NOT NULL DEFAULT '0',
+  `clan_name` varchar(40) NOT NULL,
+  `clan_tag` varchar(3) DEFAULT NULL,
+  `clan_founder_id` mediumint(8) DEFAULT NULL,
+  `clan_leader_id` mediumint(8) DEFAULT NULL,
+  `clan_desc` text,
+  PRIMARY KEY (`clan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=647 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `clan_members`
+--
+
+DROP TABLE IF EXISTS `clan_members`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clan_members` (
+  `clan_id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `join_clan_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`clan_id`,`player_id`),
+  KEY `player_id` (`player_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Temporary view structure for view `clans`
+--
+
+DROP TABLE IF EXISTS `clans`;
+/*!50001 DROP VIEW IF EXISTS `clans`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `clans` AS SELECT 
+ 1 AS `clan_id`,
+ 1 AS `status`,
+ 1 AS `clan_name`,
+ 1 AS `clan_tag`,
+ 1 AS `clan_leader_id`,
+ 1 AS `clan_founder_id`,
+ 1 AS `clan_desc`,
+ 1 AS `create_date`,
+ 1 AS `leader_name`,
+ 1 AS `founder_name`,
+ 1 AS `member_count`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `coop_leaderboard`
 --
 
@@ -2088,6 +2146,24 @@ CREATE TABLE IF NOT EXISTS `vm_exempt` (
   UNIQUE KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Final view structure for view `clans`
+--
+
+/*!50001 DROP VIEW IF EXISTS `clans`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = latin1_swedish_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `clans` AS select `clan_list`.`clan_id` AS `clan_id`,`clan_list`.`status` AS `status`,`clan_list`.`clan_name` AS `clan_name`,`clan_list`.`clan_tag` AS `clan_tag`,`clan_list`.`clan_leader_id` AS `clan_leader_id`,`clan_list`.`clan_founder_id` AS `clan_founder_id`,`clan_list`.`clan_desc` AS `clan_desc`,`clan_list`.`create_date` AS `create_date`,`leader`.`login` AS `leader_name`,`founder`.`login` AS `founder_name`,(select count(0) from `clan_members` where (`clan_list`.`clan_id` = `clan_members`.`clan_id`)) AS `member_count` from ((`clan_list` left join `login` `leader` on((`clan_list`.`clan_leader_id` = `leader`.`id`))) left join `login` `founder` on((`clan_list`.`clan_founder_id` = `founder`.`id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
