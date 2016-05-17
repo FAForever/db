@@ -5,3 +5,7 @@ FROM fafclans.clans_list a;
 INSERT INTO clan_members (clan_id, player_id, join_clan_date)
 SELECT clan_id, player_id, join_clan_date 
 FROM fafclans.clan_members;
+
+UPDATE clan_list a SET clan_founder_id = (SELECT faf_id FROM fafclans.players_list WHERE players_list.player_id = a.clan_founder_id LIMIT 1);
+
+UPDATE clan_list a SET clan_leader_id = (SELECT faf_id FROM fafclans.players_list WHERE players_list.player_id = a.clan_leader_id LIMIT 1);
