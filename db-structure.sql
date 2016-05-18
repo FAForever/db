@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: faf_test
 -- ------------------------------------------------------
--- Server version	5.7.12
+-- Server version 5.7.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -879,7 +879,7 @@ CREATE TABLE IF NOT EXISTS `oauth_tokens` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Auto incremented, technical ID.',
   `token_type` varchar(45) NOT NULL,
   `access_token` varchar(36) NOT NULL COMMENT 'A string token (UUID).',
-  `refresh_token` varchar(36) NOT NULL COMMENT 'A string token (UUID).',
+  `refresh_token` varchar(36) DEFAULT NULL COMMENT 'A string token (UUID).',
   `client_id` varchar(36) NOT NULL COMMENT 'ID of the client (FK).',
   `scope` text NOT NULL COMMENT 'A space delimited list of scopes.',
   `expires` timestamp NOT NULL COMMENT 'Expiration time of the token.',
@@ -2083,4 +2083,4 @@ CREATE TABLE IF NOT EXISTS `vm_exempt` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18 16:35:17
+-- Dump completed on 2016-05-18 17:07:22
