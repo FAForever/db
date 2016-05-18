@@ -429,6 +429,16 @@ class TableMod(Base):
     ranked = Column(Integer, nullable=False, server_default=text("'0'"))
 
 
+class Teamkill(Base):
+    __tablename__ = 'teamkills'    
+
+    teamkiller = Column(Integer, nullable=False)   
+    victim = Column(Integer, nullable=False)
+    game_id = Column(Integer, nullable=False)
+    gametime = Column(Integer, nullable=False)
+    reported_at = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+
+
 class TutorialSection(Base):
     __tablename__ = 'tutorial_sections'
 

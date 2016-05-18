@@ -1268,6 +1268,21 @@ CREATE TABLE IF NOT EXISTS `table_mod` (
 ) ENGINE=InnoDB AUTO_INCREMENT=798 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+-- -----------------------------------------------------
+-- Table `teamkills`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `teamkills` (
+  `teamkiller` INT UNSIGNED NOT NULL COMMENT 'login of the player who performed the teamkill',
+  `victim` INT UNSIGNED NOT NULL COMMENT 'login of the player who got teamkilled and reported the tk',
+  `game_id` int(10) unsigned NOT NULL COMMENT 'game-id where teamkill was performed',
+  `gametime` mediumint(8) unsigned NOT NULL COMMENT 'time of game in seconds when tk was performed',
+  `reported_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX (game_id)
+) ENGINE = InnoDB;
+
 --
 -- Table structure for table `test`
 --
