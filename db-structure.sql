@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.4-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Linux (x86_64)
 --
--- Host: localhost    Database: faf_lobby
+-- Host: localhost    Database: faf_test
 -- ------------------------------------------------------
--- Server version	10.1.1-MariaDB-1~trusty-wsrep-log
+-- Server version	5.7.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,7 +19,6 @@
 -- Table structure for table `AI_names`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `AI_names` (
@@ -34,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `AI_names` (
 -- Table structure for table `AI_rating`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `AI_rating` (
@@ -48,9 +46,31 @@ CREATE TABLE IF NOT EXISTS `AI_rating` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `auth_group`
+-- Table structure for table `achievement_definitions`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `achievement_definitions` (
+  `id` varchar(36) NOT NULL COMMENT 'The ID of the achievement.',
+  `order` int(10) unsigned NOT NULL COMMENT 'The order in which the achievement is displayed to the user.',
+  `name_key` varchar(255) NOT NULL COMMENT 'The message key for the name of the achievement.',
+  `description_key` varchar(255) NOT NULL COMMENT 'The message key for the description of the achievement.',
+  `type` enum('STANDARD','INCREMENTAL') NOT NULL COMMENT 'The type of the achievement. \nPossible values are:\n"STANDARD" - Achievement is either locked or unlocked.\n"INCREMENTAL" - Achievement is incremental.',
+  `total_steps` int(10) unsigned DEFAULT NULL COMMENT 'The total steps for an incremental achievement, NULL for standard achievements.',
+  `revealed_icon_url` varchar(2000) DEFAULT NULL COMMENT 'The image URL for the revealed achievement icon.',
+  `unlocked_icon_url` varchar(2000) DEFAULT NULL COMMENT 'The image URL for the unlocked achievement icon.',
+  `initial_state` enum('HIDDEN','REVEALED') NOT NULL COMMENT 'The initial state of the achievement. \nPossible values are:\n"HIDDEN" - Achievement is hidden.\n"REVEALED" - Achievement is revealed.\n"UNLOCKED" - Achievement is unlocked.',
+  `experience_points` int(10) unsigned NOT NULL COMMENT 'Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference:\n5 - Easy to achieve\n20 - Medium\n50 - Hard to achieve',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `name_key_UNIQUE` (`name_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `auth_group`
+--
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -65,7 +85,6 @@ CREATE TABLE IF NOT EXISTS `auth_group` (
 --
 -- Table structure for table `auth_group_permissions`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -84,7 +103,6 @@ CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
 -- Table structure for table `auth_permission`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `auth_permission` (
@@ -101,7 +119,6 @@ CREATE TABLE IF NOT EXISTS `auth_permission` (
 --
 -- Table structure for table `auth_user`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -126,7 +143,6 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 -- Table structure for table `auth_user_groups`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `auth_user_groups` (
@@ -144,7 +160,6 @@ CREATE TABLE IF NOT EXISTS `auth_user_groups` (
 -- Table structure for table `auth_user_user_permissions`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
@@ -161,7 +176,6 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 --
 -- Table structure for table `avatars`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -181,7 +195,6 @@ CREATE TABLE IF NOT EXISTS `avatars` (
 -- Table structure for table `avatars_list`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `avatars_list` (
@@ -196,7 +209,6 @@ CREATE TABLE IF NOT EXISTS `avatars_list` (
 --
 -- Table structure for table `avatars_list_copy_812015`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -213,7 +225,6 @@ CREATE TABLE IF NOT EXISTS `avatars_list_copy_812015` (
 -- Table structure for table `bet`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `bet` (
@@ -224,54 +235,65 @@ CREATE TABLE IF NOT EXISTS `bet` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `bugreport_status`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `bugreport_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bugreport` int(11) NOT NULL,
+  `status_code` enum('unfiled','filed','dismissed') NOT NULL,
+  `url` varchar(255) DEFAULT NULL COMMENT 'If status is filed, then this should be a reference to a github issue',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `bugreport` (`bugreport`),
+  CONSTRAINT `bugreport` FOREIGN KEY (`bugreport`) REFERENCES `bugreports` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `bugreport_targets`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `bugreport_targets` (
-  `id` VARCHAR(255) NOT NULL COMMENT 'Unique reference to the target, e.g. FAForever/client/tree/(hash)',
-  `name` VARCHAR(255) NOT NULL COMMENT 'Name of the target, a github repository name',
-  `ref` VARCHAR(255) NOT NULL COMMENT 'Reference of the target',
-  `url` VARCHAR(255) NOT NULL COMMENT 'Url to the target',
-  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` varchar(255) NOT NULL COMMENT 'Unique reference to the target, e.g. FAForever/client/tree/(hash)',
+  `name` varchar(255) NOT NULL COMMENT 'Name of the target, a github repository name',
+  `ref` varchar(255) NOT NULL COMMENT 'Reference of the target',
+  `url` varchar(255) NOT NULL COMMENT 'Url to the target',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `bugreports`
 --
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `bugreports` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(255) NOT NULL,
-  `target` VARCHAR(255) NOT NULL,
-  `automatic` BOOL NOT NULL COMMENT 'Whether the report was automated or not',
-  `description` TEXT COMMENT 'A (potentially markdown-formatted) description of the bug',
-  `log` TEXT COMMENT 'Log associated with the report',
-  `traceback` TEXT COMMENT 'Traceback associated with the report',
-  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `target` varchar(255) NOT NULL,
+  `automatic` tinyint(1) NOT NULL COMMENT 'Whether the report was automated or not',
+  `description` text COMMENT 'A (potentially markdown-formatted) description of the bug',
+  `log` text COMMENT 'Log associated with the report',
+  `traceback` text COMMENT 'Traceback associated with the report',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
-  CONSTRAINT `bugreport_target` FOREIGN KEY (`target`) REFERENCES bugreport_targets (`id`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `bugreport_status`
---
-CREATE TABLE IF NOT EXISTS `bugreport_status` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `bugreport` INT(11) NOT NULL,
-  `status_code` ENUM('unfiled', 'filed', 'dismissed') NOT NULL,
-  `url` VARCHAR(255) COMMENT 'If status is filed, then this should be a reference to a github issue',
-  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE,
-  CONSTRAINT `bugreport` FOREIGN KEY (`bugreport`) REFERENCES bugreports (`id`)
-);
-
+  KEY `bugreport_target` (`target`),
+  CONSTRAINT `bugreport_target` FOREIGN KEY (`target`) REFERENCES `bugreport_targets` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `coop_leaderboard`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -289,7 +311,6 @@ CREATE TABLE IF NOT EXISTS `coop_leaderboard` (
 --
 -- Table structure for table `coop_map`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -310,7 +331,6 @@ CREATE TABLE IF NOT EXISTS `coop_map` (
 -- Table structure for table `email_domain_blacklist`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `email_domain_blacklist` (
@@ -320,9 +340,25 @@ CREATE TABLE IF NOT EXISTS `email_domain_blacklist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `featured_mods_owners`
+-- Table structure for table `event_definitions`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `event_definitions` (
+  `id` varchar(36) NOT NULL COMMENT 'The ID of the event.',
+  `name_key` varchar(255) NOT NULL COMMENT 'The message key for the name of the event.',
+  `image_url` varchar(45) DEFAULT NULL COMMENT 'The base URL for the image that represents the event.',
+  `type` enum('NUMERIC','TIME') NOT NULL COMMENT 'The type of the event.\nPossible values are:\n"NUMERIC" - Event is a plain number.\n"TIME" - Event is a measure of time.',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `name_key_UNIQUE` (`name_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `featured_mods_owners`
+--
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -337,18 +373,23 @@ CREATE TABLE IF NOT EXISTS `featured_mods_owners` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `friends_and_foes`
+--
 
-CREATE TABLE IF NOT EXISTS friends_and_foes (
-  user_id MEDIUMINT UNSIGNED NOT NULL,
-  subject_id MEDIUMINT UNSIGNED NOT NULL,
-  status ENUM("FRIEND", "FOE"),
-  PRIMARY KEY(user_id, subject_id)
-);
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `friends_and_foes` (
+  `user_id` mediumint(8) unsigned NOT NULL,
+  `subject_id` mediumint(8) unsigned NOT NULL,
+  `status` enum('FRIEND','FOE') DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`subject_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `game_featuredMods`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -367,7 +408,6 @@ CREATE TABLE IF NOT EXISTS `game_featuredMods` (
 --
 -- Table structure for table `game_player_stats`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -396,7 +436,6 @@ CREATE TABLE IF NOT EXISTS `game_player_stats` (
 -- Table structure for table `game_replays`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `game_replays` (
@@ -409,21 +448,20 @@ CREATE TABLE IF NOT EXISTS `game_replays` (
 -- Table structure for table `game_stats`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `game_stats` (
-  `id` int unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL,
   `startTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `gameType` enum('0','1','2','3') NOT NULL,
   `gameMod` tinyint(3) unsigned NOT NULL,
   `host` mediumint(8) unsigned NOT NULL,
   `mapId` mediumint(8) unsigned NOT NULL,
   `gameName` varchar(128) NOT NULL,
-  `validity` tinyint NOT NULL,
+  `validity` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `startTime` (`startTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=3638965 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -433,7 +471,6 @@ CREATE TABLE IF NOT EXISTS `game_stats` (
 /*!50003 SET collation_connection  = latin1_swedish_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
-DROP TRIGGER IF EXISTS `map_play_count`;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER map_play_count AFTER INSERT ON game_stats FOR EACH ROW UPDATE table_map_features set times_played = (times_played +1) WHERE map_id = NEW.mapId */;;
 DELIMITER ;
@@ -442,11 +479,9 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
-
 --
 -- Table structure for table `global_rating`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -464,7 +499,6 @@ CREATE TABLE IF NOT EXISTS `global_rating` (
 -- Table structure for table `invalid_game_reasons`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `invalid_game_reasons` (
@@ -475,9 +509,24 @@ CREATE TABLE IF NOT EXISTS `invalid_game_reasons` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `ladder1v1_rating`
+-- Table structure for table `jwt_users`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `jwt_users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `public_key` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ladder1v1_rating`
+--
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -496,7 +545,6 @@ CREATE TABLE IF NOT EXISTS `ladder1v1_rating` (
 -- Table structure for table `ladder_division`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `ladder_division` (
@@ -513,7 +561,6 @@ CREATE TABLE IF NOT EXISTS `ladder_division` (
 -- Table structure for table `ladder_divisions`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `ladder_divisions` (
@@ -527,7 +574,6 @@ CREATE TABLE IF NOT EXISTS `ladder_divisions` (
 --
 -- Table structure for table `ladder_map`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -543,7 +589,6 @@ CREATE TABLE IF NOT EXISTS `ladder_map` (
 --
 -- Table structure for table `ladder_season_1`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -562,7 +607,6 @@ CREATE TABLE IF NOT EXISTS `ladder_season_1` (
 -- Table structure for table `ladder_season_2`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `ladder_season_2` (
@@ -579,7 +623,6 @@ CREATE TABLE IF NOT EXISTS `ladder_season_2` (
 --
 -- Table structure for table `ladder_season_3`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -600,7 +643,6 @@ CREATE TABLE IF NOT EXISTS `ladder_season_3` (
 -- Table structure for table `ladder_season_3_safe`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `ladder_season_3_safe` (
@@ -619,7 +661,6 @@ CREATE TABLE IF NOT EXISTS `ladder_season_3_safe` (
 --
 -- Table structure for table `ladder_season_4`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -640,7 +681,6 @@ CREATE TABLE IF NOT EXISTS `ladder_season_4` (
 -- Table structure for table `ladder_season_5`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `ladder_season_5` (
@@ -658,7 +698,6 @@ CREATE TABLE IF NOT EXISTS `ladder_season_5` (
 -- Table structure for table `lobby_admin`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `lobby_admin` (
@@ -672,13 +711,12 @@ CREATE TABLE IF NOT EXISTS `lobby_admin` (
 -- Table structure for table `lobby_ban`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `lobby_ban` (
   `idUser` mediumint(8) unsigned DEFAULT NULL,
   `reason` varchar(255) NOT NULL,
-  `expires_at` DATETIME NULL COMMENT 'When the ban expires',
+  `expires_at` datetime DEFAULT NULL COMMENT 'When the ban expires',
   UNIQUE KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -687,7 +725,6 @@ CREATE TABLE IF NOT EXISTS `lobby_ban` (
 -- Table structure for table `login`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `login` (
@@ -695,7 +732,7 @@ CREATE TABLE IF NOT EXISTS `login` (
   `login` varchar(20) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `password` char(77) NOT NULL,
   `salt` char(16) DEFAULT NULL,
-  `email` VARCHAR(254) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `email` varchar(254) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `ip` varchar(15) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   `steamid` bigint(20) unsigned DEFAULT NULL,
   `create_time` timestamp NOT NULL COMMENT 'When the user signed up',
@@ -706,27 +743,47 @@ CREATE TABLE IF NOT EXISTS `login` (
   UNIQUE KEY `steamid` (`steamid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=146315 DEFAULT CHARSET=latin1 COMMENT='login';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
-DROP TRIGGER IF EXISTS `login_BEFORE_INSERT`;
-DROP TRIGGER IF EXISTS `login_BEFORE_UPDATE`;
-DELIMITER $$
-CREATE TRIGGER login_BEFORE_INSERT BEFORE INSERT ON `login` FOR EACH ROW
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER login_BEFORE_INSERT BEFORE INSERT ON `login` FOR EACH ROW
 BEGIN
         SET NEW.create_time = NOW();
         SET NEW.update_time = NOW();
-END
-$$
-CREATE TRIGGER login_BEFORE_UPDATE BEFORE UPDATE ON `login` FOR EACH ROW
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER login_BEFORE_UPDATE BEFORE UPDATE ON `login` FOR EACH ROW
 BEGIN
         SET NEW.update_time = NOW();
-END
-$$
+END */;;
 DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `login_with_duplicated_users`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -735,7 +792,7 @@ CREATE TABLE IF NOT EXISTS `login_with_duplicated_users` (
   `login` varchar(20) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `password` char(77) NOT NULL,
   `salt` char(16) DEFAULT NULL,
-  `email` VARCHAR(254) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `email` varchar(254) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `ip` varchar(15) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   `steamid` bigint(20) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -749,7 +806,6 @@ CREATE TABLE IF NOT EXISTS `login_with_duplicated_users` (
 -- Table structure for table `matchmaker_ban`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `matchmaker_ban` (
@@ -760,9 +816,26 @@ CREATE TABLE IF NOT EXISTS `matchmaker_ban` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `name_history`
+-- Table structure for table `messages`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
+  `key` varchar(255) NOT NULL COMMENT 'The message resource key that identifies this entry along with language and region.',
+  `language` char(2) NOT NULL COMMENT 'The language that identifies this entry along with key and region.',
+  `region` char(2) DEFAULT NULL COMMENT 'The region that identifies this entry along with key and language.',
+  `value` text COMMENT 'The message value.',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `key_language_region_UNIQUE` (`key`,`language`,`region`)
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `name_history`
+--
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -776,9 +849,49 @@ CREATE TABLE IF NOT EXISTS `name_history` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `patchs_table`
+-- Table structure for table `oauth_clients`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `oauth_clients` (
+  `id` varchar(36) NOT NULL COMMENT 'A string that identifies the client, preferably a UUID.',
+  `name` varchar(100) NOT NULL COMMENT 'Human readable client name.',
+  `client_secret` varchar(55) NOT NULL COMMENT 'The client''s secret, a random string.',
+  `client_type` enum('confidential','public') NOT NULL DEFAULT 'public' COMMENT 'A string represents if the client is confidential or public.',
+  `redirect_uris` text NOT NULL COMMENT 'A space delimited list of redirect URIs.',
+  `default_redirect_uri` varchar(2000) NOT NULL COMMENT 'One of the redirect uris.',
+  `default_scope` text NOT NULL COMMENT 'A space delimited list of default scopes of the client.',
+  `icon_url` varchar(2000) DEFAULT NULL COMMENT 'URL to a square image representing the client.',
+  UNIQUE KEY `name_UNIQUE` (`name`),
+  UNIQUE KEY `client_id_UNIQUE` (`id`),
+  UNIQUE KEY `client_secret_UNIQUE` (`client_secret`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `oauth_tokens`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `oauth_tokens` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Auto incremented, technical ID.',
+  `token_type` varchar(45) NOT NULL,
+  `access_token` varchar(36) NOT NULL COMMENT 'A string token (UUID).',
+  `refresh_token` varchar(36) NOT NULL COMMENT 'A string token (UUID).',
+  `client_id` varchar(36) NOT NULL COMMENT 'ID of the client (FK).',
+  `scope` text NOT NULL COMMENT 'A space delimited list of scopes.',
+  `expires` timestamp NOT NULL COMMENT 'Expiration time of the token.',
+  `user_id` int(10) unsigned NOT NULL COMMENT 'ID of the user (FK).',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `patchs_table`
+--
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -792,9 +905,121 @@ CREATE TABLE IF NOT EXISTS `patchs_table` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `recoveryemails_enc`
+-- Table structure for table `player_achievements`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `player_achievements` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The ID of the player achievement.',
+  `player_id` int(10) unsigned NOT NULL COMMENT 'The ID of the owning player (FK).',
+  `achievement_id` varchar(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
+  `current_steps` int(10) unsigned DEFAULT NULL COMMENT 'The current steps for an incremental achievement.',
+  `state` enum('HIDDEN','REVEALED','UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n"HIDDEN" - Achievement is hidden.\n"REVEALED" - Achievement is revealed.\n"UNLOCKED" - Achievement is unlocked.',
+  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
+  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `player_achievement_UNIQUE` (`player_id`,`achievement_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_achievements_BEFORE_INSERT` BEFORE INSERT ON `player_achievements` FOR EACH ROW
+BEGIN
+  SET NEW.create_time = NOW();
+  SET NEW.update_time = NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_achievements_BEFORE_UPDATE` BEFORE UPDATE ON `player_achievements` FOR EACH ROW
+BEGIN
+  SET NEW.update_time = NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `player_events`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `player_events` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
+  `player_id` int(10) unsigned NOT NULL COMMENT 'The ID of the player that triggered this event.',
+  `event_id` varchar(36) NOT NULL COMMENT 'The ID of the event definition.',
+  `count` int(10) unsigned NOT NULL COMMENT 'The current number of times this event has occurred.',
+  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
+  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `event_player_UNIQUE` (`player_id`,`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_events_BEFORE_INSERT` BEFORE INSERT ON `player_events` FOR EACH ROW
+BEGIN
+  SET NEW.create_time = NOW();
+  SET NEW.update_time = NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_events_BEFORE_UPDATE` BEFORE UPDATE ON `player_events` FOR EACH ROW
+BEGIN
+  SET NEW.update_time = NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `recoveryemails_enc`
+--
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -811,7 +1036,6 @@ CREATE TABLE IF NOT EXISTS `recoveryemails_enc` (
 --
 -- Table structure for table `replay_vault`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -840,7 +1064,6 @@ CREATE TABLE IF NOT EXISTS `replay_vault` (
 -- Table structure for table `smurf_table`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `smurf_table` (
@@ -855,9 +1078,21 @@ CREATE TABLE IF NOT EXISTS `smurf_table` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `swiss_tournaments`
+-- Table structure for table `steam_link_request`
 --
 
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `steam_link_request` (
+  `uid` varchar(255) NOT NULL,
+  `Key` varchar(255) NOT NULL,
+  `expDate` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `swiss_tournaments`
+--
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -881,7 +1116,6 @@ CREATE TABLE IF NOT EXISTS `swiss_tournaments` (
 -- Table structure for table `swiss_tournaments_players`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `swiss_tournaments_players` (
@@ -899,7 +1133,6 @@ CREATE TABLE IF NOT EXISTS `swiss_tournaments_players` (
 --
 -- Table structure for table `table_map`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -927,7 +1160,6 @@ CREATE TABLE IF NOT EXISTS `table_map` (
 -- Table structure for table `table_map_broken`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `table_map_broken` (
@@ -946,7 +1178,6 @@ CREATE TABLE IF NOT EXISTS `table_map_broken` (
 --
 -- Table structure for table `table_map_comments`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -967,7 +1198,6 @@ CREATE TABLE IF NOT EXISTS `table_map_comments` (
 -- Table structure for table `table_map_features`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `table_map_features` (
@@ -986,7 +1216,6 @@ CREATE TABLE IF NOT EXISTS `table_map_features` (
 -- Table structure for table `table_map_unranked`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `table_map_unranked` (
@@ -998,7 +1227,6 @@ CREATE TABLE IF NOT EXISTS `table_map_unranked` (
 --
 -- Table structure for table `table_map_uploaders`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1016,7 +1244,6 @@ CREATE TABLE IF NOT EXISTS `table_map_uploaders` (
 --
 -- Table structure for table `table_mod`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1038,13 +1265,12 @@ CREATE TABLE IF NOT EXISTS `table_mod` (
   `ranked` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=795 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=798 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `test`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1058,7 +1284,6 @@ CREATE TABLE IF NOT EXISTS `test` (
 -- Table structure for table `test2`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `test2` (
@@ -1071,7 +1296,6 @@ CREATE TABLE IF NOT EXISTS `test2` (
 -- Table structure for table `test3`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `test3` (
@@ -1082,7 +1306,6 @@ CREATE TABLE IF NOT EXISTS `test3` (
 --
 -- Table structure for table `test_game_replays`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1097,7 +1320,6 @@ CREATE TABLE IF NOT EXISTS `test_game_replays` (
 -- Table structure for table `tutorial_sections`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `tutorial_sections` (
@@ -1111,7 +1333,6 @@ CREATE TABLE IF NOT EXISTS `tutorial_sections` (
 --
 -- Table structure for table `tutorials`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1132,33 +1353,18 @@ CREATE TABLE IF NOT EXISTS `tutorials` (
 -- Table structure for table `unique_id_users`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `unique_id_users` (
   `user_id` mediumint(8) unsigned NOT NULL,
   `uniqueid_hash` char(32) NOT NULL,
-  PRIMARY KEY (`user_id`, `uniqueid_hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `steam_link_request`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `steam_link_request` (
-  `uid` varchar(255) NOT NULL,
-  `Key` varchar(255) NOT NULL,
-  `expDate` DATETIME
+  PRIMARY KEY (`user_id`,`uniqueid_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `uniqueid`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1183,7 +1389,6 @@ CREATE TABLE IF NOT EXISTS `uniqueid` (
 -- Table structure for table `uniqueid_exempt`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `uniqueid_exempt` (
@@ -1196,7 +1401,6 @@ CREATE TABLE IF NOT EXISTS `uniqueid_exempt` (
 --
 -- Table structure for table `updates`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1212,7 +1416,6 @@ CREATE TABLE IF NOT EXISTS `updates` (
 -- Table structure for table `updates_balancetesting`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_balancetesting` (
@@ -1226,7 +1429,6 @@ CREATE TABLE IF NOT EXISTS `updates_balancetesting` (
 --
 -- Table structure for table `updates_balancetesting_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1246,7 +1448,6 @@ CREATE TABLE IF NOT EXISTS `updates_balancetesting_files` (
 -- Table structure for table `updates_blackops`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_blackops` (
@@ -1260,7 +1461,6 @@ CREATE TABLE IF NOT EXISTS `updates_blackops` (
 --
 -- Table structure for table `updates_blackops_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1280,7 +1480,6 @@ CREATE TABLE IF NOT EXISTS `updates_blackops_files` (
 -- Table structure for table `updates_civilians`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_civilians` (
@@ -1294,7 +1493,6 @@ CREATE TABLE IF NOT EXISTS `updates_civilians` (
 --
 -- Table structure for table `updates_civilians_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1314,7 +1512,6 @@ CREATE TABLE IF NOT EXISTS `updates_civilians_files` (
 -- Table structure for table `updates_claustrophobia`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_claustrophobia` (
@@ -1328,7 +1525,6 @@ CREATE TABLE IF NOT EXISTS `updates_claustrophobia` (
 --
 -- Table structure for table `updates_claustrophobia_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1348,7 +1544,6 @@ CREATE TABLE IF NOT EXISTS `updates_claustrophobia_files` (
 -- Table structure for table `updates_coop`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_coop` (
@@ -1362,7 +1557,6 @@ CREATE TABLE IF NOT EXISTS `updates_coop` (
 --
 -- Table structure for table `updates_coop_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1382,7 +1576,6 @@ CREATE TABLE IF NOT EXISTS `updates_coop_files` (
 -- Table structure for table `updates_diamond`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_diamond` (
@@ -1396,7 +1589,6 @@ CREATE TABLE IF NOT EXISTS `updates_diamond` (
 --
 -- Table structure for table `updates_diamond_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1416,7 +1608,6 @@ CREATE TABLE IF NOT EXISTS `updates_diamond_files` (
 -- Table structure for table `updates_engyredesign`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_engyredesign` (
@@ -1430,7 +1621,6 @@ CREATE TABLE IF NOT EXISTS `updates_engyredesign` (
 --
 -- Table structure for table `updates_engyredesign_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1449,7 +1639,6 @@ CREATE TABLE IF NOT EXISTS `updates_engyredesign_files` (
 -- Table structure for table `updates_faf`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_faf` (
@@ -1463,7 +1652,6 @@ CREATE TABLE IF NOT EXISTS `updates_faf` (
 --
 -- Table structure for table `updates_faf_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1483,7 +1671,6 @@ CREATE TABLE IF NOT EXISTS `updates_faf_files` (
 -- Table structure for table `updates_gw`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_gw` (
@@ -1497,7 +1684,6 @@ CREATE TABLE IF NOT EXISTS `updates_gw` (
 --
 -- Table structure for table `updates_gw_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1517,7 +1703,6 @@ CREATE TABLE IF NOT EXISTS `updates_gw_files` (
 -- Table structure for table `updates_koth`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_koth` (
@@ -1531,7 +1716,6 @@ CREATE TABLE IF NOT EXISTS `updates_koth` (
 --
 -- Table structure for table `updates_koth_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1551,7 +1735,6 @@ CREATE TABLE IF NOT EXISTS `updates_koth_files` (
 -- Table structure for table `updates_labwars`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_labwars` (
@@ -1565,7 +1748,6 @@ CREATE TABLE IF NOT EXISTS `updates_labwars` (
 --
 -- Table structure for table `updates_labwars_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1585,7 +1767,6 @@ CREATE TABLE IF NOT EXISTS `updates_labwars_files` (
 -- Table structure for table `updates_matchmaker`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_matchmaker` (
@@ -1599,7 +1780,6 @@ CREATE TABLE IF NOT EXISTS `updates_matchmaker` (
 --
 -- Table structure for table `updates_matchmaker_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1619,7 +1799,6 @@ CREATE TABLE IF NOT EXISTS `updates_matchmaker_files` (
 -- Table structure for table `updates_murderparty`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_murderparty` (
@@ -1633,7 +1812,6 @@ CREATE TABLE IF NOT EXISTS `updates_murderparty` (
 --
 -- Table structure for table `updates_murderparty_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1653,7 +1831,6 @@ CREATE TABLE IF NOT EXISTS `updates_murderparty_files` (
 -- Table structure for table `updates_nomads`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_nomads` (
@@ -1667,7 +1844,6 @@ CREATE TABLE IF NOT EXISTS `updates_nomads` (
 --
 -- Table structure for table `updates_nomads_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1687,7 +1863,6 @@ CREATE TABLE IF NOT EXISTS `updates_nomads_files` (
 -- Table structure for table `updates_phantomx`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_phantomx` (
@@ -1701,7 +1876,6 @@ CREATE TABLE IF NOT EXISTS `updates_phantomx` (
 --
 -- Table structure for table `updates_phantomx_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1721,7 +1895,6 @@ CREATE TABLE IF NOT EXISTS `updates_phantomx_files` (
 -- Table structure for table `updates_supremeDestruction`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_supremeDestruction` (
@@ -1735,7 +1908,6 @@ CREATE TABLE IF NOT EXISTS `updates_supremeDestruction` (
 --
 -- Table structure for table `updates_supremeDestruction_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1755,7 +1927,6 @@ CREATE TABLE IF NOT EXISTS `updates_supremeDestruction_files` (
 -- Table structure for table `updates_vanilla`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_vanilla` (
@@ -1769,7 +1940,6 @@ CREATE TABLE IF NOT EXISTS `updates_vanilla` (
 --
 -- Table structure for table `updates_vanilla_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1789,7 +1959,6 @@ CREATE TABLE IF NOT EXISTS `updates_vanilla_files` (
 -- Table structure for table `updates_wyvern`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_wyvern` (
@@ -1803,7 +1972,6 @@ CREATE TABLE IF NOT EXISTS `updates_wyvern` (
 --
 -- Table structure for table `updates_wyvern_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1822,7 +1990,6 @@ CREATE TABLE IF NOT EXISTS `updates_wyvern_files` (
 -- Table structure for table `updates_xtremewars`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `updates_xtremewars` (
@@ -1836,7 +2003,6 @@ CREATE TABLE IF NOT EXISTS `updates_xtremewars` (
 --
 -- Table structure for table `updates_xtremewars_files`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1856,7 +2022,6 @@ CREATE TABLE IF NOT EXISTS `updates_xtremewars_files` (
 -- Table structure for table `vault_admin`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `vault_admin` (
@@ -1870,13 +2035,12 @@ CREATE TABLE IF NOT EXISTS `vault_admin` (
 -- Table structure for table `version_lobby`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `version_lobby` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(100) DEFAULT NULL,
-  `version` VARCHAR(100) NOT NULL COMMENT 'Current version of the official client',
+  `version` varchar(100) NOT NULL COMMENT 'Current version of the official client',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1884,7 +2048,6 @@ CREATE TABLE IF NOT EXISTS `version_lobby` (
 --
 -- Table structure for table `view_global_rating`
 --
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -1902,7 +2065,6 @@ CREATE TABLE IF NOT EXISTS `view_global_rating` (
 -- Table structure for table `vm_exempt`
 --
 
-
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `vm_exempt` (
@@ -1911,172 +2073,6 @@ CREATE TABLE IF NOT EXISTS `vm_exempt` (
   UNIQUE KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
-
--- -----------------------------------------------------
--- Table `oauth_clients`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `oauth_clients` (
-  `id` VARCHAR(36) NOT NULL COMMENT 'A string that identifies the client, preferably a UUID.',
-  `name` VARCHAR(100) NOT NULL COMMENT 'Human readable client name.',
-  `client_secret` VARCHAR(55) NOT NULL COMMENT 'The client\'s secret, a random string.',
-  `client_type` ENUM('confidential', 'public') NOT NULL DEFAULT 'public' COMMENT 'A string represents if the client is confidential or public.',
-  `redirect_uris` TEXT NOT NULL COMMENT 'A space delimited list of redirect URIs.',
-  `default_redirect_uri` VARCHAR(2000) NOT NULL COMMENT 'One of the redirect uris.',
-  `default_scope` TEXT NOT NULL COMMENT 'A space delimited list of default scopes of the client.',
-  `icon_url` VARCHAR(2000) NULL COMMENT 'URL to a square image representing the client.',
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC)  COMMENT '',
-  UNIQUE INDEX `client_id_UNIQUE` (`id` ASC)  COMMENT '',
-  UNIQUE INDEX `client_secret_UNIQUE` (`client_secret` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `oauth_tokens`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `oauth_tokens` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Auto incremented, technical ID.',
-  `token_type` VARCHAR(45) NOT NULL COMMENT '',
-  `access_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
-  `refresh_token` VARCHAR(36) NOT NULL COMMENT 'A string token (UUID).',
-  `client_id` VARCHAR(36) NOT NULL COMMENT 'ID of the client (FK).',
-  `scope` TEXT NOT NULL COMMENT 'A space delimited list of scopes.',
-  `expires` timestamp NOT NULL COMMENT 'Expiration time of the token.',
-  `user_id` INT UNSIGNED NOT NULL COMMENT 'ID of the user (FK).',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `jwt_users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `jwt_users` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
-  `username` VARCHAR(20) NOT NULL COMMENT '',
-  `public_key` VARCHAR(1000) NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `achievement_definitions`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `achievement_definitions` (
-  `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the achievement.',
-  `order` INT UNSIGNED NOT NULL COMMENT 'The order in which the achievement is displayed to the user.',
-  `name_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the name of the achievement.',
-  `description_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the description of the achievement.',
-  `type` ENUM('STANDARD', 'INCREMENTAL') NOT NULL COMMENT 'The type of the achievement. \nPossible values are:\n\"STANDARD\" - Achievement is either locked or unlocked.\n\"INCREMENTAL\" - Achievement is incremental.',
-  `total_steps` INT UNSIGNED NULL COMMENT 'The total steps for an incremental achievement, NULL for standard achievements.',
-  `revealed_icon_url` VARCHAR(2000) NULL COMMENT 'The image URL for the revealed achievement icon.',
-  `unlocked_icon_url` VARCHAR(2000) NULL COMMENT 'The image URL for the unlocked achievement icon.',
-  `initial_state` ENUM('HIDDEN', 'REVEALED') NOT NULL COMMENT 'The initial state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
-  `experience_points` INT UNSIGNED NOT NULL COMMENT 'Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference:\n5 - Easy to achieve\n20 - Medium\n50 - Hard to achieve',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
-  UNIQUE INDEX `name_key_UNIQUE` (`name_key` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `player_achievements`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `player_achievements` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'The ID of the player achievement.',
-  `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the owning player (FK).',
-  `achievement_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
-  `current_steps` INT UNSIGNED NULL COMMENT 'The current steps for an incremental achievement.',
-  `state` ENUM('HIDDEN', 'REVEALED', 'UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n\"HIDDEN\" - Achievement is hidden.\n\"REVEALED\" - Achievement is revealed.\n\"UNLOCKED\" - Achievement is unlocked.',
-  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
-  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
-  UNIQUE INDEX `player_achievement_UNIQUE` (`player_id` ASC, `achievement_id` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `event_definitions`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `event_definitions` (
-  `id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event.',
-  `name_key` VARCHAR(255) NOT NULL COMMENT 'The message key for the name of the event.',
-  `image_url` VARCHAR(45) NULL COMMENT 'The base URL for the image that represents the event.',
-  `type` ENUM('NUMERIC', 'TIME') NOT NULL COMMENT 'The type of the event.\nPossible values are:\n\"NUMERIC\" - Event is a plain number.\n\"TIME\" - Event is a measure of time.',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
-  UNIQUE INDEX `name_key_UNIQUE` (`name_key` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `player_events`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `player_events` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
-  `player_id` INT UNSIGNED NOT NULL COMMENT 'The ID of the player that triggered this event.',
-  `event_id` VARCHAR(36) NOT NULL COMMENT 'The ID of the event definition.',
-  `count` INT UNSIGNED NOT NULL COMMENT 'The current number of times this event has occurred.',
-  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
-  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
-  UNIQUE INDEX `event_player_UNIQUE` (`player_id` ASC, `event_id` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `messages`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `messages` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID of this entry.',
-  `key` VARCHAR(255) NOT NULL COMMENT 'The message resource key that identifies this entry along with language and region.',
-  `language` CHAR(2) NOT NULL COMMENT 'The language that identifies this entry along with key and region.',
-  `region` CHAR(2) NULL COMMENT 'The region that identifies this entry along with key and language.',
-  `value` TEXT NULL COMMENT 'The message value.',
-  PRIMARY KEY (`id`)  COMMENT '',
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '',
-  UNIQUE INDEX `key_language_region_UNIQUE` (`key` ASC, `language` ASC, `region` ASC)  COMMENT '')
-ENGINE = InnoDB;
-
-
-DROP TRIGGER IF EXISTS `player_achievements_BEFORE_INSERT`;
-DROP TRIGGER IF EXISTS `player_achievements_BEFORE_UPDATE`;
-DROP TRIGGER IF EXISTS `player_events_BEFORE_INSERT`;
-DROP TRIGGER IF EXISTS `player_events_BEFORE_UPDATE`;
-DELIMITER $$
-CREATE DEFINER = CURRENT_USER TRIGGER `player_achievements_BEFORE_INSERT` BEFORE INSERT ON `player_achievements` FOR EACH ROW
-BEGIN
-  SET NEW.create_time = NOW();
-  SET NEW.update_time = NOW();
-END
-$$
-
-CREATE DEFINER = CURRENT_USER TRIGGER `player_achievements_BEFORE_UPDATE` BEFORE UPDATE ON `player_achievements` FOR EACH ROW
-BEGIN
-  SET NEW.update_time = NOW();
-END
-$$
-
-CREATE DEFINER = CURRENT_USER TRIGGER `player_events_BEFORE_INSERT` BEFORE INSERT ON `player_events` FOR EACH ROW
-BEGIN
-  SET NEW.create_time = NOW();
-  SET NEW.update_time = NOW();
-END
-$$
-
-CREATE DEFINER = CURRENT_USER TRIGGER `player_events_BEFORE_UPDATE` BEFORE UPDATE ON `player_events` FOR EACH ROW
-BEGIN
-  SET NEW.update_time = NOW();
-END
-$$
-
-
-DELIMITER ;
-
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -2087,4 +2083,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-14 12:42:43
+-- Dump completed on 2016-05-18 16:35:17
