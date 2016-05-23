@@ -1,6 +1,6 @@
 # coding: utf-8
 from sqlalchemy import MetaData, BigInteger, Column, DateTime, Enum, Float, Integer, Numeric, SmallInteger, String, \
-    Table, Text, Time, text
+    Table, Text, Time, text, PrimaryKeyConstraint
 from sqlalchemy.dialects.mysql.base import LONGBLOB
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -437,6 +437,8 @@ class Teamkill(Base):
     game_id = Column(Integer, nullable=False)
     gametime = Column(Integer, nullable=False)
     reported_at = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+
+    __table_args__ = (PrimaryKeyConstraint(teamkiller, game_id),)
 
 
 class TutorialSection(Base):
