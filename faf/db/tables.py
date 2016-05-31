@@ -62,7 +62,7 @@ class AchievementDefinition(Base):
     experience_points = Column(Integer, nullable=False)
 
 
-class Avatar(Base):
+class AvatarUsers(Base):
     __tablename__ = 'avatars'
 
     id = Column(Integer, primary_key=True)
@@ -71,7 +71,7 @@ class Avatar(Base):
     selected = Column(Integer, nullable=False)
 
 
-class AvatarsList(Base):
+class Avatars(Base):
     __tablename__ = 'avatars_list'
 
     id = Column(Integer, primary_key=True)
