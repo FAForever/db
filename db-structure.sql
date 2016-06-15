@@ -245,7 +245,8 @@ CREATE TABLE IF NOT EXISTS `bugreport_status` (
   `bugreport` int(11) NOT NULL,
   `status_code` enum('unfiled','filed','dismissed') NOT NULL,
   `url` varchar(255) DEFAULT NULL COMMENT 'If status is filed, then this should be a reference to a github issue',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `bugreport` (`bugreport`),
   CONSTRAINT `bugreport` FOREIGN KEY (`bugreport`) REFERENCES `bugreports` (`id`)
@@ -263,8 +264,8 @@ CREATE TABLE IF NOT EXISTS `bugreport_targets` (
   `name` varchar(255) NOT NULL COMMENT 'Name of the target, a github repository name',
   `ref` varchar(255) NOT NULL COMMENT 'Reference of the target',
   `url` varchar(255) NOT NULL COMMENT 'Url to the target',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -283,8 +284,8 @@ CREATE TABLE IF NOT EXISTS `bugreports` (
   `description` text COMMENT 'A (potentially markdown-formatted) description of the bug',
   `log` text COMMENT 'Log associated with the report',
   `traceback` text COMMENT 'Traceback associated with the report',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `bugreport_target` (`target`),
   CONSTRAINT `bugreport_target` FOREIGN KEY (`target`) REFERENCES `bugreport_targets` (`id`)
@@ -335,7 +336,7 @@ DROP TABLE IF EXISTS `clans`;
 /*!50001 DROP VIEW IF EXISTS `clans`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `clans` AS SELECT 
+/*!50001 CREATE VIEW `clans` AS SELECT
  1 AS `clan_id`,
  1 AS `status`,
  1 AS `clan_name`,
@@ -793,8 +794,8 @@ CREATE TABLE IF NOT EXISTS `login` (
   `email` varchar(254) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `ip` varchar(15) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   `steamid` bigint(20) unsigned DEFAULT NULL,
-  `create_time` timestamp NOT NULL COMMENT 'When the user signed up',
-  `update_time` timestamp NOT NULL COMMENT 'When the user last updated their information',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When the user signed up',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When the user last updated their information',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_login` (`login`),
   UNIQUE KEY `unique_email` (`email`),
@@ -809,13 +810,7 @@ CREATE TABLE IF NOT EXISTS `login` (
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER login_BEFORE_INSERT BEFORE INSERT ON `login` FOR EACH ROW
-BEGIN
-        SET NEW.create_time = NOW();
-        SET NEW.update_time = NOW();
-END */;;
-DELIMITER ;
+
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -828,12 +823,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER login_BEFORE_UPDATE BEFORE UPDATE ON `login` FOR EACH ROW
-BEGIN
-        SET NEW.update_time = NOW();
-END */;;
-DELIMITER ;
+
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -974,8 +964,8 @@ CREATE TABLE IF NOT EXISTS `player_achievements` (
   `achievement_id` varchar(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
   `current_steps` int(10) unsigned DEFAULT NULL COMMENT 'The current steps for an incremental achievement.',
   `state` enum('HIDDEN','REVEALED','UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n"HIDDEN" - Achievement is hidden.\n"REVEALED" - Achievement is revealed.\n"UNLOCKED" - Achievement is unlocked.',
-  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
-  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `player_achievement_UNIQUE` (`player_id`,`achievement_id`)
@@ -989,13 +979,7 @@ CREATE TABLE IF NOT EXISTS `player_achievements` (
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_achievements_BEFORE_INSERT` BEFORE INSERT ON `player_achievements` FOR EACH ROW
-BEGIN
-  SET NEW.create_time = NOW();
-  SET NEW.update_time = NOW();
-END */;;
-DELIMITER ;
+
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -1008,12 +992,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_achievements_BEFORE_UPDATE` BEFORE UPDATE ON `player_achievements` FOR EACH ROW
-BEGIN
-  SET NEW.update_time = NOW();
-END */;;
-DELIMITER ;
+
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -1030,8 +1009,8 @@ CREATE TABLE IF NOT EXISTS `player_events` (
   `player_id` int(10) unsigned NOT NULL COMMENT 'The ID of the player that triggered this event.',
   `event_id` varchar(36) NOT NULL COMMENT 'The ID of the event definition.',
   `count` int(10) unsigned NOT NULL COMMENT 'The current number of times this event has occurred.',
-  `create_time` timestamp NOT NULL COMMENT 'When this entry was created.',
-  `update_time` timestamp NOT NULL COMMENT 'When this entry was updated',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `event_player_UNIQUE` (`player_id`,`event_id`)
@@ -1045,13 +1024,7 @@ CREATE TABLE IF NOT EXISTS `player_events` (
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_events_BEFORE_INSERT` BEFORE INSERT ON `player_events` FOR EACH ROW
-BEGIN
-  SET NEW.create_time = NOW();
-  SET NEW.update_time = NOW();
-END */;;
-DELIMITER ;
+
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
@@ -1064,12 +1037,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`%`*/ /*!50003 TRIGGER `player_events_BEFORE_UPDATE` BEFORE UPDATE ON `player_events` FOR EACH ROW
-BEGIN
-  SET NEW.update_time = NOW();
-END */;;
-DELIMITER ;
+
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
