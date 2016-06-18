@@ -1157,30 +1157,62 @@ CREATE TABLE IF NOT EXISTS `swiss_tournaments_players` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `table_map`
+-- Table structure for table `map`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `table_map` (
+CREATE TABLE IF NOT EXISTS `map` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) DEFAULT NULL,
-  `description` longtext,
-  `max_players` decimal(2,0) DEFAULT NULL,
-  `map_type` varchar(15) DEFAULT NULL,
-  `battle_type` varchar(15) DEFAULT NULL,
-  `map_sizeX` decimal(4,0) DEFAULT NULL,
-  `map_sizeY` decimal(4,0) DEFAULT NULL,
-  `version` decimal(4,0) DEFAULT NULL,
-  `filename` varchar(200) DEFAULT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT '0',
-  `mapuid` mediumint(8) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `Combo` (`name`,`version`),
-  UNIQUE KEY `map_filename` (`filename`),
-  KEY `mapuid` (`mapuid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5692 DEFAULT CHARSET=latin1;
+  `display_name` varchar(40) NOT NULL UNIQUE,
+  `map_type` varchar(15) NOT NULL,
+  `battle_type` varchar(15) NOT NULL,
+  `ranked` tinyint(1) NOT NULL DEFAULT 1,
+  `uploader` mediumint(8) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `map_version`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE IF NOT EXISTS `map_version` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `description` longtext,
+  `max_players` decimal(2,0) NOT NULL,
+  `size_x` decimal(4,0) NOT NULL,
+  `size_y` decimal(4,0) NOT NULL,
+  `version` decimal(4,0) NOT NULL,
+  `filename` varchar(200) NOT NULL UNIQUE,
+  `hidden` tinyint(1) NOT NULL DEFAULT 0,
+  `map_id` mediumint(8) unsigned NOT NULL,
+  UNIQUE KEY `map_id_version` (`map_id`, `version`),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+--
+-- Create view `table_map` for backwards compatibility
+--
+CREATE VIEW table_map AS (select
+        m.id,
+        m.display_name as name,
+        m.map_type,
+        m.battle_type,
+        v.description,
+        v.version,
+        v.filename,
+        v.hidden,
+        v.max_players,
+        v.size_x as map_sizeX,
+        v.size_y as map_sizeY
+    from map m
+    join map_version v on m.id = v.map_id);
 
 --
 -- Table structure for table `table_map_broken`
@@ -1238,17 +1270,6 @@ CREATE TABLE IF NOT EXISTS `table_map_features` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `table_map_unranked`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `table_map_unranked` (
-  `id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `table_map_uploaders`
