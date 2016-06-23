@@ -16,7 +16,7 @@ INSERT INTO `achievement_definitions` (`id`, `order`, `name_key`, `description_k
 ('d3d2c78b-d42d-4b65-99b8-a350f119f898', 15, 'achievement.unbeatable.title', 'achievement.unbeatable.description', 'INCREMENTAL', 10, 'http://content.faforever.com/achievements/d3d2c78b-d42d-4b65-99b8-a350f119f898.png', 'http://content.faforever.com/achievements/d3d2c78b-d42d-4b65-99b8-a350f119f898.png', 'REVEALED', 20),
 ('02081bb0-3b7a-4a36-99ef-5ae5d92d7146', 16, 'achievement.rusher.title', 'achievement.rusher.description', 'STANDARD', NULL, 'http://content.faforever.com/achievements/02081bb0-3b7a-4a36-99ef-5ae5d92d7146.png', 'http://content.faforever.com/achievements/02081bb0-3b7a-4a36-99ef-5ae5d92d7146.png', 'REVEALED', 10),
 ('1a3ad9e0-53eb-47d0-9404-14dbcefbed9b', 17, 'achievement.ma12Striker.title', 'achievement.ma12Striker.description', 'INCREMENTAL', 5, 'http://content.faforever.com/achievements/1a3ad9e0-53eb-47d0-9404-14dbcefbed9b.png', 'http://content.faforever.com/achievements/1a3ad9e0-53eb-47d0-9404-14dbcefbed9b.png', 'REVEALED', 5),
-('326493d7-ce2c-4a43-bbc8-3e990e2685a1', 18, 'achievement.Riptide.title', 'achievement.Riptide.description', 'INCREMENTAL', 25, 'http://content.faforever.com/achievements/326493d7-ce2c-4a43-bbc8-3e990e2685a1.png', 'http://content.faforever.com/achievements/326493d7-ce2c-4a43-bbc8-3e990e2685a1.png', 'REVEALED', 10),
+('326493d7-ce2c-4a43-bbc8-3e990e2685a1', 18, 'achievement.riptide.title', 'achievement.riptide.description', 'INCREMENTAL', 25, 'http://content.faforever.com/achievements/326493d7-ce2c-4a43-bbc8-3e990e2685a1.png', 'http://content.faforever.com/achievements/326493d7-ce2c-4a43-bbc8-3e990e2685a1.png', 'REVEALED', 10),
 ('7d6d8c55-3e2a-41d0-a97e-d35513af1ec6', 19, 'achievement.demolisher.title', 'achievement.demolisher.description', 'INCREMENTAL', 50, 'http://content.faforever.com/achievements/7d6d8c55-3e2a-41d0-a97e-d35513af1ec6.png', 'http://content.faforever.com/achievements/7d6d8c55-3e2a-41d0-a97e-d35513af1ec6.png', 'REVEALED', 20),
 ('d1d50fbb-7fe9-41b0-b667-4433704b8a2c', 20, 'achievement.mantis.title', 'achievement.mantis.description', 'INCREMENTAL', 5, 'http://content.faforever.com/achievements/d1d50fbb-7fe9-41b0-b667-4433704b8a2c.png', 'http://content.faforever.com/achievements/d1d50fbb-7fe9-41b0-b667-4433704b8a2c.png', 'REVEALED', 5),
 ('af161922-3e52-4600-9161-d850ab0fae86', 21, 'achievement.wagner.title', 'achievement.wagner.description', 'INCREMENTAL', 25, 'http://content.faforever.com/achievements/af161922-3e52-4600-9161-d850ab0fae86.png', 'http://content.faforever.com/achievements/af161922-3e52-4600-9161-d850ab0fae86.png', 'REVEALED', 10),
@@ -39,11 +39,11 @@ INSERT INTO `achievement_definitions` (`id`, `order`, `name_key`, `description_k
 ('06b19364-5aab-4bce-883d-975f663d2091', 38, 'achievement.techie.title', 'achievement.techie.description', 'INCREMENTAL', 5, 'http://content.faforever.com/achievements/06b19364-5aab-4bce-883d-975f663d2091.png', 'http://content.faforever.com/achievements/06b19364-5aab-4bce-883d-975f663d2091.png', 'REVEALED', 5),
 ('cd64c5e7-b063-4543-9f52-0e87883b33a9', 39, 'achievement.iLoveBigToys.title', 'achievement.iLoveBigToys.description', 'INCREMENTAL', 25, 'http://content.faforever.com/achievements/cd64c5e7-b063-4543-9f52-0e87883b33a9.png', 'http://content.faforever.com/achievements/cd64c5e7-b063-4543-9f52-0e87883b33a9.png', 'REVEALED', 10),
 ('e8af7cc9-aaa6-4d0e-8e5a-481702a83a4e', 40, 'achievement.experimentalist.title', 'achievement.experimentalist.description', 'INCREMENTAL', 50, 'http://content.faforever.com/achievements/e8af7cc9-aaa6-4d0e-8e5a-481702a83a4e.png', 'http://content.faforever.com/achievements/e8af7cc9-aaa6-4d0e-8e5a-481702a83a4e.png', 'REVEALED', 20),
-('045342e1-ae0d-4ef6-98bc-0bb54ffe00b3', 41, 'achievement.whatASwarm.title', 'achievement.whatASwarm.description', 'INCREMENTAL', 150, 'http://content.faforever.com/achievements/045342e1-ae0d-4ef6-98bc-0bb54ffe00b3.png', 'http://content.faforever.com/achievements/045342e1-ae0d-4ef6-98bc-0bb54ffe00b3.png', 'REVEALED', 10),
-('d38aec23-e487-4aa2-899e-418e29ffbd36', 42, 'achievement.theTransporter.title', 'achievement.theTransporter.description', 'INCREMENTAL', 200, 'http://content.faforever.com/achievements/d38aec23-e487-4aa2-899e-418e29ffbd36.png', 'http://content.faforever.com/achievements/d38aec23-e487-4aa2-899e-418e29ffbd36.png', 'REVEALED', 10),
+('045342e1-ae0d-4ef6-98bc-0bb54ffe00b3', 41, 'achievement.whatASwarm.title', 'achievement.whatASwarm.description', 'INCREMENTAL', 500, 'http://content.faforever.com/achievements/045342e1-ae0d-4ef6-98bc-0bb54ffe00b3.png', 'http://content.faforever.com/achievements/045342e1-ae0d-4ef6-98bc-0bb54ffe00b3.png', 'REVEALED', 10),
+('d38aec23-e487-4aa2-899e-418e29ffbd36', 42, 'achievement.theTransporter.title', 'achievement.theTransporter.description', 'INCREMENTAL', 500, 'http://content.faforever.com/achievements/d38aec23-e487-4aa2-899e-418e29ffbd36.png', 'http://content.faforever.com/achievements/d38aec23-e487-4aa2-899e-418e29ffbd36.png', 'REVEALED', 10),
 ('eb1ee9ab-4828-417b-b3e8-c8281ee7a353', 43, 'achievement.whoNeedsSupport.title', 'achievement.whoNeedsSupport.description', 'INCREMENTAL', 10, 'http://content.faforever.com/achievements/eb1ee9ab-4828-417b-b3e8-c8281ee7a353.png', 'http://content.faforever.com/achievements/eb1ee9ab-4828-417b-b3e8-c8281ee7a353.png', 'REVEALED', 10),
-('e7645e7c-7456-48a8-a562-d97521498e7e', 44, 'achievement.deadlyBugs.title', 'achievement.deadlyBugs.description', 'INCREMENTAL', 100, 'http://content.faforever.com/achievements/e7645e7c-7456-48a8-a562-d97521498e7e.png', 'http://content.faforever.com/achievements/e7645e7c-7456-48a8-a562-d97521498e7e.png', 'REVEALED', 10),
-('f0cde5d8-4933-4074-a2fb-819074d21abd', 45, 'achievement.noMercy.title', 'achievement.noMercy.description', 'INCREMENTAL', 100, 'http://content.faforever.com/achievements/f0cde5d8-4933-4074-a2fb-819074d21abd.png', 'http://content.faforever.com/achievements/f0cde5d8-4933-4074-a2fb-819074d21abd.png', 'REVEALED', 10),
+('e7645e7c-7456-48a8-a562-d97521498e7e', 44, 'achievement.deadlyBugs.title', 'achievement.deadlyBugs.description', 'INCREMENTAL', 500, 'http://content.faforever.com/achievements/e7645e7c-7456-48a8-a562-d97521498e7e.png', 'http://content.faforever.com/achievements/e7645e7c-7456-48a8-a562-d97521498e7e.png', 'REVEALED', 10),
+('f0cde5d8-4933-4074-a2fb-819074d21abd', 45, 'achievement.noMercy.title', 'achievement.noMercy.description', 'INCREMENTAL', 500, 'http://content.faforever.com/achievements/f0cde5d8-4933-4074-a2fb-819074d21abd.png', 'http://content.faforever.com/achievements/f0cde5d8-4933-4074-a2fb-819074d21abd.png', 'REVEALED', 10),
 ('a98fcfaf-29ac-4526-84c2-44f284518f8c', 46, 'achievement.flyingDeath.title', 'achievement.flyingDeath.description', 'INCREMENTAL', 50, 'http://content.faforever.com/achievements/a98fcfaf-29ac-4526-84c2-44f284518f8c.png', 'http://content.faforever.com/achievements/a98fcfaf-29ac-4526-84c2-44f284518f8c.png', 'REVEALED', 10),
 ('1c8fcb6f-a5b6-497f-8b0d-ac5ac6fef408', 47, 'achievement.incomingRobots.title', 'achievement.incomingRobots.description', 'INCREMENTAL', 50, 'http://content.faforever.com/achievements/1c8fcb6f-a5b6-497f-8b0d-ac5ac6fef408.png', 'http://content.faforever.com/achievements/1c8fcb6f-a5b6-497f-8b0d-ac5ac6fef408.png', 'REVEALED', 10),
 ('a1f87fb7-67ca-4a86-afc6-f23a41b40e9f', 48, 'achievement.arachnologist.title', 'achievement.arachnologist.description', 'INCREMENTAL', 50, 'http://content.faforever.com/achievements/a1f87fb7-67ca-4a86-afc6-f23a41b40e9f.png', 'http://content.faforever.com/achievements/a1f87fb7-67ca-4a86-afc6-f23a41b40e9f.png', 'REVEALED', 10),
@@ -59,7 +59,7 @@ INSERT INTO `achievement_definitions` (`id`, `order`, `name_key`, `description_k
 ('987ca192-26e1-4b96-b593-40c115451cc0', 58, 'achievement.makeItHail.title', 'achievement.makeItHail.description', 'STANDARD', NULL, 'http://content.faforever.com/achievements/987ca192-26e1-4b96-b593-40c115451cc0.png', 'http://content.faforever.com/achievements/987ca192-26e1-4b96-b593-40c115451cc0.png', 'REVEALED', 10),
 ('46a6e900-88bb-4eae-92d1-4f31b53faedc', 59, 'achievement.soMuchResources.title', 'achievement.soMuchResources.description', 'STANDARD', NULL, 'http://content.faforever.com/achievements/46a6e900-88bb-4eae-92d1-4f31b53faedc.png', 'http://content.faforever.com/achievements/46a6e900-88bb-4eae-92d1-4f31b53faedc.png', 'REVEALED', 10),
 ('9ad697bb-441e-45a5-b682-b9227e8eef3e', 60, 'achievement.nuclearWar.title', 'achievement.nuclearWar.description', 'STANDARD', NULL, 'http://content.faforever.com/achievements/9ad697bb-441e-45a5-b682-b9227e8eef3e.png', 'http://content.faforever.com/achievements/9ad697bb-441e-45a5-b682-b9227e8eef3e.png', 'REVEALED', 10),
-('a6b7dfa1-1ebc-4c6d-9305-4a9d623e1b4f', 61, 'achievement.drEvil.title', 'achievement.drEvil.description', 'INCREMENTAL', 100, 'http://content.faforever.com/achievements/a6b7dfa1-1ebc-4c6d-9305-4a9d623e1b4f.png', 'http://content.faforever.com/achievements/a6b7dfa1-1ebc-4c6d-9305-4a9d623e1b4f.png', 'REVEALED', 10),
+('a6b7dfa1-1ebc-4c6d-9305-4a9d623e1b4f', 61, 'achievement.drEvil.title', 'achievement.drEvil.description', 'INCREMENTAL', 500, 'http://content.faforever.com/achievements/a6b7dfa1-1ebc-4c6d-9305-4a9d623e1b4f.png', 'http://content.faforever.com/achievements/a6b7dfa1-1ebc-4c6d-9305-4a9d623e1b4f.png', 'REVEALED', 10),
 ('2103e0de-1c87-4fba-bc1b-0bba66669607', 62, 'achievement.dontMessWitHme.title', 'achievement.dontMessWitHme.description', 'INCREMENTAL', 100, 'http://content.faforever.com/achievements/2103e0de-1c87-4fba-bc1b-0bba66669607.png', 'http://content.faforever.com/achievements/2103e0de-1c87-4fba-bc1b-0bba66669607.png', 'REVEALED', 10);
 
 
@@ -110,7 +110,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.rusher.title', 'en', 'US', 'Rusher'),
 ('achievement.rusher.description', 'en', 'US', 'Kill your enemy in a ranked 1v1 game in under 15 minutes'),
 ('achievement.whatASwarm.title', 'en', 'US', 'What a swarm'),
-('achievement.whatASwarm.description', 'en', 'US', 'Build 150 ASF in a single game'),
+('achievement.whatASwarm.description', 'en', 'US', 'Build 500 Air Superiority Fighter in a single game'),
 ('achievement.blaze.title', 'en', 'US', 'Blaze'),
 ('achievement.blaze.description', 'en', 'US', 'Win 25 games with Aeon'),
 ('achievement.techie.title', 'en', 'US', 'Techie'),
@@ -168,7 +168,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.wingman.title', 'en', 'US', 'Wingman'),
 ('achievement.wingman.description', 'en', 'US', 'Win 25 games with air dominant army'),
 ('achievement.drEvil.title', 'en', 'US', 'Dr. Evil'),
-('achievement.drEvil.description', 'en', 'US', 'Build 100 experimentals in total'),
+('achievement.drEvil.description', 'en', 'US', 'Build 500 experimentals in total'),
 ('achievement.itAintACity.title', 'en', 'US', 'It ain''t a city'),
 ('achievement.itAintACity.description', 'en', 'US', 'Build 50 Atlantis in total'),
 ('achievement.flyingDeath.title', 'en', 'US', 'Flying death'),
@@ -194,7 +194,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.mantis.title', 'en', 'US', 'Mantis'),
 ('achievement.mantis.description', 'en', 'US', 'Win 5 games with Cybran'),
 ('achievement.theTransporter.title', 'en', 'US', 'The transporter'),
-('achievement.theTransporter.description', 'en', 'US', 'Build 200 transporters in total'),
+('achievement.theTransporter.description', 'en', 'US', 'Build 500 transporters in total'),
 ('achievement.unbeatable.title', 'en', 'US', 'Unbeatable'),
 ('achievement.unbeatable.description', 'en', 'US', 'Be the top scoring player 10 times in games with at least 8 players.'),
 ('achievement.junior.title', 'en', 'US', 'Junior'),
@@ -210,7 +210,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.stormySea.title', 'en', 'US', 'Stormy sea'),
 ('achievement.stormySea.description', 'en', 'US', 'Build 50 Tempests in total'),
 ('achievement.deadlyBugs.title', 'en', 'US', 'Deadly bugs'),
-('achievement.deadlyBugs.description', 'en', 'US', 'Build 100 fire beetles in total'),
+('achievement.deadlyBugs.description', 'en', 'US', 'Build 500 fire beetles in total'),
 ('achievement.experimentalist.title', 'en', 'US', 'Experimentalist'),
 ('achievement.experimentalist.description', 'en', 'US', 'Win 50 games with high usage of experimentals (3 or more)'),
 ('achievement.whoNeedsSupport.title', 'en', 'US', 'Who needs support?'),
@@ -218,7 +218,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 ('achievement.grenadier.title', 'en', 'US', 'Grenadier'),
 ('achievement.grenadier.description', 'en', 'US', 'Win 25 games with land dominant army'),
 ('achievement.noMercy.title', 'en', 'US', 'No mercy'),
-('achievement.noMercy.description', 'en', 'US', 'Build 100 Mercies in total'),
+('achievement.noMercy.description', 'en', 'US', 'Build 500 Mercies in total'),
 ('achievement.trebuchet.title', 'en', 'US', 'Trebuchet'),
 ('achievement.trebuchet.description', 'en', 'US', 'Win 50 games with Cybran'),
 ('event.seraphimWins', 'en', 'US', 'Seraphim wins'),
@@ -257,7 +257,7 @@ INSERT INTO `messages` (`key`, `language`, `region`, `value`) VALUES
 
 TRUNCATE TABLE `oauth_clients`;
 INSERT INTO `oauth_clients` (`id`, `name`, `client_secret`, `client_type`, `redirect_uris`, `default_redirect_uri`, `default_scope`, `icon_url`) VALUES
-('3bc8282c-7730-11e5-8bcf-feff819cdc9f', 'Downlord\'s FAF Client', '6035bd78-7730-11e5-8bcf-feff819cdc9f', 'public', 'http://localhost', 'http://localhost', 'read_events read_achievements', '');use faf_test;
+('3bc8282c-7730-11e5-8bcf-feff819cdc9f', 'Downlord\'s FAF Client', '6035bd78-7730-11e5-8bcf-feff819cdc9f', 'public', 'http://localhost', 'http://localhost', 'read_events read_achievements', '');
 
 -- Login table
 delete from login;
