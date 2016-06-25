@@ -1169,6 +1169,8 @@ CREATE TABLE IF NOT EXISTS `map` (
   `battle_type` varchar(15) NOT NULL,
   `ranked` tinyint(1) NOT NULL DEFAULT 1,
   `uploader` mediumint(8) unsigned NOT NULL,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1189,6 +1191,8 @@ CREATE TABLE IF NOT EXISTS `map_version` (
   `filename` varchar(200) NOT NULL UNIQUE,
   `hidden` tinyint(1) NOT NULL DEFAULT 0,
   `map_id` mediumint(8) unsigned NOT NULL,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   UNIQUE KEY `map_id_version` (`map_id`, `version`),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

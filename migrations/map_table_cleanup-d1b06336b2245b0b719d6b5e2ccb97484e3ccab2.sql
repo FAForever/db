@@ -23,6 +23,8 @@ CREATE TABLE `map_version` (
   `filename` varchar(200) NOT NULL UNIQUE,
   `hidden` tinyint(1) NOT NULL DEFAULT 0,
   `map_id` mediumint(8) unsigned NOT NULL,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   UNIQUE KEY `map_id_version` (`map_id`, `version`),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,6 +45,8 @@ delete m1 from `map` m1, `map` m2 where m1.version < m2.version and m1.name = m2
 alter table map change name display_name varchar(40) NOT NULL UNIQUE;
 alter table map MODIFY map_type varchar(15) NOT NULL;
 alter table map MODIFY battle_type varchar(15) NOT NULL;
+alter table map add create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.';
+alter table map add update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated';
 alter table map drop mapuid;
 alter table map drop description;
 alter table map drop max_players;
