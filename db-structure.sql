@@ -1185,8 +1185,8 @@ CREATE TABLE IF NOT EXISTS `map_version` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `description` longtext,
   `max_players` decimal(2,0) NOT NULL,
-  `size_x` decimal(4,0) NOT NULL,
-  `size_y` decimal(4,0) NOT NULL,
+  `width` decimal(4,0) NOT NULL,
+  `height` decimal(4,0) NOT NULL,
   `version` decimal(4,0) NOT NULL,
   `filename` varchar(200) NOT NULL UNIQUE,
   `hidden` tinyint(1) NOT NULL DEFAULT 0,
@@ -1213,8 +1213,8 @@ CREATE VIEW table_map AS (select
         v.filename,
         v.hidden,
         v.max_players,
-        v.size_x as map_sizeX,
-        v.size_y as map_sizeY
+        v.width as map_sizeX,
+        v.height as map_sizeY
     from map m
     join map_version v on m.id = v.map_id);
 

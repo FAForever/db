@@ -17,8 +17,8 @@ CREATE TABLE `map_version` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `description` longtext,
   `max_players` decimal(2,0) NOT NULL,
-  `size_x` decimal(4,0) NOT NULL,
-  `size_y` decimal(4,0) NOT NULL,
+  `width` decimal(4,0) NOT NULL,
+  `height` decimal(4,0) NOT NULL,
   `version` decimal(4,0) NOT NULL,
   `filename` varchar(200) NOT NULL UNIQUE,
   `hidden` tinyint(1) NOT NULL DEFAULT 0,
@@ -35,7 +35,7 @@ update map set name = CONCAT('Name',id) where name IS NULL;
 update map set map_type = 'FFA' where map_type IS NULL;
 update map set battle_type = 'skirmish' where battle_type IS NULL;
 
-insert into map_version (id, description, max_players, size_x, size_y, version, filename, hidden, map_id)
+insert into map_version (id, description, max_players, width, height, version, filename, hidden, map_id)
     select id, COALESCE(description, 'None'), COALESCE(max_players, 0), COALESCE(map_sizeX, 0), COALESCE(map_sizeY, 0), COALESCE(version, 1), filename, hidden, id
     from map;
 
@@ -66,8 +66,8 @@ CREATE VIEW table_map AS (select
         v.filename,
         v.hidden,
         v.max_players,
-        v.size_x as map_sizeX,
-        v.size_y as map_sizeY
+        v.width as map_sizeX,
+        v.height as map_sizeY
     from map m
     join map_version v on m.id = v.map_id);
 
