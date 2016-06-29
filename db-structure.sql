@@ -1168,7 +1168,7 @@ CREATE TABLE IF NOT EXISTS `map` (
   `map_type` varchar(15) NOT NULL,
   `battle_type` varchar(15) NOT NULL,
   `ranked` tinyint(1) NOT NULL DEFAULT 1,
-  `uploader` mediumint(8) unsigned NOT NULL,
+  `uploader` mediumint(8) unsigned,
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`)
