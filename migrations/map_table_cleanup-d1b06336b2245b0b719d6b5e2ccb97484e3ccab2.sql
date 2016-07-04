@@ -43,7 +43,6 @@ CREATE TABLE `map` (
   `display_name` varchar(40) NOT NULL UNIQUE,
   `map_type` varchar(15) NOT NULL,
   `battle_type` varchar(15) NOT NULL,
-  `ranked` tinyint(1) NOT NULL DEFAULT 1,
   `author` mediumint(8) unsigned,
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
@@ -59,6 +58,7 @@ CREATE TABLE `map_version` (
   `height` decimal(4,0) NOT NULL,
   `version` decimal(4,0) NOT NULL,
   `filename` varchar(200) NOT NULL UNIQUE,
+  `ranked` tinyint(1) NOT NULL DEFAULT 1,
   `hidden` tinyint(1) NOT NULL DEFAULT 0,
   `map_id` mediumint(8) unsigned NOT NULL,
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
@@ -79,8 +79,8 @@ insert into map_version (id, description, max_players, width, height, version, f
     select id, COALESCE(description, 'None'), COALESCE(max_players, 0), COALESCE(map_sizeX, 0), COALESCE(map_sizeY, 0), COALESCE(version, 1), filename, hidden, mapuid
     from table_map;
 
--- Merge `table_map_unranked` into `map.ranked`, drop the old table
-update map m set ranked = 0 where exists (select id from table_map_unranked tmu where tmu.id = m.id);
+-- Merge `table_map_unranked` into `map_version.ranked`, drop the old table
+update map_version mv set ranked = 0 where exists (select id from table_map_unranked tmu where tmu.id = mv.id);
 drop table table_map_unranked;
 
 -- Merge `table_map_uploaders` into `map.author`, drop the old table
