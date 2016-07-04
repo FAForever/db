@@ -11,11 +11,12 @@ fi
 db=faf_test
 pw=banana
 previousRev=$1
+docker_container=faf-db
 
-docker exec -i faf-db mysql -p${pw} ${db} -e "drop database ${db}; create database ${db}" \
-&& git cat-file -p ${previousRev}:db-structure.sql | docker exec -i faf-db mysql -p${pw} ${db} \
-&& git cat-file -p ${previousRev}:db-data.sql | docker exec -i faf-db mysql -p${pw} ${db} \
-&& docker exec -i faf-db mysql -p${pw} ${db} < migrations/*${previousRev}.sql \
-&& docker exec -i faf-db mysql -p${pw} ${db} < db-data.sql
+docker exec -i faf-db mysql -p${pw} -e "drop database ${db}; create database ${db}" \
+&& git cat-file -p ${previousRev}:db-structure.sql | docker exec -i ${docker_container} mysql -p${pw} ${db} \
+&& git cat-file -p ${previousRev}:db-data.sql | docker exec -i ${docker_container} mysql -p${pw} ${db} \
+&& for file in `find -name "*${previousRev}.sql"`; do docker exec -i ${docker_container} mysql -p${pw} ${db} < "$file"; done \
+&& docker exec -i ${docker_container} mysql -p${pw} ${db} < db-data.sql
 
 exit $?

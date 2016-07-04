@@ -1168,10 +1168,11 @@ CREATE TABLE IF NOT EXISTS `map` (
   `map_type` varchar(15) NOT NULL,
   `battle_type` varchar(15) NOT NULL,
   `ranked` tinyint(1) NOT NULL DEFAULT 1,
-  `uploader` mediumint(8) unsigned,
+  `author` mediumint(8) unsigned,
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `author` FOREIGN KEY (`author`) REFERENCES `login` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1194,7 +1195,8 @@ CREATE TABLE IF NOT EXISTS `map_version` (
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   UNIQUE KEY `map_id_version` (`map_id`, `version`),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `map` FOREIGN KEY (`map_id`) REFERENCES `map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1204,7 +1206,7 @@ CREATE TABLE IF NOT EXISTS `map_version` (
 -- Create view `table_map` for backwards compatibility
 --
 CREATE VIEW table_map AS (select
-        m.id,
+        v.id,
         m.display_name as name,
         m.map_type,
         m.battle_type,
@@ -1214,7 +1216,8 @@ CREATE VIEW table_map AS (select
         v.hidden,
         v.max_players,
         v.width as map_sizeX,
-        v.height as map_sizeY
+        v.height as map_sizeY,
+        m.id as mapuid
     from map m
     join map_version v on m.id = v.map_id);
 

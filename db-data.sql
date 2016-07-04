@@ -291,7 +291,7 @@ insert into version_lobby (id, `file`, version) values (1, 'some-installer.msi',
 
 -- Sample maps
 delete from map;
-insert into map (id, display_name, map_type, battle_type, uploader)
+insert into map (id, display_name, map_type, battle_type, author)
 values
 (1, 'SCMP_001', 'FFA', 'skirmish', 1),
 (2, 'SCMP_002', 'FFA', 'skirmish', 1),
