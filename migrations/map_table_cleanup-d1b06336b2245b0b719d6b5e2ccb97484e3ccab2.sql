@@ -6,12 +6,14 @@ select * from table_map where id in (1, 1000, 1502, 1865, 2115, 6214);
 select count(*) from table_map;
 select count(distinct mapuid) from table_map m where id in (select mapid from table_map_uploaders where userid in (select id from login));
 select count(distinct mapuid) from table_map;
+select count(*) from table_map_unranked;
 
 -- After migration
 select * from table_map where id in (1, 1000, 1502, 1865, 2115, 6214);
 select count(*) from map_version; -- should be 2 less than before migration
 select count(*) from map where author is not null;
 select count(*) from map; -- should be 2 less than before migration
+select count(*) from map_version where ranked = 0;
 
 */
 
