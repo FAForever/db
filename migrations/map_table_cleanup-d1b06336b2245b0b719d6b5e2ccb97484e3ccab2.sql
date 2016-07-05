@@ -27,7 +27,7 @@ START TRANSACTION;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
--- There are 3 maps which wrongly have mapuid = 0. Those need to be fixed
+-- There are 2 maps which wrongly have mapuid = 0. Those need to be fixed
 update table_map set mapuid = 1499 where name = 'OctoClops';
 update table_map set mapuid = 1469 where name = 'Grand Crossing';
 
