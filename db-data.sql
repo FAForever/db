@@ -309,6 +309,7 @@ values
 (14, 'SCMP_014', 'FFA', 'skirmish', 3),
 (15, 'SCMP_015', 'FFA', 'skirmish', 3);
 
+delete from map_version;
 insert into map_version (description, max_players, width, height, version, filename, hidden, map_id)
 values
 ('SCMP 001', 8, 5, 5, 1, 'maps/scmp_001.v0001.zip', 0, 1),
