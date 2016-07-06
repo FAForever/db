@@ -641,7 +641,7 @@ CREATE TABLE IF NOT EXISTS `ladder_map` (
   `idmap` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idmap` (`idmap`),
-  CONSTRAINT `ladder_map_ibfk_1` FOREIGN KEY (`idmap`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `ladder_map_ibfk_1` FOREIGN KEY (`idmap`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1236,7 +1236,7 @@ CREATE TABLE IF NOT EXISTS `table_map_broken` (
   PRIMARY KEY (`broken_id`),
   KEY `map_id` (`map_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `table_map_broken_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_map_broken_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=586 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1255,7 +1255,7 @@ CREATE TABLE IF NOT EXISTS `table_map_comments` (
   PRIMARY KEY (`comment_id`),
   KEY `map_id` (`map_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `table_map_comments_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_map_comments_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2201 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1273,7 +1273,7 @@ CREATE TABLE IF NOT EXISTS `table_map_features` (
   `times_played` int(11) NOT NULL DEFAULT '0',
   `num_draws` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`map_id`),
-  CONSTRAINT `table_map_features_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_map_features_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
