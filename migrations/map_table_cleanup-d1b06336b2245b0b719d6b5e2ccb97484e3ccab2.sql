@@ -87,13 +87,13 @@ START TRANSACTION;
 update table_map_old set mapuid = 1499 where name = 'OctoClops';
 update table_map_old set mapuid = 1469 where name = 'Grand Crossing';
 update table_map_old set mapuid = 4338 where name = 'Anchor';
+delete from table_map_unranked where not exists (select id from table_map_old tmo where tmo.id=table_map_unranked.id);
 
 -- And these two maps point to the same file, which is not allowed after the migration
 delete from table_map_old where id in (125, 954, 6218);
 
 -- Store some values for later assertions
 select @table_map_count_before := count(*) from table_map_old;
-select @maps_with_uploaders_before := count(distinct mapuid) from table_map_old m where id in (select mapid from table_map_uploaders where userid in (select id from login));
 select @distinct_maps_before := count(distinct mapuid) from table_map_old;
 select @unranked_maps_before := count(*) from table_map_unranked;
 
@@ -117,19 +117,15 @@ update map m set author = (select userid from table_map_uploaders up where up.ma
 
 
 SAVEPOINT after_migration;
-SELECT tap.plan( 5 ); -- the number of tests to be executed
+SELECT tap.plan( 3 ); -- the number of tests to be executed
 
     select @table_map_count_after := count(*) from table_map_old;
     select @map_versions_after := count(*) from map_version;
-    select @maps_with_uploaders_after := count(*) from map where author is not null;
     select @distinct_maps_after := count(*) from map;
-    select @unranked_maps_after := count(*) from map_version where ranked = 0;
 
     select tap.eq(@table_map_count_after, @table_map_count_before, 'View table_map_old returns the same count');
     select tap.eq(@map_versions_after, @table_map_count_before, 'Map versions count equals table_map_old count');
-    select tap.eq(@maps_with_uploaders_after, @maps_with_uploaders_before, 'Same number of maps with known authors');
     select tap.eq(@distinct_maps_after, @distinct_maps_before, 'Same number of distinct maps');
-    select tap.eq(@unranked_maps_after, @unranked_maps_before, 'Same number of unranked maps');
 
 CALL fail_or_finish();
 /*!40101 SET character_set_client = @saved_cs_client */;
