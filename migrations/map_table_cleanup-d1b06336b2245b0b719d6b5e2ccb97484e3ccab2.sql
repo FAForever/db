@@ -86,9 +86,10 @@ START TRANSACTION;
 -- There are 2 maps which wrongly have mapuid = 0. Those need to be fixed
 update table_map_old set mapuid = 1499 where name = 'OctoClops';
 update table_map_old set mapuid = 1469 where name = 'Grand Crossing';
+update table_map_old set mapuid = 4338 where name = 'Anchor';
 
 -- And these two maps point to the same file, which is not allowed after the migration
-delete from table_map_old where id in (125, 954);
+delete from table_map_old where id in (125, 954, 6218);
 
 -- Store some values for later assertions
 select @table_map_count_before := count(*) from table_map_old;
@@ -108,7 +109,7 @@ insert into map_version (id, description, max_players, width, height, version, f
     from table_map_old;
 
 -- Merge `table_map_unranked` into `map_version.ranked`
-update map_version mv set ranked = 0 where exists (select id from table_map_unranked tmu where tmu.id = mv.id);
+update map_version mv set ranked = 0 where exists (select id from table_map_unranked tmu where tmu.mapid = mv.id);
 
 -- Merge `table_map_uploaders` into `map.author`
 update map m set author = (select userid from table_map_uploaders up where up.mapid = (select max(id) from map_version where map_id = m.id));
