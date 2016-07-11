@@ -773,9 +773,9 @@ CREATE TABLE IF NOT EXISTS `lobby_admin` (
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `lobby_ban` (
-  `idUser` mediumint(8) unsigned DEFAULT NULL,
+  `idUser` mediumint(8) unsigned NOT NULL,
   `reason` varchar(255) NOT NULL,
-  `expires_at` datetime DEFAULT NULL COMMENT 'When the ban expires',
+  `expires_at` datetime NOT NULL DEFAULT '2222-07-21' COMMENT 'When the ban expires',
   UNIQUE KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
