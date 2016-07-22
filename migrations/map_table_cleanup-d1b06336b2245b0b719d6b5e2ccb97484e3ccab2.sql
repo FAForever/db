@@ -109,7 +109,7 @@ insert into map_version (id, description, max_players, width, height, version, f
     from table_map_old;
 
 -- Merge `table_map_unranked` into `map_version.ranked`
-update map_version mv set ranked = 0 where exists (select id from table_map_unranked tmu where tmu.mapid = mv.id);
+update map_version mv set ranked = 0 where exists (select id from table_map_unranked tmu where tmu.id = mv.id);
 
 -- Merge `table_map_uploaders` into `map.author`
 update map m set author = (select userid from table_map_uploaders up where up.mapid = (select max(id) from map_version where map_id = m.id));
