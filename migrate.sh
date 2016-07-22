@@ -99,7 +99,7 @@ ${docker_mysql} ${db} < "${mytap_script}"
 
 # Run migration scripts since last revision
 for revision in $(git rev-list --reverse ${db_revision}^..HEAD); do
-    for migration_script in $(find -name "*-${revision}.sql"); do
+    for migration_script in $(find migrations -name "*-${revision}.sql"); do
         if already_migrated $(basename ${migration_script}); then
             echo "Skipping already migrated file ${migration_script}"
             continue
