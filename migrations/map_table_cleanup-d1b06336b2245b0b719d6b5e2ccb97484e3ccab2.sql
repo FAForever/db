@@ -142,6 +142,10 @@ alter table table_map_features add CONSTRAINT `table_map_features_ibfk_1` FOREIG
 alter table ladder_map drop foreign key ladder_map_ibfk_1;
 alter table ladder_map add CONSTRAINT `ladder_map_ibfk_1` FOREIGN KEY (`idmap`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+-- This table only exists on production
+alter table game_stats_bak drop foreign key game_stats_bak_ibfk_1;
+alter table game_stats_bak add CONSTRAINT `game_stats_bak_ibfk_1` FOREIGN KEY (`mapId`) REFERENCES `map_version` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
 drop table table_map_unranked;
 drop table table_map_uploaders;
 drop table table_map_old;
