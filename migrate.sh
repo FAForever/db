@@ -54,7 +54,7 @@ However, I could not find mysql_config_editor in the container. Do you want me t
     case ${answer} in
         yes|[yY]|"")
             echo "This may take a while..."
-            ${docker_cmd} apt-get update > /dev/null && ${docker_cmd} apt-get install libmysqlclient-dev > /dev/null\
+            ${docker_cmd} apt-get update -y > /dev/null && ${docker_cmd} apt-get install -y libmysqlclient-dev > /dev/null\
                 || abort "This did not work as expected. Please fix me."
             ;;
         *)
