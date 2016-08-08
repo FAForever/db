@@ -1,3 +1,5 @@
 Put migrations in this directory.
 
+USE THE TEMPLATE FILE!
+
 Follow the naming structure: <description>-$(git rev-parse HEAD).sql, to indicate which commit of the database structure the migration is based on.

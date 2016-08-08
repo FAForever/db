@@ -291,7 +291,7 @@ insert into version_lobby (id, `file`, version) values (1, 'some-installer.msi',
 
 -- Sample maps
 delete from map;
-insert into map (id, display_name, map_type, battle_type, uploader)
+insert into map (id, display_name, map_type, battle_type, author)
 values
 (1, 'SCMP_001', 'FFA', 'skirmish', 1),
 (2, 'SCMP_002', 'FFA', 'skirmish', 1),
@@ -309,6 +309,7 @@ values
 (14, 'SCMP_014', 'FFA', 'skirmish', 3),
 (15, 'SCMP_015', 'FFA', 'skirmish', 3);
 
+delete from map_version;
 insert into map_version (description, max_players, width, height, version, filename, hidden, map_id)
 values
 ('SCMP 001', 8, 5, 5, 1, 'maps/scmp_001.v0001.zip', 0, 1),

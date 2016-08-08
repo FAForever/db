@@ -641,7 +641,7 @@ CREATE TABLE IF NOT EXISTS `ladder_map` (
   `idmap` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idmap` (`idmap`),
-  CONSTRAINT `ladder_map_ibfk_1` FOREIGN KEY (`idmap`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `ladder_map_ibfk_1` FOREIGN KEY (`idmap`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -773,9 +773,9 @@ CREATE TABLE IF NOT EXISTS `lobby_admin` (
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `lobby_ban` (
-  `idUser` mediumint(8) unsigned DEFAULT NULL,
+  `idUser` mediumint(8) unsigned NOT NULL,
   `reason` varchar(255) NOT NULL,
-  `expires_at` datetime DEFAULT NULL COMMENT 'When the ban expires',
+  `expires_at` datetime NOT NULL DEFAULT '2222-07-21' COMMENT 'When the ban expires',
   UNIQUE KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1167,11 +1167,11 @@ CREATE TABLE IF NOT EXISTS `map` (
   `display_name` varchar(40) NOT NULL UNIQUE,
   `map_type` varchar(15) NOT NULL,
   `battle_type` varchar(15) NOT NULL,
-  `ranked` tinyint(1) NOT NULL DEFAULT 1,
-  `uploader` mediumint(8) unsigned,
+  `author` mediumint(8) unsigned,
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `author` FOREIGN KEY (`author`) REFERENCES `login` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1189,12 +1189,14 @@ CREATE TABLE IF NOT EXISTS `map_version` (
   `height` decimal(4,0) NOT NULL,
   `version` decimal(4,0) NOT NULL,
   `filename` varchar(200) NOT NULL UNIQUE,
+  `ranked` tinyint(1) NOT NULL DEFAULT 1,
   `hidden` tinyint(1) NOT NULL DEFAULT 0,
   `map_id` mediumint(8) unsigned NOT NULL,
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   UNIQUE KEY `map_id_version` (`map_id`, `version`),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `map` FOREIGN KEY (`map_id`) REFERENCES `map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1204,7 +1206,7 @@ CREATE TABLE IF NOT EXISTS `map_version` (
 -- Create view `table_map` for backwards compatibility
 --
 CREATE VIEW table_map AS (select
-        m.id,
+        v.id,
         m.display_name as name,
         m.map_type,
         m.battle_type,
@@ -1214,7 +1216,8 @@ CREATE VIEW table_map AS (select
         v.hidden,
         v.max_players,
         v.width as map_sizeX,
-        v.height as map_sizeY
+        v.height as map_sizeY,
+        m.id as mapuid
     from map m
     join map_version v on m.id = v.map_id);
 
@@ -1233,7 +1236,7 @@ CREATE TABLE IF NOT EXISTS `table_map_broken` (
   PRIMARY KEY (`broken_id`),
   KEY `map_id` (`map_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `table_map_broken_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_map_broken_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=586 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1252,7 +1255,7 @@ CREATE TABLE IF NOT EXISTS `table_map_comments` (
   PRIMARY KEY (`comment_id`),
   KEY `map_id` (`map_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `table_map_comments_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_map_comments_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2201 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1270,26 +1273,8 @@ CREATE TABLE IF NOT EXISTS `table_map_features` (
   `times_played` int(11) NOT NULL DEFAULT '0',
   `num_draws` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`map_id`),
-  CONSTRAINT `table_map_features_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_map_features_ibfk_1` FOREIGN KEY (`map_id`) REFERENCES `map_version` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
-
---
--- Table structure for table `table_map_uploaders`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `table_map_uploaders` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `mapid` mediumint(8) unsigned NOT NULL,
-  `userid` mediumint(8) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `mapid` (`mapid`),
-  KEY `userid` (`userid`),
-  CONSTRAINT `table_map_uploaders_ibfk_1` FOREIGN KEY (`mapid`) REFERENCES `table_map` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1674 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
