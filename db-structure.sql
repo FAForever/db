@@ -1164,7 +1164,7 @@ CREATE TABLE IF NOT EXISTS `swiss_tournaments_players` (
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `map` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `display_name` varchar(40) NOT NULL UNIQUE,
+  `display_name` varchar(100) NOT NULL UNIQUE,
   `map_type` varchar(15) NOT NULL,
   `battle_type` varchar(15) NOT NULL,
   `author` mediumint(8) unsigned,
