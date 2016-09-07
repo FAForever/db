@@ -307,6 +307,7 @@ CREATE TABLE `clan_list` (
   `clan_tag` varchar(3) DEFAULT NULL,
   `clan_founder_id` mediumint(8) DEFAULT NULL,
   `clan_leader_id` mediumint(8) DEFAULT NULL,
+  `clan_tag_color` varchar(30) DEFAULT NULL,
   `clan_desc` text,
   PRIMARY KEY (`clan_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=647 DEFAULT CHARSET=utf8;
