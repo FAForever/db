@@ -1,0 +1,1 @@
+ALTER TABLE clan_list ADD COLUMN `clan_tag_color` varchar(30) DEFAULT NULL COMMENT 'Color of the clan''s tag in chat';
