@@ -2,7 +2,7 @@
 -- Dumping data for table `achievement_definitions`
 --
 
-TRUNCATE TABLE `achievement_definitions`;
+DELETE FROM `achievement_definitions`;
 INSERT INTO `achievement_definitions` (`id`, `order`, `name_key`, `description_key`, `type`, `total_steps`, `revealed_icon_url`, `unlocked_icon_url`, `initial_state`, `experience_points`) VALUES
 ('c6e6039f-c543-424e-ab5f-b34df1336e81', 1, 'achievement.novice.title', 'achievement.novice.description', 'INCREMENTAL', 10, 'http://content.faforever.com/achievements/c6e6039f-c543-424e-ab5f-b34df1336e81.png', 'http://content.faforever.com/achievements/c6e6039f-c543-424e-ab5f-b34df1336e81.png', 'REVEALED', 5),
 ('d5c759fe-a1a8-4103-888d-3ba319562867', 2, 'achievement.junior.title', 'achievement.junior.description', 'INCREMENTAL', 50, 'http://content.faforever.com/achievements/d5c759fe-a1a8-4103-888d-3ba319562867.png', 'http://content.faforever.com/achievements/d5c759fe-a1a8-4103-888d-3ba319562867.png', 'REVEALED', 10),
