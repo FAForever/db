@@ -963,13 +963,15 @@ CREATE TABLE IF NOT EXISTS `patchs_table` (
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `player_achievements` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The ID of the player achievement.',
-  `player_id` int(10) unsigned NOT NULL COMMENT 'The ID of the owning player (FK).',
+  `player_id` mediumint(8) unsigned NOT NULL COMMENT 'The ID of the owning player (FK).',
   `achievement_id` varchar(36) NOT NULL COMMENT 'The ID of the referenced achievement (FK).',
   `current_steps` int(10) unsigned DEFAULT NULL COMMENT 'The current steps for an incremental achievement.',
   `state` enum('HIDDEN','REVEALED','UNLOCKED') NOT NULL COMMENT 'The state of the achievement. \nPossible values are:\n"HIDDEN" - Achievement is hidden.\n"REVEALED" - Achievement is revealed.\n"UNLOCKED" - Achievement is unlocked.',
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`),
+  CONSTRAINT `fk_login` FOREIGN KEY (`player_id`) REFERENCES `login` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_achievement` FOREIGN KEY (`achievement_id`) REFERENCES `achievement_definitions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `player_achievement_UNIQUE` (`player_id`,`achievement_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
