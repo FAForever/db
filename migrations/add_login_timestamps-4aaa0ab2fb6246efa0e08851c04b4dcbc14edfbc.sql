@@ -1,5 +1,5 @@
-ALTER TABLE `login` ADD COLUMN `create_time` timestamp NOT NULL COMMENT 'When the user signed up';
-ALTER TABLE `login` ADD COLUMN `update_time` timestamp NOT NULL COMMENT 'When the user last updated their information';
+ALTER TABLE `login` ADD COLUMN `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When the user signed up';
+ALTER TABLE `login` ADD COLUMN `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When the user last updated their information';
 
 # Update the times for existing users based on their first game
 UPDATE `login`

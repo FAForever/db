@@ -13,7 +13,7 @@ pw=banana
 previousRev=$1
 docker_container=faf-db
 
-docker exec -i ${docker_container} mysql -p${pw} -e "drop database ${db}; create database ${db}" \
+docker exec -i ${docker_container} mysql -p${pw} -e "drop database if exists ${db}; create database ${db}" \
 && git cat-file -p ${previousRev}:db-structure.sql | docker exec -i ${docker_container} mysql -p${pw} ${db} \
 && git cat-file -p ${previousRev}:db-data.sql | docker exec -i ${docker_container} mysql -p${pw} ${db}
 
