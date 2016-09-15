@@ -337,7 +337,7 @@ class OauthToken(Base):
     refresh_token = Column(String(36), nullable=False)
     client_id = Column(String(36), nullable=False)
     scope = Column(Text, nullable=False)
-    expires = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    expires = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
     user_id = Column(Integer, nullable=False)
 
 

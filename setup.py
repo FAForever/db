@@ -3,12 +3,12 @@ from setuptools import find_packages
 
 setup(
     name='faf-db',
-    version='0.1',
+    version='1.0',
     url='http://www.faforever.com',
     packages=['faf'] + find_packages(),
     license='GPLv3',
-    author='Michael Sondergaard',
+    author='Michael Sondergaard, Michel Jung',
     author_email='sheeo@faforever.com',
-    description='faf database project',
+    description='FAF database project',
     requires=['pymysql', 'aiomysql']
 )

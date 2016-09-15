@@ -3,16 +3,10 @@ language: python
 sudo: required
 dist: trusty
 
+python: "3.5"
+
 services:
   - docker
 
-before_install:
-  - apt-get install expect
-
-install:
-  - start_db.sh
-
 script:
-  - bash wait_for_db.sh
-  - bash test_db-data.sh
-  - bash test_db-structure.sh
+  - ./setup_db.sh
