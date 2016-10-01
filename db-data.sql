@@ -90,9 +90,21 @@ values(42, 56, "FRIEND"),
       (42, 57, "FOE");
 
 -- sample mods
-delete from table_mod;
-insert into table_mod (uid, `name`,
-                       version, author, ui, description, filename, icon, likers, played)
-VALUES ('foo', 'test-mod', 1, 'baz', 0, NOW(), 'foobar.zip', 'foobar.png', '', 0),
-       ('bar', 'test-mod2', 1, 'baz', 0, NOW(), 'foobar2.zip', 'foobar2.png', '', 0),
-       ('EA040F8E-857A-4566-9879-0D37420A5B9D', 'test-mod3', 1, 'baz', 0, NOW(), 'foobar3.zip', 'foobar3.png', '', 1);
+delete from `mod`;
+insert into `mod` (id, display_name, author)
+VALUES (1, 'test-mod', 'baz'),
+       (2, 'test-mod2', 'baz'),
+       (3, 'test-mod3', 'baz');
+
+delete from mod_version;
+insert into mod_version (mod_id, uid, version, description, type, filename, icon) VALUES
+        (1, 'foo', 1, '', 'UI', 'foobar.zip', 'foobar.png'),
+        (1, 'bar', 2, '', 'SIM', 'foobar2.zip', 'foobar.png'),
+        (2, 'baz', 1, '', 'UI', 'foobar3.zip', 'foobar3.png'),
+        (3, 'EA040F8E-857A-4566-9879-0D37420A5B9D', 1, '', 'SIM', 'foobar4.zip', 'foobar4.png');
+
+delete from mod_stats;
+insert into mod_stats (mod_id, times_played) VALUES
+        (1, 0),
+        (2, 0),
+        (3, 1);
