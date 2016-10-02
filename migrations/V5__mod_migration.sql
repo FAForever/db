@@ -20,7 +20,7 @@ CREATE TABLE `mod_version` (
   `description` longtext NOT NULL,
   `version` smallint(5) NOT NULL,
   `filename` varchar(255) NOT NULL UNIQUE,
-  `icon` varchar(255) NOT NULL,
+  `icon` varchar(255),
   `ranked` tinyint(1) NOT NULL DEFAULT '1',
   `hidden` tinyint(1) NOT NULL DEFAULT '0',
   `mod_id` mediumint(8) unsigned NOT NULL,
@@ -50,22 +50,19 @@ CREATE VIEW table_mod AS (select
         author,
         CASE v.type WHEN 'UI' THEN 1 WHEN 'SIM' THEN 0 END as ui,
         v.create_time as `date`,
-        s.downloads as downloads,
-        s.likes as likes,
-        s.times_played as played,
+        COALESCE(s.downloads, 0) as downloads,
+        COALESCE(s.likes, 0) as likes,
+        COALESCE(s.times_played, 0) as played,
         v.description,
-        '[]',
+        '[]' as likers,
         v.filename,
         v.icon,
         v.ranked
     from `mod` m
     join mod_version v on m.id = v.mod_id
-    join mod_stats s on m.id = s.mod_id);
+    left join mod_stats s on m.id = s.mod_id);
 
 START TRANSACTION;
-
--- Delete the only mod that has a duplicated version (but the author uploaded a newer version minutes later, it has never been played)
-delete from table_mod_old where id = 780;
 
 insert into `mod` (display_name, author, uploader)
     select name, author, (select id from login where login = author)
