@@ -1000,7 +1000,6 @@ CREATE TABLE `map` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
   PRIMARY KEY (`id`),
   UNIQUE KEY `display_name` (`display_name`),
-  UNIQUE KEY `display_name_2` (`display_name`),
   KEY `author` (`author`),
   CONSTRAINT `author` FOREIGN KEY (`author`) REFERENCES `login` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4466 DEFAULT CHARSET=latin1;
