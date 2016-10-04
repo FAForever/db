@@ -21,7 +21,7 @@ CREATE TABLE `mod_version` (
   `version` smallint(5) NOT NULL,
   `filename` varchar(255) NOT NULL UNIQUE,
   `icon` varchar(255),
-  `ranked` tinyint(1) NOT NULL DEFAULT '1',
+  `ranked` tinyint(1) NOT NULL DEFAULT '0',
   `hidden` tinyint(1) NOT NULL DEFAULT '0',
   `mod_id` mediumint(8) unsigned NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
