@@ -108,3 +108,10 @@ insert into mod_stats (mod_id, times_played, likers) VALUES
         (1, 0, ''),
         (2, 0, ''),
         (3, 1, '');
+
+
+-- sample avatars
+delete from avatars;
+delete from avatars_list;
+insert into avatars_list (id, url, tooltip) values (1, "http://content.faforever.com/faf/avatars/qai2.png", "QAI");
+insert into avatars (idUser, idAvatar, selected) values (2, 1, 0);
