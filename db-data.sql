@@ -104,7 +104,7 @@ insert into mod_version (mod_id, uid, version, description, type, filename, icon
         (3, 'EA040F8E-857A-4566-9879-0D37420A5B9D', 1, '', 'SIM', 'foobar4.zip', 'foobar4.png');
 
 delete from mod_stats;
-insert into mod_stats (mod_id, times_played) VALUES
-        (1, 0),
-        (2, 0),
-        (3, 1);
+insert into mod_stats (mod_id, times_played, likers) VALUES
+        (1, 0, ''),
+        (2, 0, ''),
+        (3, 1, '');

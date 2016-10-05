@@ -34,7 +34,7 @@ CREATE TABLE `mod_version` (
 CREATE TABLE `mod_stats` (
   `mod_id` mediumint(8) unsigned NOT NULL,
   `likes` float NOT NULL DEFAULT '0',
-  `likers` longblob NOT NULL DEFAULT '[]',
+  `likers` longblob NOT NULL,
   `downloads` mediumint(8) NOT NULL DEFAULT '0',
   `times_played` mediumint(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`mod_id`),
