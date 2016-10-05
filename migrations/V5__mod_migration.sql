@@ -34,6 +34,7 @@ CREATE TABLE `mod_version` (
 CREATE TABLE `mod_stats` (
   `mod_id` mediumint(8) unsigned NOT NULL,
   `likes` float NOT NULL DEFAULT '0',
+  `likers` longblob NOT NULL,
   `downloads` mediumint(8) NOT NULL DEFAULT '0',
   `times_played` mediumint(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`mod_id`),
@@ -54,7 +55,7 @@ CREATE VIEW table_mod AS (select
         COALESCE(s.likes, 0) as likes,
         COALESCE(s.times_played, 0) as played,
         v.description,
-        '[]' as likers,
+        s.likers as likers,
         v.filename,
         v.icon,
         v.ranked
@@ -84,14 +85,21 @@ insert into mod_version (uid, type, description, version, filename, icon, ranked
     from table_mod_old o
     join `mod` m on m.display_name = o.name;
 
-insert into mod_stats (mod_id, likes, downloads, times_played)
+
+SET @saved_group_concat_max_len = @@group_concat_max_len;
+SET group_concat_max_len = 10240;
+
+insert into mod_stats (mod_id, likes, downloads, times_played, likers)
     select
-        m.id, sum(likes), sum(downloads), sum(played)
+        m.id, sum(likes), sum(downloads), sum(played), COALESCE(CONCAT('[', GROUP_CONCAT(likers_table.likers SEPARATOR ', '), ']'), '')
     from table_mod_old o
     join `mod` m on m.display_name = o.name
-    group by name;
+    join (select name, REPLACE(REPLACE(IF(likers = '', NULL, IF(likers = '[]', NULL, likers)), '[', ''), ']', '') as likers from table_mod_old) as likers_table
+        on likers_table.name = o.name
+    group by o.name;
+
+SET group_concat_max_len = @saved_group_concat_max_len;
 
 COMMIT;
 
--- I don't delete table_mod_old yet because the field `likers` has not been migrated yet. This field is a bit a pain
--- because it's a JSON encoded array, so in order to merge the `likers` we need to script something.
+drop table table_mod_old;
