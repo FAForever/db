@@ -2,38 +2,25 @@
 
 Contains a dockerfile to run our database in a contained environment, along with tools for managing the database.
 
-# Installation
+## Set your Database up
 
-Get [docker](http://docker.com).
+Install [docker](http://docker.com).
 
-Quick overview of Docker can be found:
-[Docker Quick Start Guide](https://docs.docker.com/engine/quickstart/)
+**Make sure your port 3306 is not occupied**. Install and initialize the database:
 
-Build the container using
+    ./setup_db.sh
 
-    docker build -t faf-db .
+Now your FAF database is up and running and contains some dummy data (from `db-data.sql`)
 
-Run using the following command. We recommend using the default values defined in [config.py](https://github.com/FAForever/server/blob/develop/server/config.py#L43), where `password`=`banana` and `db_name`=`faf_test`. The port forwarding `-p 3306:3006` is optional, but can be used to connect external tools running on your host system to the database, for instance [MySQL Workbench](https://www.mysql.com/products/workbench/).
+## Update your Database
 
-    docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=<wanted_password> -e MYSQL_DATABASE=<db_name> -p 3306:3306 faf-db
+If you have an existing database which you need to update, run:
 
-Check to see if running by looking at the container and netstat
+    ./migrate.sh faf-db
 
-    docker ps
-    netstat -atn | grep 3306
+## Connect to your Database
 
-Find containers IP (Container ID can be found under docker ps)
+To get a mysql session where you can execute queries conveniently, execute:
 
-    docker inspect <container_id> (IP is under IPAddress in NetworkSettings)
-
-Import Structure and Data
-
-    cat db-structure.sql db-data.sql | docker exec -i faf-db mysql -uroot -p<wantedpassword> <db_name>
-
-Now the database should be ready to go!
-
-
-To get a shell mysql session where you can execute queries conveniently, use this
-
-    docker exec -ti faf-db mysql -u <username> -p
+    docker exec -ti faf-db mysql -uroot -pbanana
 

@@ -1,1 +1,0 @@
-alter table `map` modify `display_name` varchar(100) NOT NULL UNIQUE;
