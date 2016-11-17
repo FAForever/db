@@ -5,6 +5,7 @@ delete from login;
 insert into login (id, login, email, password) values (1, 'test', 'test@example.com', SHA2('test_password', 256));
 insert into login (id, login, email, password) values (2, 'Dostya', 'dostya@cybran.example.com', SHA2('vodka', 256));
 insert into login (id, login, email, password) values (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256));
+insert into login (id, login, email, password) values (4, 'No_UID', 'uid@uef.example.com', SHA2('his_pw', 256));
 
 -- global rating
 delete from global_rating;
