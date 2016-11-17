@@ -26,6 +26,11 @@ values
 delete from uniqueid_exempt;
 insert into uniqueid_exempt (user_id, reason) values (1, 'Because test');
 
+-- Banned UIDs
+delete from unique_id_users;
+insert into unique_id_users (user_id, uniqueid_hash) values (1, 'some_id');
+insert into unique_id_users (user_id, uniqueid_hash) values (3, 'some_id');
+
 -- Lobby version table
 delete from version_lobby;
 insert into version_lobby (id, `file`, version) values (1, 'some-installer.msi', '0.10.125');
