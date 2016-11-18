@@ -6,6 +6,7 @@ insert into login (id, login, email, password) values (1, 'test', 'test@example.
 insert into login (id, login, email, password) values (2, 'Dostya', 'dostya@cybran.example.com', SHA2('vodka', 256));
 insert into login (id, login, email, password) values (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256));
 insert into login (id, login, email, password) values (4, 'No_UID', 'uid@uef.example.com', SHA2('his_pw', 256));
+insert into login (id, login, email, password) values (5, 'postman', 'postman@postman.com', SHA2('postman', 256));
 
 -- global rating
 delete from global_rating;
@@ -122,3 +123,7 @@ delete from avatars;
 delete from avatars_list;
 insert into avatars_list (id, url, tooltip) values (1, "http://content.faforever.com/faf/avatars/qai2.png", "QAI");
 insert into avatars (idUser, idAvatar, selected) values (2, 1, 0);
+
+-- sample oauth_client for Postman
+delete from oauth_clients;
+insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES ("postman-test", "postman", "postman-test", 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
