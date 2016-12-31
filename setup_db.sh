@@ -16,16 +16,27 @@ done
 # Builds and runs the faf-db image in a new container and waits until it initialized
 
 docker build -t faf-db .
+DB_CONTAINER=$(docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db)
+
+DB_ADDRESS=
+if [[ $OSTYPE == darwin* ]]; then
+  DB_ADDRESS="127.0.0.1"
+else
+  DB_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${DB_CONTAINER})
+fi
 
 echo "Waiting for mysql container..."
-DB_CONTAINER=$(docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db)
-until nc -z $(docker inspect --format='{{.NetworkSettings.IPAddress}}' ${DB_CONTAINER}) 3306
+until nc -z ${DB_ADDRESS} 3306
 do
   sleep 1
 done
 
-echo "Creating database faf_test"
-docker exec -i ${DB_CONTAINER} mysql -uroot -pbanana -e "create database faf_test;" || exit 1;
+echo "Creating database faf_test..."
+until docker exec -i ${DB_CONTAINER} mysql -uroot -pbanana -e "create database faf_test;"
+do
+  echo "Mysql still initializing, retrying in 10 seconds"
+  sleep 10
+done
 
 echo "y
 n
