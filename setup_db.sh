@@ -18,6 +18,11 @@ done
 docker build -t faf-db .
 DB_CONTAINER=$(docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db)
 
+if [[ $DOCKER_MACHINE_NAME ]]; then
+  echo "Docker Toolbox is not supported by this script"
+  exit 1;
+fi
+
 DB_ADDRESS=
 if [[ $OSTYPE == darwin* ]]; then
   DB_ADDRESS="127.0.0.1"
