@@ -16,8 +16,8 @@ show_help() {
        ./setup_db.sh -c /tmp
 
 Options:
-    -d                   Dump db schema to container stdout
-    -c \033[4mfile\033[0m              Dump db schema to provided host location, if directory provided, file name will be dump.sql
+    -d                   Dump DB schema to container STDOUT.
+    -c \033[4mfile\033[0m              Dump DB schema to provided file location. If a directory is provided, the file name will be dump.sql.
     -h                   Print script command line options.\n"
     exit 1;
 }
