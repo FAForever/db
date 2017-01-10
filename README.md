@@ -12,6 +12,8 @@ Install [docker](http://docker.com).
 
 Now your FAF database is up and running and contains some dummy data (from `db-data.sql`)
 
+If you want the database schema you can add the `-c` flag, this will dump the schema to `/tmp/dump.sql` on your host system.
+
 ## Update your Database
 
 If you have an existing database which you need to update, run:
