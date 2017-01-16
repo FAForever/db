@@ -8,5 +8,8 @@ python: "3.5"
 services:
   - docker
 
+before_script:
+  - sudo /etc/init.d/mysql stop
+
 script:
-  - ./setup_db.sh
+  - ./setup_db.sh -d
