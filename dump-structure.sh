@@ -6,10 +6,4 @@ if [ ! "${MYSQL_ROOT_PASSWORD+1}" ]; then
   exit 1
 fi
 
-cat <<EOF > /flyway/conf/flyway.conf
-flyway.url=jdbc:mysql://127.0.0.1/faf?localSocket=/var/run/mysqld/mysqld.sock
-flyway.user=root
-flyway.password=${MYSQL_ROOT_PASSWORD}
-EOF
-
-./flyway/flyway migrate
+mysqldump -uroot -p${MYSQL_ROOT_PASSWORD} --no-data faf || exit 1;
