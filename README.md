@@ -1,32 +1,23 @@
 # FAForever DB project
 
-Contains a dockerfile to run our database in a contained environment, along with tools for managing the database.
+Provides the Docker container and migration tools for a production-ready FAF database.
 
-## Set your Database up
+## Creating a new database
 
-Install [docker](http://docker.com).
+We highly recommended to use [faf-stack](https://github.com/FAForever/faf-stack) to create a new database container, like so:
 
-**Make sure your port 3306 is not occupied**. Install and initialize the database:
+    docker-compose up -d faf-db
 
-    ./setup_db.sh
+## Updating the database
 
-Now your FAF database is up and running and contains some dummy data (from `db-data.sql`)
+In order to update an existing database to the newest schema version, execute:
 
-Currently supported flags for `setup_db.sh`:
+    docker exec -ti faf-db ./migrate.sh
 
-    -d                   Dump DB schema to container STDOUT.
-    -c file              Dump DB schema to provided file location. If a directory is provided, the file name will be dump.sql.
-    -h                   Print script command line options."
+## Connecting to the database
 
-## Update your Database
-
-If you have an existing database which you need to update, run:
-
-    ./migrate.sh faf-db
-
-## Connect to your Database
-
-To get a mysql session where you can execute queries conveniently, execute:
+In order to connect to the database using the mysql client, execute:
 
     docker exec -ti faf-db mysql -uroot -pbanana
 
+Where you have to replace `root` and `banana` with your custom credentials.
