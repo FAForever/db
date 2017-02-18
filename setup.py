@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='faf-db',
-    version='1.0',
+    version='20',
     url='http://www.faforever.com',
     packages=['faf'] + find_packages(),
     license='GPLv3',
