@@ -12,7 +12,7 @@ CREATE TABLE `review` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE `map_review` (
+CREATE TABLE `map_version_review` (
   `map_version_id` MEDIUMINT(8) UNSIGNED NOT NULL,
   `review_id`      INT(11) UNSIGNED      NOT NULL,
   PRIMARY KEY (`map_version_id`, `review_id`),
@@ -27,7 +27,7 @@ CREATE TABLE `map_review` (
   DEFAULT CHARSET = utf8;
 
 
-CREATE TABLE `mod_review` (
+CREATE TABLE `mod_version_review` (
   `mod_version_id` MEDIUMINT(8) UNSIGNED NOT NULL,
   `review_id`      INT(11) UNSIGNED      NOT NULL,
   PRIMARY KEY (`mod_version_id`, `review_id`),
