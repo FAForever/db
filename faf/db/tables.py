@@ -290,6 +290,35 @@ class Login(Base):
     update_time = Column(DateTime, nullable=False, server_default=text("'0000-00-00 00:00:00'"))
 
 
+class Map(Base):
+    __tablename__ = 'map'
+
+    id = Column(Integer, primary_key=True, nullable=False)
+    display_name = Column(String(100), unique=True, nullable=False)
+    map_type = Column(String(15), nullable=False)
+    battle_type = Column(String(15), nullable=False)
+    author = Column(Integer)
+    create_time = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+    update_time = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+
+
+class MapVersion(Base):
+    __tablename__ = 'map_version'
+
+    id = Column(Integer, primary_key=True, nullable=False)
+    description = Column(String)
+    max_players = Column(Numeric(2, 0))
+    width = Column(Numeric(4, 0))
+    height = Column(Numeric(4, 0))
+    version = Column(Numeric(4, 0))
+    filename = Column(String(200), nullable=False, unique=True)
+    ranked = Column(Integer, nullable=False, default=1)
+    hidden = Column(Integer, nullable=False, default=0)
+    map_id = Column(Integer, nullable=False)
+    create_time = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+    update_time = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+
+
 class MatchmakerBan(Base):
     __tablename__ = 'matchmaker_ban'
 
@@ -364,7 +393,7 @@ class PlayerEvent(Base):
     update_time = Column(DateTime, nullable=False, server_default=text("'0000-00-00 00:00:00'"))
 
 
-class Map(Base):
+class TableMap(Base):
     __tablename__ = 'table_map'
 
     id = Column(Integer, primary_key=True)
