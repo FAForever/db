@@ -17,4 +17,4 @@ script:
   - until docker exec -i faf-db ./healthcheck.sh 2>/dev/null; do sleep 1; done
 
 after_success:
-  - ./dump.sh
+  - docker exec -i faf-db /dump-structure.sh
