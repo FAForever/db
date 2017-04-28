@@ -13,7 +13,7 @@ before_script:
 
 script:
   - docker build -t faf-db .
-  - docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db
+  - docker run --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db
   - until docker exec -i faf-db ./healthcheck.sh 2>/dev/null; do sleep 1; done
 
 after_success:
