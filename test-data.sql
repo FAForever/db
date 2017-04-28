@@ -140,3 +140,13 @@ insert into updates_faf_files (id, fileId, version, name, md5, obselete) values
     (680, 12, 3656, 'env_0.3656.nxt', '32a50729cb5155ec679771f38a151d29', 0);
 
 insert into teamkills (teamkiller, victim, game_id, gametime) VALUE (1, 2, 1, 3600);
+
+-- sample acu skins
+insert into acu_skin(id, faction, name, comment) values
+    (2, 'CYBRAN', 'Red Cybran Skin', 'We all love Cybran'),
+    (4, 'UEF', 'Blue Humans', null),
+    (9, 'AEON', 'Green Aliens', 'For building Paragons');
+
+insert into acu_skin_assignment(skin_id, player_id, expires_at, comment) values
+  (2, 2, null, 'This skin will you get forever'),
+  (2, 4, NOW(), 'You should no longer use or select this skin, it is expired');
