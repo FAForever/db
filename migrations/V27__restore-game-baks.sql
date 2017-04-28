@@ -16,8 +16,8 @@ update game_stats_bak set gameMod = (select id from game_featuredMods WHERE game
 update game_stats_bak set gameType = '0' where gameType = '';
 
 -- Restore all game stats from the "backup" table
-INSERT INTO game_stats SELECT *
-                       FROM game_stats_bak;
+INSERT INTO game_stats (id, gameType, gameMod, host, mapId, gameName, validity, endTime)
+  SELECT id, gameType, gameMod, host, mapId, gameName, valid, EndTime FROM game_stats_bak;
 
 INSERT INTO game_player_stats SELECT *
                               FROM game_player_stats_bak;
