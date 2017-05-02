@@ -41,30 +41,12 @@ CREATE
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`%` 
     SQL SECURITY DEFINER
-VIEW `auth_user` AS
-    SELECT 
-        `auth_user_role_assignment`.`user_id` AS `user_id`,
-        `auth_user_role_assignment`.`role_id` AS `role_id`,
-        `auth_role`.`name` AS `role_name`,
-        `auth_role`.`level` AS `role_level`
-    FROM
-        (`auth_user_role_assignment`
-        LEFT JOIN `auth_role` ON ((`auth_user_role_assignment`.`role_id` = `auth_role`.`id`)))
-
-CREATE 
-    ALGORITHM = UNDEFINED 
-    DEFINER = `root`@`%` 
-    SQL SECURITY DEFINER
 VIEW `auth_login` AS
     SELECT 
         `login`.`id` AS `login_id`,
-        (SELECT 
-                `auth_user`.`role_level`
-            FROM
-                `auth_user`
-            WHERE
-                (`auth_user`.`user_id` = `login`.`id`)
-            ORDER BY `auth_user`.`role_level` DESC
-            LIMIT 1) AS `auth_level`
+        MAX(`auth_role`.`level`) AS `auth_level`
     FROM
-        `login`
+        ((`login`
+        LEFT JOIN `auth_user_role_assignment` ON ((`login`.`id` = `auth_user_role_assignment`.`user_id`)))
+        LEFT JOIN `auth_role` ON ((`auth_user_role_assignment`.`role_id` = `auth_role`.`id`)))
+    GROUP BY `login`.`id`
