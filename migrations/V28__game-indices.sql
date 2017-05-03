@@ -8,6 +8,6 @@ CREATE INDEX game_stats_gameType_index ON game_stats (gameType);
 CREATE INDEX game_stats_mapId_index ON game_stats (mapId);
 CREATE INDEX game_stats_validity_index ON game_stats (validity);
 
-CREATE INDEX game_player_stats_AI_index ON faf.game_player_stats (AI);
-CREATE INDEX game_player_stats_faction_index ON faf.game_player_stats (faction);
-CREATE INDEX game_player_stats_scoreTime_index ON faf.game_player_stats (scoreTime);
+CREATE INDEX game_player_stats_AI_index ON game_player_stats (AI);
+CREATE INDEX game_player_stats_faction_index ON game_player_stats (faction);
+CREATE INDEX game_player_stats_scoreTime_index ON game_player_stats (scoreTime);
