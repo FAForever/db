@@ -21,3 +21,7 @@ In order to connect to the database using the mysql client, execute:
     docker exec -ti faf-db mysql -uroot -pbanana
 
 Where you have to replace `root` and `banana` with your custom credentials.
+
+
+## How to Contribute
+https://github.com/FAForever/db/wiki/How-to-Contribute
