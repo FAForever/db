@@ -50,4 +50,4 @@ CREATE VIEW `lobby_ban` AS
     LEFT JOIN ban_revoke ON ban.id = ban_revoke.ban_id
   WHERE level != 'CHAT'
         AND ban_revoke.ban_id IS NULL
-        AND (ban.expires_at IS NULL OR ban.expires_at > NOW())
+        AND (ban.expires_at IS NULL OR ban.expires_at > NOW());
