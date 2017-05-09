@@ -1,7 +1,6 @@
 # Estimated script run time: 4min
 
 CREATE INDEX game_stats_endTime_index ON game_stats (endTime DESC);
-CREATE INDEX game_stats_startTime_index ON game_stats (startTime DESC);
 CREATE INDEX game_stats_gameMod_index ON game_stats (gameMod);
 CREATE INDEX game_stats_gameName_index ON game_stats (gameName);
 CREATE INDEX game_stats_gameType_index ON game_stats (gameType);
