@@ -26,6 +26,10 @@ CREATE TABLE `ban_revoke` (
 )
   COMMENT = 'If an entry exists to a ban the ban is revoked';
 
+DELETE FROM lobby_ban
+WHERE idUser NOT IN (SELECT id
+                     FROM login);
+
 INSERT INTO `ban` (`player_id`, `author_id`, `reason`, `expires_at`, `level`)
   SELECT
     `idUser`,
@@ -39,9 +43,9 @@ DROP TABLE `lobby_ban`;
 
 CREATE VIEW `lobby_ban` AS
   SELECT
-    ban.player_id as idUser,
-    ban.reason as reason,
-    ban.expires_at as expires_at
+    ban.player_id  AS idUser,
+    ban.reason     AS reason,
+    ban.expires_at AS expires_at
   FROM ban
     LEFT JOIN ban_revoke ON ban.id = ban_revoke.ban_id
   WHERE level != 'CHAT'
