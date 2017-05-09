@@ -43,9 +43,9 @@ DROP TABLE `lobby_ban`;
 
 CREATE VIEW `lobby_ban` AS
   SELECT
-    ban.player_id  AS idUser,
-    ban.reason     AS reason,
-    ban.expires_at AS expires_at
+    ban.player_id                          AS idUser,
+    ban.reason                             AS reason,
+    COALESCE(ban.expires_at, '2999-12-31') AS expires_at
   FROM ban
     LEFT JOIN ban_revoke ON ban.id = ban_revoke.ban_id
   WHERE level != 'CHAT'
