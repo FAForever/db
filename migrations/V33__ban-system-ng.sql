@@ -29,7 +29,7 @@ CREATE TABLE `ban_revoke` (
 INSERT INTO `ban` (`player_id`, `author_id`, `reason`, `expires_at`, `level`)
   SELECT
     `idUser`,
-    1,
+    `idUser`,
     `reason`,
     FROM_UNIXTIME(`expires_at`),
     'GLOBAL'
