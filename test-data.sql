@@ -138,3 +138,5 @@ insert into updates_faf_files (id, fileId, version, name, md5, obselete) values
     (723, 11, 3658, 'effects_0.3658.nxt', '3758baad77531dd5323c766433412e91', 0),
     (734, 11, 3659, 'effects_0.3659.nxt', '3758baad77531dd5323c766433412e91', 0),
     (680, 12, 3656, 'env_0.3656.nxt', '32a50729cb5155ec679771f38a151d29', 0);
+
+insert into teamkills (teamkiller, victim, game_id, gametime) VALUE (1, 2, 1, 3600);
