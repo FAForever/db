@@ -13,6 +13,8 @@ before_script:
 
 script:
   - chmod +x ./test.sh && ./test.sh
+  - docker exec -i faf-db mysql -uroot -pbanana -e "create database faf_test;"
+  - docker exec -i faf-db mysql -uroot -pbanana faf < test-data.sql
 
 after_success:
   - docker exec -i faf-db /dump-structure.sh

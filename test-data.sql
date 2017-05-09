@@ -80,43 +80,40 @@ values
 ('SCMP 015', 8, 10, 10, 3, 'maps/scmp_015.v0003.zip', 0, 15);
 
 
--- game_stats table
 delete from game_stats;
-insert into game_stats (id, startTime, gameName, gameType, gameMod, `host`, mapId, validity)
-values (1, NOW(), 'Test game', '0', 6, 1, 1, 0);
-
--- featured mods
 delete from game_featuredMods;
+delete from friends_and_foes;
+delete from mod_version;
+delete from `mod`;
+delete from mod_stats;
+
 insert into game_featuredMods (id, gamemod, name, description, publish)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1),
        (6, 'ladder1v1', 'FAF', 'Ladder games', 1),
        (25, 'coop', 'Coop', 'Multiplayer campaign games', 1);
 
-delete from friends_and_foes;
+insert into game_stats (id, startTime, gameName, gameType, gameMod, `host`, mapId, validity)
+values (1, NOW(), 'Test game', '0', 6, 1, 1, 0);
+
 insert into friends_and_foes (user_id, subject_id, `status`)
 values(42, 56, "FRIEND"),
       (42, 57, "FOE");
 
--- sample mods
-delete from `mod`;
 insert into `mod` (id, display_name, author)
 VALUES (1, 'test-mod', 'baz'),
        (2, 'test-mod2', 'baz'),
        (3, 'test-mod3', 'baz');
 
-delete from mod_version;
 insert into mod_version (mod_id, uid, version, description, type, filename, icon) VALUES
         (1, 'foo', 1, '', 'UI', 'foobar.zip', 'foobar.png'),
         (1, 'bar', 2, '', 'SIM', 'foobar2.zip', 'foobar.png'),
         (2, 'baz', 1, '', 'UI', 'foobar3.zip', 'foobar3.png'),
         (3, 'EA040F8E-857A-4566-9879-0D37420A5B9D', 1, '', 'SIM', 'foobar4.zip', 'foobar4.png');
 
-delete from mod_stats;
 insert into mod_stats (mod_id, times_played, likers) VALUES
         (1, 0, ''),
         (2, 0, ''),
         (3, 1, '');
-
 
 -- sample avatars
 delete from avatars;
@@ -141,3 +138,5 @@ insert into updates_faf_files (id, fileId, version, name, md5, obselete) values
     (723, 11, 3658, 'effects_0.3658.nxt', '3758baad77531dd5323c766433412e91', 0),
     (734, 11, 3659, 'effects_0.3659.nxt', '3758baad77531dd5323c766433412e91', 0),
     (680, 12, 3656, 'env_0.3656.nxt', '32a50729cb5155ec679771f38a151d29', 0);
+
+insert into teamkills (teamkiller, victim, game_id, gametime) VALUE (1, 2, 1, 3600);
