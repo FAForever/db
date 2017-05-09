@@ -1,4 +1,4 @@
-FROM mysql:5.7
+FROM mysql:5.7.18
 
 ENV FLYWAY_VERSION 4.0.3
 
