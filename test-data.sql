@@ -139,6 +139,27 @@ insert into mod_stats (mod_id, times_played, likers) VALUES
 -- sample avatars
 insert into avatars_list (id, url, tooltip) values (1, 'http://content.faforever.com/faf/avatars/qai2.png', 'QAI');
 insert into avatars (idUser, idAvatar, selected) values (2, 1, 0);
+insert into avatars (idUser, idAvatar, selected, expires_at) values (3, 1, 0, NOW());
+
+-- sample bans
+insert into ban(id, player_id, author_id, reason, level) values
+  (1, 2, 1, 'Test permanent ban', 'GLOBAL'),
+  (2, 3, 1, 'This test ban should be revoked', 'CHAT');
+insert into ban(player_id, author_id, reason, level, expires_at) values
+  (4, 1, 'This test ban should be expired', 'CHAT', NOW());
+insert into ban_revoke (ban_id, reason, author_id) values
+  (2, 'I want to show that you can revoke the ban, but keep the data', 1); 
+
+-- sample clans
+insert into clan (id, name, tag, founder_id, leader_id, description) values
+  (1, 'Alpha Clan', '123', 1, 1, 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr'),
+  (2, 'Beta Clan', '345', 4, 4, 'Sed diam nonumy eirmod tempor invidunt ut labore'),
+  (3, 'Charlie Clan', '678', 2, 1, 'At vero eos et accusam et justo duo dolores et ea rebum');
+insert into clan_membership (clan_id, player_id) values
+  (1, 2),
+  (1, 3),
+  (2, 4),
+  (3, 1);
 
 -- sample oauth_client for Postman
 insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES ('postman-test', 'postman', 'postman-test', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
