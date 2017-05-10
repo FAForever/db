@@ -1,5 +1,5 @@
 #!/bin/bash
-set -X
+set -e
 
 docker build -t faf-db .
 docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db

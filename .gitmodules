@@ -1,0 +1,3 @@
+[submodule "faf-db-dump"]
+	path = faf-db-dump
+	url = https://github.com/FAForever/faf-db-dump.git
