@@ -9,7 +9,7 @@ COMMENT = 'List of all permissions, assigned over role assignments (auth_role_pe
 CREATE TABLE `auth_role` (
   `id` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(40) NOT NULL COMMENT 'e.g. Admin,Mod',
-  `level` MEDIUMINT(4) UNSIGNED COMMENt 'level of this role for greater less comparison in server',
+  `level` MEDIUMINT(4) UNSIGNED COMMENt 'level of this role for greater less comparison in server: Admin >= 999; Mod >= 500;',
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) )
@@ -49,4 +49,32 @@ VIEW `auth_login` AS
         ((`login`
         LEFT JOIN `auth_user_role_assignment` ON ((`login`.`id` = `auth_user_role_assignment`.`user_id`)))
         LEFT JOIN `auth_role` ON ((`auth_user_role_assignment`.`role_id` = `auth_role`.`id`)))
-    GROUP BY `login`.`id`
+    GROUP BY `login`.`id`;
+
+# Backwords compatible to old `lobby_admin` table
+# https://github.com/search?utf8=%E2%9C%93&q=org%3AFAForever+lobby_admin&type=Code
+
+# https://github.com/FAForever/api/blob/2e51e0e26e49bf89454360c326cae212f7e9abe0/api/user.py#L7
+INSERT INTO `auth_role` (`id`, `name`, `level`) VALUES
+    (1, 'Moderator', 500),
+    (2, 'Administrator', 999);
+
+INSERT INTO `auth_user_role_assignment` (`user_id`, `role_id`) 
+SELECT `user_id`, `group` FROM `lobby_admin`;
+
+DROP TABLE `lobby_admin`;
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`%` 
+    SQL SECURITY DEFINER
+VIEW `lobby_admin` AS
+    SELECT 
+        `auth_login`.`login_id` AS `user_id`,
+        IF((`auth_login`.`auth_level` >= 999),
+            2,
+            IF((`auth_login`.`auth_level` >= 500),
+                1,
+                0)) AS `group`
+    FROM
+        `auth_login`;
