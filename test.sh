@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo -e 'travis_fold:start:docker'
+echo '# Build & Run Docker Container'
 docker build -t faf-db .
 docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db
 
@@ -13,10 +15,12 @@ do
     expected='"healthy"'
     if [ $status == $expected ]; then
         echo '... faf-db is running'
+        echo -en 'travis_fold:end:docker\\r'
         exit 0
     fi
     sleep 1
     ((counter++))
 done
 echo '... faf-db is not running'
+echo -e 'travis_fold:end:docker'
 exit 1
