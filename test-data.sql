@@ -28,6 +28,17 @@ values
 delete from uniqueid_exempt;
 insert into uniqueid_exempt (user_id, reason) values (1, 'Because test');
 
+-- UID Samples
+delete from unique_id_users;
+INSERT INTO `uniqueid` (`hash`, `uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`) 
+VALUES ('some_id', '-', '-', '-', '-', '-', '-', '-', '-', '-'),
+       ('another_id', '-', '-', '-', '-', '-', '-', '-', '-', '-');
+
+insert into unique_id_users (user_id, uniqueid_hash) values (1, 'some_id');
+insert into unique_id_users (user_id, uniqueid_hash) values (2, 'another_id');
+insert into unique_id_users (user_id, uniqueid_hash) values (3, 'some_id');
+
+
 -- Banned UIDs
 delete from unique_id_users;
 insert into unique_id_users (user_id, uniqueid_hash) values (1, 'some_id');
