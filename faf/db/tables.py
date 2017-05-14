@@ -30,23 +30,6 @@ class MappingBase:
 
 Base = declarative_base(metadata=metadata, cls=MappingBase)
 
-
-class AIName(Base):
-    __tablename__ = 'AI_names'
-
-    id = Column(Integer, primary_key=True)
-    login = Column(String(60, 'latin1_bin'), nullable=False)
-
-
-class AIRating(Base):
-    __tablename__ = 'AI_rating'
-
-    id = Column(Integer, primary_key=True)
-    mean = Column(Float)
-    deviation = Column(Float)
-    numGames = Column(SmallInteger, nullable=False, server_default=text("'0'"))
-
-
 class AchievementDefinition(Base):
     __tablename__ = 'achievement_definitions'
 
