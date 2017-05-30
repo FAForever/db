@@ -8,12 +8,12 @@ COMMENT = 'List of all permissions, assigned over role assignments (auth_role_pe
 
 CREATE TABLE `auth_role` (
   `id` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(40) NOT NULL COMMENT 'e.g. Admin,Mod',
-  `level` MEDIUMINT(4) UNSIGNED COMMENt 'level of this role for greater less comparison in server: Admin >= 999; Mod >= 500;',
+  `name` VARCHAR(40) NOT NULL COMMENT 'e.g. Admin, Mod',
+  `level` MEDIUMINT(4) UNSIGNED COMMENT 'Level of this role for greater less comparison in server: Admin >= 999; Mod >= 500;',
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) )
-COMMENT = 'List of all roles. A bunch of permission forms a role (see auth_role_permission_assignments) and are assigned over auth_user_role_assignment to a user';
+COMMENT = 'List of all roles. Bunch of permissions form a role (see auth_role_permission_assignments) and are assigned over auth_user_role_assignment to a user';
 
 CREATE TABLE `auth_role_permission_assignments` (
   `id` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -24,7 +24,7 @@ CREATE TABLE `auth_role_permission_assignments` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`role_id`) REFERENCES `auth_role`(`id`),
   FOREIGN KEY (`permission_id`) REFERENCES `auth_permission`(`id`))
-COMMENT = 'Connect roles (auth_role) and permissions (auth_role_permission_assignments)';
+COMMENT = 'Connects roles (auth_role) and permissions (auth_role_permission_assignments)';
 
 CREATE TABLE `auth_user_role_assignment` (
   `id` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -37,11 +37,7 @@ CREATE TABLE `auth_user_role_assignment` (
   FOREIGN KEY (`role_id`) REFERENCES `auth_role`(`id`))
 COMMENT = 'Assign users (login) to a role (a bunch of permissions)';
 
-CREATE 
-    ALGORITHM = UNDEFINED 
-    DEFINER = `root`@`%` 
-    SQL SECURITY DEFINER
-VIEW `auth_login` AS
+CREATE VIEW `auth_login` AS
     SELECT 
         `login`.`id` AS `login_id`,
         MAX(`auth_role`.`level`) AS `auth_level`
@@ -51,7 +47,7 @@ VIEW `auth_login` AS
         LEFT JOIN `auth_role` ON ((`auth_user_role_assignment`.`role_id` = `auth_role`.`id`)))
     GROUP BY `login`.`id`;
 
-# Backwords compatible to old `lobby_admin` table
+# Backwards compatible to old `lobby_admin` table
 # https://github.com/search?utf8=%E2%9C%93&q=org%3AFAForever+lobby_admin&type=Code
 
 # https://github.com/FAForever/api/blob/2e51e0e26e49bf89454360c326cae212f7e9abe0/api/user.py#L7
@@ -64,17 +60,13 @@ SELECT `user_id`, `group` FROM `lobby_admin`;
 
 DROP TABLE `lobby_admin`;
 
-CREATE 
-    ALGORITHM = UNDEFINED 
-    DEFINER = `root`@`%` 
-    SQL SECURITY DEFINER
-VIEW `lobby_admin` AS
+CREATE VIEW `lobby_admin` AS
     SELECT 
         `auth_login`.`login_id` AS `user_id`,
-        IF((`auth_login`.`auth_level` >= 999),
-            2,
-            IF((`auth_login`.`auth_level` >= 500),
-                1,
-                0)) AS `group`
+        case 
+          when `auth_login`.`auth_level` >= 999 then 2
+          when `auth_login`.`auth_level` >= 500 then 1 
+          else 0 
+        end AS `group`
     FROM
         `auth_login`;
