@@ -28,6 +28,8 @@ DELETE FROM game_review;
 DELETE FROM game_stats;
 DELETE FROM game_featuredMods;
 DELETE FROM teamkills;
+DELETE FROM ladder_division_score;
+DELETE FROM ladder_division;
 DELETE FROM login;
 
 -- Login table
@@ -166,3 +168,20 @@ insert into map_version_review (id, text, user_id, score, map_version_id) VALUES
 insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (1, 'Great!', 1, 5, 1);
 insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (2, 'Like it', 2, 4, 1);
 insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (3, 'Funny', 3, 4, 1);
+
+INSERT INTO ladder_division VALUES
+(1, 'League 1 - Division A', 1, 10.0),
+(2, 'League 1 - Division B', 1, 30.0),
+(3, 'League 1 - Division C', 1, 50.0),
+(4, 'League 2 - Division D', 2, 20.0),
+(5, 'League 2 - Division E', 2, 60.0),
+(6, 'League 2 - Division F', 2, 100.0),
+(7, 'League 3 - Division D', 3, 100.0),
+(8, 'League 3 - Division E', 3, 200.0),
+(9, 'League 3 - Division F', 3, 9999.0);
+
+INSERT INTO ladder_division_score (season, user_id, league, score, games) VALUES
+  (1, 1, 1, 9.5, 4),
+(1, 2, 1, 49.5, 70),
+(1, 3, 2, 0.0, 39),
+(1, 4, 3, 10.0, 121);
