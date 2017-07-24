@@ -1,7 +1,37 @@
 -- DUMMY DATA ONLY, FOR USE IN UNIT TESTS
 
+
+-- regular deletes without constraints
+DELETE FROM uniqueid;
+DELETE FROM unique_id_users;
+DELETE FROM global_rating;
+DELETE FROM ladder1v1_rating;
+DELETE FROM uniqueid_exempt;
+DELETE FROM version_lobby;
+DELETE FROM friends_and_foes;
+DELETE FROM map_version;
+DELETE FROM `map`;
+DELETE FROM mod_version;
+DELETE FROM `mod`;
+DELETE FROM mod_stats;
+DELETE FROM oauth_clients;
+DELETE FROM updates_faf;
+DELETE FROM updates_faf_files;
+
+-- constraint based deletes
+DELETE FROM avatars;
+DELETE FROM avatars_list;
+DELETE FROM ban_revoke;
+DELETE FROM ban;
+DELETE FROM clan_membership;
+DELETE FROM clan;
+DELETE FROM game_player_stats;
+DELETE FROM game_stats;
+DELETE FROM game_featuredMods;
+DELETE FROM teamkills;
+DELETE FROM login;
+
 -- Login table
-delete from login;
 insert into login (id, login, email, password) values (1, 'test', 'test@example.com', SHA2('test_password', 256));
 insert into login (id, login, email, password) values (2, 'Dostya', 'dostya@cybran.example.com', SHA2('vodka', 256));
 insert into login (id, login, email, password) values (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256));
@@ -9,7 +39,6 @@ insert into login (id, login, email, password) values (4, 'No_UID', 'uid@uef.exa
 insert into login (id, login, email, password) values (5, 'postman', 'postman@postman.com', SHA2('postman', 256));
 
 -- global rating
-delete from global_rating;
 insert into global_rating (id, mean, deviation, numGames, is_active)
 values
 (1, 2000, 125, 5, 1),
@@ -17,7 +46,6 @@ values
 (3, 1650, 62.52, 2, 1);
 
 -- ladder rating
-delete from ladder1v1_rating;
 insert into ladder1v1_rating (id, mean, deviation, numGames, is_active)
 values
   (1, 2000, 125, 5, 1),
@@ -25,32 +53,22 @@ values
   (3, 1650, 62.52, 2, 1);
 
 -- UniqueID_exempt
-delete from uniqueid_exempt;
 insert into uniqueid_exempt (user_id, reason) values (1, 'Because test');
 
 -- UID Samples
-delete from unique_id_users;
 INSERT INTO `uniqueid` (`hash`, `uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`) 
 VALUES ('some_id', '-', '-', '-', '-', '-', '-', '-', '-', '-'),
        ('another_id', '-', '-', '-', '-', '-', '-', '-', '-', '-');
 
-insert into unique_id_users (user_id, uniqueid_hash) values (1, 'some_id');
-insert into unique_id_users (user_id, uniqueid_hash) values (2, 'another_id');
-insert into unique_id_users (user_id, uniqueid_hash) values (3, 'some_id');
-
-
 -- Banned UIDs
-delete from unique_id_users;
 insert into unique_id_users (user_id, uniqueid_hash) values (1, 'some_id');
 insert into unique_id_users (user_id, uniqueid_hash) values (2, 'another_id');
 insert into unique_id_users (user_id, uniqueid_hash) values (3, 'some_id');
 
 -- Lobby version table
-delete from version_lobby;
 insert into version_lobby (id, `file`, version) values (1, 'some-installer.msi', '0.10.125');
 
 -- Sample maps
-delete from map;
 insert into map (id, display_name, map_type, battle_type, author)
 values
 (1, 'SCMP_001', 'FFA', 'skirmish', 1),
@@ -69,7 +87,6 @@ values
 (14, 'SCMP_014', 'FFA', 'skirmish', 3),
 (15, 'SCMP_015', 'FFA', 'skirmish', 3);
 
-delete from map_version;
 insert into map_version (description, max_players, width, height, version, filename, hidden, map_id)
 values
 ('SCMP 001', 8, 5, 5, 1, 'maps/scmp_001.v0001.zip', 0, 1),
@@ -89,14 +106,6 @@ values
 ('SCMP 015', 8, 5, 5, 1, 'maps/scmp_015.v0001.zip', 0, 15),
 ('SCMP 015', 8, 5, 5, 2, 'maps/scmp_015.v0002.zip', 0, 15),
 ('SCMP 015', 8, 10, 10, 3, 'maps/scmp_015.v0003.zip', 0, 15);
-
-
-delete from game_stats;
-delete from game_featuredMods;
-delete from friends_and_foes;
-delete from mod_version;
-delete from `mod`;
-delete from mod_stats;
 
 insert into game_featuredMods (id, gamemod, name, description, publish)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1),
@@ -127,22 +136,17 @@ insert into mod_stats (mod_id, times_played, likers) VALUES
         (3, 1, '');
 
 -- sample avatars
-delete from avatars;
-delete from avatars_list;
 insert into avatars_list (id, url, tooltip) values (1, "http://content.faforever.com/faf/avatars/qai2.png", "QAI");
 insert into avatars (idUser, idAvatar, selected) values (2, 1, 0);
 
 -- sample oauth_client for Postman
-delete from oauth_clients;
 insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES ("postman-test", "postman", "postman-test", 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
 
-delete from updates_faf;
 insert into updates_faf (id, filename, path) values
     (1, 'ForgedAlliance.exe', 'bin'),
     (11, 'effects.nx2', 'gamedata'),
     (12, 'env.nx2', 'gamedata');
 
-delete from updates_faf_files;
 insert into updates_faf_files (id, fileId, version, name, md5, obselete) values
     (711, 1, 3658, 'ForgedAlliance.3658.exe', '2cd7784fb131ea4955e992cfee8ca9b8', 0),
     (745, 1, 3659, 'ForgedAlliance.3659.exe', 'ee2df6c3cb80dc8258428e8fa092bce1', 0),
