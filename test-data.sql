@@ -1,24 +1,22 @@
 -- DUMMY DATA ONLY, FOR USE IN UNIT TESTS
 
-
--- regular deletes without constraints
-DELETE FROM uniqueid;
 DELETE FROM unique_id_users;
+DELETE FROM uniqueid;
 DELETE FROM global_rating;
 DELETE FROM ladder1v1_rating;
 DELETE FROM uniqueid_exempt;
 DELETE FROM version_lobby;
 DELETE FROM friends_and_foes;
+DELETE FROM map_version_review;
 DELETE FROM map_version;
 DELETE FROM `map`;
+DELETE FROM mod_version_review;
 DELETE FROM mod_version;
 DELETE FROM `mod`;
 DELETE FROM mod_stats;
 DELETE FROM oauth_clients;
 DELETE FROM updates_faf;
 DELETE FROM updates_faf_files;
-
--- constraint based deletes
 DELETE FROM avatars;
 DELETE FROM avatars_list;
 DELETE FROM ban_revoke;
@@ -26,6 +24,7 @@ DELETE FROM ban;
 DELETE FROM clan_membership;
 DELETE FROM clan;
 DELETE FROM game_player_stats;
+DELETE FROM game_review;
 DELETE FROM game_stats;
 DELETE FROM game_featuredMods;
 DELETE FROM teamkills;
@@ -87,25 +86,25 @@ values
 (14, 'SCMP_014', 'FFA', 'skirmish', 3),
 (15, 'SCMP_015', 'FFA', 'skirmish', 3);
 
-insert into map_version (description, max_players, width, height, version, filename, hidden, map_id)
+insert into map_version (id, description, max_players, width, height, version, filename, hidden, map_id)
 values
-('SCMP 001', 8, 5, 5, 1, 'maps/scmp_001.v0001.zip', 0, 1),
-('SCMP 002', 8, 5, 5, 1, 'maps/scmp_002.v0001.zip', 0, 2),
-('SCMP 003', 8, 5, 5, 1, 'maps/scmp_003.v0001.zip', 0, 3),
-('SCMP 004', 8, 5, 5, 1, 'maps/scmp_004.v0001.zip', 0, 4),
-('SCMP 005', 8, 5, 5, 1, 'maps/scmp_005.v0001.zip', 0, 5),
-('SCMP 006', 8, 5, 5, 1, 'maps/scmp_006.v0001.zip', 0, 6),
-('SCMP 007', 8, 5, 5, 1, 'maps/scmp_007.v0001.zip', 0, 7),
-('SCMP 008', 8, 5, 5, 1, 'maps/scmp_008.v0001.zip', 0, 8),
-('SCMP 009', 8, 5, 5, 1, 'maps/scmp_009.v0001.zip', 0, 9),
-('SCMP 010', 8, 5, 5, 1, 'maps/scmp_010.v0001.zip', 0, 10),
-('SCMP 011', 8, 5, 5, 1, 'maps/scmp_011.v0001.zip', 0, 11),
-('SCMP 012', 8, 5, 5, 1, 'maps/scmp_012.v0001.zip', 0, 12),
-('SCMP 013', 8, 5, 5, 1, 'maps/scmp_013.v0001.zip', 0, 13),
-('SCMP 014', 8, 5, 5, 1, 'maps/scmp_014.v0001.zip', 0, 14),
-('SCMP 015', 8, 5, 5, 1, 'maps/scmp_015.v0001.zip', 0, 15),
-('SCMP 015', 8, 5, 5, 2, 'maps/scmp_015.v0002.zip', 0, 15),
-('SCMP 015', 8, 10, 10, 3, 'maps/scmp_015.v0003.zip', 0, 15);
+(1, 'SCMP 001', 8, 5, 5, 1, 'maps/scmp_001.v0001.zip', 0, 1),
+(2, 'SCMP 002', 8, 5, 5, 1, 'maps/scmp_002.v0001.zip', 0, 2),
+(3, 'SCMP 003', 8, 5, 5, 1, 'maps/scmp_003.v0001.zip', 0, 3),
+(4, 'SCMP 004', 8, 5, 5, 1, 'maps/scmp_004.v0001.zip', 0, 4),
+(5, 'SCMP 005', 8, 5, 5, 1, 'maps/scmp_005.v0001.zip', 0, 5),
+(6, 'SCMP 006', 8, 5, 5, 1, 'maps/scmp_006.v0001.zip', 0, 6),
+(7, 'SCMP 007', 8, 5, 5, 1, 'maps/scmp_007.v0001.zip', 0, 7),
+(8, 'SCMP 008', 8, 5, 5, 1, 'maps/scmp_008.v0001.zip', 0, 8),
+(9, 'SCMP 009', 8, 5, 5, 1, 'maps/scmp_009.v0001.zip', 0, 9),
+(10, 'SCMP 010', 8, 5, 5, 1, 'maps/scmp_010.v0001.zip', 0, 10),
+(11, 'SCMP 011', 8, 5, 5, 1, 'maps/scmp_011.v0001.zip', 0, 11),
+(12, 'SCMP 012', 8, 5, 5, 1, 'maps/scmp_012.v0001.zip', 0, 12),
+(13, 'SCMP 013', 8, 5, 5, 1, 'maps/scmp_013.v0001.zip', 0, 13),
+(14, 'SCMP 014', 8, 5, 5, 1, 'maps/scmp_014.v0001.zip', 0, 14),
+(15, 'SCMP 015', 8, 5, 5, 1, 'maps/scmp_015.v0001.zip', 0, 15),
+(16, 'SCMP 015', 8, 5, 5, 2, 'maps/scmp_015.v0002.zip', 0, 15),
+(17, 'SCMP 015', 8, 10, 10, 3, 'maps/scmp_015.v0003.zip', 0, 15);
 
 insert into game_featuredMods (id, gamemod, name, description, publish)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1),
@@ -116,19 +115,19 @@ insert into game_stats (id, startTime, gameName, gameType, gameMod, `host`, mapI
 values (1, NOW(), 'Test game', '0', 6, 1, 1, 0);
 
 insert into friends_and_foes (user_id, subject_id, `status`)
-values(42, 56, "FRIEND"),
-      (42, 57, "FOE");
+values(42, 56, 'FRIEND'),
+      (42, 57, 'FOE');
 
 insert into `mod` (id, display_name, author)
 VALUES (1, 'test-mod', 'baz'),
        (2, 'test-mod2', 'baz'),
        (3, 'test-mod3', 'baz');
 
-insert into mod_version (mod_id, uid, version, description, type, filename, icon) VALUES
-        (1, 'foo', 1, '', 'UI', 'foobar.zip', 'foobar.png'),
-        (1, 'bar', 2, '', 'SIM', 'foobar2.zip', 'foobar.png'),
-        (2, 'baz', 1, '', 'UI', 'foobar3.zip', 'foobar3.png'),
-        (3, 'EA040F8E-857A-4566-9879-0D37420A5B9D', 1, '', 'SIM', 'foobar4.zip', 'foobar4.png');
+insert into mod_version (id, mod_id, uid, version, description, type, filename, icon) VALUES
+        (1, 1, 'foo', 1, '', 'UI', 'foobar.zip', 'foobar.png'),
+        (2, 1, 'bar', 2, '', 'SIM', 'foobar2.zip', 'foobar.png'),
+        (3, 2, 'baz', 1, '', 'UI', 'foobar3.zip', 'foobar3.png'),
+        (4, 3, 'EA040F8E-857A-4566-9879-0D37420A5B9D', 1, '', 'SIM', 'foobar4.zip', 'foobar4.png');
 
 insert into mod_stats (mod_id, times_played, likers) VALUES
         (1, 0, ''),
@@ -136,11 +135,11 @@ insert into mod_stats (mod_id, times_played, likers) VALUES
         (3, 1, '');
 
 -- sample avatars
-insert into avatars_list (id, url, tooltip) values (1, "http://content.faforever.com/faf/avatars/qai2.png", "QAI");
+insert into avatars_list (id, url, tooltip) values (1, 'http://content.faforever.com/faf/avatars/qai2.png', 'QAI');
 insert into avatars (idUser, idAvatar, selected) values (2, 1, 0);
 
 -- sample oauth_client for Postman
-insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES ("postman-test", "postman", "postman-test", 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
+insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES ('postman-test', 'postman', 'postman-test', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
 
 insert into updates_faf (id, filename, path) values
     (1, 'ForgedAlliance.exe', 'bin'),
@@ -155,3 +154,15 @@ insert into updates_faf_files (id, fileId, version, name, md5, obselete) values
     (680, 12, 3656, 'env_0.3656.nxt', '32a50729cb5155ec679771f38a151d29', 0);
 
 insert into teamkills (teamkiller, victim, game_id, gametime) VALUE (1, 2, 1, 3600);
+
+insert into game_review (id, text, user_id, score, game_id) VALUES (1, 'Awesome', 1, 5, 1);
+insert into game_review (id, text, user_id, score, game_id) VALUES (2, 'Nice', 2, 3, 1);
+insert into game_review (id, text, user_id, score, game_id) VALUES (3, 'Meh', 3, 2, 1);
+
+insert into map_version_review (id, text, user_id, score, map_version_id) VALUES (1, 'Fine', 1, 3, 1);
+insert into map_version_review (id, text, user_id, score, map_version_id) VALUES (2, 'Horrible', 2, 1, 1);
+insert into map_version_review (id, text, user_id, score, map_version_id) VALUES (3, 'Boah!', 3, 5, 1);
+
+insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (1, 'Great!', 1, 5, 1);
+insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (2, 'Like it', 2, 4, 1);
+insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (3, 'Funny', 3, 4, 1);
