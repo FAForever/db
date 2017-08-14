@@ -108,10 +108,10 @@ values
 (16, 'SCMP 015', 8, 5, 5, 2, 'maps/scmp_015.v0002.zip', 0, 15),
 (17, 'SCMP 015', 8, 10, 10, 3, 'maps/scmp_015.v0003.zip', 0, 15);
 
-insert into game_featuredMods (id, gamemod, name, description, publish)
-values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1),
-       (6, 'ladder1v1', 'FAF', 'Ladder games', 1),
-       (25, 'coop', 'Coop', 'Multiplayer campaign games', 1);
+insert into game_featuredMods (id, gamemod, name, description, publish, git_url, git_branch, file_extension, allow_override)
+values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', FALSE),
+       (6, 'ladder1v1', 'FAF', 'Ladder games', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', TRUE),
+       (25, 'coop', 'Coop', 'Multiplayer campaign games', 1, 'https://github.com/FAForever/fa-coop.git', 'master', 'cop', TRUE);
 
 insert into game_stats (id, startTime, gameName, gameType, gameMod, `host`, mapId, validity)
 values (1, NOW(), 'Test game', '0', 6, 1, 1, 0);
