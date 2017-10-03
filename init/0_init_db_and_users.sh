@@ -25,6 +25,7 @@ create "faf-softvote" "faf-softvote" "${MYSQL_SOFTVOTE_PASSWORD}"
 create "faf-anope" "faf-anope" "${MYSQL_ANOPE_PASSWORD}"
 create "faf-wiki" "faf-wiki" "${MYSQL_WIKI_PASSWORD}"
 create "faf-wordpress" "faf-wordpress" "${MYSQL_WORDPRESS_PASSWORD}"
+create "faf-phpbb3" "faf-phpbb3" "${MYSQL_PHPBB3_PASSWORD}"
 
 # To update the IRC password, we give the python server full bloated access to all of anope's
 # privates. FIXME: Have the API do this instead.
