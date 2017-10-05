@@ -30,7 +30,7 @@ create "faf-wordpress" "faf-wordpress" "${MYSQL_WORDPRESS_PASSWORD}"
 # that specific table, this would require this project to know about the prefix and table names used by Anope, which I
 # consider worse than giving faf-server more permissions than it needs.
 mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
-    GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-server'@'%';
+    GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-python-server'@'%';
 SQL_SCRIPT
 
 # Allows faf-mysql-exporter to read metrics. It is recommended to set a max connection limit for the user to avoid
