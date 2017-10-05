@@ -21,6 +21,7 @@ do
     sleep 1
     ((counter++))
 done
+docker logs faf-db
 echo '... faf-db is not running'
 echo -e 'travis_fold:end:docker'
 exit 1
