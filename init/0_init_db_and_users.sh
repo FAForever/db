@@ -26,9 +26,8 @@ create "faf-anope" "faf-anope" "${MYSQL_ANOPE_PASSWORD}"
 create "faf-wiki" "faf-wiki" "${MYSQL_WIKI_PASSWORD}"
 create "faf-wordpress" "faf-wordpress" "${MYSQL_WORDPRESS_PASSWORD}"
 
-# faf-server needs to be able to update passwords in Anope's database. While we should only give write permission to
-# that specific table, this would require this project to know about the prefix and table names used by Anope, which I
-# consider worse than giving faf-server more permissions than it needs.
+# To update the IRC password, we give the python server full bloated access to all of anope's
+# privates. FIXME: Have the API do this instead.
 mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
     GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-python-server'@'%';
 SQL_SCRIPT
