@@ -36,4 +36,7 @@ COPY migrations/* /flyway/sql/
 COPY dump-structure.sh /
 RUN chmod +x dump-structure.sh
 
+# Copy test data for CI
+COPY test-data.sql /
+
 EXPOSE 3306
