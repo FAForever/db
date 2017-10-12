@@ -14,7 +14,6 @@ SQL_SCRIPT
 
 create "faf" "faf-java-api" "${MYSQL_JAVA_API_PASSWORD}"
 create "faf" "faf-python-api" "${MYSQL_PYTHON_API_PASSWORD}"
-create "faf" "faf-legacy-apps" "${MYSQL_LEGACY_APPS_PASSWORD}"
 create "faf" "faf-legacy-live-replay-server" "${MYSQL_LEGACY_LIVE_REPLAY_SERVER_PASSWORD}"
 create "faf" "faf-legacy-secondary-server" "${MYSQL_LEGACY_SECONDARY_SERVER_PASSWORD}"
 create "faf" "faf-legacy-updater" "${MYSQL_LEGACY_UPDATER_PASSWORD}"
