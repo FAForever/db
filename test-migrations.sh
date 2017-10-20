@@ -2,10 +2,10 @@
 set -e
 echo -e 'travis_fold:start:Start Migration Base Test'
 echo '# Start Migration Base Test...'
-docker exec -i faf-db mysql -uroot -pbanana <<< "DROP DATABASE faf;"
-docker exec -i faf-db mysql -uroot -pbanana <<< "CREATE DATABASE faf;"
+docker exec -i faf-db mysql --no-defaults -uroot -pbanana <<< "DROP DATABASE faf;"
+docker exec -i faf-db mysql --no-defaults -uroot -pbanana <<< "CREATE DATABASE faf;"
 echo 'Import dump ...'
-docker exec -i faf-db mysql -uroot -pbanana faf < ./faf-db-dump/dump.sql
+docker exec -i faf-db mysql --no-defaults -uroot -pbanana faf < ./faf-db-dump/dump.sql
 echo 'Migrate ...'
 docker exec -i faf-db ./migrate.sh
 
