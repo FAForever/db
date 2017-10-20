@@ -30,6 +30,8 @@ create "faf-phpbb3" "faf-phpbb3" "${MYSQL_PHPBB3_PASSWORD}"
 # privates. FIXME: Have the API do this instead.
 mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
     GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-python-server'@'%';
+    GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-java-server'@'%';
+    GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-java-api'@'%';
 SQL_SCRIPT
 
 # Allows faf-mysql-exporter to read metrics. It is recommended to set a max connection limit for the user to avoid
