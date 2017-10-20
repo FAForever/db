@@ -39,4 +39,11 @@ RUN chmod +x dump-structure.sh
 # Copy test data for CI
 COPY test-data.sql /
 
+# Copy pre-init script
+COPY pre-entry.sh /usr/local/bin/docker-pre-entry.sh
+RUN chmod +x /usr/local/bin/docker-pre-entry.sh
+ENTRYPOINT ["docker-pre-entry.sh"]
+# CMD has to be specified again after new ENTRYPOINT (https://docs.docker.com/engine/reference/builder/#entrypoint)
+CMD ["mysqld"]
+
 EXPOSE 3306
