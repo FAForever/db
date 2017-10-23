@@ -18,6 +18,10 @@ script:
 
 after_success:
   - docker exec -i faf-db /dump-structure.sh
+  - if [ -n "${TRAVIS_TAG}" ]; then
+      docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
+      docker push faforever/faf-db
+    fi
 
 after_failure:
   - docker logs faf-db
