@@ -6,4 +6,4 @@ if [ ! "${MYSQL_ROOT_PASSWORD+1}" ]; then
   exit 1
 fi
 
-mysqldump -uroot -p${MYSQL_ROOT_PASSWORD} --no-data faf || exit 1;
+mysqldump -uroot -p${MYSQL_ROOT_PASSWORD} --no-data --no-defaults faf || exit 1;
