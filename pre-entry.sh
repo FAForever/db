@@ -11,7 +11,6 @@ cat > /root/.my.cnf <<LOGIN_CNF
 user = root
 password = ${MYSQL_ROOT_PASSWORD}
 host = localhost
-database = faf
 LOGIN_CNF
 
 # Now run the real script
