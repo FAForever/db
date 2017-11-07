@@ -7,6 +7,7 @@ DELETE FROM ladder1v1_rating;
 DELETE FROM uniqueid_exempt;
 DELETE FROM version_lobby;
 DELETE FROM friends_and_foes;
+DELETE FROM ladder_map;
 DELETE FROM map_version_review;
 DELETE FROM map_version;
 DELETE FROM `map`;
@@ -107,6 +108,10 @@ values
 (15, 'SCMP 015', 8, 5, 5, 1, 'maps/scmp_015.v0001.zip', 0, 15),
 (16, 'SCMP 015', 8, 5, 5, 2, 'maps/scmp_015.v0002.zip', 0, 15),
 (17, 'SCMP 015', 8, 10, 10, 3, 'maps/scmp_015.v0003.zip', 0, 15);
+
+insert into ladder_map (id, idmap) values
+(1,1),
+(2,2);
 
 insert into game_featuredMods (id, gamemod, name, description, publish, git_url, git_branch, file_extension, allow_override)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', FALSE),
