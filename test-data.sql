@@ -31,6 +31,7 @@ DELETE FROM game_featuredMods;
 DELETE FROM teamkills;
 DELETE FROM ladder_division_score;
 DELETE FROM ladder_division;
+DELETE FROM lobby_admin;
 DELETE FROM login;
 
 -- Login table
@@ -39,6 +40,9 @@ insert into login (id, login, email, password) values (2, 'Dostya', 'dostya@cybr
 insert into login (id, login, email, password) values (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256));
 insert into login (id, login, email, password) values (4, 'No_UID', 'uid@uef.example.com', SHA2('his_pw', 256));
 insert into login (id, login, email, password) values (5, 'postman', 'postman@postman.com', SHA2('postman', 256));
+
+-- Permissions
+insert into lobby_admin (user_id, `group`) values (1,2);
 
 -- global rating
 insert into global_rating (id, mean, deviation, numGames, is_active)
