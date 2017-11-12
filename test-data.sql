@@ -32,14 +32,21 @@ DELETE FROM teamkills;
 DELETE FROM ladder_division_score;
 DELETE FROM ladder_division;
 DELETE FROM lobby_admin;
+DELETE FROM name_history;
 DELETE FROM login;
 
 -- Login table
-insert into login (id, login, email, password) values (1, 'test', 'test@example.com', SHA2('test_password', 256));
-insert into login (id, login, email, password) values (2, 'Dostya', 'dostya@cybran.example.com', SHA2('vodka', 256));
-insert into login (id, login, email, password) values (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256));
-insert into login (id, login, email, password) values (4, 'No_UID', 'uid@uef.example.com', SHA2('his_pw', 256));
-insert into login (id, login, email, password) values (5, 'postman', 'postman@postman.com', SHA2('postman', 256));
+insert into login (id, login, email, password) values
+  (1, 'test', 'test@example.com', SHA2('test_password', 256)),
+  (2, 'Dostya', 'dostya@cybran.example.com', SHA2('vodka', 256)),
+  (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256)),
+  (4, 'No_UID', 'uid@uef.example.com', SHA2('his_pw', 256)),
+  (5, 'postman', 'postman@postman.com', SHA2('postman', 256));
+
+-- Name history
+insert into name_history (id, change_time, user_id, previous_name) values
+  (1, date_sub(now(), interval 12 month), 1, "test_maniac"),
+  (2, date_sub(now(), interval 1 month), 2, "YoungDostya");
 
 -- Permissions
 insert into lobby_admin (user_id, `group`) values (1,2);
@@ -62,7 +69,7 @@ values
 insert into uniqueid_exempt (user_id, reason) values (1, 'Because test');
 
 -- UID Samples
-INSERT INTO `uniqueid` (`hash`, `uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`) 
+INSERT INTO `uniqueid` (`hash`, `uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`)
 VALUES ('some_id', '-', '-', '-', '-', '-', '-', '-', '-', '-'),
        ('another_id', '-', '-', '-', '-', '-', '-', '-', '-', '-');
 
@@ -157,7 +164,7 @@ insert into ban(id, player_id, author_id, reason, level) values
 insert into ban(player_id, author_id, reason, level, expires_at) values
   (4, 1, 'This test ban should be expired', 'CHAT', NOW());
 insert into ban_revoke (ban_id, reason, author_id) values
-  (2, 'I want to show that you can revoke the ban, but keep the data', 1); 
+  (2, 'I want to show that you can revoke the ban, but keep the data', 1);
 
 -- sample clans
 insert into clan (id, name, tag, founder_id, leader_id, description) values
