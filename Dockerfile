@@ -14,9 +14,9 @@ RUN wget -q http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYW
 RUN chown -R mysql /flyway
 
 # Download MariaDB driver (compatible with MySQL but supports local sockets
-RUN wget -q http://search.maven.org/remotecontent?filepath=org/mariadb/jdbc/mariadb-java-client/1.5.7/mariadb-java-client-1.5.7.jar -O flyway/drivers/mariadb-java-client-1.5.7.jar
+RUN wget -q http://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/1.5.7/mariadb-java-client-1.5.7.jar -O flyway/drivers/mariadb-java-client-1.5.7.jar
 # Download JNA which is needed for local socket support of the MariaDB driver
-RUN wget -q http://search.maven.org/remotecontent?filepath=net/java/dev/jna/jna/4.3.0/jna-4.3.0.jar -O flyway/drivers/jna-4.3.0.jar
+RUN wget -q http://repo1.maven.org/maven2/net/java/dev/jna/jna/4.3.0/jna-4.3.0.jar -O flyway/drivers/jna-4.3.0.jar
 
 COPY healthcheck.sh /
 RUN chmod +x healthcheck.sh
