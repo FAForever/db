@@ -34,11 +34,16 @@ DELETE FROM ladder_division;
 DELETE FROM login;
 
 -- Login table
-insert into login (id, login, email, password) values (1, 'test', 'test@example.com', SHA2('test_password', 256));
-insert into login (id, login, email, password) values (2, 'Dostya', 'dostya@cybran.example.com', SHA2('vodka', 256));
-insert into login (id, login, email, password) values (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256));
-insert into login (id, login, email, password) values (4, 'No_UID', 'uid@uef.example.com', SHA2('his_pw', 256));
-insert into login (id, login, email, password) values (5, 'postman', 'postman@postman.com', SHA2('postman', 256));
+-- Most accounts get a creation time in the past so that they pass account
+-- age check.
+insert into login (id, login, email, password, create_time) values (1, 'test', 'test@example.com', SHA2('test_password', 256), '2000-01-01 00:00:00');
+insert into login (id, login, email, password, create_time) values (2, 'Dostya', 'dostya@cybran.example.com', SHA2('vodka', 256), '2000-01-01 00:00:00');
+insert into login (id, login, email, password, create_time) values (3, 'Rhiza', 'rhiza@aeon.example.com', SHA2('puff_the_magic_dragon', 256), '2000-01-01 00:00:00');
+insert into login (id, login, email, password, create_time) values (4, 'No_UID', 'uid@uef.example.com', SHA2('his_pw', 256), '2000-01-01 00:00:00');
+insert into login (id, login, email, password, create_time) values (5, 'postman', 'postman@postman.com', SHA2('postman', 256), '2000-01-01 00:00:00');
+-- New accounts for testing account age check
+insert into login (id, login, email, password) values (6, 'newbie', 'noob@example.com', SHA2('password', 256));
+insert into login (id, login, email, password, steamid) values (7, 'steambie', 'steambie@example.com', SHA2('password', 256), 111111);
 
 -- global rating
 insert into global_rating (id, mean, deviation, numGames, is_active)
