@@ -34,6 +34,7 @@ DELETE FROM ladder_division;
 DELETE FROM lobby_admin;
 DELETE FROM name_history;
 DELETE FROM login;
+DELETE FROM email_domain_blacklist;
 
 -- Login table
 -- Most accounts get a creation time in the past so that they pass account
@@ -185,7 +186,9 @@ insert into clan_membership (clan_id, player_id) values
   (3, 1);
 
 -- sample oauth_client for Postman
-insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES ('postman-test', 'postman', 'postman-test', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
+insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES
+  ('faf-website', 'faf-website', 'banana', 'http://localhost:8020', 'http://localhost:8020', 'public_profile write_account_data'),
+  ('postman', 'postman', 'postman', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
 
 insert into updates_faf (id, filename, path) values
     (1, 'ForgedAlliance.exe', 'bin'),
@@ -229,3 +232,5 @@ INSERT INTO ladder_division_score (season, user_id, league, score, games) VALUES
 (1, 2, 1, 49.5, 70),
 (1, 3, 2, 0.0, 39),
 (1, 4, 3, 10.0, 121);
+
+INSERT INTO email_domain_blacklist VALUES ('spam.org');
