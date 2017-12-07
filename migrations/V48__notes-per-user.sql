@@ -3,7 +3,7 @@ CREATE TABLE user_notes
     id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id MEDIUMINT(9) unsigned NOT NULL,
     author MEDIUMINT(9) unsigned NOT NULL,
-    watched TINYINT(4) DEFAULT '0' NOT NULL,
+    watched TINYINT(4) DEFAULT '0' NOT NULL COMMENT 'boolean that marks notes that should be reviewed at a later time (i.e. gather facts before applying a ban)',
     note TEXT NOT NULL,
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
