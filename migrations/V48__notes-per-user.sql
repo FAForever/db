@@ -5,8 +5,8 @@ CREATE TABLE user_notes
     author MEDIUMINT(9) unsigned NOT NULL,
     watched TINYINT(4) DEFAULT '0' NOT NULL COMMENT 'boolean that marks notes that should be reviewed at a later time (i.e. gather facts before applying a ban)',
     note TEXT NOT NULL,
-    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	  create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT user_notes_user_login_id_fk FOREIGN KEY (user_id) REFERENCES login (id),
     CONSTRAINT user_notes_author_login_id_fk FOREIGN KEY (author) REFERENCES login (id)
 );
