@@ -3,7 +3,7 @@ FROM mysql:5.7.18
 ENV FLYWAY_VERSION 4.0.3
 
 # Install mysql_config which allows to set up a no-password login with --login-path
-RUN apt-get update -y > /dev/null && apt-get install -y libmysqlclient-dev wget > /dev/null
+RUN apt-get update -y --force-yes  > /dev/null && apt-get install -y --force-yes libmysqlclient-dev wget > /dev/null
 
 # Download flyway
 RUN wget -q http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz \
