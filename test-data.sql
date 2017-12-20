@@ -7,6 +7,7 @@ DELETE FROM ladder1v1_rating;
 DELETE FROM uniqueid_exempt;
 DELETE FROM version_lobby;
 DELETE FROM friends_and_foes;
+DELETE FROM ladder_map;
 DELETE FROM map_version_review;
 DELETE FROM map_version;
 DELETE FROM `map`;
@@ -30,7 +31,10 @@ DELETE FROM game_featuredMods;
 DELETE FROM teamkills;
 DELETE FROM ladder_division_score;
 DELETE FROM ladder_division;
+DELETE FROM lobby_admin;
+DELETE FROM name_history;
 DELETE FROM login;
+DELETE FROM email_domain_blacklist;
 
 -- Login table
 -- Most accounts get a creation time in the past so that they pass account
@@ -43,6 +47,14 @@ insert into login (id, login, email, password, create_time) values (5, 'postman'
 -- New accounts for testing account age check
 insert into login (id, login, email, password) values (6, 'newbie', 'noob@example.com', SHA2('password', 256));
 insert into login (id, login, email, password, steamid) values (7, 'steambie', 'steambie@example.com', SHA2('password', 256), 111111);
+
+-- Name history
+insert into name_history (id, change_time, user_id, previous_name) values
+  (1, date_sub(now(), interval 12 month), 1, "test_maniac"),
+  (2, date_sub(now(), interval 1 month), 2, "YoungDostya");
+
+-- Permissions
+insert into lobby_admin (user_id, `group`) values (1,2);
 
 -- global rating
 insert into global_rating (id, mean, deviation, numGames, is_active)
@@ -62,7 +74,7 @@ values
 insert into uniqueid_exempt (user_id, reason) values (1, 'Because test');
 
 -- UID Samples
-INSERT INTO `uniqueid` (`hash`, `uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`) 
+INSERT INTO `uniqueid` (`hash`, `uuid`, `mem_SerialNumber`, `deviceID`, `manufacturer`, `name`, `processorId`, `SMBIOSBIOSVersion`, `serialNumber`, `volumeSerialNumber`)
 VALUES ('some_id', '-', '-', '-', '-', '-', '-', '-', '-', '-'),
        ('another_id', '-', '-', '-', '-', '-', '-', '-', '-', '-');
 
@@ -113,6 +125,10 @@ values
 (16, 'SCMP 015', 8, 5, 5, 2, 'maps/scmp_015.v0002.zip', 0, 15),
 (17, 'SCMP 015', 8, 10, 10, 3, 'maps/scmp_015.v0003.zip', 0, 15);
 
+insert into ladder_map (id, idmap) values
+(1,1),
+(2,2);
+
 insert into game_featuredMods (id, gamemod, name, description, publish, git_url, git_branch, file_extension, allow_override)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', FALSE),
        (6, 'ladder1v1', 'FAF', 'Ladder games', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', TRUE),
@@ -142,8 +158,11 @@ insert into mod_stats (mod_id, times_played, likers) VALUES
         (3, 1, '');
 
 -- sample avatars
-insert into avatars_list (id, url, tooltip) values (1, 'http://content.faforever.com/faf/avatars/qai2.png', 'QAI');
-insert into avatars (idUser, idAvatar, selected) values (2, 1, 0);
+insert into avatars_list (id, url, tooltip) values
+  (1, 'http://content.faforever.com/faf/avatars/qai2.png', 'QAI'),
+  (2, 'http://content.faforever.com/faf/avatars/UEF.png', 'UEF');
+
+insert into avatars (idUser, idAvatar, selected) values (2, 1, 0), (2, 2, 1);
 insert into avatars (idUser, idAvatar, selected, expires_at) values (3, 1, 0, NOW());
 
 -- sample bans
@@ -153,7 +172,7 @@ insert into ban(id, player_id, author_id, reason, level) values
 insert into ban(player_id, author_id, reason, level, expires_at) values
   (4, 1, 'This test ban should be expired', 'CHAT', NOW());
 insert into ban_revoke (ban_id, reason, author_id) values
-  (2, 'I want to show that you can revoke the ban, but keep the data', 1); 
+  (2, 'I want to show that you can revoke the ban, but keep the data', 1);
 
 -- sample clans
 insert into clan (id, name, tag, founder_id, leader_id, description) values
@@ -167,7 +186,9 @@ insert into clan_membership (clan_id, player_id) values
   (3, 1);
 
 -- sample oauth_client for Postman
-insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES ('postman-test', 'postman', 'postman-test', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
+insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES
+  ('faf-website', 'faf-website', 'banana', 'http://localhost:8020', 'http://localhost:8020', 'public_profile write_account_data'),
+  ('postman', 'postman', 'postman', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
 
 insert into updates_faf (id, filename, path) values
     (1, 'ForgedAlliance.exe', 'bin'),
@@ -211,3 +232,5 @@ INSERT INTO ladder_division_score (season, user_id, league, score, games) VALUES
 (1, 2, 1, 49.5, 70),
 (1, 3, 2, 0.0, 39),
 (1, 4, 3, 10.0, 121);
+
+INSERT INTO email_domain_blacklist VALUES ('spam.org');
