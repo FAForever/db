@@ -4,9 +4,10 @@ create() {
   database=$1
   username=$2
   password=$3
+  db_options=${4:-}
 
   mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
-    CREATE DATABASE IF NOT EXISTS \`${database}\`;
+    CREATE DATABASE IF NOT EXISTS \`${database}\` ${db_options};
     CREATE USER '${username}'@'%' IDENTIFIED BY '${password}';
     GRANT ALL PRIVILEGES ON \`${database}\`.* TO '${username}'@'%';
 SQL_SCRIPT
@@ -26,12 +27,17 @@ create "faf-anope" "faf-anope" "${MYSQL_ANOPE_PASSWORD}"
 create "faf-wiki" "faf-wiki" "${MYSQL_WIKI_PASSWORD}"
 create "faf-wordpress" "faf-wordpress" "${MYSQL_WORDPRESS_PASSWORD}"
 create "faf-phpbb3" "faf-phpbb3" "${MYSQL_PHPBB3_PASSWORD}"
+create "faf-mautic" "faf-mautic" "${MYSQL_MAUTIC_PASSWORD}"
+create "faf-postal" "faf-postal" "${MYSQL_POSTAL_PASSWORD}" "CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci"
 
-# To update the IRC password, we give the python server full bloated access to all of anope's
-# privates. FIXME: Have the API do this instead.
+# To update the IRC password, we give the server/api full bloated access to all of anope's tables.
+mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
+    GRANT ALL PRIVILEGES ON `${POSTAL_MESSAGE_DATABASE_PREFIX}-%` . * to `faf-postal`@`%`;
+SQL_SCRIPT
+
+# To update the IRC password, we give the server/api full bloated access to all of anope's tables.
 mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
     GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-python-server'@'%';
-    GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-java-server'@'%';
     GRANT ALL PRIVILEGES ON \`faf-anope\`.* TO 'faf-java-api'@'%';
 SQL_SCRIPT
 
