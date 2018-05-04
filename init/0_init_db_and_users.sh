@@ -32,7 +32,7 @@ create "faf-postal" "faf-postal" "${MYSQL_POSTAL_PASSWORD}" "CHARSET utf8mb4 COL
 
 # To update the IRC password, we give the server/api full bloated access to all of anope's tables.
 mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
-    GRANT ALL PRIVILEGES ON `${POSTAL_MESSAGE_DATABASE_PREFIX}-%`.* to 'faf-postal'@'%';
+    GRANT ALL PRIVILEGES ON \`${POSTAL_MESSAGE_DATABASE_PREFIX}-%\`.* to 'faf-postal'@'%';
 SQL_SCRIPT
 
 # To update the IRC password, we give the server/api full bloated access to all of anope's tables.
