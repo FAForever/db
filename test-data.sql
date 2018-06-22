@@ -36,6 +36,10 @@ DELETE FROM ladder_division_score;
 DELETE FROM ladder_division;
 DELETE FROM lobby_admin;
 DELETE FROM name_history;
+DELETE FROM group_permission_assignment;
+DELETE FROM group_permission;
+DELETE FROM user_group_assignment;
+DELETE FROM user_group;
 DELETE FROM login;
 DELETE FROM email_domain_blacklist;
 
