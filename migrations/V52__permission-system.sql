@@ -5,7 +5,8 @@ CREATE TABLE `user_group` (
   `public` TINYINT(1)  NOT NULL COMMENT 'Public groups are visible for everyone, the rest only for internal permissions',
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) )
+  PRIMARY KEY (`id`),
+  FOREIGN KEY `parent_group_key` (`parent_group_id`) REFERENCES `user_group` (`id`))
 COMMENT = 'List of all user groups. Some of them are only informative  (i.e. council of setons on website), others for permissions system.';
 
 
