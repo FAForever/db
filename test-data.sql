@@ -26,7 +26,6 @@ DELETE FROM updates_faf;
 DELETE FROM updates_faf_files;
 DELETE FROM avatars;
 DELETE FROM avatars_list;
-DELETE FROM ban_revoke;
 DELETE FROM ban;
 DELETE FROM clan_membership;
 DELETE FROM clan;
@@ -183,8 +182,9 @@ insert into ban(id, player_id, author_id, reason, level) values
   (2, 3, 1, 'This test ban should be revoked', 'CHAT');
 insert into ban(player_id, author_id, reason, level, expires_at) values
   (4, 1, 'This test ban should be expired', 'CHAT', NOW());
-insert into ban_revoke (ban_id, reason, author_id) values
-  (2, 'I want to show that you can revoke the ban, but keep the data', 1);
+insert into ban (player_id, author_id, reason, level, expires_at, revoke_reason, revoke_author_id, revoke_time) values
+  (4, 1, 'This test ban should be revoked', 'CHAT', DATE_ADD(NOW(), INTERVAL 1 YEAR), 'this was a test ban', 1,
+   NOW());
 
 -- sample clans
 insert into clan (id, name, tag, founder_id, leader_id, description) values
