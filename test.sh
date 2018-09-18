@@ -4,7 +4,7 @@ set -e
 echo -e 'travis_fold:start:docker'
 echo '# Build & Run Docker Container'
 docker build -t faf-db .
-docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -p 3306:3306 faf-db
+docker run -d --name faf-db -e MYSQL_ROOT_PASSWORD=banana -e DB_NAME=faf -p 3306:3306 faf-db
 
 echo 'wait on faf-db ...'
 counter=1
