@@ -6,8 +6,15 @@ if [ ! "${MYSQL_ROOT_PASSWORD+1}" ]; then
   exit 1
 fi
 
+
+if [ -z "${DB_NAME}" ]; then
+  echo "Variable DB_NAME has not been set or is empty"
+  exit 1
+fi
+
+
 cat <<EOF > /flyway/conf/flyway.conf
-flyway.url=jdbc:mysql://127.0.0.1/faf?localSocket=/var/run/mysqld/mysqld.sock
+flyway.url=jdbc:mysql://127.0.0.1/${DB_NAME}?localSocket=/var/run/mysqld/mysqld.sock
 flyway.user=root
 flyway.password=${MYSQL_ROOT_PASSWORD}
 EOF
