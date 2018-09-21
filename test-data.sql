@@ -1,5 +1,7 @@
 -- DUMMY DATA ONLY, FOR USE IN UNIT TESTS
 
+DELETE FROM teamkills;
+DELETE FROM tutorial;
 DELETE FROM unique_id_users;
 DELETE FROM uniqueid;
 DELETE FROM global_rating;
