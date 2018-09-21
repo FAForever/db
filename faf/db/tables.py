@@ -268,7 +268,6 @@ class Login(Base):
     salt = Column(String(16))
     email = Column(String(254, 'latin1_bin'), nullable=False)
     ip = Column(String(15, 'latin1_bin'))
-    steamid = Column(BigInteger)
     create_time = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
     update_time = Column(DateTime, nullable=False, server_default=text("'0000-00-00 00:00:00'"))
 
@@ -480,3 +479,10 @@ class VersionLobby(Base):
     id = Column(Integer, primary_key=True)
     file = Column(String(100))
     version = Column(String(100), nullable=False)
+
+class AccountAuthorization(Base):
+    __tablename__ = 'account_authorization'
+
+    id = Column(Integer, primary_key=True)
+    player_id = Column(Integer, nullable=false)
+    authorization_type = Column(Enum('steam','telegram'), nullable=False)

@@ -56,7 +56,8 @@ insert into login (id, login, email, password, create_time) values (4, 'No_UID',
 insert into login (id, login, email, password, create_time) values (5, 'postman', 'postman@postman.com', SHA2('postman', 256), '2000-01-01 00:00:00');
 -- New accounts for testing account age check
 insert into login (id, login, email, password) values (6, 'newbie', 'noob@example.com', SHA2('password', 256));
-insert into login (id, login, email, password, steamid) values (7, 'steambie', 'steambie@example.com', SHA2('password', 256), 111111);
+insert into login (id, login, email, password)
+values (7, 'steambie', 'steambie@example.com', SHA2('password', 256));
 
 -- Name history
 insert into name_history (id, change_time, user_id, previous_name) values
