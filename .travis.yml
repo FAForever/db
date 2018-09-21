@@ -14,6 +14,8 @@ before_script:
 script:
   - chmod +x ./test.sh && ./test.sh
   - docker exec -i faf-db mysql -uroot -pbanana faf < test-data.sql
+  # run twice to check whether the cleanup works as well
+  - docker exec -i faf-db mysql -uroot -pbanana faf < test-data.sql
   - chmod +x ./test-migrations.sh && ./test-migrations.sh
 
 after_success:
