@@ -1,5 +1,7 @@
 -- DUMMY DATA ONLY, FOR USE IN UNIT TESTS
 
+DELETE FROM reported_user;
+DELETE FROM moderation_report;
 DELETE FROM teamkills;
 DELETE FROM unique_id_users;
 DELETE FROM uniqueid;
