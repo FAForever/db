@@ -197,7 +197,7 @@ insert into clan_membership (clan_id, player_id) values
 
 -- sample oauth_client for Postman
 insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES
-  ('3bc8282c-7730-11e5-8bcf-feff819cdc9f ', 'Java client', '{noop}6035bd78-7730-11e5-8bcf-feff819cdc9f', 'http://localhost:8020', 'http://localhost:8020', 'read_events read_achievements upload_map'),
+  ('3bc8282c-7730-11e5-8bcf-feff819cdc9f ', 'Downlord's FAF Client', '{noop}6035bd78-7730-11e5-8bcf-feff819cdc9f', '', '', 'read_events read_achievements upload_map'),
   ('faf-website', 'faf-website', '{noop}banana', 'http://localhost:8020', 'http://localhost:8020', 'public_profile write_account_data create_user'),
   ('postman', 'postman', '{noop}postman', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
 
