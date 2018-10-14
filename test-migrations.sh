@@ -7,7 +7,11 @@ docker exec -i faf-db mysql --no-defaults -uroot -pbanana <<< "CREATE DATABASE f
 echo 'Import dump ...'
 docker exec -i faf-db mysql --no-defaults -uroot -pbanana faf < ./faf-db-dump/dump.sql
 echo 'Migrate ...'
-docker exec -i faf-db ./migrate.sh
+docker run --network="faf" \
+           -e FLYWAY_URL=jdbc:mysql://faf-db/faf?useSSL=false \
+           -e FLYWAY_USER=root \
+           -e FLYWAY_PASSWORD=banana \
+           faf-db-migrations migrate
 
 echo '... Migration Test finished.'
 echo -e 'travis_fold:end:Start Migration Base Test'
