@@ -3,10 +3,17 @@ language: python
 sudo: required
 dist: trusty
 
-python: "3.5"
+python: "3.6"
 
 services:
   - docker
+
+addons:
+  apt:
+    sources:
+    - mysql-5.7-trusty
+    packages:
+    - mysql-client
 
 before_script:
   - sudo /etc/init.d/mysql stop
@@ -20,10 +27,10 @@ script:
 
 after_success:
   - docker exec -i faf-db /dump-structure.sh
-  - export REPO=faforever/faf-db
+  - export REPO=faforever/faf-db-migrations
   - if [ -n "${TRAVIS_TAG}" ]; then
       docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}";
-      docker tag faf-db ${REPO}:${TRAVIS_TAG};
+      docker tag faf-db-migrations ${REPO}:${TRAVIS_TAG};
       docker push ${REPO};
     fi
 
