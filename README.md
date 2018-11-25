@@ -22,6 +22,9 @@ Where you have to replace `root` and `banana` with your custom credentials.
 
 
 ## Usage with plain Docker
+**We highly advice you to start the db with faf-stack instead.**
+
+If you do continue, you will lack the proper setup of database users and privileges. You also might run into compatibility issues with other services that are dependent on a specific db release. Please only continue, if you want to work on the db itself.
 
 ### Create a network
 Create a network to connect the Docker containers to each other. _The `--link` method used in many tutorials is deprecated._
@@ -38,7 +41,11 @@ If you want other Docker containers to connect to the database, put them into th
                mysql:5.7
 
 ### Updating the database
-In order to update an existing database to the newest schema version, execute:
+In order to update an existing database to the newest schema version, first you need to build it from within the directory:
+
+    docker build -t faf-db-migrations .
+
+Once the docker image was built you can start it:
 
     docker run --network="faf" \
                -e FLYWAY_URL=jdbc:mysql://faf-db/faf?useSSL=false \
