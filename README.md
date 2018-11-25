@@ -42,6 +42,7 @@ In order to update an existing database to the newest schema version, execute:
 
     docker run --network="faf" \
                -e FLYWAY_URL=jdbc:mysql://faf-db/faf?useSSL=false \
+               -e FLYWAY_TABLE=schema_version \
                -e FLYWAY_USER=root \
                -e FLYWAY_PASSWORD=banana \
                faf-db-migrations migrate
