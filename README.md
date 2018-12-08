@@ -5,13 +5,14 @@ This project contains the FAF database structure for the core FAF database used 
 ## Usage with faf-stack
 We highly recommended using [faf-stack](https://github.com/FAForever/faf-stack) to interact with the database.
 
+### Preparing faf-stack
+    git clone https://github.com/FAForever/faf-stack
+    cd faf-stack
+    cp .env.template .env
+    cp -r config.template config
+
 ### Creating a new database
-    docker-compose up -d faf-db
-
-### Updating the database
-In order to update an existing database to the newest schema version, execute:
-
-    docker-compose run faf-db-migrations migrate
+    scripts/init-db.sh
 
 ### Connecting to the database
 In order to connect to the database using the mysql client, execute:
