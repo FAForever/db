@@ -141,7 +141,7 @@ insert into ladder_map (id, idmap) values
 (2,2);
 
 INSERT INTO `coop_map` (`type`, `name`, `description`, `version`, `filename`)
-VALUES (4,'Prothyon - 16','Prothyon - 16 is a secret UEF facillity...', 5, 'maps/prothyon16.v0005.zip');
+VALUES (4,'Prothyon - 16','Prothyon - 16 is a secret UEF facility...', 5, 'maps/prothyon16.v0005.zip');
 
 insert into game_featuredMods (id, gamemod, name, description, publish, git_url, git_branch, file_extension, allow_override)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', FALSE),
