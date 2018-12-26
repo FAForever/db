@@ -16,6 +16,7 @@ DELETE FROM map_version_review;
 DELETE FROM map_version_reviews_summary;
 DELETE FROM map_version;
 DELETE FROM `map`;
+DELETE FROM coop_map;
 DELETE FROM mod_version_review;
 DELETE FROM mod_version_reviews_summary;
 DELETE FROM mod_version;
@@ -141,7 +142,12 @@ insert into ladder_map (id, idmap) values
 (2,2);
 
 INSERT INTO `coop_map` (`type`, `name`, `description`, `version`, `filename`)
-VALUES (4,'Prothyon - 16','Prothyon - 16 is a secret UEF facility...', 5, 'maps/prothyon16.v0005.zip');
+VALUES (0, 'FA Campaign map', 'A map from the FA campaign', 2, 'maps/scmp_coop_123.v0002.zip'),
+       (1, 'Aeon Campaign map', 'A map from the Aeon campaign', 0, 'maps/scmp_coop_124.v0000.zip'),
+       (2, 'Cybran Campaign map', 'A map from the Cybran campaign', 1, 'maps/scmp_coop_125.v0001.zip'),
+       (3, 'UEF Campaign map',   'A map from the UEF campaign', 99, 'maps/scmp_coop_126.v0099.zip'),
+       (4, 'Prothyon - 16', 'Prothyon - 16 is a secret UEF facility...', 5, 'maps/prothyon16.v0005.zip'),
+       (100, 'Corrupted Map', 'This is corrupted and you should never see it', 0, '$invalid &string*');
 
 insert into game_featuredMods (id, gamemod, name, description, publish, git_url, git_branch, file_extension, allow_override)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', FALSE),
