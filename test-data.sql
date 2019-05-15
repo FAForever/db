@@ -1,5 +1,6 @@
 -- DUMMY DATA ONLY, FOR USE IN UNIT TESTS
 
+DELETE FROM player_events;
 DELETE FROM reported_user;
 DELETE FROM moderation_report;
 DELETE FROM teamkills;
@@ -158,8 +159,8 @@ insert into game_stats (id, startTime, gameName, gameType, gameMod, `host`, mapI
 values (1, NOW(), 'Test game', '0', 6, 1, 1, 0);
 
 insert into friends_and_foes (user_id, subject_id, `status`)
-values(42, 56, 'FRIEND'),
-      (42, 57, 'FOE');
+values(1, 2, 'FRIEND'),
+      (1, 3, 'FOE');
 
 insert into `mod` (id, display_name, author)
 VALUES (1, 'test-mod', 'baz'),
