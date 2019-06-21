@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS bugreport_status;
 DROP TABLE IF EXISTS bugreports;
 DROP TABLE IF EXISTS bugreport_targets;
 DROP TABLE IF EXISTS lobby_ban_;
-DROP TABLE IF EXISTS matchmaker_ban;
 DROP TABLE IF EXISTS game_start_times;
 DROP TABLE IF EXISTS recoveryemails_enc;
 DROP TABLE IF EXISTS steam_link_request;
