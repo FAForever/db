@@ -1,5 +1,7 @@
 -- DUMMY DATA ONLY, FOR USE IN UNIT TESTS
 
+DELETE FROM coop_map_type_to_needed_featured_mods;
+DELETE FROM coop_map_type;
 DELETE FROM player_events;
 DELETE FROM reported_user;
 DELETE FROM moderation_report;
@@ -142,13 +144,17 @@ insert into ladder_map (id, idmap) values
 (1,1),
 (2,2);
 
-INSERT INTO `coop_map` (`type`, `name`, `description`, `version`, `filename`)
-VALUES (0, 'FA Campaign map', 'A map from the FA campaign', 2, 'maps/scmp_coop_123.v0002.zip'),
-       (1, 'Aeon Campaign map', 'A map from the Aeon campaign', 0, 'maps/scmp_coop_124.v0000.zip'),
-       (2, 'Cybran Campaign map', 'A map from the Cybran campaign', 1, 'maps/scmp_coop_125.v0001.zip'),
-       (3, 'UEF Campaign map',   'A map from the UEF campaign', 99, 'maps/scmp_coop_126.v0099.zip'),
-       (4, 'Prothyon - 16', 'Prothyon - 16 is a secret UEF facility...', 5, 'maps/prothyon16.v0005.zip'),
-       (100, 'Corrupted Map', 'This is corrupted and you should never see it', 0, '$invalid &string*');
+-- TODO: comment back in after migration V71 because a column was renamed there
+-- INSERT INTO `coop_map` (`coop_map_type_id`, `name`, `description`, `version`, `filename`)
+-- VALUES (0, 'FA Campaign map', 'A map from the FA campaign', 2, 'maps/scmp_coop_123.v0002.zip'),
+--        (1, 'Aeon Campaign map', 'A map from the Aeon campaign', 0, 'maps/scmp_coop_124.v0000.zip'),
+--        (2, 'Cybran Campaign map', 'A map from the Cybran campaign', 1, 'maps/scmp_coop_125.v0001.zip'),
+--        (3, 'UEF Campaign map',   'A map from the UEF campaign', 99, 'maps/scmp_coop_126.v0099.zip'),
+--        (4, 'Prothyon - 16', 'Prothyon - 16 is a secret UEF facility...', 5, 'maps/prothyon16.v0005.zip'),
+--        (100, 'Corrupted Map', 'This is corrupted and you should never see it', 0, '$invalid &string*');
+
+-- INSERT INTO coop_map_type (id,name,main_featured_id) VALUE (0,'first type',25);
+-- INSERT INTO coop_map_type_to_needed_featured_mods(coop_map_type_id, needed_featured_id) VALUE (0,1);
 
 insert into game_featuredMods (id, gamemod, name, description, publish, git_url, git_branch, file_extension, allow_override)
 values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAForever/fa.git', 'deploy/faf', 'nx2', FALSE),
