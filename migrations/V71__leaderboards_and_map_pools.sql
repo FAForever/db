@@ -14,7 +14,7 @@ CREATE TABLE leaderboard_rating
     login_id       INT       NOT NULL REFERENCES login (id),
     mean           FLOAT     NOT NULL,
     deviation      FLOAT     NOT NULL,
-    rating         FLOAT     NOT NULL GENERATED ALWAYS AS (mean - 3 * deviation), -- TODO: is this column even necessary?
+    rating         FLOAT     GENERATED ALWAYS AS (mean - 3 * deviation), -- TODO: is this column even necessary?
     total_games    INT       NOT NULL,
     won_games      INT       NOT NULL,
     leaderboard_id INT       NOT NULL REFERENCES leaderboard (id),
@@ -45,4 +45,3 @@ CREATE TABLE matchmaker_pool
     `create_time`   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `update_time`   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) COMMENT="When using the matchmaker, players will be added to a specific matchmaker pool (e.g. 'ladder1v1', 'ladder2v2'). Players within the same pool can be matched. The pool specifies which featured mod will be played and which leaderboard will be used to look up and update a player''s rating.";
-
