@@ -23,7 +23,7 @@ Where you have to replace `root` and `banana` with your custom credentials.
 
 
 ## Usage with plain Docker
-**We highly advice you to start the db with faf-stack instead.**
+**We highly advise you to start the db with faf-stack instead.**
 
 If you do continue, you will lack the proper setup of database users and privileges. You also might run into compatibility issues with other services that are dependent on a specific db release. Please only continue, if you want to work on the db itself.
 
