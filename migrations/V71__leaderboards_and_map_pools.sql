@@ -14,7 +14,7 @@ CREATE TABLE leaderboard_rating
     login_id       INT       NOT NULL REFERENCES login (id),
     mean           FLOAT     NOT NULL,
     deviation      FLOAT     NOT NULL,
-    rating         FLOAT     GENERATED ALWAYS AS (mean - 3 * deviation), -- TODO: is this column even necessary?
+    rating         FLOAT     GENERATED ALWAYS AS (mean - 3 * deviation) STORED,
     total_games    INT       NOT NULL,
     won_games      INT       NOT NULL,
     leaderboard_id INT       NOT NULL REFERENCES leaderboard (id),
