@@ -15,8 +15,8 @@ CREATE TABLE leaderboard_rating
     mean           FLOAT     NOT NULL,
     deviation      FLOAT     NOT NULL,
     rating         FLOAT     GENERATED ALWAYS AS (mean - 3 * deviation) STORED,
-    total_games    INT       NOT NULL,
-    won_games      INT       NOT NULL,
+    total_games    INT       NOT NULL DEFAULT 0,
+    won_games      INT       NOT NULL DEFAULT 0,
     leaderboard_id INT       NOT NULL REFERENCES leaderboard (id),
     create_time  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     update_time  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
