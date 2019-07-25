@@ -32,7 +32,8 @@ CREATE TABLE leaderboard_rating_journal
     rating_mean_after       FLOAT      NOT NULL,
     rating_deviation_after  FLOAT      NOT NULL,
     create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX lookup_id (game_player_stats_id, leaderboard_id)
 );
 
 CREATE TABLE matchmaker_pool
