@@ -8,13 +8,6 @@ python: "3.6"
 services:
   - docker
 
-addons:
-  apt:
-    sources:
-    - mysql-5.7-trusty
-    packages:
-    - mysql-client
-
 before_script:
   - sudo /etc/init.d/mysql stop
 

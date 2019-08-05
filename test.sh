@@ -16,7 +16,7 @@ counter=1
 # wait 5 minutes on docker container
 while [ $counter -le 300 ]
 do
-    if mysqladmin ping -h 127.0.0.1 -uroot -pbanana 2> /dev/null; then
+    if docker exec -it faf-db sh -c "mysqladmin ping -h 127.0.0.1 -uroot -pbanana" 2> /dev/null; then
         echo -en 'travis_fold:end:docker\\r'
 
         # run flyway migrations
