@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS `league_event` (
+  `id`                      INT UNSIGNED           NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  
+  `start_time`              TIMESTAMP              NOT NULL,
+  `end_time`                TIMESTAMP              NOT NULL,
+  
+  `win_score`               FLOAT                  NOT NULL DEFAULT 1,
+  `draw_score`              FLOAT                  NOT NULL DEFAULT 0,
+  `loss_score`              FLOAT                  NOT NULL DEFAULT -1,
+  
+  `create_time`             TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time`             TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `league_event_rating_category` (
+  `id`                      INT UNSIGNED           NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `league_event_id`         INT UNSIGNED           NOT NULL,
+  
+  `rating`                  INT                    NOT NULL,
+  
+  `create_time`             TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time`             TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
+  
+  CONSTRAINT league_event_id_of_league_event_rating_category FOREIGN KEY (`league_event_id`) REFERENCES league_event (id)
+);
