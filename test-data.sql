@@ -1,5 +1,7 @@
 -- DUMMY DATA ONLY, FOR USE IN UNIT TESTS
 
+SET FOREIGN_KEY_CHECKS=0;
+
 DELETE FROM player_events;
 DELETE FROM reported_user;
 DELETE FROM moderation_report;
@@ -40,12 +42,11 @@ DELETE FROM ladder_division_score;
 DELETE FROM ladder_division;
 DELETE FROM lobby_admin;
 DELETE FROM name_history;
-DELETE FROM group_permission_assignment;
-DELETE FROM group_permission;
 DELETE FROM user_group_assignment;
-DELETE FROM user_group;
 DELETE FROM login;
 DELETE FROM email_domain_blacklist;
+
+SET FOREIGN_KEY_CHECKS=1;
 
 -- Login table
 -- Most accounts get a creation time in the past so that they pass account
@@ -63,11 +64,13 @@ insert into login (id, login, email, password, ip) values (8, 'ipv6', 'ipv6@exam
 
 -- Name history
 insert into name_history (id, change_time, user_id, previous_name) values
-  (1, date_sub(now(), interval 12 month), 1, "test_maniac"),
-  (2, date_sub(now(), interval 1 month), 2, "YoungDostya");
+  (1, date_sub(now(), interval 12 month), 1, 'test_maniac'),
+  (2, date_sub(now(), interval 1 month), 2, 'YoungDostya');
 
 -- Permissions
 insert into lobby_admin (user_id, `group`) values (1,2);
+insert into user_group_assignment(user_id, group_id)  values (1, (SELECT id from user_group WHERE technical_name = 'faf_server_administrators'));
+insert into user_group_assignment(user_id, group_id)  values (2, (SELECT id from user_group WHERE technical_name = 'faf_moderators_global'));
 
 -- global rating
 insert into global_rating (id, mean, deviation, numGames, is_active)
@@ -188,8 +191,8 @@ insert into avatars (idUser, idAvatar, selected, expires_at) values (3, 1, 0, NO
 
 -- sample bans
 insert into ban(id, player_id, author_id, reason, level) values
-  (1, 2, 1, 'Test permanent ban', 'GLOBAL'),
-  (2, 3, 1, 'This test ban should be revoked', 'CHAT');
+  (1, 3, 1, 'Test permanent ban', 'GLOBAL'),
+  (2, 4, 1, 'This test ban should be revoked', 'CHAT');
 insert into ban(player_id, author_id, reason, level, expires_at) values
   (4, 1, 'This test ban should be expired', 'CHAT', NOW());
 insert into ban (player_id, author_id, reason, level, expires_at, revoke_reason, revoke_author_id, revoke_time) values
