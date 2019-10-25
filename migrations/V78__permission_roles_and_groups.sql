@@ -112,7 +112,7 @@ INSERT INTO group_permission_assignment (group_id, permission_id)
 INSERT INTO group_permission_assignment (group_id, permission_id)
     SELECT user_group.id, group_permission.id FROM user_group, group_permission
     WHERE user_group.technical_name = 'faf_server_administrators'
-    AND group_permission.technical_name IN ('READ_AUDIT_LOG', 'READ_USER_GROUP', 'WRITE_USER_GROUP', 'WRITE_NEWS_POST', 'WRITE_MESSAGE');
+    AND group_permission.technical_name IN ('READ_AUDIT_LOG', 'READ_USER_GROUP', 'WRITE_USER_GROUP', 'WRITE_NEWS_POST', 'WRITE_MESSAGE', 'WRITE_EMAIL_DOMAIN_BAN', 'WRITE_TUTORIAL');
 
 -- Tournament directors
 INSERT INTO group_permission_assignment (group_id, permission_id)
