@@ -1,3 +1,0 @@
-ALTER TABLE clan
-  ADD     is_open    BOOLEAN       NOT NULL DEFAULT   0;
-  
