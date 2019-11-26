@@ -1,0 +1,3 @@
+ALTER TABLE game_player_stats
+  ADD COLUMN outcome ENUM('VICTORY', 'DEFEAT', 'DRAW', 'MUTUAL_DRAW', 'UNDETERMINED')
+    default 'UNDETERMINED';
