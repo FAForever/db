@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo -e 'travis_fold:start:docker'
+echo 'travis_fold:start:bootstrap'
 echo '# Build & Run Docker Container'
 docker build -t faf-db-migrations .
 docker network create faf
@@ -16,8 +16,8 @@ counter=1
 # wait 5 minutes on docker container
 while [ $counter -le 300 ]
 do
-    if docker exec -it faf-db sh -c "mysqladmin ping -h 127.0.0.1 -uroot -pbanana" 2> /dev/null; then
-        echo -en 'travis_fold:end:docker\\r'
+    if docker exec -it faf-db sh -c "mysqladmin ping -h 127.0.0.1 -uroot -pbanana" &> /dev/null; then
+        echo 'travis_fold:end:bootstrap'
 
         # run flyway migrations
         docker run --network="faf" \
@@ -33,5 +33,5 @@ do
     ((counter++))
 done
 echo 'Error: faf-db is not running after 5 minute timeout'
-echo -e 'travis_fold:end:docker'
+echo 'travis_fold:end:bootstrap'
 exit 1
