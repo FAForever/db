@@ -18,4 +18,14 @@ script:
 
 after_success:
   - docker exec -i faf-db /dump-structure.sh
+  - ./ci/schemaspy.sh
   - ./ci/docker-build.sh
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_PAGES_TOKEN
+  keep_history: false
+  on:
+    branch: develop
+  local_dir: ./public
