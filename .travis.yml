@@ -1,9 +1,4 @@
-language: python
-
 sudo: required
-dist: trusty
-
-python: "3.6"
 
 services:
   - docker
@@ -17,7 +12,6 @@ script:
   - ./ci/test-migrations.sh
 
 after_success:
-  - docker exec -i faf-db /dump-structure.sh
   - ./ci/schemaspy.sh
   - ./ci/docker-build.sh
 
