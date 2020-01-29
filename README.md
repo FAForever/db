@@ -2,6 +2,8 @@
 
 This project contains the FAF database structure for the core FAF database used by the API and server. Other databases like for the forums or wiki are not part of this repository.
 
+You can find a visual representation of the current schema on this projects [gitlab page](https://faforever.github.io/db/relationships.html).
+
 ## Usage with faf-stack
 We highly recommended using [faf-stack](https://github.com/FAForever/faf-stack) to interact with the database.
 
