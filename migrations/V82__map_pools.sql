@@ -1,7 +1,7 @@
 CREATE TABLE map_pool
 (
     id                  INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name                VARCHAR(255) NOT NULL,
+    name                VARCHAR(255) NOT NULL COMMENT "Only to help admins with organization. Don't show this to the user.",
     create_time         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     update_time         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB
