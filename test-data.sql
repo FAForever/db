@@ -45,6 +45,11 @@ DELETE FROM name_history;
 DELETE FROM user_group_assignment;
 DELETE FROM login;
 DELETE FROM email_domain_blacklist;
+DELETE FROM leaderboard;
+DELETE FROM matchmaker_pool;
+DELETE FROM matchmaker_pool_map_pools;
+DELETE FROM map_pool;
+DELETE FROM map_pool_maps;
 
 SET FOREIGN_KEY_CHECKS=1;
 
@@ -160,6 +165,31 @@ values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAFor
 
 insert into game_stats (id, startTime, gameName, gameType, gameMod, `host`, mapId, validity)
 values (1, NOW(), 'Test game', '0', 6, 1, 1, 0);
+
+insert into leaderboard (id, technical_name, name_key, description_key)
+values (1, "global", "leaderboard.global.name", "leaderboard.global.desc"),
+       (2, "ladder1v1", "leaderboard.ladder1v1.name", "leaderboard.ladder1v1.desc"),
+       (3, "ladder2v2", "leaderboard.ladder2v2.name", "leaderboard.ladder2v2.desc");
+
+insert into matchmaker_pool (id, technical_name, featured_mod_id, leaderboard_id, name_key)
+values (1, "ladder1v1", 1, 1, "matchmaker.ladder1v1"),
+       (2, "ladder2v2", 1, 2, "matchmaker.ladder2v2");
+
+insert into map_pool (id, name)
+values (1, "Ladder1v1 season 1: 5-10k"),
+       (2, "Ladder1v1 season 1: all"),
+       (3, "Large maps");
+
+insert into map_pool_maps (map_pool_id, map_id)
+values (1, 15), (1, 16), (1, 17),
+       (2, 11), (2, 14), (2, 15), (2, 16), (2, 17),
+       (3, 1),  (3, 2),  (3, 3);
+
+insert into matchmaker_pool_map_pools (matchmaker_pool_id, map_pool_id, min_rating, max_rating)
+values (1, 1, NULL, 800),
+       (1, 2, 800, NULL),
+       (1, 3, 1000, NULL),
+       (2, 3, NULL, NULL);
 
 insert into friends_and_foes (user_id, subject_id, `status`)
 values(1, 2, 'FRIEND'),
