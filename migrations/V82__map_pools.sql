@@ -10,9 +10,9 @@ COMMENT="A collection of maps, used by a matchmaker_pool for map selection";
 CREATE TABLE map_pool_maps
 (
     map_pool_id   INT NOT NULL REFERENCES map_pool (id),
-    map_id        INT NOT NULL REFERENCES map_version (id),
-    PRIMARY KEY (map_pool_id, map_id),
-    INDEX (map_id, map_pool_id)
+    map_version_id        INT NOT NULL REFERENCES map_version (id),
+    PRIMARY KEY (map_pool_id, map_version_id),
+    INDEX (map_version_id, map_pool_id)
 );
 
 CREATE TABLE matchmaker_pool_map_pools

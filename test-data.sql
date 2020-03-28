@@ -180,7 +180,7 @@ values (1, "Ladder1v1 season 1: 5-10k"),
        (2, "Ladder1v1 season 1: all"),
        (3, "Large maps");
 
-insert into map_pool_maps (map_pool_id, map_id)
+insert into map_pool_maps (map_pool_id, map_version_id)
 values (1, 15), (1, 16), (1, 17),
        (2, 11), (2, 14), (2, 15), (2, 16), (2, 17),
        (3, 1),  (3, 2),  (3, 3);
