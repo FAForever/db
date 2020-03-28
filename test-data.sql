@@ -47,9 +47,9 @@ DELETE FROM login;
 DELETE FROM email_domain_blacklist;
 DELETE FROM leaderboard;
 DELETE FROM matchmaker_pool;
-DELETE FROM matchmaker_pool_map_pools;
+DELETE FROM matchmaker_pool_map_pool;
 DELETE FROM map_pool;
-DELETE FROM map_pool_maps;
+DELETE FROM map_pool_map_version;
 
 SET FOREIGN_KEY_CHECKS=1;
 
@@ -180,12 +180,12 @@ values (1, "Ladder1v1 season 1: 5-10k"),
        (2, "Ladder1v1 season 1: all"),
        (3, "Large maps");
 
-insert into map_pool_maps (map_pool_id, map_version_id)
+insert into map_pool_map_version (map_pool_id, map_version_id)
 values (1, 15), (1, 16), (1, 17),
        (2, 11), (2, 14), (2, 15), (2, 16), (2, 17),
        (3, 1),  (3, 2),  (3, 3);
 
-insert into matchmaker_pool_map_pools (matchmaker_pool_id, map_pool_id, min_rating, max_rating)
+insert into matchmaker_pool_map_pool (matchmaker_pool_id, map_pool_id, min_rating, max_rating)
 values (1, 1, NULL, 800),
        (1, 2, 800, NULL),
        (1, 3, 1000, NULL),

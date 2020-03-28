@@ -7,7 +7,7 @@ CREATE TABLE map_pool
 ) ENGINE=InnoDB
 COMMENT="A collection of maps, used by a matchmaker_pool for map selection";
 
-CREATE TABLE map_pool_maps
+CREATE TABLE map_pool_map_version
 (
     map_pool_id   INT NOT NULL REFERENCES map_pool (id),
     map_version_id        INT NOT NULL REFERENCES map_version (id),
@@ -15,7 +15,7 @@ CREATE TABLE map_pool_maps
     INDEX (map_version_id, map_pool_id)
 );
 
-CREATE TABLE matchmaker_pool_map_pools
+CREATE TABLE matchmaker_pool_map_pool
 (
     matchmaker_pool_id  INT REFERENCES matchmaker_pool (id),
     map_pool_id         INT NOT NULL REFERENCES map_pool (id),
