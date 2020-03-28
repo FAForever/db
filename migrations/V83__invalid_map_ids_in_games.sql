@@ -1,0 +1,2 @@
+UPDATE game_stats set mapId = null where mapId = 0 or mapId IS NOT NULL AND NOT EXISTS(SELECT * FROM map_version WHERE id = game_stats.mapId);
+ALTER TABLE game_stats ADD CONSTRAINT mapid_fkey FOREIGN KEY game_stats(mapId) references map_version(id);
