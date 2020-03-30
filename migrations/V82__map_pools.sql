@@ -1,3 +1,6 @@
+ALTER TABLE matchmaker_pool RENAME TO matchmaker_queue;
+ALTER TABLE matchmaker_queue COMMENT="A matchmaker queue specifying which featured mod will be played, which map pools will be drawn from, and which leaderboard will be used to look up and update a player''s rating.";
+
 CREATE TABLE map_pool
 (
     id                  INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -15,12 +18,12 @@ CREATE TABLE map_pool_map_version
     INDEX (map_version_id, map_pool_id)
 );
 
-CREATE TABLE matchmaker_pool_map_pool
+CREATE TABLE matchmaker_queue_map_pool
 (
-    matchmaker_pool_id  INT REFERENCES matchmaker_pool (id),
+    matchmaker_queue_id  INT REFERENCES matchmaker_queue (id),
     map_pool_id         INT NOT NULL REFERENCES map_pool (id),
     min_rating          INT,
     max_rating          INT,
-    PRIMARY KEY (matchmaker_pool_id, map_pool_id),
-    INDEX (map_pool_id, matchmaker_pool_id)
+    PRIMARY KEY (matchmaker_queue_id, map_pool_id),
+    INDEX (map_pool_id, matchmaker_queue_id)
 );

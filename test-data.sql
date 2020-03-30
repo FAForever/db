@@ -46,8 +46,8 @@ DELETE FROM user_group_assignment;
 DELETE FROM login;
 DELETE FROM email_domain_blacklist;
 DELETE FROM leaderboard;
-DELETE FROM matchmaker_pool;
-DELETE FROM matchmaker_pool_map_pool;
+DELETE FROM matchmaker_queue;
+DELETE FROM matchmaker_queue_map_pool;
 DELETE FROM map_pool;
 DELETE FROM map_pool_map_version;
 
@@ -171,7 +171,7 @@ values (1, "global", "leaderboard.global.name", "leaderboard.global.desc"),
        (2, "ladder1v1", "leaderboard.ladder1v1.name", "leaderboard.ladder1v1.desc"),
        (3, "ladder2v2", "leaderboard.ladder2v2.name", "leaderboard.ladder2v2.desc");
 
-insert into matchmaker_pool (id, technical_name, featured_mod_id, leaderboard_id, name_key)
+insert into matchmaker_queue (id, technical_name, featured_mod_id, leaderboard_id, name_key)
 values (1, "ladder1v1", 1, 1, "matchmaker.ladder1v1"),
        (2, "ladder2v2", 1, 2, "matchmaker.ladder2v2");
 
@@ -185,7 +185,7 @@ values (1, 15), (1, 16), (1, 17),
        (2, 11), (2, 14), (2, 15), (2, 16), (2, 17),
        (3, 1),  (3, 2),  (3, 3);
 
-insert into matchmaker_pool_map_pool (matchmaker_pool_id, map_pool_id, min_rating, max_rating)
+insert into matchmaker_queue_map_pool (matchmaker_queue_id, map_pool_id, min_rating, max_rating)
 values (1, 1, NULL, 800),
        (1, 2, 800, NULL),
        (1, 3, 1000, NULL),
