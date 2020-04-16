@@ -1,0 +1,1 @@
+ALTER TABLE ban MODIFY level enum('CHAT', 'GLOBAL', 'VAULT') NOT NULL;
