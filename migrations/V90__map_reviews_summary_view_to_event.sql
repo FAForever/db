@@ -2,12 +2,12 @@ DROP VIEW `map_reviews_summary`;
 
 CREATE TABLE IF NOT EXISTS `map_reviews_summary` (
     id MEDIUMINT UNSIGNED PRIMARY KEY,
-    map_id MEDIUMINT UNSIGNED UNIQUE REFERENCES `map_version` (`map_id`),
+    map_id MEDIUMINT UNSIGNED UNIQUE REFERENCES `map` (`id`),
     positive DOUBLE,
     negative DOUBLE,
     score DOUBLE,
     reviews DECIMAL(32,0),
-    lower_bound DOUBLE
+    lower_bound DOUBLE NULL
 ) ENGINE=InnoDB;
 
 
@@ -18,7 +18,7 @@ SELECT `map_version`.`map_id` AS `id`,
        sum(`summary`.`negative`) AS `negative`,
        sum(`summary`.`score`) AS `score`,
        sum(`summary`.`reviews`) AS `reviews`,
-       (sum(`summary`.`weighted_bound`) / sum(`summary`.`reviews`)) AS `lower_bound`
+       IF(sum(`summary`.`reviews`) = 0, NULL, sum(`summary`.`weighted_bound`) / sum(`summary`.`reviews`)) AS `lower_bound`
 FROM (
   (
     SELECT `map_version_reviews_summary`.`id` AS `id`,
@@ -50,7 +50,7 @@ DO
                sum(`summary`.`negative`) AS `negative`,
                sum(`summary`.`score`) AS `score`,
                sum(`summary`.`reviews`) AS `reviews`,
-               (sum(`summary`.`weighted_bound`) / sum(`summary`.`reviews`)) AS `lower_bound`
+               IF(sum(`summary`.`reviews`) = 0, NULL, sum(`summary`.`weighted_bound`) / sum(`summary`.`reviews`)) AS `lower_bound`
         FROM (
           (
             SELECT `map_version_reviews_summary`.`id` AS `id`,
