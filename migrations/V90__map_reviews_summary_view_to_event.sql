@@ -11,35 +11,10 @@ CREATE TABLE IF NOT EXISTS `map_reviews_summary` (
 ) ENGINE=InnoDB;
 
 
-INSERT INTO map_reviews_summary
-SELECT `map_version`.`map_id` AS `id`,
-       `map_version`.`map_id` AS `map_id`,
-       sum(`summary`.`positive`) AS `positive`,
-       sum(`summary`.`negative`) AS `negative`,
-       sum(`summary`.`score`) AS `score`,
-       sum(`summary`.`reviews`) AS `reviews`,
-       IF(sum(`summary`.`reviews`) = 0, NULL, sum(`summary`.`weighted_bound`) / sum(`summary`.`reviews`)) AS `lower_bound`
-FROM (
-  (
-    SELECT `map_version_reviews_summary`.`id` AS `id`,
-           `map_version_reviews_summary`.`map_version_id` AS `map_version_id`,
-           `map_version_reviews_summary`.`positive` AS `positive`,
-           `map_version_reviews_summary`.`negative` AS `negative`,
-           `map_version_reviews_summary`.`score` AS `score`,
-           `map_version_reviews_summary`.`reviews` AS `reviews`,
-           `map_version_reviews_summary`.`lower_bound` AS `lower_bound`,
-           `map_version_reviews_summary`.`reviews` * `map_version_reviews_summary`.`lower_bound` AS `weighted_bound`
-    FROM `map_version_reviews_summary`
-  ) `summary`
-  JOIN `map_version` on `map_version`.`id` = `summary`.`map_version_id`
-)
-GROUP BY `map_version`.`map_id`;
-
-
 DELIMITER $$
 
 CREATE EVENT IF NOT EXISTS `map_reviews_summary`
-ON SCHEDULE EVERY 10 MINUTE
+ON SCHEDULE EVERY 10 MINUTE STARTS CURRENT_TIMESTAMP
 COMMENT 'Recompute the map_reviews_summary table every 10 minutes'
 DO
     BEGIN
