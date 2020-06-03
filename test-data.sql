@@ -212,9 +212,9 @@ insert into mod_stats (mod_id, times_played, likers) VALUES
         (3, 1, '');
 
 -- sample avatars
-insert into avatars_list (id, url, tooltip) values
-  (1, 'http://content.faforever.com/faf/avatars/qai2.png', 'QAI'),
-  (2, 'http://content.faforever.com/faf/avatars/UEF.png', 'UEF');
+insert into avatars_list (id, filename, tooltip) values
+  (1, 'qai2.png', 'QAI'),
+  (2, 'UEF.png', 'UEF');
 
 insert into avatars (idUser, idAvatar, selected) values (2, 1, 0), (2, 2, 1);
 insert into avatars (idUser, idAvatar, selected, expires_at) values (3, 1, 0, NOW());
