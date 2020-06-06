@@ -16,12 +16,31 @@ We highly recommended using [faf-stack](https://github.com/FAForever/faf-stack) 
 ### Creating a new database
     scripts/init-db.sh
 
-### Connecting to the database
+### Connecting to the database & check current version
 In order to connect to the database using the mysql client, execute:
 
-    docker exec -ti faf-db mysql -uroot -pbanana
+    docker exec -it faf-db mysql -D faf -uroot -pbanana
 
-Where you have to replace `root` and `banana` with your custom credentials.
+Where you have to replace `root` and `banana` with your custom credentials. (If you use the default configuration, you can omit the `-u` and `-p` parameter.)
+
+You can now check the current version via running:
+
+    select version from schema_version order by installed_rank desc limit 1
+
+### Updating the database
+First you need to pull the faf-stack repo and checkout the branch with the db version you want. Now you can migrate to the latest version using:
+
+    docker-compose run --rm faf-db-migrations migrate
+
+Updating the database is a one way street. Once you applied a migration, you cannot go back using a migration. If you want to do it manually you would need to undo the changes from the migrations and remove the version records in the table `schema_version`.
+
+
+### Resetting the datbase
+Sometimes you might end up in a broken state. Then it might the easiest way to delete your database. This can be achieved by deleting the docker container *and* removing the data directory.
+
+    docker stop faf-db && docker rm faf-db && rm -rf ./data/faf-db
+
+Now you can recreate the db as described above.
 
 
 ## Usage with plain Docker
