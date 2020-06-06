@@ -35,7 +35,7 @@ First you need to pull the faf-stack repo and checkout the branch with the db ve
 Updating the database is a one way street. Once you applied a migration, you cannot go back using a migration. If you want to do it manually you would need to undo the changes from the migrations and remove the version records in the table `schema_version`.
 
 
-### Resetting the datbase
+### Resetting the database
 Sometimes you might end up in a broken state. Then it might the easiest way to delete your database. This can be achieved by deleting the docker container *and* removing the data directory.
 
     docker stop faf-db && docker rm faf-db && rm -rf ./data/faf-db
