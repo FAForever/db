@@ -12,7 +12,7 @@ INSERT INTO leaderboard_rating_journal (
         WHEN
           game_player_stats.score IN (-1, 0, 1)
           AND
-          game_stats.gameName LIKE "% Vs %" COLLATE utf8_bin
+          game_stats.gameName LIKE _utf8 "% Vs %" COLLATE utf8_bin
           AND
           (
             SELECT COUNT(*)
