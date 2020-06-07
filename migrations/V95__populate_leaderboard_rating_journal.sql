@@ -14,7 +14,7 @@ INSERT INTO leaderboard_rating_journal (
             WHEN 
               game_player_stats.score IN (-1, 0, 1) 
               AND
-              game_stats.gameName LIKE "% Vs %"
+              game_stats.gameName LIKE _utf8 "% Vs %" COLLATE utf8_bin
               AND
               (
                 SELECT COUNT(*)
@@ -35,7 +35,7 @@ INSERT INTO leaderboard_rating_journal (
           END
         ELSE
           CASE
-            WHEN game_featuredMods.gamemod = "ladder_1v1" THEN (SELECT id from leaderboard where leaderboard.technical_name = "ladder_1v1")
+            WHEN game_featuredMods.gamemod = "ladder1v1" THEN (SELECT id from leaderboard where leaderboard.technical_name = "ladder_1v1")
             ELSE (SELECT id from leaderboard where leaderboard.technical_name = "global")
           END
       END AS leaderboard_id,
@@ -49,13 +49,15 @@ INSERT INTO leaderboard_rating_journal (
         game_player_stats ON (game_player_stats.gameId = game_stats.id)
       JOIN
         game_featuredMods ON (game_stats.gameMod = game_featuredMods.id)
+      JOIN
+        game_validity ON (game_stats.validity = game_validity.id)
     WHERE
       game_player_stats.after_mean IS NOT NULL
       AND
       game_player_stats.after_deviation IS NOT NULL
       AND
-      game_stats.validity = 0
+      game_validity.message = "Valid"
       AND
-      game_featuredMods.gamemod IN ("faf", "ladder_1v1")
+      game_featuredMods.gamemod IN ("faf", "ladder1v1")
     ORDER BY game_player_stats.id
 ;
