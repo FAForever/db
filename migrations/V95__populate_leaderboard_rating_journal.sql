@@ -28,8 +28,10 @@ INSERT INTO leaderboard_rating_journal (
             AND game_player_stats.color IN (1, 2)
             AND game_player_stats.score IN (-1, 0, 1)
           ) = 2
-          THEN (SELECT id from leaderboard where leaderboard.technical_name = "ladder_1v1")
-        ELSE (SELECT id from leaderboard where leaderboard.technical_name = "global")
+        THEN
+          (SELECT id from leaderboard where leaderboard.technical_name = "ladder_1v1")
+        ELSE
+          (SELECT id from leaderboard where leaderboard.technical_name = "global")
       END AS leaderboard_id,
       game_player_stats.mean,
       game_player_stats.deviation,
@@ -66,10 +68,11 @@ INSERT INTO leaderboard_rating_journal (
 )
 SELECT
     game_player_stats.id,
-    CASE
-      WHEN game_featuredMods.gamemod = "ladder1v1" THEN (SELECT id from leaderboard where leaderboard.technical_name = "ladder_1v1")
-      ELSE (SELECT id from leaderboard where leaderboard.technical_name = "global")
-    END AS leaderboard_id,
+    IF(
+      game_featuredMods.gamemod = "ladder1v1",
+      (SELECT id from leaderboard where leaderboard.technical_name = "ladder_1v1"),
+      (SELECT id from leaderboard where leaderboard.technical_name = "global")
+    ) AS leaderboard_id,
     game_player_stats.mean,
     game_player_stats.deviation,
     CASE
