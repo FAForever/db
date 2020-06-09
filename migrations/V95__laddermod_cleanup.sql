@@ -7,7 +7,7 @@ WHERE
 AND
   startTime < "2014-03-22 12:59:25"
 AND
-  gameName LIKE _utf8 "% Vs %" COLLATE utf8_bin
+  gameName LIKE "% Vs %"
 AND
   (
     SELECT count(*) FROM faf.game_player_stats
@@ -38,7 +38,5 @@ AND
     WHERE gameId = faf.game_stats.id
   )
 AND
-  faf.game_stats.id > 4393127
-AND
-  faf.game_stats.id < 4424727
+  faf.game_stats.id BETWEEN 4393127 AND 4424727
 ;
