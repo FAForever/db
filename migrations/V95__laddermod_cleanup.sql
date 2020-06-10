@@ -39,6 +39,8 @@ CREATE TEMPORARY TABLE game_player_count
       game_stats.id BETWEEN 4393127 AND 4424727
     GROUP BY
       game_stats.id
+    HAVING
+      gps_row_count != distinct_player_count
 ;
 
 UPDATE
@@ -46,9 +48,9 @@ UPDATE
 INNER JOIN
   game_player_count ON (game_stats.id = game_player_count.id)
 SET
-  validity = 24  # "Unranked for another reason"
+  game_stats.validity = 24  # "Unranked for another reason"
 WHERE
-  validity = 0
-AND
-  gps_row_count != distinct_player_count
+  game_stats.validity = 0
 ;
+
+DROP TEMPORARY TABLE game_player_count;
