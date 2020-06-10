@@ -7,7 +7,7 @@ WHERE
 AND
   startTime < "2014-03-22 12:59:25"
 AND
-  gameName LIKE "% Vs %"
+  gameName COLLATE utf8mb4_bin LIKE "% Vs %"
 AND
   (
     SELECT count(*) FROM game_player_stats
