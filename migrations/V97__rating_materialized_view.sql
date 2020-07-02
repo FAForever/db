@@ -42,7 +42,7 @@ BEGIN
         WHERE (expires_at is null or expires_at > NOW()) AND revoke_time IS NULL
     );
 
-    ALTER TABLE ladder1v1_rating_rank_view AUTO_INCREMENT = 1, ALGORITHM=INPLACE;
+    ALTER TABLE ladder1v1_rating_rank_view AUTO_INCREMENT = 1;
     START TRANSACTION;
     TRUNCATE ladder1v1_rating_rank_view;
     INSERT INTO ladder1v1_rating_rank_view(`id`, `mean`, `deviation`, `num_games`, `win_games`, `rating`)
@@ -82,7 +82,7 @@ BEGIN
         WHERE (expires_at is null or expires_at > NOW()) AND revoke_time IS NULL
     );
 
-    ALTER TABLE global_rating_rank_view AUTO_INCREMENT = 1, ALGORITHM=INPLACE;
+    ALTER TABLE global_rating_rank_view AUTO_INCREMENT = 1;
     START TRANSACTION;
     TRUNCATE global_rating_rank_view;
     INSERT INTO global_rating_rank_view(`id`, `mean`, `deviation`, `num_games`, `rating`)
