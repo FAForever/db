@@ -26,17 +26,17 @@ ON SCHEDULE EVERY 1 HOUR STARTS CURRENT_TIMESTAMP
 COMMENT 'Fill the materialized view including ranks for ladder'
 DO
 BEGIN
-    CREATE TEMPORARY TABLE active_players ENGINE=MEMORY AS
+    CREATE TEMPORARY TABLE active_ladder_players ENGINE=MEMORY AS
     (
         SELECT DISTINCT gps.playerId
         FROM game_player_stats gps
-                 INNER JOIN game_stats gs on gps.gameId = gs.id
+        INNER JOIN game_stats gs on gps.gameId = gs.id
         WHERE gs.endTime > now() - INTERVAL 1 YEAR
           AND gs.gameMod = 6 -- ladder
           AND gs.validity = 0
     );
 
-    DELETE FROM active_players
+    DELETE FROM active_ladder_players
     WHERE playerId IN (
         SELECT player_id from ban
         WHERE (expires_at is null or expires_at > NOW()) AND revoke_time IS NULL
@@ -53,10 +53,10 @@ BEGIN
            winGames,
            rating
     FROM ladder1v1_rating
-    INNER JOIN active_players ON ladder1v1_rating.id = active_players.playerId
+    INNER JOIN active_ladder_players ON ladder1v1_rating.id = active_ladder_players.playerId
     ORDER BY rating DESC;
 
-    DROP TABLE active_players;
+    DROP TABLE active_ladder_players;
 
     COMMIT;
 END $$
@@ -66,17 +66,17 @@ ON SCHEDULE EVERY 1 HOUR STARTS CURRENT_TIMESTAMP
 COMMENT 'Fill the materialized view including ranks for global'
 DO
 BEGIN
-    CREATE TEMPORARY TABLE active_players ENGINE=MEMORY AS
+    CREATE TEMPORARY TABLE active_global_players ENGINE=MEMORY AS
     (
         SELECT DISTINCT gps.playerId
         FROM game_player_stats gps
-                 INNER JOIN game_stats gs on gps.gameId = gs.id
+        INNER JOIN game_stats gs on gps.gameId = gs.id
         WHERE gs.endTime > now() - INTERVAL 1 YEAR
           AND gs.gameMod = 0 -- global
           AND gs.validity = 0
     );
 
-    DELETE FROM active_players
+    DELETE FROM active_global_players
     WHERE playerId IN (
         SELECT player_id from ban
         WHERE (expires_at is null or expires_at > NOW()) AND revoke_time IS NULL
@@ -92,12 +92,10 @@ BEGIN
            numGames,
            rating
     FROM global_rating
-    LEFT JOIN ban ON global_rating.id = ban.player_id
-    WHERE ((ban.expires_at is null or ban.expires_at > NOW()) AND ban.revoke_time IS NULL)
-      AND  is_active = 1
+    INNER JOIN active_global_players ON global_rating.id = active_global_players.playerId
     ORDER BY rating DESC;
 
-    DROP TABLE active_players;
+    DROP TABLE active_global_players;
 
     COMMIT;
 END $$
