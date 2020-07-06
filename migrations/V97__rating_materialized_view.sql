@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS ladder1v1_rating_rank_view
+CREATE TABLE IF NOT EXISTS `ladder1v1_rating_rank_view`
 (
     id MEDIUMINT UNSIGNED NOT NULL PRIMARY KEY COMMENT 'References to ladder1v1_rating.id',
     ranking INTEGER UNIQUE AUTO_INCREMENT,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS ladder1v1_rating_rank_view
     rating FLOAT
 ) COMMENT='Materialized view including ranks (player position) for ladder1v1_rating';
 
-CREATE TABLE IF NOT EXISTS global_rating_rank_view
+CREATE TABLE IF NOT EXISTS `global_rating_rank_view`
 (
     id MEDIUMINT UNSIGNED NOT NULL PRIMARY KEY COMMENT 'References to global_rating.id',
     ranking INTEGER UNIQUE AUTO_INCREMENT,
@@ -28,7 +28,7 @@ DO
 BEGIN
     CREATE TEMPORARY TABLE active_ladder_players ENGINE=MEMORY AS
     (
-        SELECT DISTINCT gps.playerId
+        SELECT DISTINCT gps.playerId AS player_id
         FROM game_player_stats gps
         INNER JOIN game_stats gs on gps.gameId = gs.id
         WHERE gs.endTime > now() - INTERVAL 1 YEAR
@@ -37,7 +37,7 @@ BEGIN
     );
 
     DELETE FROM active_ladder_players
-    WHERE playerId IN (
+    WHERE player_id IN (
         SELECT player_id from ban
         WHERE (expires_at is null or expires_at > NOW()) AND revoke_time IS NULL
     );
@@ -46,14 +46,17 @@ BEGIN
     START TRANSACTION;
     TRUNCATE ladder1v1_rating_rank_view;
     INSERT INTO ladder1v1_rating_rank_view(`id`, `mean`, `deviation`, `num_games`, `win_games`, `rating`)
-    SELECT ladder1v1_rating.id,
+    SELECT leaderboard_rating.login_id,
            mean,
            deviation,
-           numGames,
-           winGames,
+           total_games,
+           won_games,
            rating
-    FROM ladder1v1_rating
-    INNER JOIN active_ladder_players ON ladder1v1_rating.id = active_ladder_players.playerId
+    FROM leaderboard_rating
+    INNER JOIN active_ladder_players ON (
+            leaderboard_rating.login_id = active_ladder_players.player_id
+        AND leaderboard_rating.leaderboard_id = 2 -- ladder_1v1
+    )
     ORDER BY rating DESC;
 
     DROP TABLE active_ladder_players;
@@ -68,7 +71,7 @@ DO
 BEGIN
     CREATE TEMPORARY TABLE active_global_players ENGINE=MEMORY AS
     (
-        SELECT DISTINCT gps.playerId
+        SELECT DISTINCT gps.playerId AS player_id
         FROM game_player_stats gps
         INNER JOIN game_stats gs on gps.gameId = gs.id
         WHERE gs.endTime > now() - INTERVAL 1 YEAR
@@ -77,7 +80,7 @@ BEGIN
     );
 
     DELETE FROM active_global_players
-    WHERE playerId IN (
+    WHERE player_id IN (
         SELECT player_id from ban
         WHERE (expires_at is null or expires_at > NOW()) AND revoke_time IS NULL
     );
@@ -86,13 +89,16 @@ BEGIN
     START TRANSACTION;
     TRUNCATE global_rating_rank_view;
     INSERT INTO global_rating_rank_view(`id`, `mean`, `deviation`, `num_games`, `rating`)
-    SELECT global_rating.id,
+    SELECT leaderboard_rating.login_id,
            mean,
            deviation,
-           numGames,
+           total_games,
            rating
-    FROM global_rating
-    INNER JOIN active_global_players ON global_rating.id = active_global_players.playerId
+    FROM leaderboard_rating
+    INNER JOIN active_global_players ON (
+            leaderboard_rating.login_id = active_global_players.player_id
+        AND leaderboard_rating.leaderboard_id = 1 -- global
+    )
     ORDER BY rating DESC;
 
     DROP TABLE active_global_players;
