@@ -1,21 +1,23 @@
 UPDATE
   game_stats
 SET
-  gamemod = 6
+  gameMod = 6
 WHERE
-  gamemod = 0
+  gameMod = 0
 AND
   startTime < "2014-03-22 12:59:25"
 AND
   gameName COLLATE utf8mb4_bin LIKE "% Vs %"
 AND
   (
-    SELECT count(*) FROM game_player_stats
+    SELECT count(*) 
+    FROM game_player_stats
     WHERE gameId = game_stats.id
   ) = 2
 AND
   (
-    SELECT count(*) FROM game_player_stats
+    SELECT count(*) 
+    FROM game_player_stats
     WHERE gameId = game_stats.id AND
       AI = false AND
       color IN (1, 2) AND
