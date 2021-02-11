@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>game_stats - faf Database</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>game_stats</h1><p><span id="recordNumber">95491</span> rows</p><br />
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Columns</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Column</th>
+                                    <th>Type</th>
+                                    <th>Size</th>
+                                    <th title='Are nulls allowed?'>Nulls</th>
+                                    <th title='Is column automatically updated?'>Auto</th>
+                                    <th title='Default value'>Default</th>
+                                    <th title='Columns in tables that reference this column'>Children</th>
+                                    <th title='Columns in tables that are referenced by this column'>Parents</th>
+                                    <th title='Comments' class="toggle"><span>Comments</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="id">id</span></td>
+                                    <td>INT UNSIGNED</td>
+                                    <td>10</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="coop_leaderboard.gameuid references game_stats.id via coop_leaderboard_ibfk_1"><a href='coop_leaderboard.html'>coop_leaderboard</a><span class='relatedKey'>.gameuid</span></td>
+                                                <td class="constraint detail">coop_leaderboard_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="game_player_stats.gameId references game_stats.id via game_id_fk"><a href='game_player_stats.html'>game_player_stats</a><span class='relatedKey'>.gameId</span></td>
+                                                <td class="constraint detail">game_id_fk<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="game_review.game_id references game_stats.id via game_review_ibfk_2"><a href='game_review.html'>game_review</a><span class='relatedKey'>.game_id</span></td>
+                                                <td class="constraint detail">game_review_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="game_reviews_summary.game_id references game_stats.id via game_reviews_summary_game"><a href='game_reviews_summary.html'>game_reviews_summary</a><span class='relatedKey'>.game_id</span></td>
+                                                <td class="constraint detail">game_reviews_summary_game<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="matchmaker_queue_game.game_stats_id references game_stats.id via matchmaker_queue_game_ibfk_2"><a href='matchmaker_queue_game.html'>matchmaker_queue_game</a><span class='relatedKey'>.game_stats_id</span></td>
+                                                <td class="constraint detail">matchmaker_queue_game_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="moderation_report.game_id references game_stats.id via game_id_of_moderation_report"><a href='moderation_report.html'>moderation_report</a><span class='relatedKey'>.game_id</span></td>
+                                                <td class="constraint detail">game_id_of_moderation_report<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="teamkills.game_id references game_stats.id via teamkills_game_stats_id_fk"><a href='teamkills.html'>teamkills</a><span class='relatedKey'>.game_id</span></td>
+                                                <td class="constraint detail">teamkills_game_stats_id_fk<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="startTime">startTime</span></td>
+                                    <td>TIMESTAMP</td>
+                                    <td>26</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>CURRENT_TIMESTAMP</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="endTime">endTime</span></td>
+                                    <td>TIMESTAMP</td>
+                                    <td>26</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="replay_ticks">replay_ticks</span></td>
+                                    <td>INT UNSIGNED</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td><p>The total number of ticks present in the replay. The SCFA tick rate is 10 ticks/second</p></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="gameType">gameType</span></td>
+                                    <td>enum(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;)</td>
+                                    <td>1</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="gameMod">gameMod</span></td>
+                                    <td>TINYINT UNSIGNED</td>
+                                    <td>3</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="game_stats.gameMod references game_featuredMods.id via game_stats_game_featuredMods_id_fk"><a href='game_featuredMods.html'>game_featuredMods</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">game_stats_game_featuredMods_id_fk<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="host">host</span></td>
+                                    <td>MEDIUMINT UNSIGNED</td>
+                                    <td>8</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="game_stats.host references login.id via fk_game_stats_host"><a href='login.html'>login</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">fk_game_stats_host<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="mapId">mapId</span></td>
+                                    <td>MEDIUMINT UNSIGNED</td>
+                                    <td>8</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="game_stats.mapId references map_version.id via mapid_fkey"><a href='map_version.html'>map_version</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">mapid_fkey<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="gameName">gameName</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>128</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="validity">validity</span></td>
+                                    <td>TINYINT UNSIGNED</td>
+                                    <td>3</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="game_stats.validity references game_validity.id via game_stats_game_validity_id_fk"><a href='game_validity.html'>game_validity</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">game_stats_game_validity_id_fk<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-sitemap"></i>
+                            <h3 id="Indexes" class="box-title">Indexes</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead>
+                                <tr>
+                                    <th>Constraint Name</th>
+                                    <th>Type</th>
+                                    <th>Sort</th>
+                                    <th>Column(s)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> PRIMARY</td>
+                                    <td>Primary key</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>fk_game_stats_host</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>host</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_stats_endTime_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>endTime</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_stats_gameMod_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>gameMod</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_stats_gameName_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>gameName</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_stats_gameType_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>gameType</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_stats_mapId_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>mapId</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_stats_validity_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>validity</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>startTime</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>startTime</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>validity_gameMod_endTime</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
+                                    <td>validity + gameMod + endTime</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 id="Relationships" class="box-title">Relationships</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom"><!-- Tabs within a box -->
+                                <h5>Close relationships within degrees of separation</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                    <li class=""><a href="#twodegreesDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two degrees</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
+<area shape="rect" id="node1" href="coop_leaderboard.html" target="_top" title="coop_leaderboard" alt="" coords="689,5,911,152">
+<area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="289,500,613,863">
+<area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="33,993,217,1199">
+<area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="5,472,245,619">
+<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="34,636,217,841">
+<area shape="rect" id="node9" href="game_validity.html" target="_top" title="game_validity" alt="" coords="29,859,221,976">
+<area shape="rect" id="node3" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="687,473,913,737">
+<area shape="rect" id="node5" href="game_review.html" target="_top" title="game_review" alt="" coords="707,755,893,931">
+<area shape="rect" id="node6" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="665,169,935,316">
+<area shape="rect" id="node10" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="657,333,943,456">
+<area shape="rect" id="node11" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="677,1171,923,1376">
+<area shape="rect" id="node12" href="teamkills.html" target="_top" title="teamkills" alt="" coords="721,948,879,1153">
+</map>
+                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/game_stats.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
+<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="293,5,436,93">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="5,1088,189,1293">
+<area shape="rect" id="node3" href="ban.html" target="_top" title="ban" alt="" coords="1598,81,1741,169">
+<area shape="rect" id="node4" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="1213,163,1459,368">
+<area shape="rect" id="node8" href="game_stats.html" target="_top" title="game_stats" alt="" coords="825,692,1149,1055">
+<area shape="rect" id="node5" href="clan.html" target="_top" title="clan" alt="" coords="295,244,434,332">
+<area shape="rect" id="node6" href="clan_membership.html" target="_top" title="clan_membership" alt="" coords="549,261,771,349">
+<area shape="rect" id="node7" href="coop_leaderboard.html" target="_top" title="coop_leaderboard" alt="" coords="1225,656,1447,803">
+<area shape="rect" id="node10" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="540,457,780,604">
+<area shape="rect" id="node15" href="map_version.html" target="_top" title="map_version" alt="" coords="569,1216,751,1421">
+<area shape="rect" id="node16" href="game_validity.html" target="_top" title="game_validity" alt="" coords="564,959,756,1076">
+<area shape="rect" id="node9" href="featured_mods_owners.html" target="_top" title="featured_mods_owners" alt="" coords="856,421,1117,509">
+<area shape="rect" id="node11" href="friends_and_foes.html" target="_top" title="friends_and_foes" alt="" coords="259,457,471,545">
+<area shape="rect" id="node12" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="1223,1435,1449,1699">
+<area shape="rect" id="node13" href="game_review.html" target="_top" title="game_review" alt="" coords="1243,984,1429,1160">
+<area shape="rect" id="node14" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="1201,820,1471,967">
+<area shape="rect" id="node26" href="map.html" target="_top" title="map" alt="" coords="280,1303,449,1391">
+<area shape="rect" id="node17" href="global_rating.html" target="_top" title="global_rating" alt="" coords="273,635,457,723">
+<area shape="rect" id="node18" href="ladder1v1_rating.html" target="_top" title="ladder1v1_rating" alt="" coords="257,740,472,828">
+<area shape="rect" id="node19" href="ladder_division_score.html" target="_top" title="ladder_division_score" alt="" coords="241,845,489,933">
+<area shape="rect" id="node20" href="ladder_map_2017_01_12.html" target="_top" title="ladder_map_2017_01_12" alt="" coords="853,1537,1120,1625">
+<area shape="rect" id="node21" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="249,951,481,1039">
+<area shape="rect" id="node22" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="1523,1437,1816,1525">
+<area shape="rect" id="node23" href="league.html" target="_top" title="league" alt="" coords="295,1056,434,1144">
+<area shape="rect" id="node24" href="league_schedule.html" target="_top" title="league_schedule" alt="" coords="555,755,765,843">
+<area shape="rect" id="node25" href="login_log.html" target="_top" title="login_log" alt="" coords="289,1197,440,1285">
+<area shape="rect" id="node27" href="map_pool_map_version.html" target="_top" title="map_pool_map_version" alt="" coords="856,1116,1117,1204">
+<area shape="rect" id="node28" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="867,1643,1107,1731">
+<area shape="rect" id="node29" href="map_version_reviews_summary.html" target="_top" title="map_version_reviews_summary" alt="" coords="824,1221,1149,1309">
+<area shape="rect" id="node30" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="867,527,1106,615">
+<area shape="rect" id="node31" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="1193,516,1479,639">
+<area shape="rect" id="node32" href="mod.html" target="_top" title="mod" alt="" coords="287,1444,443,1532">
+<area shape="rect" id="node33" href="mod_version_review.html" target="_top" title="mod_version_review" alt="" coords="245,1549,485,1637">
+<area shape="rect" id="node34" href="name_history.html" target="_top" title="name_history" alt="" coords="270,1655,459,1743">
+<area shape="rect" id="node35" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="241,1760,489,1848">
+<area shape="rect" id="node36" href="player_events.html" target="_top" title="player_events" alt="" coords="269,1865,461,1953">
+<area shape="rect" id="node37" href="reported_user.html" target="_top" title="reported_user" alt="" coords="1573,268,1766,356">
+<area shape="rect" id="node38" href="table_map_comments.html" target="_top" title="table_map_comments" alt="" coords="861,1819,1113,1907">
+<area shape="rect" id="node39" href="table_map_features.html" target="_top" title="table_map_features" alt="" coords="869,1327,1105,1415">
+<area shape="rect" id="node40" href="teamkills.html" target="_top" title="teamkills" alt="" coords="1257,1973,1415,2179">
+<area shape="rect" id="node41" href="tutorial.html" target="_top" title="tutorial" alt="" coords="914,1432,1059,1520">
+<area shape="rect" id="node42" href="unique_id_users.html" target="_top" title="unique_id_users" alt="" coords="261,2115,468,2203">
+<area shape="rect" id="node43" href="uniqueid_exempt.html" target="_top" title="uniqueid_exempt" alt="" coords="255,2220,475,2308">
+<area shape="rect" id="node44" href="user_group_assignment.html" target="_top" title="user_group_assignment" alt="" coords="233,2325,496,2413">
+<area shape="rect" id="node45" href="user_notes.html" target="_top" title="user_notes" alt="" coords="281,2431,448,2519">
+<area shape="rect" id="node46" href="vote.html" target="_top" title="vote" alt="" coords="295,2536,434,2624">
+</map>
+                                        <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/game_stats.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+                <script>
+                    var config = {
+                        pagination: true
+                    }
+                </script>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="table.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>
