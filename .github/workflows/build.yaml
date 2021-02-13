@@ -3,9 +3,8 @@ on: [push]
 env:
   FLYWAY_VERSION: 6.5.3
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    container: adoptopenjdk:15-jdk-hotspot-bionic
     services:
       faf-db:
         image: mysql:5.7
@@ -22,39 +21,48 @@ jobs:
           MYSQL_USER: faf-java-api
           MYSQL_PASSWORD: banana
     steps:
-      - name: Install tools
-        run: apt update && apt install -y wget mysql-client git
       - name: Checkout code
         # Upgrading to v2 will break the submodule checkout as long as ubuntu-latest ships with Git 2.17
         uses: actions/checkout@v1
         with:
           submodules: true
+      - name: Install tools
+        run: sudo apt update && sudo apt install -y wget mysql-client git
+      - name: Install flyway
+        run: wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz | tar xvz && sudo ln -s `pwd`/flyway-${FLYWAY_VERSION}/flyway /usr/local/bin
       - name: Run flyway db migrations
         env:
-          FLYWAY_URL: jdbc:mysql://faf-db/faf?useSSL=false
+          FLYWAY_URL: jdbc:mysql://localhost/faf?useSSL=false
           FLYWAY_USER: root
           FLYWAY_PASSWORD: banana
           FLYWAY_LOCATIONS: filesystem:migrations
-        run: |-
-          wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz | tar xvz && ln -s `pwd`/flyway-${FLYWAY_VERSION}/flyway /usr/local/bin
-          flyway migrate
+        run: flyway migrate
       - name: Run test-data.sql
         env:
-          MYSQL_HOST: faf-db
+          MYSQL_HOST: 127.0.0.1
           MYSQL_DATABASE: faf
           MYSQL_ROOT_PASSWORD: banana
         run: ./ci/test-data.sh
       - name: Run migration on anonymized db extract
         env:
-          MYSQL_HOST: faf-db
+          MYSQL_HOST: 127.0.0.1
           MYSQL_DATABASE: faf
           MYSQL_ROOT_PASSWORD: banana
-          FLYWAY_URL: jdbc:mysql://faf-db/faf?useSSL=false
+          FLYWAY_URL: jdbc:mysql://127.0.0.1/faf?useSSL=false
           FLYWAY_USER: root
           FLYWAY_PASSWORD: banana
           FLYWAY_LOCATIONS: filesystem:migrations
           FLYWAY_TABLE: schema_version
         run: ./ci/test-migrations.sh
+      - name: Generate schemaspy docs
+        if: github.ref == 'refs/heads/develop'
+        run: ./ci/schemaspy.sh
+      - name: Publish to Github Pages
+        if: github.ref == 'refs/heads/develop'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
       - name: Build and push Docker images
         if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags')
         uses: docker/build-push-action@v1.1.1
