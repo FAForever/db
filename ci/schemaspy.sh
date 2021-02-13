@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-echo 'travis_fold:start:schemaspy'
-
 echo '# Generating db diagram with Schemaspy'
 
 # Must be generated into the folder 'public' as we're going to use it as GitLab pages
@@ -14,10 +12,8 @@ cat "$PWD/ci/schemaspy.properties"
 mkdir -p "${SCHEMASPY_OUTPUT_DIR}"
 chmod a+rw "${SCHEMASPY_OUTPUT_DIR}"
 
-docker run --network="faf" \
+docker run --network="host" \
             -v "$PWD/ci/schemaspy.properties:/schemaspy.properties" \
             -v "${SCHEMASPY_OUTPUT_DIR}:/output" \
             schemaspy/schemaspy:latest \
            || { echo "Could not generate schema"; exit 1; }
-
-echo 'travis_fold:end:schemaspy'
