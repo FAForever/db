@@ -1,22 +1,14 @@
 #!/bin/bash
 set -e
 
-echo 'travis_fold:start:Start Migration Base Test'
-
 echo '# Start Migration Base Test...'
-docker exec -i faf-db mysql --no-defaults -uroot -pbanana <<< "DROP DATABASE faf;"
-docker exec -i faf-db mysql --no-defaults -uroot -pbanana <<< "CREATE DATABASE faf;"
+mysql --no-defaults -h "${MYSQL_HOST}" -u root -p"${MYSQL_ROOT_PASSWORD}" <<< "DROP DATABASE ${MYSQL_DATABASE};"
+mysql --no-defaults -h "${MYSQL_HOST}" -u root -p"${MYSQL_ROOT_PASSWORD}" <<< "CREATE DATABASE ${MYSQL_DATABASE};"
 
 echo 'Import dump ...'
-docker exec -i faf-db mysql --no-defaults -uroot -pbanana faf < ./faf-db-dump/dump.sql
+mysql --no-defaults -h "${MYSQL_HOST}" -u root -p"${MYSQL_ROOT_PASSWORD}" "${MYSQL_DATABASE}" < ./faf-db-dump/dump.sql
 
 echo 'Migrate ...'
-docker run --network="faf" \
-           -e FLYWAY_URL=jdbc:mysql://faf-db/faf?useSSL=false \
-           -e FLYWAY_USER=root \
-           -e FLYWAY_PASSWORD=banana \
-           faf-db-migrations migrate
+flyway migrate
 
 echo '... Migration Test finished.'
-
-echo 'travis_fold:end:Start Migration Base Test'

@@ -1,0 +1,65 @@
+name: Build
+on: [push]
+env:
+  FLYWAY_VERSION: 6.5.3
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: adoptopenjdk:15-jdk-hotspot-bionic
+    services:
+      faf-db:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        env:
+          MYSQL_ROOT_PASSWORD: banana
+          MYSQL_DATABASE: faf
+          MYSQL_USER: faf-java-api
+          MYSQL_PASSWORD: banana
+    steps:
+      - name: Install tools
+        run: apt update && apt install -y wget mysql-client git
+      - name: Checkout code
+        # Upgrading to v2 will break the submodule checkout as long as ubuntu-latest ships with Git 2.17
+        uses: actions/checkout@v1
+        with:
+          submodules: true
+      - name: Run flyway db migrations
+        env:
+          FLYWAY_URL: jdbc:mysql://faf-db/faf?useSSL=false
+          FLYWAY_USER: root
+          FLYWAY_PASSWORD: banana
+          FLYWAY_LOCATIONS: filesystem:migrations
+        run: |-
+          wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz | tar xvz && ln -s `pwd`/flyway-${FLYWAY_VERSION}/flyway /usr/local/bin
+          flyway migrate
+      - name: Run test-data.sql
+        env:
+          MYSQL_HOST: faf-db
+          MYSQL_DATABASE: faf
+          MYSQL_ROOT_PASSWORD: banana
+        run: ./ci/test-data.sh
+      - name: Run migration on anonymized db extract
+        env:
+          MYSQL_HOST: faf-db
+          MYSQL_DATABASE: faf
+          MYSQL_ROOT_PASSWORD: banana
+          FLYWAY_URL: jdbc:mysql://faf-db/faf?useSSL=false
+          FLYWAY_USER: root
+          FLYWAY_PASSWORD: banana
+          FLYWAY_LOCATIONS: filesystem:migrations
+          FLYWAY_TABLE: schema_version
+        run: ./ci/test-migrations.sh
+      - name: Build and push Docker images
+        if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags')
+        uses: docker/build-push-action@v1.1.1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: faforever/db
+          tag_with_ref: true
