@@ -372,7 +372,7 @@
             <column ascending="true" name="game_id"/>
          </index>
       </table>
-      <table catalog="faf" name="game_stats" numRows="95456" remarks="" type="TABLE">
+      <table catalog="faf" name="game_stats" numRows="94942" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4">
             <child catalog="faf" column="gameuid" foreignKey="coop_leaderboard_ibfk_1" implied="false" onDeleteCascade="false" table="coop_leaderboard"/>
             <child catalog="faf" column="gameId" foreignKey="game_id_fk" implied="false" onDeleteCascade="false" table="game_player_stats"/>
@@ -695,7 +695,7 @@
             <column ascending="true" name="leaderboard_id"/>
          </index>
       </table>
-      <table catalog="faf" name="leaderboard_rating_journal" numRows="0" remarks="" type="TABLE">
+      <table catalog="faf" name="leaderboard_rating_journal" numRows="109725" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="game_player_stats_id" nullable="false" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5">
             <parent catalog="faf" column="id" foreignKey="leaderboard_rating_journal_ibfk_1" implied="false" onDeleteCascade="false" table="game_player_stats"/>
@@ -970,7 +970,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="plays" nullable="true" remarks="" size="32" type="DECIMAL" typeCode="3"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="draws" nullable="true" remarks="" size="32" type="DECIMAL" typeCode="3"/>
       </table>
-      <table catalog="faf" name="map_version" numRows="5772" remarks="" type="TABLE">
+      <table catalog="faf" name="map_version" numRows="6336" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mapId" foreignKey="mapid_fkey" implied="false" onDeleteCascade="false" table="game_stats"/>
             <child catalog="faf" column="idmap" foreignKey="ladder_map_2017_01_12_ibfk_1" implied="false" onDeleteCascade="true" table="ladder_map_2017_01_12"/>
@@ -1350,7 +1350,7 @@
             <column ascending="true" name="name"/>
          </index>
       </table>
-      <table catalog="faf" name="oauth_tokens" numRows="9704" remarks="" type="TABLE">
+      <table catalog="faf" name="oauth_tokens" numRows="9940" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="Auto incremented, technical ID." size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="token_type" nullable="false" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="access_token" nullable="false" remarks="A string token (UUID)." size="36" type="VARCHAR" typeCode="12"/>
@@ -1367,7 +1367,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="patchs_table" numRows="4765" remarks="" type="TABLE">
+      <table catalog="faf" name="patchs_table" numRows="4760" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idpatchs_table" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fromMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="toMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -1446,7 +1446,7 @@
             <column ascending="true" name="report_id"/>
          </index>
       </table>
-      <table catalog="faf" name="schema_version" numRows="106" remarks="" type="TABLE">
+      <table catalog="faf" name="schema_version" numRows="107" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="installed_rank" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="version" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="false" remarks="" size="200" type="VARCHAR" typeCode="12"/>
@@ -1502,7 +1502,7 @@
             <column ascending="true" name="user_id"/>
          </index>
       </table>
-      <table catalog="faf" name="table_map_features" numRows="5806" remarks="" type="TABLE">
+      <table catalog="faf" name="table_map_features" numRows="5665" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="map_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="table_map_features_ibfk_1" implied="false" onDeleteCascade="true" table="map_version"/>
          </column>
