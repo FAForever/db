@@ -179,7 +179,7 @@
                                     <td><p>The current steps for an incremental achievement.</p></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="state">state</span></td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="state">state</span></td>
                                     <td>enum(&#39;HIDDEN&#39;, &#39;REVEALED&#39;, &#39;UNLOCKED&#39;)</td>
                                     <td>8</td>
                                     <td title=''></td>
@@ -281,6 +281,12 @@ Possible values are:<br />
                                     <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
                                     <td>player_id + achievement_id</td>
                                 </tr>
+                                <tr>
+                                    <td title='Indexed'>player_achievements_state_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>state</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div><!-- /.box-body -->
@@ -306,18 +312,18 @@ Possible values are:<br />
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
 <area shape="rect" id="node1" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="324,71,717,345">
 <area shape="rect" id="node2" href="achievement_definitions.html" target="_top" title="achievement_definitions" alt="" coords="5,228,280,375">
-<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="51,5,235,211">
+<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="55,5,230,211">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/player_achievements.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="449,321,592,409">
-<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="51,988,235,1193">
-<area shape="rect" id="node3" href="ban.html" target="_top" title="ban" alt="" coords="1061,307,1204,395">
+<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="443,321,599,409">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="55,988,230,1193">
+<area shape="rect" id="node3" href="ban.html" target="_top" title="ban" alt="" coords="1070,307,1195,395">
 <area shape="rect" id="node4" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="761,388,992,476">
-<area shape="rect" id="node10" href="game_stats.html" target="_top" title="game_stats" alt="" coords="431,567,610,655">
-<area shape="rect" id="node5" href="clan.html" target="_top" title="clan" alt="" coords="451,832,590,920">
+<area shape="rect" id="node10" href="game_stats.html" target="_top" title="game_stats" alt="" coords="435,567,606,655">
+<area shape="rect" id="node5" href="clan.html" target="_top" title="clan" alt="" coords="436,832,605,920">
 <area shape="rect" id="node6" href="clan_membership.html" target="_top" title="clan_membership" alt="" coords="766,845,987,933">
 <area shape="rect" id="node7" href="featured_mods_owners.html" target="_top" title="featured_mods_owners" alt="" coords="390,937,651,1025">
 <area shape="rect" id="node8" href="friends_and_foes.html" target="_top" title="friends_and_foes" alt="" coords="415,1043,627,1131">
@@ -332,7 +338,7 @@ Possible values are:<br />
 <area shape="rect" id="node18" href="login_log.html" target="_top" title="login_log" alt="" coords="445,1711,596,1799">
 <area shape="rect" id="node19" href="map.html" target="_top" title="map" alt="" coords="436,1816,605,1904">
 <area shape="rect" id="node20" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="401,1921,641,2009">
-<area shape="rect" id="node21" href="mod.html" target="_top" title="mod" alt="" coords="443,2027,599,2115">
+<area shape="rect" id="node21" href="mod.html" target="_top" title="mod" alt="" coords="436,2027,605,2115">
 <area shape="rect" id="node22" href="mod_version_review.html" target="_top" title="mod_version_review" alt="" coords="401,2132,641,2220">
 <area shape="rect" id="node23" href="name_history.html" target="_top" title="name_history" alt="" coords="426,2237,615,2325">
 <area shape="rect" id="node24" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="324,2764,717,3039">

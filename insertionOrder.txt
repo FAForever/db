@@ -29,7 +29,6 @@ coop_leaderboard
 game_reviews_summary
 ladder1v1_rating
 ladder_division_score
-ladder_map_2017_01_12
 league_rating_range
 login_log
 map_reviews_summary

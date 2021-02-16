@@ -93,7 +93,6 @@ map_version_reviews_summary
 map_reviews_summary
 login_log
 league_rating_range
-ladder_map_2017_01_12
 ladder_division_score
 ladder1v1_rating
 game_reviews_summary
