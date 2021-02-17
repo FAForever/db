@@ -43,6 +43,7 @@ DELETE FROM ladder_division;
 DELETE FROM lobby_admin;
 DELETE FROM name_history;
 DELETE FROM user_group_assignment;
+DELETE FROM user_group;
 DELETE FROM login;
 DELETE FROM email_domain_blacklist;
 DELETE FROM leaderboard;
@@ -71,6 +72,20 @@ insert into login (id, login, email, password, ip) values (8, 'ipv6', 'ipv6@exam
 insert into name_history (id, change_time, user_id, previous_name) values
   (1, date_sub(now(), interval 12 month), 1, 'test_maniac'),
   (2, date_sub(now(), interval 1 month), 2, 'YoungDostya');
+
+-- User groups
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (1, 'faf_organisation', null, 1, 'user_group.faf.organisation');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (2, 'faf_councilor_administration', 1, 1, 'user_group.faf.councilor.administration');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (3, 'faf_councilor_balance', 1, 1, 'user_group.faf.councilor.balance');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (4, 'faf_councilor_devops', 1, 1, 'user_group.faf.councilor.devops');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (5, 'faf_councilor_game', 1, 1, 'user_group.faf.councilor.game');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (6, 'faf_councilor_maps_mods', 1, 1, 'user_group.faf.councilor.maps_mods');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (7, 'faf_councilor_moderation', 1, 1, 'user_group.faf.councilor.moderation');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (8, 'faf_councilor_player', 1, 1, 'user_group.faf.councilor.player');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (9, 'faf_councilor_promotion', 1, 1, 'user_group.faf.councilor.promotion');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (10, 'faf_balance_team', 3, 1, 'user_group.faf.balance_team');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (11, 'faf_server_administrators', 4, 1, 'user_group.faf.server_administrators');
+INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (28, 'faf_moderators_global', 7, 1, 'user_group.faf.moderators.global');
 
 -- Permissions
 insert into lobby_admin (user_id, `group`) values (1,2);
