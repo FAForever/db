@@ -8,6 +8,10 @@ mysql --no-defaults -h "${MYSQL_HOST}" -u root -p"${MYSQL_ROOT_PASSWORD}" <<< "C
 echo 'Import dump ...'
 mysql --no-defaults -h "${MYSQL_HOST}" -u root -p"${MYSQL_ROOT_PASSWORD}" "${MYSQL_DATABASE}" < ./faf-db-dump/dump.sql
 
+echo 'Create new flyway baseline version'
+mysql --no-defaults -h "${MYSQL_HOST}" -u root -p"${MYSQL_ROOT_PASSWORD}" "${MYSQL_DATABASE}" <<< "DROP TABLE IF EXISTS schema_version;"
+flyway -baselineVersion=107 baseline
+
 echo 'Migrate ...'
 flyway migrate
 
