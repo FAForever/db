@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <database name="faf" schema="faf" type="MySQL - 5.7.33">
    <tables>
-      <table catalog="faf" name="achievement_definitions" numRows="57" remarks="" type="TABLE">
+      <table catalog="faf" name="achievement_definitions" numRows="7" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="The ID of the achievement." size="36" type="VARCHAR" typeCode="12">
             <child catalog="faf" column="achievement_id" foreignKey="fk_achievement" implied="false" onDeleteCascade="false" table="player_achievements"/>
          </column>
@@ -264,8 +264,8 @@
             <column ascending="true" name="subject_id"/>
          </index>
       </table>
-      <table catalog="faf" name="game_featuredMods" numRows="17" remarks="" type="TABLE">
-         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="3" type="TINYINT UNSIGNED" typeCode="-6">
+      <table catalog="faf" name="game_featuredMods" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="This table is managed by Flyway. Do not manually edit records." size="3" type="TINYINT UNSIGNED" typeCode="-6">
             <child catalog="faf" column="moduid" foreignKey="featured_mods_owners_ibfk_1" implied="false" onDeleteCascade="true" table="featured_mods_owners"/>
             <child catalog="faf" column="gameMod" foreignKey="game_stats_game_featuredMods_id_fk" implied="false" onDeleteCascade="false" table="game_stats"/>
             <child catalog="faf" column="featured_mod_id" foreignKey="matchmaker_queue_ibfk_1" implied="false" onDeleteCascade="false" table="matchmaker_queue"/>
@@ -288,7 +288,7 @@
             <column ascending="true" name="gamemod"/>
          </index>
       </table>
-      <table catalog="faf" name="game_player_stats" numRows="27335" remarks="" type="TABLE">
+      <table catalog="faf" name="game_player_stats" numRows="27244" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5">
             <child catalog="faf" column="game_player_stats_id" foreignKey="leaderboard_rating_journal_ibfk_1" implied="false" onDeleteCascade="false" table="leaderboard_rating_journal"/>
          </column>
@@ -492,8 +492,8 @@
             <column ascending="true" name="ranking"/>
          </index>
       </table>
-      <table catalog="faf" name="group_permission" numRows="24" remarks="List of all permissions, assigned over group assignments (group_permission_assignments)" type="TABLE">
-         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
+      <table catalog="faf" name="group_permission" numRows="0" remarks="List of all permissions, assigned over group assignments (group_permission_assignments)" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="This table is managed by Flyway. Do not manually edit records." size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="permission_id" foreignKey="group_permission_assignment_ibfk_2" implied="false" onDeleteCascade="false" table="group_permission_assignment"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="technical_name" nullable="false" remarks="hardcoded names to be used in code" size="100" type="VARCHAR" typeCode="12"/>
@@ -639,8 +639,8 @@
             <column ascending="true" name="idmap"/>
          </index>
       </table>
-      <table catalog="faf" name="leaderboard" numRows="3" remarks="" type="TABLE">
-         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="5" type="SMALLINT UNSIGNED" typeCode="5">
+      <table catalog="faf" name="leaderboard" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="This table is managed by Flyway. Do not manually edit records." size="5" type="SMALLINT UNSIGNED" typeCode="5">
             <child catalog="faf" column="leaderboard_id" foreignKey="leaderboard_rating_ibfk_2" implied="false" onDeleteCascade="false" table="leaderboard_rating"/>
             <child catalog="faf" column="leaderboard_id" foreignKey="leaderboard_rating_journal_ibfk_2" implied="false" onDeleteCascade="false" table="leaderboard_rating_journal"/>
             <child catalog="faf" column="leaderboard_id" foreignKey="matchmaker_queue_ibfk_2" implied="false" onDeleteCascade="false" table="matchmaker_queue"/>
@@ -658,7 +658,7 @@
             <column ascending="true" name="technical_name"/>
          </index>
       </table>
-      <table catalog="faf" name="leaderboard_rating" numRows="48195" remarks="" type="TABLE">
+      <table catalog="faf" name="leaderboard_rating" numRows="46763" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="login_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="leaderboard_rating_ibfk_1" implied="false" onDeleteCascade="false" table="login"/>
@@ -685,7 +685,7 @@
             <column ascending="true" name="leaderboard_id"/>
          </index>
       </table>
-      <table catalog="faf" name="leaderboard_rating_journal" numRows="12562" remarks="" type="TABLE">
+      <table catalog="faf" name="leaderboard_rating_journal" numRows="1458" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="game_player_stats_id" nullable="false" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5">
             <parent catalog="faf" column="id" foreignKey="leaderboard_rating_journal_ibfk_1" implied="false" onDeleteCascade="false" table="game_player_stats"/>
@@ -786,7 +786,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="reason" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="expires_at" nullable="true" remarks="" size="26" type="DATETIME" typeCode="93"/>
       </table>
-      <table catalog="faf" name="login" numRows="23905" remarks="login" type="TABLE">
+      <table catalog="faf" name="login" numRows="23815" remarks="login" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="idUser" foreignKey="avatars_ibfk_1" implied="false" onDeleteCascade="false" table="avatars"/>
             <child catalog="faf" column="author_id" foreignKey="ban_revoke_author" implied="false" onDeleteCascade="false" table="ban"/>
@@ -966,7 +966,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="plays" nullable="true" remarks="" size="32" type="DECIMAL" typeCode="3"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="draws" nullable="true" remarks="" size="32" type="DECIMAL" typeCode="3"/>
       </table>
-      <table catalog="faf" name="map_version" numRows="16284" remarks="" type="TABLE">
+      <table catalog="faf" name="map_version" numRows="17641" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mapId" foreignKey="mapid_fkey" implied="false" onDeleteCascade="false" table="game_stats"/>
             <child catalog="faf" column="map_version_id" foreignKey="map_pool_map_version_ibfk_2" implied="false" onDeleteCascade="false" table="map_pool_map_version"/>
@@ -1054,8 +1054,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="plays" nullable="true" remarks="" size="19" type="BIGINT" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="draws" nullable="true" remarks="" size="19" type="BIGINT" typeCode="-5"/>
       </table>
-      <table catalog="faf" name="matchmaker_queue" numRows="2" remarks="A matchmaker queue specifying which featured mod will be played, which map pools will be drawn from, and which leaderboard will be used to look up and update a player''s rating." type="TABLE">
-         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4">
+      <table catalog="faf" name="matchmaker_queue" numRows="0" remarks="A matchmaker queue specifying which featured mod will be played, which map pools will be drawn from, and which leaderboard will be used to look up and update a player''s rating." type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="This table is managed by Flyway. Do not manually edit records." size="10" type="INT UNSIGNED" typeCode="4">
             <child catalog="faf" column="matchmaker_queue_id" foreignKey="matchmaker_queue_game_ibfk_1" implied="false" onDeleteCascade="false" table="matchmaker_queue_game"/>
             <child catalog="faf" column="matchmaker_queue_id" foreignKey="matchmaker_queue_map_pool_matchmaker_queue_id_fk" implied="false" onDeleteCascade="false" table="matchmaker_queue_map_pool"/>
          </column>
@@ -1205,7 +1205,7 @@
             <column ascending="true" name="mod_id"/>
          </index>
       </table>
-      <table catalog="faf" name="mod_version" numRows="4068" remarks="" type="TABLE">
+      <table catalog="faf" name="mod_version" numRows="3858" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_review_ibfk_2" implied="false" onDeleteCascade="false" table="mod_version_review"/>
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_reviews_summary_mod_version" implied="false" onDeleteCascade="false" table="mod_version_reviews_summary"/>
@@ -1367,7 +1367,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="patchs_table" numRows="22551" remarks="" type="TABLE">
+      <table catalog="faf" name="patchs_table" numRows="22503" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idpatchs_table" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fromMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="toMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -1449,7 +1449,7 @@
             <column ascending="true" name="report_id"/>
          </index>
       </table>
-      <table catalog="faf" name="schema_version" numRows="107" remarks="" type="TABLE">
+      <table catalog="faf" name="schema_version" numRows="9" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="installed_rank" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="version" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="false" remarks="" size="200" type="VARCHAR" typeCode="12"/>
@@ -1505,7 +1505,7 @@
             <column ascending="true" name="user_id"/>
          </index>
       </table>
-      <table catalog="faf" name="table_map_features" numRows="13891" remarks="" type="TABLE">
+      <table catalog="faf" name="table_map_features" numRows="13483" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="map_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="table_map_features_ibfk_1" implied="false" onDeleteCascade="true" table="map_version"/>
          </column>
@@ -2050,7 +2050,7 @@
             <column ascending="true" name="fileId"/>
          </index>
       </table>
-      <table catalog="faf" name="updates_tutorials" numRows="0" remarks="" type="TABLE">
+      <table catalog="faf" name="updates_tutorials" numRows="6" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="5" type="SMALLINT UNSIGNED" typeCode="5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="filename" nullable="false" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="path" nullable="false" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -2058,7 +2058,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="updates_tutorials_files" numRows="0" remarks="" type="TABLE">
+      <table catalog="faf" name="updates_tutorials_files" numRows="6" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fileId" nullable="false" remarks="" size="5" type="SMALLINT UNSIGNED" typeCode="5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="version" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
@@ -2073,7 +2073,7 @@
             <column ascending="true" name="fileId"/>
          </index>
       </table>
-      <table catalog="faf" name="updates_vanilla" numRows="0" remarks="" type="TABLE">
+      <table catalog="faf" name="updates_vanilla" numRows="2" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="5" type="SMALLINT UNSIGNED" typeCode="5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="filename" nullable="false" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="path" nullable="false" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -2081,7 +2081,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="updates_vanilla_files" numRows="0" remarks="" type="TABLE">
+      <table catalog="faf" name="updates_vanilla_files" numRows="3" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fileId" nullable="false" remarks="" size="5" type="SMALLINT UNSIGNED" typeCode="5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="version" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
