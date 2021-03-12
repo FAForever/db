@@ -1,12 +1,12 @@
 login
 game_featuredMods
 leaderboard
-map_pool
 voting_subject
 achievement_definitions
 avatars_list
 game_validity
 group_permission
+map_pool
 tutorial_category
 tutorial_sections
 uniqueid

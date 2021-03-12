@@ -125,10 +125,6 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
-                                                <td title="map_pool_map_version.map_pool_id references map_pool.id via map_pool_map_version_ibfk_1"><a href='map_pool_map_version.html'>map_pool_map_version</a><span class='relatedKey'>.map_pool_id</span></td>
-                                                <td class="constraint detail">map_pool_map_version_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
-                                            <tr>
                                                 <td title="matchmaker_queue_map_pool.map_pool_id references map_pool.id via matchmaker_queue_map_pool_map_pool_id_fk"><a href='matchmaker_queue_map_pool.html'>matchmaker_queue_map_pool</a><span class='relatedKey'>.map_pool_id</span></td>
                                                 <td class="constraint detail">matchmaker_queue_map_pool_map_pool_id_fk<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
@@ -244,19 +240,16 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="map_pool_map_version.html" target="_top" title="map_pool_map_version" alt="" coords="353,5,615,128">
-<area shape="rect" id="node2" href="map_pool.html" target="_top" title="map_pool" alt="" coords="5,103,281,289">
-<area shape="rect" id="node3" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="325,145,643,321">
+<area shape="rect" id="node1" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="325,5,643,181">
+<area shape="rect" id="node2" href="map_pool.html" target="_top" title="map_pool" alt="" coords="5,61,281,248">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/map_pool.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="map_pool_map_version.html" target="_top" title="map_pool_map_version" alt="" coords="353,265,615,388">
+<area shape="rect" id="node1" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="325,15,643,191">
 <area shape="rect" id="node2" href="map_pool.html" target="_top" title="map_pool" alt="" coords="5,111,281,297">
-<area shape="rect" id="node3" href="map_version.html" target="_top" title="map_version" alt="" coords="52,315,235,403">
-<area shape="rect" id="node4" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="325,15,643,191">
-<area shape="rect" id="node5" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="24,5,263,93">
+<area shape="rect" id="node3" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="24,5,263,93">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/map_pool.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>

@@ -115,12 +115,12 @@ map
 uniqueid
 tutorial_sections
 tutorial_category
+map_pool
 group_permission
 game_validity
 avatars_list
 achievement_definitions
 voting_subject
-map_pool
 leaderboard
 game_featuredMods
 login
