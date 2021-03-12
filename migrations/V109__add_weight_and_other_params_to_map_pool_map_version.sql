@@ -1,9 +1,9 @@
 -- Drop foreign key
-ALTER TABLE `faf`.`map_pool_map_version`
+ALTER TABLE `map_pool_map_version`
 DROP FOREIGN KEY `map_pool_map_version_ibfk_1`;
 
 -- Add map weight and params to table
-ALTER TABLE `faf`.`map_pool_map_version`
+ALTER TABLE `map_pool_map_version`
 -- remove primary key
 DROP PRIMARY KEY,
 
@@ -18,7 +18,7 @@ DROP PRIMARY KEY,
     CHANGE COLUMN `map_version_id` `map_version_id` MEDIUMINT(8) UNSIGNED NULL COMMENT 'When null the map_params will be used to generate the map';
 
 -- Add foreign key
-ALTER TABLE `faf`.`map_pool_map_version`
+ALTER TABLE `map_pool_map_version`
     ADD CONSTRAINT `map_pool_map_version_ibfk_1`
         FOREIGN KEY (`map_version_id`)
-            REFERENCES `faf`.`map_version` (`id`);
+            REFERENCES `map_version` (`id`);
