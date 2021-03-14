@@ -107,6 +107,7 @@ voting_choice
 mod_version
 game_stats
 user_group
+leaderboard
 map_version
 league
 voting_question
@@ -121,6 +122,5 @@ game_validity
 avatars_list
 achievement_definitions
 voting_subject
-leaderboard
 game_featuredMods
 login

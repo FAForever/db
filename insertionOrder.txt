@@ -1,6 +1,5 @@
 login
 game_featuredMods
-leaderboard
 voting_subject
 achievement_definitions
 avatars_list
@@ -15,6 +14,7 @@ mod
 voting_question
 league
 map_version
+leaderboard
 user_group
 game_stats
 mod_version
