@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>global_rating_rank_view</h1><p><span id="recordNumber">1673</span> rows</p><br />
+                    <h1>global_rating_rank_view</h1><p><span id="recordNumber">0</span> rows</p><br />
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <i class="fa fa-file-text-o"></i>
@@ -128,6 +128,10 @@
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="global_rating_rank_view.id references login.id via global_rating_rank_view_login_id_fk"><a href='login.html'>login</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">global_rating_rank_view_login_id_fk<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
                                         </table>
                                     </td>
                                     <td><p>References to global_rating.id</p></td>
@@ -257,10 +261,73 @@
                             </table>
                         </div><!-- /.box-body -->
                     </div>
-                    <div class="alert alert-warning alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h4><i class="icon fa fa-warning"></i>Diagram producer might be missing</h4>
-                        <p>No diagrams were produced please see application output for any errors</p>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 id="Relationships" class="box-title">Relationships</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom"><!-- Tabs within a box -->
+                                <h5>Close relationships within degrees of separation</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                    <li class=""><a href="#twodegreesDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two degrees</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
+<area shape="rect" id="node1" href="global_rating_rank_view.html" target="_top" title="global_rating_rank_view" alt="" coords="224,5,640,251">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="5,8,180,213">
+</map>
+                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/global_rating_rank_view.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
+<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="354,5,510,93">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="5,1355,180,1560">
+<area shape="rect" id="node3" href="ban.html" target="_top" title="ban" alt="" coords="993,81,1118,169">
+<area shape="rect" id="node4" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="684,163,915,251">
+<area shape="rect" id="node10" href="game_stats.html" target="_top" title="game_stats" alt="" coords="343,355,521,443">
+<area shape="rect" id="node5" href="clan.html" target="_top" title="clan" alt="" coords="347,620,517,708">
+<area shape="rect" id="node6" href="clan_membership.html" target="_top" title="clan_membership" alt="" coords="689,620,910,708">
+<area shape="rect" id="node7" href="featured_mods_owners.html" target="_top" title="featured_mods_owners" alt="" coords="301,725,563,813">
+<area shape="rect" id="node8" href="friends_and_foes.html" target="_top" title="friends_and_foes" alt="" coords="326,831,538,919">
+<area shape="rect" id="node9" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="687,268,912,356">
+<area shape="rect" id="node11" href="game_review.html" target="_top" title="game_review" alt="" coords="707,373,892,461">
+<area shape="rect" id="node12" href="global_rating.html" target="_top" title="global_rating" alt="" coords="340,936,524,1024">
+<area shape="rect" id="node13" href="global_rating_rank_view.html" target="_top" title="global_rating_rank_view" alt="" coords="224,1041,640,1287">
+<area shape="rect" id="node14" href="ladder1v1_rating.html" target="_top" title="ladder1v1_rating" alt="" coords="325,1304,539,1392">
+<area shape="rect" id="node15" href="ladder1v1_rating_rank_view.html" target="_top" title="ladder1v1_rating_rank_view" alt="" coords="283,1409,581,1497">
+<area shape="rect" id="node16" href="ladder_division_score.html" target="_top" title="ladder_division_score" alt="" coords="308,1515,556,1603">
+<area shape="rect" id="node17" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="316,1620,548,1708">
+<area shape="rect" id="node18" href="league.html" target="_top" title="league" alt="" coords="363,1761,501,1849">
+<area shape="rect" id="node19" href="league_schedule.html" target="_top" title="league_schedule" alt="" coords="694,1724,905,1812">
+<area shape="rect" id="node20" href="login_log.html" target="_top" title="login_log" alt="" coords="357,1867,507,1955">
+<area shape="rect" id="node21" href="map.html" target="_top" title="map" alt="" coords="347,1972,517,2060">
+<area shape="rect" id="node22" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="312,2077,552,2165">
+<area shape="rect" id="node23" href="mod.html" target="_top" title="mod" alt="" coords="347,2183,517,2271">
+<area shape="rect" id="node24" href="mod_version_review.html" target="_top" title="mod_version_review" alt="" coords="312,2288,552,2376">
+<area shape="rect" id="node25" href="name_history.html" target="_top" title="name_history" alt="" coords="337,2393,527,2481">
+<area shape="rect" id="node26" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="308,2499,556,2587">
+<area shape="rect" id="node27" href="player_events.html" target="_top" title="player_events" alt="" coords="336,2604,528,2692">
+<area shape="rect" id="node28" href="reported_user.html" target="_top" title="reported_user" alt="" coords="959,367,1152,455">
+<area shape="rect" id="node29" href="table_map_comments.html" target="_top" title="table_map_comments" alt="" coords="306,2709,558,2797">
+<area shape="rect" id="node30" href="teamkills.html" target="_top" title="teamkills" alt="" coords="721,479,878,567">
+<area shape="rect" id="node31" href="unique_id_users.html" target="_top" title="unique_id_users" alt="" coords="329,2815,535,2903">
+<area shape="rect" id="node32" href="uniqueid_exempt.html" target="_top" title="uniqueid_exempt" alt="" coords="322,2920,542,3008">
+<area shape="rect" id="node33" href="user_group_assignment.html" target="_top" title="user_group_assignment" alt="" coords="301,3025,563,3113">
+<area shape="rect" id="node34" href="user_notes.html" target="_top" title="user_notes" alt="" coords="349,3131,515,3219">
+<area shape="rect" id="node35" href="vote.html" target="_top" title="vote" alt="" coords="363,3236,501,3324">
+</map>
+                                        <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/global_rating_rank_view.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
                     </div>
                 </section>
                 <script>

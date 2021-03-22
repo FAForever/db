@@ -46,10 +46,8 @@ messages
 lobby_admin
 ladder_map
 ladder_division
-ladder1v1_rating_rank_view
 ladder1v1_rating_distribution
 jwt_users
-global_rating_rank_view
 global_rating_distribution
 faction
 event_definitions
@@ -94,7 +92,9 @@ map_reviews_summary
 login_log
 league_rating_range
 ladder_division_score
+ladder1v1_rating_rank_view
 ladder1v1_rating
+global_rating_rank_view
 game_reviews_summary
 coop_leaderboard
 vote

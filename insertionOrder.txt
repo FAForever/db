@@ -27,7 +27,9 @@ league_schedule
 vote
 coop_leaderboard
 game_reviews_summary
+global_rating_rank_view
 ladder1v1_rating
+ladder1v1_rating_rank_view
 ladder_division_score
 league_rating_range
 login_log
@@ -72,10 +74,8 @@ email_domain_blacklist
 event_definitions
 faction
 global_rating_distribution
-global_rating_rank_view
 jwt_users
 ladder1v1_rating_distribution
-ladder1v1_rating_rank_view
 ladder_division
 ladder_map
 lobby_admin
