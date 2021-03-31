@@ -288,7 +288,7 @@
             <column ascending="true" name="gamemod"/>
          </index>
       </table>
-      <table catalog="faf" name="game_player_stats" numRows="27345" remarks="" type="TABLE">
+      <table catalog="faf" name="game_player_stats" numRows="26477" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5">
             <child catalog="faf" column="game_player_stats_id" foreignKey="leaderboard_rating_journal_ibfk_1" implied="false" onDeleteCascade="false" table="leaderboard_rating_journal"/>
          </column>
@@ -399,7 +399,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="validity" nullable="false" remarks="" size="3" type="TINYINT UNSIGNED" typeCode="-6">
             <parent catalog="faf" column="id" foreignKey="game_stats_game_validity_id_fk" implied="false" onDeleteCascade="false" table="game_validity"/>
          </column>
-         <column autoUpdated="false" defaultValue="1" digits="0" id="10" name="replay_available" nullable="false" remarks="If false, no replay is available for download.&#10;&#10;There is no support from replay server yet. Workaround: Default value is set to true assuming all future replays get written properly. Once the replay server manages this flag properly, set it to false." size="1" type="BIT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="10" name="replay_available" nullable="false" remarks="If false, no replay is available for download. The replay server needs to set this field to true once replay is written to disk." size="1" type="BIT" typeCode="-7"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -889,7 +889,7 @@
             <column ascending="true" name="login_id"/>
          </index>
       </table>
-      <table catalog="faf" name="map" numRows="9197" remarks="" type="TABLE">
+      <table catalog="faf" name="map" numRows="9204" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="map_id" foreignKey="map_reviews_summary_ibfk_1" implied="false" onDeleteCascade="false" table="map_reviews_summary"/>
             <child catalog="faf" column="map_id" foreignKey="map" implied="false" onDeleteCascade="true" table="map_version"/>
@@ -980,7 +980,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="plays" nullable="true" remarks="" size="32" type="DECIMAL" typeCode="3"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="draws" nullable="true" remarks="" size="32" type="DECIMAL" typeCode="3"/>
       </table>
-      <table catalog="faf" name="map_version" numRows="16974" remarks="" type="TABLE">
+      <table catalog="faf" name="map_version" numRows="16180" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mapId" foreignKey="mapid_fkey" implied="false" onDeleteCascade="false" table="game_stats"/>
             <child catalog="faf" column="map_version_id" foreignKey="map_pool_map_version_ibfk_2" implied="false" onDeleteCascade="false" table="map_pool_map_version"/>
@@ -1219,7 +1219,7 @@
             <column ascending="true" name="mod_id"/>
          </index>
       </table>
-      <table catalog="faf" name="mod_version" numRows="3813" remarks="" type="TABLE">
+      <table catalog="faf" name="mod_version" numRows="3836" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_review_ibfk_2" implied="false" onDeleteCascade="false" table="mod_version_review"/>
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_reviews_summary_mod_version" implied="false" onDeleteCascade="false" table="mod_version_reviews_summary"/>
@@ -1381,7 +1381,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="patchs_table" numRows="22454" remarks="" type="TABLE">
+      <table catalog="faf" name="patchs_table" numRows="22522" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idpatchs_table" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fromMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="toMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -1463,7 +1463,7 @@
             <column ascending="true" name="report_id"/>
          </index>
       </table>
-      <table catalog="faf" name="schema_version" numRows="14" remarks="" type="TABLE">
+      <table catalog="faf" name="schema_version" numRows="15" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="installed_rank" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="version" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="false" remarks="" size="200" type="VARCHAR" typeCode="12"/>
@@ -1519,7 +1519,7 @@
             <column ascending="true" name="user_id"/>
          </index>
       </table>
-      <table catalog="faf" name="table_map_features" numRows="13742" remarks="" type="TABLE">
+      <table catalog="faf" name="table_map_features" numRows="13876" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="map_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="table_map_features_ibfk_1" implied="false" onDeleteCascade="true" table="map_version"/>
          </column>
@@ -2314,7 +2314,7 @@
             <column ascending="true" name="voting_subject_id"/>
          </index>
       </table>
-      <table catalog="faf" name="voting_subject" numRows="0" remarks="" type="TABLE">
+      <table catalog="faf" name="voting_subject" numRows="15" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4">
             <child catalog="faf" column="voting_subject_id" foreignKey="voting_subject_of_vote" implied="false" onDeleteCascade="false" table="vote"/>
             <child catalog="faf" column="voting_subject_id" foreignKey="voting_subject_of_voting_question" implied="false" onDeleteCascade="false" table="voting_question"/>
@@ -2333,7 +2333,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="winner_for_voting_question" numRows="0" remarks="" type="TABLE">
+      <table catalog="faf" name="winner_for_voting_question" numRows="311" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="voting_question_id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="voting_question_of_winner" implied="false" onDeleteCascade="false" table="voting_question"/>
          </column>
