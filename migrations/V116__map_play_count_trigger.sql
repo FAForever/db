@@ -4,7 +4,7 @@ ALTER TABLE map_version
 
 -- Add times_played to map_version
 ALTER TABLE map
-    ADD COLUMN times_played int unsigned NOT NULL DEFAULT 0 COMMENT 'Number of times a map version has been played. Should be updated each time a row is inserted with a map_version.map.id in game_stats Values start at 0' AFTER reviews;
+    ADD COLUMN times_played int unsigned NOT NULL DEFAULT 0 COMMENT 'Number of times a map version has been played. Should be updated each time times_played is updated in map_version Values start at 0' AFTER reviews;
 
 DROP TABLE IF EXISTS table_map_features;
 
