@@ -20,32 +20,28 @@ DROP VIEW IF EXISTS map_version_statistics;
 CREATE DEFINER=root@localhost VIEW map_version_statistics AS
     SELECT id, 0 AS downloads, times_played, 0 AS num_draws FROM map_version;
 
--- create temp tables for one_time update of map play counts
+-- one time update of map_version to get times_played to the right play_count
 DROP TABLE IF EXISTS map_version_play_count;
 
 CREATE TEMPORARY TABLE map_version_play_count AS
-    SELECT mapId, COUNT(DISTINCT id) AS map_play_count
+    SELECT mapId, COUNT(DISTINCT id) AS times_played
     FROM game_stats
     GROUP BY mapId;
 
+UPDATE map_version, map_version_play_count
+SET map_version.times_played = map_version_play_count.times_played
+WHERE map_version.id = map_version_play_count.mapId;
+
+-- one time update of map to get times_played to the right play_count
 DROP TABLE IF EXISTS map_play_count;
 
 CREATE TEMPORARY TABLE map_play_count AS
-    SELECT map_version.map_id, COUNT(DISTINCT game_stats.id) AS map_play_count
-    FROM game_stats
-             INNER JOIN map_version on game_stats.mapId = map_version.id
-    GROUP BY map_version.map_id;
+SELECT map_version.map_id, SUM(map_version.times_played) AS times_played
+FROM map_version
+GROUP BY map_version.map_id;
 
--- one time update of map_version to get times_played to the right play_count
-UPDATE map_version
-    INNER JOIN map_version_play_count ON map_version.id = map_version_play_count.mapId
-SET map_version.times_played = map_version_play_count.map_play_count
-WHERE map_version.id = map_version_play_count.mapId;
-
--- one time update of map_version to get times_played to the right play_count
-UPDATE map
-    INNER JOIN map_play_count on map.id = map_play_count.map_id
-SET map.times_played = map_play_count.map_play_count
+UPDATE map, map_play_count
+SET map.times_played = map_play_count.times_played
 WHERE map.id = map_play_count.map_id;
 
 -- Add trigger to increment map_version play count
