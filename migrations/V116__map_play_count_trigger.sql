@@ -51,6 +51,8 @@ BEGIN
     END IF;
 END;$$
 
+DELIMITER ;
+
 -- one time update of map_version to get games_played to the right play_count
 DROP TABLE IF EXISTS map_version_play_count;
 
