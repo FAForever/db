@@ -32,6 +32,8 @@ UPDATE map_version, map_version_play_count
 SET map_version.times_played = map_version_play_count.times_played
 WHERE map_version.id = map_version_play_count.mapId;
 
+DROP TABLE IF EXISTS map_version_play_count;
+
 -- one time update of map to get times_played to the right play_count
 DROP TABLE IF EXISTS map_play_count;
 
@@ -43,6 +45,8 @@ GROUP BY map_version.map_id;
 UPDATE map, map_play_count
 SET map.times_played = map_play_count.times_played
 WHERE map.id = map_play_count.map_id;
+
+DROP TABLE IF EXISTS map_play_count;
 
 -- Add trigger to increment map_version play count
 DELIMITER ;
