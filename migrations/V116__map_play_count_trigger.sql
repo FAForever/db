@@ -12,13 +12,13 @@ DROP TABLE IF EXISTS table_map_features;
 DROP VIEW IF EXISTS map_statistics;
 
 CREATE DEFINER=root@localhost VIEW map_statistics AS
-SELECT id, 0 AS downloads, games_played AS times_played, 0 AS num_draws FROM map;
+SELECT id as map_id, 0 AS downloads, games_played AS times_played, 0 AS num_draws FROM map;
 
 -- Update view for backwards compatibility with api
 DROP VIEW IF EXISTS map_version_statistics;
 
 CREATE DEFINER=root@localhost VIEW map_version_statistics AS
-SELECT id, 0 AS downloads, games_played AS times_played, 0 AS num_draws FROM map_version;
+SELECT id as map_version_id, 0 AS downloads, games_played AS times_played, 0 AS num_draws FROM map_version;
 
 -- Add trigger to increment map_version play count
 DELIMITER ;
