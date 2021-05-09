@@ -108,7 +108,7 @@
                                     <td>8</td>
                                     <td title=''></td>
                                     <td title=''></td>
-                                    <td>null</td>
+                                    <td>0</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -121,11 +121,11 @@
                                 </tr>
                                 <tr>
                                     <td><span id="downloads">downloads</span></td>
-                                    <td>DECIMAL</td>
-                                    <td>32</td>
-                                    <td title='nullable'>√</td>
+                                    <td>INT</td>
+                                    <td>10</td>
                                     <td title=''></td>
-                                    <td>null</td>
+                                    <td title=''></td>
+                                    <td>0</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -138,11 +138,11 @@
                                 </tr>
                                 <tr>
                                     <td><span id="plays">plays</span></td>
-                                    <td>DECIMAL</td>
-                                    <td>32</td>
-                                    <td title='nullable'>√</td>
+                                    <td>INT UNSIGNED</td>
+                                    <td>10</td>
                                     <td title=''></td>
-                                    <td>null</td>
+                                    <td title=''></td>
+                                    <td>0</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -151,15 +151,15 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>Number of times a map version has been played. Should be updated each time games_played is updated in map_version Values start at 0</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="draws">draws</span></td>
-                                    <td>DECIMAL</td>
-                                    <td>32</td>
-                                    <td title='nullable'>√</td>
+                                    <td>INT</td>
+                                    <td>10</td>
                                     <td title=''></td>
-                                    <td>null</td>
+                                    <td title=''></td>
+                                    <td>0</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `faf`.`map_version`.`map_id` AS `map_id`,coalesce(sum(`faf`.`table_map_features`.`downloads`),0) AS `downloads`,coalesce(sum(`faf`.`table_map_features`.`times_played`),0) AS `plays`,coalesce(sum(`faf`.`table_map_features`.`num_draws`),0) AS `draws` from (`faf`.`map_version` left join `faf`.`table_map_features` on((`faf`.`map_version`.`id` = `faf`.`table_map_features`.`map_id`))) group by `faf`.`map_version`.`map_id`</textarea>
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `faf`.`map`.`id` AS `map_id`,0 AS `downloads`,`faf`.`map`.`games_played` AS `plays`,0 AS `draws` from `faf`.`map`</textarea>
                             <div style="padding-top: 5px;"><hr></div>
                             <div class="box box-solid">
                                 <div class="box-header with-border">
@@ -194,8 +194,7 @@
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <ul class="list-unstyled">
-                                        <li><a href="map_version.html">map_version</a></li>
-                                        <li><a href="table_map_features.html">table_map_features</a></li>
+                                        <li><a href="map.html">map</a></li>
                                     </ul>
                                 </div><!-- /.box-body -->
                             </div>

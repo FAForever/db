@@ -37,7 +37,6 @@ mod_stats
 mod_version_reviews_summary
 name_history
 player_events
-table_map_features
 tutorials
 uniqueid_exempt
 avatars

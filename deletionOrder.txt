@@ -81,7 +81,6 @@ clan_membership
 avatars
 uniqueid_exempt
 tutorials
-table_map_features
 player_events
 name_history
 mod_version_reviews_summary
