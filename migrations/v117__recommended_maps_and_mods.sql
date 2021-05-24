@@ -4,4 +4,4 @@ ALTER TABLE `map`
 
 -- Add recommended column to mod
 ALTER TABLE `mod`
-    ADD COLUMN `recommended` boolean NOT NULL DEFAULT false COMMENT 'Boolean to indicate if a map is a high quality FAF Mod' AFTER `reviews`;
+    ADD COLUMN `recommended` boolean NOT NULL DEFAULT false COMMENT 'Boolean to indicate if a mod is a high quality FAF Mod' AFTER `reviews`;
