@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>login</h1><p><span id="recordNumber">23920</span> rows</p><br />
+                    <h1>login</h1><p><span id="recordNumber">23875</span> rows</p><br />
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <i class="fa fa-file-text-o"></i>
@@ -197,8 +197,8 @@
                                                 <td class="constraint detail">leaderboard_rating_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                             <tr>
-                                                <td title="login_log.login_id references login.id via login_log_ibfk_1"><a href='login_log.html'>login_log</a><span class='relatedKey'>.login_id</span></td>
-                                                <td class="constraint detail">login_log_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td title="login_log.login_id references login.id via login_log_login_id_fk"><a href='login_log.html'>login_log</a><span class='relatedKey'>.login_id</span></td>
+                                                <td class="constraint detail">login_log_login_id_fk<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="map.author references login.id via author"><a href='map.html'>map</a><span class='relatedKey'>.author</span></td>
