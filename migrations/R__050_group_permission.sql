@@ -28,7 +28,8 @@ INSERT INTO `group_permission` (id, technical_name, name_key) VALUES
 (21,'WRITE_MESSAGE','permission_group.write_message'),
 (22,'ADMIN_KICK_SERVER','permission_group.admin_kick_server'),
 (23,'ADMIN_BROADCAST_MESSAGE','permission_group.admin_broadcast_message'),
-(24,'ADMIN_JOIN_CHANNEL','permission_group.admin_join_channel')
+(24,'ADMIN_JOIN_CHANNEL','permission_group.admin_join_channel'),
+(25,'ADMIN_ACCOUNT_NAME_CHANGE', 'permission_group.admin_account_name_change')
 -- add new row above this comment (don't forget to append the comma to the previous one)
 ON DUPLICATE KEY UPDATE
     technical_name=VALUES(technical_name),
