@@ -1,5 +1,4 @@
 vm_exempt
-version_lobby
 updates_xtremewars_files
 updates_xtremewars
 updates_vanilla_files

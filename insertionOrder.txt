@@ -118,5 +118,4 @@ updates_vanilla
 updates_vanilla_files
 updates_xtremewars
 updates_xtremewars_files
-version_lobby
 vm_exempt
