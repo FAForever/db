@@ -11,7 +11,6 @@ DELETE FROM uniqueid;
 DELETE FROM global_rating;
 DELETE FROM ladder1v1_rating;
 DELETE FROM uniqueid_exempt;
-DELETE FROM version_lobby;
 DELETE FROM friends_and_foes;
 DELETE FROM ladder_map;
 DELETE FROM tutorial;
@@ -118,9 +117,6 @@ VALUES ('some_id', '-', '-', '-', '-', '-', '-', '-', '-', '-'),
 insert into unique_id_users (user_id, uniqueid_hash) values (1, 'some_id');
 insert into unique_id_users (user_id, uniqueid_hash) values (2, 'another_id');
 insert into unique_id_users (user_id, uniqueid_hash) values (3, 'some_id');
-
--- Lobby version table
-insert into version_lobby (id, `file`, version) values (1, 'some-installer.msi', '0.10.125');
 
 -- Sample maps
 insert into map (id, display_name, map_type, battle_type, author)
