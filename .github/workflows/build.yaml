@@ -36,6 +36,7 @@ jobs:
           FLYWAY_USER: root
           FLYWAY_PASSWORD: banana
           FLYWAY_LOCATIONS: filesystem:migrations
+          FLYWAY_VALIDATE_MIGRATION_NAMING: "true"
         run: flyway migrate
       - name: Run test-data.sql
         env:
