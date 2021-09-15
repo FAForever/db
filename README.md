@@ -28,14 +28,14 @@ You can now check the current version via running:
     select version from schema_version order by installed_rank desc limit 1
 
 ### Updating the database
-First you need to pull the faf-stack repo and checkout the branch with the db version you want. Then you need to update the configuration files.
+First you need to pull the faf-stack repo and checkout the branch with the db version you want. Now you can migrate to the latest version using:
+
+    docker-compose run --rm faf-db-migrations migrate
+
+The migration might fail if it depends on changes in the configuration files. In this case you can copy the template files again.
 
     cp -r config.template/* config
     cp .env.template .env
-
-Now you can migrate to the latest version using:
-
-    docker-compose run --rm faf-db-migrations migrate
 
 Updating the database is a one way street. Once you applied a migration, you cannot go back using a migration. If you want to do it manually you would need to undo the changes from the migrations and remove the version records in the table `schema_version`.
 
