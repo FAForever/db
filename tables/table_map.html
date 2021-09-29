@@ -369,7 +369,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">(select `v`.`id` AS `id`,`m`.`display_name` AS `name`,`v`.`description` AS `description`,`v`.`max_players` AS `max_players`,`m`.`map_type` AS `map_type`,`m`.`battle_type` AS `battle_type`,`v`.`width` AS `map_sizeX`,`v`.`height` AS `map_sizeY`,`v`.`version` AS `version`,`v`.`filename` AS `filename`,`v`.`hidden` AS `hidden`,`m`.`id` AS `mapuid` from (`faf`.`map` `m` join `faf`.`map_version` `v` on((`m`.`id` = `v`.`map_id`))))</textarea>
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">(select `v`.`id` AS `id`,`m`.`display_name` AS `name`,`v`.`description` AS `description`,`v`.`max_players` AS `max_players`,`m`.`map_type` AS `map_type`,`m`.`battle_type` AS `battle_type`,`v`.`width` AS `map_sizeX`,`v`.`height` AS `map_sizeY`,`v`.`version` AS `version`,`v`.`filename` AS `filename`,`v`.`hidden` AS `hidden`,`m`.`id` AS `mapuid` from (`faf`.`map` `m` join `faf`.`map_version` `v` on(`m`.`id` = `v`.`map_id`)))</textarea>
                             <div style="padding-top: 5px;"><hr></div>
                             <div class="box box-solid">
                                 <div class="box-header with-border">

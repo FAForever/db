@@ -142,7 +142,7 @@
                                     <td>26</td>
                                     <td title=''></td>
                                     <td title=''></td>
-                                    <td>0000-00-00 00:00:00</td>
+                                    <td>current_timestamp()</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `mv`.`map_id` AS `id`,count(0) AS `times_played`,`m`.`create_time` AS `create_time`,now() AS `update_time` from ((`faf`.`game_stats` join `faf`.`map_version` `mv` on((`faf`.`game_stats`.`mapId` = `mv`.`id`))) join `faf`.`map` `m` on((`mv`.`map_id` = `m`.`id`))) group by `mv`.`map_id`</textarea>
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `mv`.`map_id` AS `id`,count(0) AS `times_played`,`m`.`create_time` AS `create_time`,current_timestamp() AS `update_time` from ((`faf`.`game_stats` join `faf`.`map_version` `mv` on(`faf`.`game_stats`.`mapId` = `mv`.`id`)) join `faf`.`map` `m` on(`mv`.`map_id` = `m`.`id`)) group by `mv`.`map_id`</textarea>
                             <div style="padding-top: 5px;"><hr></div>
                             <div class="box box-solid">
                                 <div class="box-header with-border">

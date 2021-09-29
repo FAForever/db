@@ -210,7 +210,7 @@
                                     <td>26</td>
                                     <td title=''></td>
                                     <td title=''></td>
-                                    <td>0000-00-00 00:00:00</td>
+                                    <td>current_timestamp()</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -371,7 +371,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `v`.`id` AS `id`,`v`.`uid` AS `uid`,`m`.`display_name` AS `name`,`v`.`version` AS `version`,`m`.`author` AS `author`,(case `v`.`type` when &#39;UI&#39; then 1 when &#39;SIM&#39; then 0 end) AS `ui`,`v`.`create_time` AS `date`,coalesce(`s`.`downloads`,0) AS `downloads`,coalesce(`s`.`likes`,0) AS `likes`,coalesce(`s`.`times_played`,0) AS `played`,`v`.`description` AS `description`,`s`.`likers` AS `likers`,`v`.`filename` AS `filename`,`v`.`icon` AS `icon`,`v`.`ranked` AS `ranked` from ((`faf`.`mod` `m` join `faf`.`mod_version` `v` on((`m`.`id` = `v`.`mod_id`))) left join `faf`.`mod_stats` `s` on((`m`.`id` = `s`.`mod_id`))) where (`v`.`hidden` = 0)</textarea>
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `v`.`id` AS `id`,`v`.`uid` AS `uid`,`m`.`display_name` AS `name`,`v`.`version` AS `version`,`m`.`author` AS `author`,case `v`.`type` when &#39;UI&#39; then 1 when &#39;SIM&#39; then 0 end AS `ui`,`v`.`create_time` AS `date`,coalesce(`s`.`downloads`,0) AS `downloads`,coalesce(`s`.`likes`,0) AS `likes`,coalesce(`s`.`times_played`,0) AS `played`,`v`.`description` AS `description`,`s`.`likers` AS `likers`,`v`.`filename` AS `filename`,`v`.`icon` AS `icon`,`v`.`ranked` AS `ranked` from ((`faf`.`mod` `m` join `faf`.`mod_version` `v` on(`m`.`id` = `v`.`mod_id`)) left join `faf`.`mod_stats` `s` on(`m`.`id` = `s`.`mod_id`)) where `v`.`hidden` = 0</textarea>
                             <div style="padding-top: 5px;"><hr></div>
                             <div class="box box-solid">
                                 <div class="box-header with-border">

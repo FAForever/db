@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `faf`.`ban`.`player_id` AS `idUser`,`faf`.`ban`.`reason` AS `reason`,coalesce(`faf`.`ban`.`revoke_time`,`faf`.`ban`.`expires_at`,cast(&#39;2999-12-31&#39; as date)) AS `expires_at` from `faf`.`ban` where (`faf`.`ban`.`level` = &#39;GLOBAL&#39;)</textarea>
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">select `faf`.`ban`.`player_id` AS `idUser`,`faf`.`ban`.`reason` AS `reason`,coalesce(`faf`.`ban`.`revoke_time`,`faf`.`ban`.`expires_at`,cast(&#39;2999-12-31&#39; as date)) AS `expires_at` from `faf`.`ban` where `faf`.`ban`.`level` = &#39;GLOBAL&#39;</textarea>
                             <div style="padding-top: 5px;"><hr></div>
                             <div class="box box-solid">
                                 <div class="box-header with-border">
