@@ -4,7 +4,7 @@ DROP EVENT IF EXISTS `achievement_statistics_loader`;
 DELIMITER $$
 
 CREATE EVENT IF NOT EXISTS `achievement_statistics_loader`
-ON SCHEDULE EVERY 1 HOUR
+ON SCHEDULE EVERY 15 MINUTE
 COMMENT 'Recompute the achievement_statistics table every hour'
 DO
     BEGIN
