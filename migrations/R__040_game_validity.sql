@@ -3,7 +3,7 @@
 
 -- If you want to edit an existing or add a new validity state, just append it to the SQL command and run flyway migrate.
 -- Matching validities and their logic need to be hardcoded into the lobby server.
--- A list of all validity states is held here: https://github.com/FAForever/server/blob/develop/server/games/typedefs.py#L61
+-- A list of all validity states is held here: https://github.com/FAForever/server/blob/develop/server/games/typedefs.py#L66
 
 INSERT INTO `game_validity` (id, message) VALUES
 (0,'Valid'),
@@ -30,7 +30,8 @@ INSERT INTO `game_validity` (id, message) VALUES
 (21,'Difficulty was wrong'),
 (22,'Expansion was disabled'),
 (23,'Team spawn was not fixed'),
-(24,'Unranked for another reason')
+(24,'Unranked for another reason'),
+(25,'Unranked by host')
 
 -- add new row above this comment (don't forget to append the comma to the previous one)
 ON DUPLICATE KEY UPDATE
