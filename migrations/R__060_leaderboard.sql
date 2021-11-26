@@ -7,7 +7,9 @@
 INSERT INTO `leaderboard` (id, initializer_id, technical_name, name_key, description_key) VALUES
 (1,NULL,'global','leaderboard.global.name','leaderboard.global.description'),
 (2,NULL,'ladder_1v1','leaderboard.ladder_1v1.name','leaderboard.ladder_1v1.description'),
-(3,1,'tmm_2v2','leaderboard.tmm_2v2.name','leaderboard.tmm_2v2.description')
+(3,1,'tmm_2v2','leaderboard.tmm_2v2.name','leaderboard.tmm_2v2.description'),
+(4,1,'tmm_4v4_full_share','leaderboard.tmm_4v4_full_share.name','leaderboard.tmm_4v4_full_share.description'),
+(5,1,'tmm_4v4_share_until_death','leaderboard.tmm_4v4_share_until_death.name','leaderboard.tmm_4v4_share_until_death.description')
 -- add new row above this comment (don't forget to append the comma to the previous one)
 ON DUPLICATE KEY UPDATE
     initializer_id=VALUES(initializer_id),
