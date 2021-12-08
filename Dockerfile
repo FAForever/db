@@ -1,4 +1,4 @@
-FROM flyway/flyway:7.5-alpine
+FROM flyway/flyway:7.15.0-alpine
 
 ENV FLYWAY_EDITION community
 
