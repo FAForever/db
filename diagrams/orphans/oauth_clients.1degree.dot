@@ -29,7 +29,7 @@ digraph "oauth_clients" {
       <TR><TD PORT="default_scope" COLSPAN="2" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="127" HEIGHT="16">default_scope</TD></TR></TABLE></TD><TD PORT="default_scope.type" ALIGN="LEFT">mediumtext[16777215]</TD></TR>
       <TR><TD PORT="icon_url" COLSPAN="2" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="127" HEIGHT="16">icon_url</TD></TR></TABLE></TD><TD PORT="icon_url.type" ALIGN="LEFT">varchar[2000]</TD></TR>
       <TR><TD PORT="auto_approve_scopes" COLSPAN="2" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="127" HEIGHT="16">auto_approve_scopes</TD></TR></TABLE></TD><TD PORT="auto_approve_scopes.type" ALIGN="LEFT">mediumtext[16777215]</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 0</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">14 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">0 &gt;</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 0</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">0 &gt;</TD></TR>
     </TABLE>>
     URL="tables/oauth_clients.html"
     target="_top"
