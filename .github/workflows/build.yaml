@@ -27,7 +27,7 @@ jobs:
         with:
           submodules: true
       - name: Install tools
-        run: sudo apt update && sudo apt install -y wget mysql-client git
+        run: sudo apt update && sudo apt install -y wget
       - name: Install flyway
         run: wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz | tar xvz && sudo ln -s `pwd`/flyway-${FLYWAY_VERSION}/flyway /usr/local/bin
       - name: Run flyway db migrations
