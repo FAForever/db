@@ -248,16 +248,16 @@
         "comments": ""
     },
     {
-        "tableName": "updates_nomads_files",
+        "tableName": "map_pool",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "obselete",
-        "type": "BIT",
-        "length": 1,
+        "name": "update_time",
+        "type": "TIMESTAMP",
+        "length": 26,
         "nullable": "",
         "autoUpdated": "",
-        "defaultValue": "0",
+        "defaultValue": "current_timestamp()",
         "comments": ""
     },
     {
@@ -1379,17 +1379,17 @@
         "comments": ""
     },
     {
-        "tableName": "map_pool",
+        "tableName": "updates_nomads_files",
         "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "name",
-        "type": "VARCHAR",
-        "length": 255,
+        "keyClass": "indexedColumn",
+        "keyTitle": "Indexed",
+        "name": "<i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'><\/i>fileId",
+        "type": "SMALLINT UNSIGNED",
+        "length": 5,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>Only to help admins with organization. Don&rsquo;t show this to the user.<\/p>"
+        "comments": ""
     },
     {
         "tableName": "oauth_clients",
@@ -2263,16 +2263,16 @@
         "comments": ""
     },
     {
-        "tableName": "map_pool",
+        "tableName": "updates_nomads_files",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "create_time",
-        "type": "TIMESTAMP",
-        "length": 26,
+        "name": "version",
+        "type": "INT",
+        "length": 10,
         "nullable": "",
         "autoUpdated": "",
-        "defaultValue": "current_timestamp()",
+        "defaultValue": "null",
         "comments": ""
     },
     {
@@ -2393,16 +2393,16 @@
         "comments": ""
     },
     {
-        "tableName": "teamkills",
+        "tableName": "updates_blackops_files",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "reported_at",
-        "type": "DATETIME",
-        "length": 26,
+        "name": "obselete",
+        "type": "BIT",
+        "length": 1,
         "nullable": "",
         "autoUpdated": "",
-        "defaultValue": "current_timestamp()",
+        "defaultValue": "0",
         "comments": ""
     },
     {
@@ -3186,17 +3186,17 @@
         "comments": ""
     },
     {
-        "tableName": "updates_blackops_files",
+        "tableName": "teamkills",
         "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "name",
-        "type": "VARCHAR",
-        "length": 45,
+        "keyClass": "foreignKey",
+        "keyTitle": "Foreign Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>game_id",
+        "type": "INT UNSIGNED",
+        "length": 10,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": ""
+        "comments": "<p>game-id where teamkill was performed<\/p>"
     },
     {
         "tableName": "updates_faf_files",
@@ -3355,16 +3355,16 @@
         "comments": ""
     },
     {
-        "tableName": "map_pool",
+        "tableName": "updates_nomads_files",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "update_time",
-        "type": "TIMESTAMP",
-        "length": 26,
+        "name": "name",
+        "type": "VARCHAR",
+        "length": 45,
         "nullable": "",
         "autoUpdated": "",
-        "defaultValue": "current_timestamp()",
+        "defaultValue": "null",
         "comments": ""
     },
     {
@@ -3901,7 +3901,7 @@
         "comments": ""
     },
     {
-        "tableName": "map_pool",
+        "tableName": "updates_nomads_files",
         "tableType": "Table",
         "keyClass": "primaryKey",
         "keyTitle": "Primary Key",
@@ -4083,15 +4083,15 @@
         "comments": ""
     },
     {
-        "tableName": "updates_nomads_files",
+        "tableName": "map_pool",
         "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "version",
-        "type": "INT",
+        "keyClass": "primaryKey",
+        "keyTitle": "Primary Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>id",
+        "type": "INT UNSIGNED",
         "length": 10,
         "nullable": "",
-        "autoUpdated": "",
+        "autoUpdated": "√",
         "defaultValue": "null",
         "comments": ""
     },
@@ -5045,17 +5045,17 @@
         "comments": ""
     },
     {
-        "tableName": "updates_blackops_files",
+        "tableName": "teamkills",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "md5",
-        "type": "VARCHAR",
-        "length": 45,
+        "name": "gametime",
+        "type": "MEDIUMINT UNSIGNED",
+        "length": 8,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": ""
+        "comments": "<p>time of game in seconds when tk was performed<\/p>"
     },
     {
         "tableName": "game_player_stats",
@@ -5227,16 +5227,16 @@
         "comments": ""
     },
     {
-        "tableName": "updates_nomads_files",
+        "tableName": "map_pool",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "md5",
-        "type": "VARCHAR",
-        "length": 45,
+        "name": "create_time",
+        "type": "TIMESTAMP",
+        "length": 26,
         "nullable": "",
         "autoUpdated": "",
-        "defaultValue": "null",
+        "defaultValue": "current_timestamp()",
         "comments": ""
     },
     {
@@ -5526,12 +5526,12 @@
         "comments": ""
     },
     {
-        "tableName": "teamkills",
+        "tableName": "updates_blackops_files",
         "tableType": "Table",
         "keyClass": "primaryKey",
         "keyTitle": "Primary Key",
         "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>id",
-        "type": "INT",
+        "type": "INT UNSIGNED",
         "length": 10,
         "nullable": "",
         "autoUpdated": "√",
@@ -5864,17 +5864,17 @@
         "comments": "<p>The git repository URL to load this mod from<\/p>"
     },
     {
-        "tableName": "teamkills",
+        "tableName": "updates_blackops_files",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "gametime",
-        "type": "MEDIUMINT UNSIGNED",
-        "length": 8,
+        "name": "md5",
+        "type": "VARCHAR",
+        "length": 45,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>time of game in seconds when tk was performed<\/p>"
+        "comments": ""
     },
     {
         "tableName": "group_permission",
@@ -6345,17 +6345,17 @@
         "comments": ""
     },
     {
-        "tableName": "updates_nomads_files",
+        "tableName": "map_pool",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
         "name": "name",
         "type": "VARCHAR",
-        "length": 45,
+        "length": 255,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": ""
+        "comments": "<p>Only to help admins with organization. Don&rsquo;t show this to the user.<\/p>"
     },
     {
         "tableName": "map_version_review",
@@ -6761,17 +6761,17 @@
         "comments": ""
     },
     {
-        "tableName": "teamkills",
+        "tableName": "updates_blackops_files",
         "tableType": "Table",
-        "keyClass": "foreignKey",
-        "keyTitle": "Foreign Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>game_id",
-        "type": "INT UNSIGNED",
-        "length": 10,
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "name",
+        "type": "VARCHAR",
+        "length": 45,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>game-id where teamkill was performed<\/p>"
+        "comments": ""
     },
     {
         "tableName": "map",
@@ -7437,17 +7437,17 @@
         "comments": "<p>With this key the &lsquo;subject&rsquo; can be loaded from the messages table<\/p>"
     },
     {
-        "tableName": "updates_blackops_files",
+        "tableName": "teamkills",
         "tableType": "Table",
-        "keyClass": "indexedColumn",
-        "keyTitle": "Indexed",
-        "name": "<i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'><\/i>fileId",
-        "type": "SMALLINT UNSIGNED",
-        "length": 5,
+        "keyClass": "foreignKey",
+        "keyTitle": "Foreign Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>teamkiller",
+        "type": "MEDIUMINT UNSIGNED",
+        "length": 8,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": ""
+        "comments": "<p>login of the player who performed the teamkill<\/p>"
     },
     {
         "tableName": "table_map",
@@ -8687,14 +8687,14 @@
     {
         "tableName": "updates_nomads_files",
         "tableType": "Table",
-        "keyClass": "indexedColumn",
-        "keyTitle": "Indexed",
-        "name": "<i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'><\/i>fileId",
-        "type": "SMALLINT UNSIGNED",
-        "length": 5,
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "obselete",
+        "type": "BIT",
+        "length": 1,
         "nullable": "",
         "autoUpdated": "",
-        "defaultValue": "null",
+        "defaultValue": "0",
         "comments": ""
     },
     {
@@ -8971,17 +8971,17 @@
         "comments": ""
     },
     {
-        "tableName": "updates_blackops_files",
+        "tableName": "teamkills",
         "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "version",
-        "type": "INT",
-        "length": 10,
+        "keyClass": "foreignKey",
+        "keyTitle": "Foreign Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>victim",
+        "type": "MEDIUMINT UNSIGNED",
+        "length": 8,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": ""
+        "comments": "<p>login of the player who got teamkilled and reported the tk<\/p>"
     },
     {
         "tableName": "group_permission_assignment",
@@ -9335,17 +9335,17 @@
         "comments": ""
     },
     {
-        "tableName": "teamkills",
+        "tableName": "updates_blackops_files",
         "tableType": "Table",
-        "keyClass": "foreignKey",
-        "keyTitle": "Foreign Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>victim",
-        "type": "MEDIUMINT UNSIGNED",
-        "length": 8,
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "version",
+        "type": "INT",
+        "length": 10,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>login of the player who got teamkilled and reported the tk<\/p>"
+        "comments": ""
     },
     {
         "tableName": "ladder_division_score",
@@ -9532,13 +9532,13 @@
     {
         "tableName": "updates_nomads_files",
         "tableType": "Table",
-        "keyClass": "primaryKey",
-        "keyTitle": "Primary Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>id",
-        "type": "INT UNSIGNED",
-        "length": 10,
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "md5",
+        "type": "VARCHAR",
+        "length": 45,
         "nullable": "",
-        "autoUpdated": "√",
+        "autoUpdated": "",
         "defaultValue": "null",
         "comments": ""
     },
@@ -9556,17 +9556,17 @@
         "comments": "<p>The region that identifies this entry along with key and language.<\/p>"
     },
     {
-        "tableName": "teamkills",
+        "tableName": "updates_blackops_files",
         "tableType": "Table",
-        "keyClass": "foreignKey",
-        "keyTitle": "Foreign Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>teamkiller",
-        "type": "MEDIUMINT UNSIGNED",
-        "length": 8,
+        "keyClass": "indexedColumn",
+        "keyTitle": "Indexed",
+        "name": "<i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'><\/i>fileId",
+        "type": "SMALLINT UNSIGNED",
+        "length": 5,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>login of the player who performed the teamkill<\/p>"
+        "comments": ""
     },
     {
         "tableName": "clan_membership",
@@ -9842,12 +9842,12 @@
         "comments": ""
     },
     {
-        "tableName": "updates_blackops_files",
+        "tableName": "teamkills",
         "tableType": "Table",
         "keyClass": "primaryKey",
         "keyTitle": "Primary Key",
         "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>id",
-        "type": "INT UNSIGNED",
+        "type": "INT",
         "length": 10,
         "nullable": "",
         "autoUpdated": "√",
@@ -9868,16 +9868,16 @@
         "comments": "<p>A public notice left by the moderator which will be addressed to the reporter once the report is marked as either COMPLETED or DISCARDED<\/p>"
     },
     {
-        "tableName": "updates_blackops_files",
+        "tableName": "teamkills",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "obselete",
-        "type": "BIT",
-        "length": 1,
+        "name": "reported_at",
+        "type": "DATETIME",
+        "length": 26,
         "nullable": "",
         "autoUpdated": "",
-        "defaultValue": "0",
+        "defaultValue": "current_timestamp()",
         "comments": ""
     },
     {
