@@ -5,7 +5,6 @@ CREATE TABLE `service_links` (
                          `user_id` mediumint(8) unsigned COMMENT "To be set to null if account is deleted",
                          `type` enum('STEAM', 'GOG', 'DISCORD', 'PATREON') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The service that this service id links to.',
                          `service_id` varchar(100) COMMENT "To be set to null if account is deleted",
-                         `service_hash_id` char(64) NOT NULL
                          `public` boolean,
                          `ownership` boolean,
                          PRIMARY KEY (uuid),
