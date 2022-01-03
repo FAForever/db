@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `service_links`;
+
 CREATE TABLE `service_links` (
                          `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
                          `user_id` mediumint(8) unsigned NOT NULL,
