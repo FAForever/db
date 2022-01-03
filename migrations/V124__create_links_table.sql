@@ -1,16 +1,15 @@
 DROP TABLE IF EXISTS `service_links`;
 
 CREATE TABLE `service_links` (
-                         `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-                         `user_id` mediumint(8) unsigned NOT NULL,
+                         `uuid` uuid unsigned NOT NULL,
+                         `user_id` mediumint(8) unsigned COMMENT "To be set to null if account is deleted",
                          `type` enum('STEAM', 'GOG', 'DISCORD', 'PATREON') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The service that this service id links to.',
-                         `service_id` varchar(100),
-                         `hashed_id` char(256) NOT NULL,
+                         `service_id` varchar(100) COMMENT "To be set to null if account is deleted",
+                         `hashed_id` char(64) NOT NULL,
                          `hash_salt` char(100) NOT NULL,
                          `public` boolean,
-                         `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When this entry was created.',
-                         `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When this entry was updated',
-                         PRIMARY KEY (`id`),
+                         `ownership` boolean,
+                         PRIMARY KEY (uuid),
                          UNIQUE KEY `unique_service_id` (`type`, `service_id`),
                          UNIQUE KEY `unique_hashed_id` (`type`, `hashed_id`),
                          CONSTRAINT `user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `login` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
