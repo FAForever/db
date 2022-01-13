@@ -4,7 +4,7 @@ CREATE TABLE `service_links` (
                          `id` CHAR(36) CHARACTER SET ascii NOT NULL,
                          `user_id` mediumint(8) unsigned COMMENT 'To be set to null if account is deleted',
                          `type` enum('STEAM', 'GOG', 'DISCORD', 'PATREON') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The service that this service id links to.',
-                         `service_id` varchar(100) COMMENT 'To be set to null if account is deleted',
+                         `service_id` varchar(100) COMMENT 'To be set to null if account is deleted unless ownership is true',
                          `public` boolean,
                          `ownership` boolean COMMENT 'If true, this link confirms that the user owns FAForever. If true the link must never be deleted even if the linked account gets deleted. In this case we keep a dangling link so the id cannot be reused',
                          PRIMARY KEY (id),
