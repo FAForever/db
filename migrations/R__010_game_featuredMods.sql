@@ -28,6 +28,7 @@ INSERT INTO `game_featuredMods` (id, gamemod, description, name, publish, `order
 (30,'tutorials','','Tutorials',0,0,NULL,NULL,'tut',NULL)
 -- add new row above this comment (don't forget to append the comma to the previous one)
 ON DUPLICATE KEY UPDATE
+    gamemod=VALUES(gamemod),
     description=VALUES(description),
     name=VALUES(name),
     publish=VALUES(publish),
