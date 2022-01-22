@@ -119,23 +119,23 @@ insert into unique_id_users (user_id, uniqueid_hash) values (2, 'another_id');
 insert into unique_id_users (user_id, uniqueid_hash) values (3, 'some_id');
 
 -- Sample maps
-insert into map (id, display_name, map_type, battle_type, author)
+insert into map (id, display_name, map_type, battle_type, author, license)
 values
-(1, 'SCMP_001', 'FFA', 'skirmish', 1),
-(2, 'SCMP_002', 'FFA', 'skirmish', 1),
-(3, 'SCMP_003', 'FFA', 'skirmish', 1),
-(4, 'SCMP_004', 'FFA', 'skirmish', 1),
-(5, 'SCMP_005', 'FFA', 'skirmish', 1),
-(6, 'SCMP_006', 'FFA', 'skirmish', 2),
-(7, 'SCMP_007', 'FFA', 'skirmish', 2),
-(8, 'SCMP_008', 'FFA', 'skirmish', 2),
-(9, 'SCMP_009', 'FFA', 'skirmish', 2),
-(10, 'SCMP_010', 'FFA', 'skirmish', 3),
-(11, 'SCMP_011', 'FFA', 'skirmish', 3),
-(12, 'SCMP_012', 'FFA', 'skirmish', 3),
-(13, 'SCMP_013', 'FFA', 'skirmish', 3),
-(14, 'SCMP_014', 'FFA', 'skirmish', 3),
-(15, 'SCMP_015', 'FFA', 'skirmish', 3);
+(1, 'SCMP_001', 'FFA', 'skirmish', 1, 1),
+(2, 'SCMP_002', 'FFA', 'skirmish', 1, 1),
+(3, 'SCMP_003', 'FFA', 'skirmish', 1, 1),
+(4, 'SCMP_004', 'FFA', 'skirmish', 1, 1),
+(5, 'SCMP_005', 'FFA', 'skirmish', 1, 1),
+(6, 'SCMP_006', 'FFA', 'skirmish', 2, 1),
+(7, 'SCMP_007', 'FFA', 'skirmish', 2, 1),
+(8, 'SCMP_008', 'FFA', 'skirmish', 2, 1),
+(9, 'SCMP_009', 'FFA', 'skirmish', 2, 1),
+(10, 'SCMP_010', 'FFA', 'skirmish', 3, 1),
+(11, 'SCMP_011', 'FFA', 'skirmish', 3, 1),
+(12, 'SCMP_012', 'FFA', 'skirmish', 3, 1),
+(13, 'SCMP_013', 'FFA', 'skirmish', 3, 1),
+(14, 'SCMP_014', 'FFA', 'skirmish', 3, 1),
+(15, 'SCMP_015', 'FFA', 'skirmish', 3, 1);
 
 insert into map_version (id, description, max_players, width, height, version, filename, hidden, map_id)
 values
@@ -206,10 +206,10 @@ insert into friends_and_foes (user_id, subject_id, `status`)
 values(1, 2, 'FRIEND'),
       (1, 3, 'FOE');
 
-insert into `mod` (id, display_name, author)
-VALUES (1, 'test-mod', 'baz'),
-       (2, 'test-mod2', 'baz'),
-       (3, 'test-mod3', 'baz');
+insert into `mod` (id, display_name, author, license)
+VALUES (1, 'test-mod', 'baz', 1),
+       (2, 'test-mod2', 'baz', 1),
+       (3, 'test-mod3', 'baz', 1);
 
 insert into mod_version (id, mod_id, uid, version, description, type, filename, icon) VALUES
         (1, 1, 'foo', 1, '', 'UI', 'foobar.zip', 'foobar.png'),
