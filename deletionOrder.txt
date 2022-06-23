@@ -51,6 +51,7 @@ global_rating_distribution
 faction
 event_definitions
 email_domain_blacklist
+coturn_servers
 coop_map
 achievement_statistics
 ban

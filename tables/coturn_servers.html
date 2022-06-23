@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>schema_version - faf Database</title>
+        <title>coturn_servers - faf Database</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -73,7 +73,20 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>schema_version</h1><p><span id="recordNumber">25</span> rows</p><br />
+                    <h1>coturn_servers</h1><p><span id="recordNumber">0</span> rows</p><br />
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file-text-o"></i>
+                            <h3 id="Description" class="box-title">Description</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div><!-- /.box-header -->
+                        <div class="box-body clearfix">
+                            <p>List of coturn servers to be propagated to ICE adapters</p>
+                        </div><!-- /.box-body -->
+                    </div>
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -103,11 +116,11 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="installed_rank">installed_rank</span></td>
-                                    <td>INT</td>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="id">id</span></td>
+                                    <td>INT UNSIGNED</td>
                                     <td>10</td>
                                     <td title=''></td>
-                                    <td title=''></td>
+                                    <td title='Automatically updated by the database'>√</td>
                                     <td>null</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
@@ -120,41 +133,7 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="version">version</span></td>
-                                    <td>VARCHAR</td>
-                                    <td>50</td>
-                                    <td title='nullable'>√</td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="description">description</span></td>
-                                    <td>VARCHAR</td>
-                                    <td>200</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="type">type</span></td>
+                                    <td><span id="region">region</span></td>
                                     <td>VARCHAR</td>
                                     <td>20</td>
                                     <td title=''></td>
@@ -168,12 +147,12 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>Region of the server for simple user-based selection if latency checks don&rsquo;t work</p></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="script">script</span></td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="host">host</span></td>
                                     <td>VARCHAR</td>
-                                    <td>1000</td>
+                                    <td>255</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -188,12 +167,12 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="checksum">checksum</span></td>
-                                    <td>INT</td>
-                                    <td>10</td>
-                                    <td title='nullable'>√</td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="port">port</span></td>
+                                    <td>MEDIUMINT</td>
+                                    <td>7</td>
                                     <td title=''></td>
-                                    <td>null</td>
+                                    <td title=''></td>
+                                    <td>3478</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -205,9 +184,9 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="installed_by">installed_by</span></td>
+                                    <td><span id="preshared_key">preshared_key</span></td>
                                     <td>VARCHAR</td>
-                                    <td>100</td>
+                                    <td>255</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -219,29 +198,12 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>Should be only accessible to clients with lobby scope.</p></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="installed_on">installed_on</span></td>
-                                    <td>TIMESTAMP</td>
-                                    <td>26</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>current_timestamp()</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="execution_time">execution_time</span></td>
-                                    <td>INT</td>
-                                    <td>10</td>
+                                    <td><span id="contact_email">contact_email</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>255</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -253,15 +215,15 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>Email of the responsible server administrator</p></td>
                                 </tr>
                                 <tr>
-                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="success">success</span></td>
+                                    <td><span id="active">active</span></td>
                                     <td>BIT</td>
                                     <td>1</td>
                                     <td title=''></td>
                                     <td title=''></td>
-                                    <td>null</td>
+                                    <td>1</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
@@ -300,13 +262,13 @@
                                     <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> PRIMARY</td>
                                     <td>Primary key</td>
                                     <td><span title='Ascending'>Asc</span></td>
-                                    <td>installed_rank</td>
+                                    <td>id</td>
                                 </tr>
                                 <tr>
-                                    <td title='Indexed'>schema_version_s_idx</td>
-                                    <td>Performance</td>
-                                    <td><span title='Ascending'>Asc</span></td>
-                                    <td>success</td>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> unique_host_port</td>
+                                    <td>Must be unique</td>
+                                    <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
+                                    <td>host + port</td>
                                 </tr>
                                 </tbody>
                             </table>
