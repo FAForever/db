@@ -52,7 +52,6 @@ faction
 event_definitions
 email_domain_blacklist
 coturn_servers
-coop_map
 achievement_statistics
 ban
 teamkills
@@ -94,6 +93,7 @@ ladder1v1_rating_rank_view
 ladder1v1_rating
 global_rating_rank_view
 game_reviews_summary
+coop_map
 coop_leaderboard
 vote
 game_player_stats
@@ -115,6 +115,7 @@ tutorial_category
 map_pool
 group_permission
 game_validity
+coop_scenario
 avatars_list
 achievement_definitions
 voting_subject

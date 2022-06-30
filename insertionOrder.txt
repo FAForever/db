@@ -3,6 +3,7 @@ game_featuredMods
 voting_subject
 achievement_definitions
 avatars_list
+coop_scenario
 game_validity
 group_permission
 map_pool
@@ -24,6 +25,7 @@ clan
 game_player_stats
 vote
 coop_leaderboard
+coop_map
 game_reviews_summary
 global_rating_rank_view
 ladder1v1_rating
@@ -65,7 +67,6 @@ winner_for_voting_question
 teamkills
 ban
 achievement_statistics
-coop_map
 coturn_servers
 email_domain_blacklist
 event_definitions
