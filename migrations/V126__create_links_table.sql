@@ -13,13 +13,29 @@ CREATE TABLE `service_links` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='table representing the links to various services';
 
 # MIGRATION SCRIPT
+# drop table if exists temp_id_holder;
 #
-# INSERT into `service_links` (`user_id`, `type`, `service_id`, `ownership`, `public`)
-# SELECT `id`, "STEAM", `steamid`, true, false
-# FROM `login` WHERE `steamid` IS NOT NULL
+# create temporary table temp_id_holder as
+# select * from login order by RAND();
+#
+# INSERT into `service_links` (`id`, `user_id`, `type`, `service_id`, `ownership`, `public`)
+# SELECT UUID(), `id`, "STEAM", `steamid`, true, false
+# FROM `temp_id_holder` WHERE `steamid` IS NOT NULL and `login` not LIKE "anonymized_%" and `email` not LIKE "anonymized_%" and password != "anonymized"
 # ON DUPLICATE KEY UPDATE `user_id`=`user_id`;
 #
-# INSERT into `service_links` (`user_id`, `type`, `service_id`, `ownership`, `public`)
-# SELECT `id`, "GOG", `gog_id`, true, false
-# FROM `login` WHERE `gog_id` IS NOT NULL
+# INSERT into `service_links` (`id`, `type`, `service_id`, `ownership`, `public`)
+# SELECT UUID(), "STEAM", `steamid`, true, false
+# FROM `temp_id_holder` WHERE `steamid` IS NOT NULL and (`login` LIKE "anonymized_%" or `email` LIKE "anonymized_%" or password = "anonymized")
 # ON DUPLICATE KEY UPDATE `user_id`=`user_id`;
+#
+# INSERT into `service_links` (`id`, `user_id`, `type`, `service_id`, `ownership`, `public`)
+# SELECT UUID(), `id`, "GOG", `gog_id`, true, false
+# FROM `temp_id_holder` WHERE `gog_id` IS NOT NULL and `login` not LIKE "anonymized_%" and `email` not LIKE "anonymized_%" and password != "anonymized"
+# ON DUPLICATE KEY UPDATE `user_id`=`user_id`;
+#
+# INSERT into `service_links` (`id`, `type`, `service_id`, `ownership`, `public`)
+# SELECT UUID(), "GOG", `gog_id`, true, false
+# FROM `temp_id_holder` WHERE `gog_id` IS NOT NULL and (`login` LIKE "anonymized_%" or `email` LIKE "anonymized_%" or password = "anonymized")
+# ON DUPLICATE KEY UPDATE `user_id`=`user_id`;
+#
+# drop table if exists temp_id_holder;
