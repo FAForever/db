@@ -16,7 +16,8 @@ CREATE TABLE `service_links` (
 # drop table if exists temp_id_holder;
 #
 # create temporary table temp_id_holder as
-# select * from login order by RAND();
+# select * from login order by RAND()
+# WHERE `steamid` IS NOT NULL or `gog_id` IS NOT NULL;
 #
 # INSERT into `service_links` (`id`, `user_id`, `type`, `service_id`, `ownership`, `public`)
 # SELECT UUID(), `id`, "STEAM", `steamid`, true, false
