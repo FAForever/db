@@ -80,6 +80,7 @@ clan_membership
 avatars
 uniqueid_exempt
 tutorials
+service_links
 player_events
 name_history
 mod_version_reviews_summary

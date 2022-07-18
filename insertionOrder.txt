@@ -39,6 +39,7 @@ mod_stats
 mod_version_reviews_summary
 name_history
 player_events
+service_links
 tutorials
 uniqueid_exempt
 avatars
