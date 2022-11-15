@@ -1,5 +1,6 @@
 login
 game_featuredMods
+license
 voting_subject
 achievement_definitions
 avatars_list

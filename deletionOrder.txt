@@ -120,5 +120,6 @@ coop_scenario
 avatars_list
 achievement_definitions
 voting_subject
+license
 game_featuredMods
 login
