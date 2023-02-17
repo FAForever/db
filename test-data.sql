@@ -67,6 +67,9 @@ insert into login (id, login, email, password, steamid) values (7, 'steambie', '
 -- Test IPv6
 insert into login (id, login, email, password, ip) values (8, 'ipv6', 'ipv6@example.com', SHA2('ipv6', 256), '0000:0000:0000:0000:0000:0000:127.127.127.127');
 
+-- Service links
+INSERT INTO `service_links` VALUES ('e8e4edd5-af12-11ed-b20e-0242c0a8a002',7,'STEAM','111111',0,1);
+
 -- Name history
 insert into name_history (id, change_time, user_id, previous_name) values
   (1, date_sub(now(), interval 12 month), 1, 'test_maniac'),
