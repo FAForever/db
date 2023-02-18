@@ -2,6 +2,7 @@
 
 SET FOREIGN_KEY_CHECKS=0;
 
+DELETE FROM service_links;
 DELETE FROM player_events;
 DELETE FROM reported_user;
 DELETE FROM moderation_report;
