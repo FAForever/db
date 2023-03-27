@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>achievement_definitions - faf Database</title>
+        <title>achievement_definitions - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -113,7 +119,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="player_achievements.achievement_id references achievement_definitions.id via fk_achievement"><a href='player_achievements.html'>player_achievements</a><span class='relatedKey'>.achievement_id</span></td>
-                                                <td class="constraint detail">fk_achievement<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">fk_achievement</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -189,10 +196,7 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td><p>The type of the achievement.<br />
-Possible values are:<br />
-&ldquo;STANDARD&rdquo; - Achievement is either locked or unlocked.<br />
-&ldquo;INCREMENTAL&rdquo; - Achievement is incremental.</p></td>
+                                    <td><p>The type of the achievement. Possible values are: &ldquo;STANDARD&rdquo; - Achievement is either locked or unlocked. &ldquo;INCREMENTAL&rdquo; - Achievement is incremental.</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="total_steps">total_steps</span></td>
@@ -260,11 +264,7 @@ Possible values are:<br />
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td><p>The initial state of the achievement.<br />
-Possible values are:<br />
-&ldquo;HIDDEN&rdquo; - Achievement is hidden.<br />
-&ldquo;REVEALED&rdquo; - Achievement is revealed.<br />
-&ldquo;UNLOCKED&rdquo; - Achievement is unlocked.</p></td>
+                                    <td><p>The initial state of the achievement. Possible values are: &ldquo;HIDDEN&rdquo; - Achievement is hidden. &ldquo;REVEALED&rdquo; - Achievement is revealed. &ldquo;UNLOCKED&rdquo; - Achievement is unlocked.</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="experience_points">experience_points</span></td>
@@ -281,15 +281,12 @@ Possible values are:<br />
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td><p>Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference:<br />
-5 - Easy to achieve<br />
-20 - Medium<br />
-50 - Hard to achieve</p></td>
+                                    <td><p>Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference: 5 - Easy to achieve 20 - Medium 50 - Hard to achieve</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="create_time">create_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -306,7 +303,7 @@ Possible values are:<br />
                                 <tr>
                                     <td><span id="update_time">update_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -334,7 +331,13 @@ Possible values are:<br />
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -385,16 +388,16 @@ Possible values are:<br />
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="421,5,669,211">
-<area shape="rect" id="node2" href="achievement_definitions.html" target="_top" title="achievement_definitions" alt="" coords="5,61,377,483">
+<area shape="rect" id="node1" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="420,5,668,211">
+<area shape="rect" id="node2" href="achievement_definitions.html" target="_top" title="achievement_definitions" alt="" coords="5,61,376,483">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/achievement_definitions.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="421,15,669,220">
-<area shape="rect" id="node2" href="achievement_definitions.html" target="_top" title="achievement_definitions" alt="" coords="5,111,377,532">
-<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="104,5,279,93">
+<area shape="rect" id="node1" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="420,15,668,220">
+<area shape="rect" id="node2" href="achievement_definitions.html" target="_top" title="achievement_definitions" alt="" coords="5,111,376,532">
+<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="108,5,273,93">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/achievement_definitions.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -416,7 +419,7 @@ Possible values are:<br />
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

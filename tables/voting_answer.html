@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>voting_answer - faf Database</title>
+        <title>voting_answer - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -134,7 +140,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="voting_answer.vote_id references vote.id via vote_of_voting_answer"><a href='vote.html'>vote</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">vote_of_voting_answer<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">vote_of_voting_answer</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -155,7 +162,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="voting_answer.voting_choice_id references voting_choice.id via voting_choice_of_voting_answer"><a href='voting_choice.html'>voting_choice</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">voting_choice_of_voting_answer<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">voting_choice_of_voting_answer</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -181,7 +189,7 @@
                                 <tr>
                                     <td><span id="create_time">create_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -198,7 +206,7 @@
                                 <tr>
                                     <td><span id="update_time">update_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -226,7 +234,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -277,7 +291,7 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="voting_answer.html" target="_top" title="voting_answer" alt="" coords="247,56,592,301">
+<area shape="rect" id="node1" href="voting_answer.html" target="_top" title="voting_answer" alt="" coords="247,56,591,301">
 <area shape="rect" id="node2" href="vote.html" target="_top" title="vote" alt="" coords="11,5,197,181">
 <area shape="rect" id="node3" href="voting_choice.html" target="_top" title="voting_choice" alt="" coords="5,199,203,345">
 </map>
@@ -285,13 +299,13 @@
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="vote.html" target="_top" title="vote" alt="" coords="502,15,687,191">
-<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="261,47,436,135">
-<area shape="rect" id="node3" href="voting_subject.html" target="_top" title="voting_subject" alt="" coords="5,191,201,279">
-<area shape="rect" id="node4" href="voting_answer.html" target="_top" title="voting_answer" alt="" coords="737,5,1083,251">
-<area shape="rect" id="node5" href="voting_choice.html" target="_top" title="voting_choice" alt="" coords="496,208,693,355">
-<area shape="rect" id="node6" href="voting_question.html" target="_top" title="voting_question" alt="" coords="245,240,452,328">
-<area shape="rect" id="node7" href="winner_for_voting_question.html" target="_top" title="winner_for_voting_question" alt="" coords="763,291,1057,379">
+<area shape="rect" id="node1" href="vote.html" target="_top" title="vote" alt="" coords="501,15,686,191">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="265,47,430,135">
+<area shape="rect" id="node3" href="voting_subject.html" target="_top" title="voting_subject" alt="" coords="5,177,200,265">
+<area shape="rect" id="node4" href="voting_answer.html" target="_top" title="voting_answer" alt="" coords="736,5,1080,251">
+<area shape="rect" id="node5" href="voting_choice.html" target="_top" title="voting_choice" alt="" coords="495,208,692,355">
+<area shape="rect" id="node6" href="voting_question.html" target="_top" title="voting_question" alt="" coords="244,240,451,328">
+<area shape="rect" id="node7" href="winner_for_voting_question.html" target="_top" title="winner_for_voting_question" alt="" coords="758,291,1058,379">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/voting_answer.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -313,7 +327,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>leaderboard - faf Database</title>
+        <title>leaderboard - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>leaderboard</h1><p><span id="recordNumber">5</span> rows</p><br />
+                    <h1>leaderboard</h1><p><span id="recordNumber">6</span> rows</p><br />
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -113,19 +119,23 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="leaderboard.initializer_id references leaderboard.id via leaderboard_ibfk_1"><a href='leaderboard.html'>leaderboard</a><span class='relatedKey'>.initializer_id</span></td>
-                                                <td class="constraint detail">leaderboard_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">leaderboard_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="leaderboard_rating.leaderboard_id references leaderboard.id via leaderboard_rating_ibfk_2"><a href='leaderboard_rating.html'>leaderboard_rating</a><span class='relatedKey'>.leaderboard_id</span></td>
-                                                <td class="constraint detail">leaderboard_rating_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">leaderboard_rating_ibfk_2</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="leaderboard_rating_journal.leaderboard_id references leaderboard.id via leaderboard_rating_journal_ibfk_2"><a href='leaderboard_rating_journal.html'>leaderboard_rating_journal</a><span class='relatedKey'>.leaderboard_id</span></td>
-                                                <td class="constraint detail">leaderboard_rating_journal_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">leaderboard_rating_journal_ibfk_2</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="matchmaker_queue.leaderboard_id references leaderboard.id via matchmaker_queue_ibfk_2"><a href='matchmaker_queue.html'>matchmaker_queue</a><span class='relatedKey'>.leaderboard_id</span></td>
-                                                <td class="constraint detail">matchmaker_queue_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">matchmaker_queue_ibfk_2</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -189,7 +199,7 @@
                                 <tr>
                                     <td><span id="create_time">create_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -206,7 +216,7 @@
                                 <tr>
                                     <td><span id="update_time">update_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -235,7 +245,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="leaderboard.initializer_id references leaderboard.id via leaderboard_ibfk_1"><a href='leaderboard.html'>leaderboard</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">leaderboard_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">leaderboard_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -255,7 +266,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -307,23 +324,23 @@
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
 <area shape="rect" id="node1" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="46,255,376,529">
-<area shape="rect" id="node2" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="450,5,682,181">
-<area shape="rect" id="node3" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="420,199,713,375">
-<area shape="rect" id="node4" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="447,392,686,597">
+<area shape="rect" id="node2" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="452,5,684,181">
+<area shape="rect" id="node3" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="420,199,716,375">
+<area shape="rect" id="node4" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="448,392,687,597">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/leaderboard.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="422,5,647,93">
-<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="119,35,294,123">
-<area shape="rect" id="node3" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="42,192,371,467">
+<area shape="rect" id="node1" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="421,5,648,93">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="124,45,289,133">
+<area shape="rect" id="node3" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="42,213,371,488">
 <area shape="rect" id="node4" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="418,111,650,287">
-<area shape="rect" id="node5" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="710,153,1003,329">
-<area shape="rect" id="node6" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="415,384,654,589">
-<area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="86,484,326,572">
-<area shape="rect" id="node8" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="714,452,999,540">
-<area shape="rect" id="node9" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="698,347,1015,435">
+<area shape="rect" id="node5" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="711,25,1007,201">
+<area shape="rect" id="node6" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="415,368,654,573">
+<area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="85,505,328,593">
+<area shape="rect" id="node8" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="714,425,1004,513">
+<area shape="rect" id="node9" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="698,320,1020,408">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/leaderboard.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -345,7 +362,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

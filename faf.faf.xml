@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<database name="faf" schema="faf" type="MySQL - 5.5.5-10.6.12-MariaDB-1:10.6.12+maria~ubu2004">
+<?xml version="1.0" encoding="UTF-8"?><database name="faf" schema="faf" type="MySQL - 5.5.5-10.6.12-MariaDB-1:10.6.12+maria~ubu2004">
    <tables>
       <table catalog="faf" name="achievement_definitions" numRows="57" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="The ID of the achievement." size="36" type="VARCHAR" typeCode="12">
@@ -14,8 +13,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="unlocked_icon_url" nullable="true" remarks="The image URL for the unlocked achievement icon." size="2000" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="initial_state" nullable="false" remarks="The initial state of the achievement. &#10;Possible values are:&#10;&quot;HIDDEN&quot; - Achievement is hidden.&#10;&quot;REVEALED&quot; - Achievement is revealed.&#10;&quot;UNLOCKED&quot; - Achievement is unlocked." size="8" type="enum('HIDDEN', 'REVEALED')" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="experience_points" nullable="false" remarks="Experience points which will be earned when unlocking this achievement. Multiple of 5. Reference:&#10;5 - Easy to achieve&#10;20 - Medium&#10;50 - Hard to achieve" size="10" type="INT UNSIGNED" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="11" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="11" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -48,9 +47,9 @@
             <parent catalog="faf" column="id" foreignKey="avatars_ibfk_2" implied="false" onDeleteCascade="false" table="avatars_list"/>
          </column>
          <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="selected" nullable="false" remarks="" size="1" type="BIT" typeCode="-7"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="expires_at" nullable="true" remarks="If null the avatar is permanent" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="expires_at" nullable="true" remarks="If null the avatar is permanent" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -68,8 +67,8 @@
             <child catalog="faf" column="idAvatar" foreignKey="avatars_ibfk_2" implied="false" onDeleteCascade="false" table="avatars"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="tooltip" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="filename" nullable="false" remarks="" size="212" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="url" nullable="true" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
@@ -90,16 +89,16 @@
             <parent catalog="faf" column="id" foreignKey="ban_revoke_author" implied="false" onDeleteCascade="false" table="login"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="reason" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="expires_at" nullable="true" remarks="If null, the ban is permanent" size="26" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="expires_at" nullable="true" remarks="If null, the ban is permanent" size="19" type="DATETIME" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="level" nullable="false" remarks="" size="6" type="enum('CHAT', 'GLOBAL', 'VAULT')" typeCode="1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="report_id" nullable="true" remarks="The report based on which the ban was issued, is NULL if ban was not issues due to a report" size="10" type="INT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="ban_ibfk_3" implied="false" onDeleteCascade="false" table="moderation_report"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="revoke_reason" nullable="true" remarks="" size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="revoke_author_id" nullable="true" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="revoke_time" nullable="true" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="revoke_time" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -128,8 +127,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="description" nullable="true" remarks="" size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="tag_color" nullable="true" remarks="RGB color code for the clan's tag in chat" size="6" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="requires_invitation" nullable="false" remarks="" size="1" type="BIT" typeCode="-7"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
@@ -156,8 +155,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="player_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="clan_membership_ibfk_2" implied="false" onDeleteCascade="false" table="login"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -176,7 +175,7 @@
             <parent catalog="faf" column="id" foreignKey="coop_leaderboard_ibfk_1" implied="false" onDeleteCascade="false" table="game_stats"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="secondary" nullable="false" remarks="" size="3" type="TINYINT UNSIGNED" typeCode="-6"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="time" nullable="false" remarks="" size="16" type="TIME" typeCode="92"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="time" nullable="false" remarks="" size="8" type="TIME" typeCode="92"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="player_count" nullable="false" remarks="" size="3" type="TINYINT" typeCode="-6"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
@@ -295,8 +294,8 @@
             <parent catalog="faf" column="id" foreignKey="friends_and_foes_subject_login_id_fk" implied="false" onDeleteCascade="false" table="login"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="status" nullable="true" remarks="" size="6" type="enum('FRIEND', 'FOE')" typeCode="1"/>
-         <primaryKey column="subject_id" sequenceNumberInPK="1"/>
-         <primaryKey column="user_id" sequenceNumberInPK="2"/>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <primaryKey column="subject_id" sequenceNumberInPK="2"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="user_id"/>
             <column ascending="true" name="subject_id"/>
@@ -329,7 +328,7 @@
             <column ascending="true" name="gamemod"/>
          </index>
       </table>
-      <table catalog="faf" name="game_player_stats" numRows="27275" remarks="" type="TABLE">
+      <table catalog="faf" name="game_player_stats" numRows="26628" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5">
             <child catalog="faf" column="game_player_stats_id" foreignKey="leaderboard_rating_journal_ibfk_1" implied="false" onDeleteCascade="false" table="leaderboard_rating_journal"/>
          </column>
@@ -349,7 +348,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="after_mean" nullable="true" remarks="" size="12" type="FLOAT" typeCode="7"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="after_deviation" nullable="true" remarks="" size="12" type="FLOAT UNSIGNED" typeCode="7"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="score" nullable="true" remarks="" size="3" type="TINYINT" typeCode="-6"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="scoreTime" nullable="true" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="scoreTime" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="UNKNOWN" digits="0" id="14" name="result" nullable="true" remarks="" size="11" type="enum('VICTORY', 'DEFEAT', 'DRAW', 'MUTUAL_DRAW', 'UNKNOWN', 'CONFLICTING')" typeCode="1"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
@@ -381,8 +380,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="score" nullable="false" remarks="" size="3" type="TINYINT" typeCode="-6"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="text" nullable="true" remarks="" size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -423,8 +422,8 @@
             <child catalog="faf" column="game_id" foreignKey="game_id_of_moderation_report" implied="false" onDeleteCascade="false" table="moderation_report"/>
             <child catalog="faf" column="game_id" foreignKey="teamkills_game_stats_id_fk" implied="false" onDeleteCascade="false" table="teamkills"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="1" name="startTime" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="endTime" nullable="true" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="1" name="startTime" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="endTime" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="replay_ticks" nullable="true" remarks="The total number of ticks present in the replay. The SCFA tick rate is 10 ticks/second" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="gameType" nullable="false" remarks="" size="1" type="enum('0', '1', '2', '3')" typeCode="1"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="gameMod" nullable="false" remarks="" size="3" type="TINYINT UNSIGNED" typeCode="-6">
@@ -541,8 +540,8 @@
             <child catalog="faf" column="permission_id" foreignKey="group_permission_assignment_ibfk_2" implied="false" onDeleteCascade="false" table="group_permission_assignment"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="technical_name" nullable="false" remarks="hardcoded names to be used in code" size="100" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="name_key" nullable="false" remarks="name key of permission in translation table" size="100" type="VARCHAR" typeCode="12"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
@@ -557,8 +556,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="permission_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="group_permission_assignment_ibfk_2" implied="false" onDeleteCascade="false" table="group_permission"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -585,7 +584,7 @@
             <column ascending="true" name="username"/>
          </index>
       </table>
-      <table catalog="faf" name="ladder1v1_rating" numRows="22835" remarks="" type="TABLE">
+      <table catalog="faf" name="ladder1v1_rating" numRows="23424" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="ladder1v1_rating_ibfk_1" implied="false" onDeleteCascade="true" table="login"/>
          </column>
@@ -654,11 +653,11 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="ladder_division_score_ibfk_1" implied="false" onDeleteCascade="true" table="login"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="league" nullable="false" remarks="" size="1" type="BIT" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="league" nullable="false" remarks="" size="3" type="TINYINT UNSIGNED" typeCode="-6"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="score" nullable="false" remarks="" size="12" type="FLOAT UNSIGNED" typeCode="7"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="games" nullable="true" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -685,7 +684,7 @@
             <column ascending="true" name="idmap"/>
          </index>
       </table>
-      <table catalog="faf" name="leaderboard" numRows="5" remarks="" type="TABLE">
+      <table catalog="faf" name="leaderboard" numRows="6" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="This table is managed by Flyway. Do not manually edit records." size="5" type="SMALLINT UNSIGNED" typeCode="5">
             <child catalog="faf" column="initializer_id" foreignKey="leaderboard_ibfk_1" implied="false" onDeleteCascade="false" table="leaderboard"/>
             <child catalog="faf" column="leaderboard_id" foreignKey="leaderboard_rating_ibfk_2" implied="false" onDeleteCascade="false" table="leaderboard_rating"/>
@@ -695,8 +694,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="technical_name" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name_key" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="description_key" nullable="false" remarks="The leaderboard's i18n description key" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="initializer_id" nullable="true" remarks="Initialize rating based on existing entries from another leaderboard." size="5" type="SMALLINT UNSIGNED" typeCode="5">
             <parent catalog="faf" column="id" foreignKey="leaderboard_ibfk_1" implied="false" onDeleteCascade="false" table="leaderboard"/>
          </column>
@@ -724,8 +723,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="leaderboard_id" nullable="false" remarks="" size="5" type="SMALLINT UNSIGNED" typeCode="5">
             <parent catalog="faf" column="id" foreignKey="leaderboard_rating_ibfk_2" implied="false" onDeleteCascade="false" table="leaderboard"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -750,8 +749,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="rating_deviation_before" nullable="false" remarks="" size="12" type="FLOAT UNSIGNED" typeCode="7"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="rating_mean_after" nullable="false" remarks="" size="12" type="FLOAT" typeCode="7"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="rating_deviation_after" nullable="false" remarks="" size="12" type="FLOAT UNSIGNED" typeCode="7"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -793,9 +792,9 @@
       <table catalog="faf" name="lobby_ban" numRows="0" remarks="" type="VIEW" viewSql="select `faf`.`ban`.`player_id` AS `idUser`,`faf`.`ban`.`reason` AS `reason`,coalesce(`faf`.`ban`.`revoke_time`,`faf`.`ban`.`expires_at`,cast('2999-12-31' as date)) AS `expires_at` from `faf`.`ban` where `faf`.`ban`.`level` = 'GLOBAL'">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="idUser" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="reason" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="expires_at" nullable="true" remarks="" size="26" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="expires_at" nullable="true" remarks="" size="19" type="DATETIME" typeCode="93"/>
       </table>
-      <table catalog="faf" name="login" numRows="23232" remarks="login" type="TABLE">
+      <table catalog="faf" name="login" numRows="23890" remarks="login" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="idUser" foreignKey="avatars_ibfk_1" implied="false" onDeleteCascade="false" table="avatars"/>
             <child catalog="faf" column="author_id" foreignKey="ban_revoke_author" implied="false" onDeleteCascade="false" table="ban"/>
@@ -842,10 +841,10 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="email" nullable="false" remarks="" size="254" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="ip" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="steamid" nullable="true" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="user_agent" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="last_login" nullable="true" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="last_login" nullable="true" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="gog_id" nullable="true" remarks="Username on gog.com" size="100" type="VARCHAR" typeCode="12"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
@@ -872,7 +871,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="login_string" nullable="true" remarks="In case of unknown login, the login name will be kept here" size="100" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ip" nullable="false" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="success" nullable="false" remarks="" size="1" type="BIT" typeCode="-7"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -886,7 +885,7 @@
             <column ascending="true" name="success"/>
          </index>
       </table>
-      <table catalog="faf" name="map" numRows="9335" remarks="" type="TABLE">
+      <table catalog="faf" name="map" numRows="9340" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="map_id" foreignKey="map_reviews_summary_ibfk_1" implied="false" onDeleteCascade="false" table="map_reviews_summary"/>
             <child catalog="faf" column="map_id" foreignKey="map" implied="false" onDeleteCascade="true" table="map_version"/>
@@ -902,8 +901,8 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="reviews" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="games_played" nullable="false" remarks="Number of times a map version has been played. Should be updated each time games_played is updated in map_version Values start at 0" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="8" name="recommended" nullable="false" remarks="Boolean to indicate if a map is a high quality FAF Map" size="1" type="BIT" typeCode="-7"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="create_time" nullable="false" remarks="When this entry was created." size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="update_time" nullable="false" remarks="When this entry was updated" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="create_time" nullable="false" remarks="When this entry was created." size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="update_time" nullable="false" remarks="When this entry was updated" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="license" nullable="false" remarks="" size="10" type="INT" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="map_license_id_fk" implied="false" onDeleteCascade="false" table="license"/>
          </column>
@@ -929,8 +928,8 @@
             <child catalog="faf" column="map_pool_id" foreignKey="matchmaker_queue_map_pool_map_pool_id_fk" implied="false" onDeleteCascade="false" table="matchmaker_queue_map_pool"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="Only to help admins with organization. Don't show this to the user." size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -944,8 +943,8 @@
          </column>
          <column autoUpdated="false" defaultValue="1" digits="0" id="3" name="weight" nullable="false" remarks="Integer relative weight to select the map. If all values equal there will be a uniform chance. Values default to 1" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="map_params" nullable="true" remarks="json string which defines the type of map as well as the parameters for the map in the case of generated maps this would be the version, the generator type (e.g. neroxis), the size in pixels (e.g. 512) and the spawns" size="65535" type="TEXT" typeCode="-1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -976,8 +975,8 @@
       <table catalog="faf" name="map_statistic" numRows="0" remarks="" type="VIEW" viewSql="select `mv`.`map_id` AS `id`,count(0) AS `times_played`,`m`.`create_time` AS `create_time`,current_timestamp() AS `update_time` from ((`faf`.`game_stats` join `faf`.`map_version` `mv` on(`faf`.`game_stats`.`mapId` = `mv`.`id`)) join `faf`.`map` `m` on(`mv`.`map_id` = `m`.`id`)) group by `mv`.`map_id`">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="times_played" nullable="false" remarks="" size="19" type="BIGINT" typeCode="-5"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="When this entry was created." size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="3" name="update_time" nullable="false" remarks="" size="26" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="When this entry was created." size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="3" name="update_time" nullable="false" remarks="" size="19" type="DATETIME" typeCode="93"/>
       </table>
       <table catalog="faf" name="map_statistics" numRows="0" remarks="" type="VIEW" viewSql="select `faf`.`map`.`id` AS `map_id`,0 AS `downloads`,`faf`.`map`.`games_played` AS `plays`,0 AS `draws` from `faf`.`map`">
          <column autoUpdated="false" defaultValue="0" digits="0" id="0" name="map_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4"/>
@@ -985,7 +984,7 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="plays" nullable="false" remarks="Number of times a map version has been played. Should be updated each time games_played is updated in map_version Values start at 0" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="draws" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
       </table>
-      <table catalog="faf" name="map_version" numRows="17560" remarks="" type="TABLE">
+      <table catalog="faf" name="map_version" numRows="17675" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mapId" foreignKey="mapid_fkey" implied="false" onDeleteCascade="false" table="game_stats"/>
             <child catalog="faf" column="map_version_id" foreignKey="map_pool_map_version_ibfk_2" implied="false" onDeleteCascade="false" table="map_pool_map_version"/>
@@ -1008,8 +1007,8 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="10" name="average_review_score" nullable="false" remarks="" size="22" type="DOUBLE" typeCode="8"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="11" name="reviews" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="12" name="games_played" nullable="false" remarks="Number of times a map version has been played. Should be updated each time a row is inserted with the map_version.id in game_stats. Values start at 0" size="10" type="INT UNSIGNED" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="13" name="create_time" nullable="false" remarks="When this entry was created." size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="14" name="update_time" nullable="false" remarks="When this entry was updated" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="13" name="create_time" nullable="false" remarks="When this entry was created." size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="14" name="update_time" nullable="false" remarks="When this entry was updated" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1035,8 +1034,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="score" nullable="false" remarks="" size="3" type="TINYINT" typeCode="-6"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="text" nullable="true" remarks="" size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1073,7 +1072,7 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="plays" nullable="false" remarks="Number of times a map version has been played. Should be updated each time a row is inserted with the map_version.id in game_stats. Values start at 0" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="draws" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
       </table>
-      <table catalog="faf" name="matchmaker_queue" numRows="4" remarks="A matchmaker queue specifying which featured mod will be played, which map pools will be drawn from, and which leaderboard will be used to look up and update a player''s rating." type="TABLE">
+      <table catalog="faf" name="matchmaker_queue" numRows="5" remarks="A matchmaker queue specifying which featured mod will be played, which map pools will be drawn from, and which leaderboard will be used to look up and update a player''s rating." type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="This table is managed by Flyway. Do not manually edit records." size="10" type="INT UNSIGNED" typeCode="4">
             <child catalog="faf" column="matchmaker_queue_id" foreignKey="matchmaker_queue_game_ibfk_1" implied="false" onDeleteCascade="false" table="matchmaker_queue_game"/>
             <child catalog="faf" column="matchmaker_queue_id" foreignKey="matchmaker_queue_map_pool_matchmaker_queue_id_fk" implied="false" onDeleteCascade="false" table="matchmaker_queue_map_pool"/>
@@ -1086,8 +1085,8 @@
             <parent catalog="faf" column="id" foreignKey="matchmaker_queue_ibfk_2" implied="false" onDeleteCascade="false" table="leaderboard"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="name_key" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="1" digits="0" id="7" name="team_size" nullable="false" remarks="" size="3" type="TINYINT UNSIGNED" typeCode="-6"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="params" nullable="true" remarks="json string which defines additional parameters for the queue" size="65535" type="TEXT" typeCode="-1"/>
          <column autoUpdated="false" defaultValue="1" digits="0" id="9" name="enabled" nullable="false" remarks="" size="1" type="BIT" typeCode="-7"/>
@@ -1132,8 +1131,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="min_rating" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="max_rating" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1179,8 +1178,8 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="average_review_score" nullable="false" remarks="" size="22" type="DOUBLE" typeCode="8"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="reviews" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="recommended" nullable="false" remarks="Boolean to indicate if a mod is a high quality FAF Mod" size="1" type="BIT" typeCode="-7"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="When this entry was created." size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="When this entry was updated" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="When this entry was created." size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="When this entry was updated" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="license" nullable="false" remarks="" size="10" type="INT" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="mod_license_id_fk" implied="false" onDeleteCascade="false" table="license"/>
          </column>
@@ -1232,7 +1231,7 @@
             <column ascending="true" name="mod_id"/>
          </index>
       </table>
-      <table catalog="faf" name="mod_version" numRows="4166" remarks="" type="TABLE">
+      <table catalog="faf" name="mod_version" numRows="3922" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_review_ibfk_2" implied="false" onDeleteCascade="false" table="mod_version_review"/>
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_reviews_summary_mod_version" implied="false" onDeleteCascade="false" table="mod_version_reviews_summary"/>
@@ -1248,8 +1247,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="mod_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="mod_version_ibfk_1" implied="false" onDeleteCascade="true" table="mod"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="create_time" nullable="false" remarks="When this entry was created." size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="11" name="update_time" nullable="false" remarks="When this entry was updated" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="create_time" nullable="false" remarks="When this entry was created." size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="11" name="update_time" nullable="false" remarks="When this entry was updated" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1275,8 +1274,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="score" nullable="false" remarks="" size="3" type="TINYINT" typeCode="-6"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="text" nullable="true" remarks="" size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1326,8 +1325,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="last_moderator" nullable="true" remarks="Last moderator to have updated the report" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="moderation_report_ibfk_1" implied="false" onDeleteCascade="false" table="login"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1344,7 +1343,7 @@
       </table>
       <table catalog="faf" name="name_history" numRows="13750" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="1" name="change_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="1" name="change_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="name_history_ibfk_1" implied="false" onDeleteCascade="true" table="login"/>
          </column>
@@ -1384,7 +1383,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="refresh_token" nullable="true" remarks="A string token (UUID)." size="36" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="client_id" nullable="false" remarks="ID of the client (FK)." size="36" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="scope" nullable="false" remarks="A space delimited list of scopes." size="65535" type="TEXT" typeCode="-1"/>
-         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="6" name="expires" nullable="false" remarks="Expiration time of the token." size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="0000-00-00 00:00:00" digits="0" id="6" name="expires" nullable="false" remarks="Expiration time of the token." size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="user_id" nullable="false" remarks="ID of the user (FK)." size="10" type="INT UNSIGNED" typeCode="4"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
@@ -1394,7 +1393,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="patchs_table" numRows="21976" remarks="" type="TABLE">
+      <table catalog="faf" name="patchs_table" numRows="22551" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idpatchs_table" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fromMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="toMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -1414,8 +1413,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="current_steps" nullable="true" remarks="The current steps for an incremental achievement." size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="state" nullable="false" remarks="The state of the achievement. &#10;Possible values are:&#10;&quot;HIDDEN&quot; - Achievement is hidden.&#10;&quot;REVEALED&quot; - Achievement is revealed.&#10;&quot;UNLOCKED&quot; - Achievement is unlocked." size="8" type="enum('HIDDEN', 'REVEALED', 'UNLOCKED')" typeCode="1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1441,8 +1440,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="event_id" nullable="false" remarks="The ID of the event definition." size="36" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="count" nullable="false" remarks="The current number of times this event has occurred." size="10" type="INT UNSIGNED" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1463,8 +1462,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="report_id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="report_id_of_reported_user" implied="false" onDeleteCascade="false" table="moderation_report"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1484,7 +1483,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="script" nullable="false" remarks="" size="1000" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="checksum" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="installed_by" nullable="false" remarks="" size="100" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="installed_on" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="installed_on" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="execution_time" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="success" nullable="false" remarks="" size="1" type="BIT" typeCode="-7"/>
          <primaryKey column="installed_rank" sequenceNumberInPK="1"/>
@@ -1541,7 +1540,7 @@
             <parent catalog="faf" column="id" foreignKey="table_map_comments_ibfk_2" implied="false" onDeleteCascade="true" table="login"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="comment_text" nullable="false" remarks="" size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="comment_date" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="comment_date" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="comment_id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="comment_id"/>
@@ -1560,7 +1559,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="version" nullable="false" remarks="" size="5" type="SMALLINT" typeCode="5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="author" nullable="false" remarks="" size="100" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="ui" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="date" nullable="false" remarks="When this entry was created." size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="date" nullable="false" remarks="When this entry was created." size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="downloads" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="likes" nullable="true" remarks="" size="22" type="DOUBLE" typeCode="8"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="played" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
@@ -1582,7 +1581,7 @@
             <parent catalog="faf" column="id" foreignKey="teamkills_game_stats_id_fk" implied="false" onDeleteCascade="false" table="game_stats"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="gametime" nullable="false" remarks="time of game in seconds when tk was performed" size="8" type="MEDIUMINT UNSIGNED" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="reported_at" nullable="false" remarks="" size="26" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="reported_at" nullable="false" remarks="" size="19" type="DATETIME" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1611,8 +1610,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="ordinal" nullable="false" remarks="The 'ordinal' which defines in which order the tutorials are shown in the client (within their category)" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="launchable" nullable="false" remarks="Boolean that defines whether or not the tutorial can be launched" size="1" type="BIT" typeCode="-7"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="technical_name" nullable="false" remarks="The 'technical_name' of the tutorial given to the tutorial mod to decide what tutorial to start, when implemented" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="10" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1669,10 +1668,10 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uniqueid_hash" nullable="false" remarks="" size="32" type="CHAR" typeCode="1">
             <parent catalog="faf" column="hash" foreignKey="FK_user_hash_to_uid" implied="false" onDeleteCascade="false" table="uniqueid"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <primaryKey column="uniqueid_hash" sequenceNumberInPK="1"/>
-         <primaryKey column="user_id" sequenceNumberInPK="2"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <primaryKey column="uniqueid_hash" sequenceNumberInPK="2"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="user_id"/>
             <column ascending="true" name="uniqueid_hash"/>
@@ -1695,8 +1694,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="SMBIOSBIOSVersion" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="serialNumber" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="volumeSerialNumber" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="11" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="12" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="11" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="12" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1710,8 +1709,8 @@
             <parent catalog="faf" column="id" foreignKey="FK_uniqueid_exempt_user_id_to_login" implied="false" onDeleteCascade="false" table="login"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="reason" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <index name="idUser" unique="true">
             <column ascending="true" name="user_id"/>
          </index>
@@ -2169,8 +2168,8 @@
             <parent catalog="faf" column="id" foreignKey="user_group_ibfk_1" implied="false" onDeleteCascade="false" table="user_group"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="public" nullable="false" remarks="Public groups are visible for everyone, the rest only for internal permissions" size="1" type="BIT" typeCode="-7"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="name_key" nullable="false" remarks="name key of user group in translation table" size="100" type="VARCHAR" typeCode="12"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
@@ -2188,8 +2187,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="group_id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="user_group_assignment_ibfk_2" implied="false" onDeleteCascade="false" table="user_group"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -2211,8 +2210,8 @@
          </column>
          <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="watched" nullable="false" remarks="boolean that marks notes that should be reviewed at a later time (i.e. gather facts before applying a ban)" size="3" type="TINYINT" typeCode="-6"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="note" nullable="false" remarks="" size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -2244,8 +2243,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="voting_subject_id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="voting_subject_of_vote" implied="false" onDeleteCascade="false" table="voting_subject"/>
          </column>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="3" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -2267,8 +2266,8 @@
             <parent catalog="faf" column="id" foreignKey="voting_choice_of_voting_answer" implied="false" onDeleteCascade="false" table="voting_choice"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="alternative_ordinal" nullable="true" remarks="Defines what preference for alternative voting this answer is" size="3" type="TINYINT UNSIGNED" typeCode="-6"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="4" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -2292,8 +2291,8 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="description_key" nullable="false" remarks="The 'description-key' of the voting choice, with it additional information (HTML) can be loaded from the messages table" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="ordinal" nullable="false" remarks="The 'ordinal' of the voting choice, in the client choices are shown according to their ordinal value" size="10" type="INT UNSIGNED" typeCode="4"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="5" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="6" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -2315,8 +2314,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="description_key" nullable="true" remarks="The 'description-key' of the voting question, with it additional information (HTML) can be loaded from the messages table" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="ordinal" nullable="false" remarks="The 'ordinal' of the voting question, in the client questions are shown according to their ordinal value" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="6" name="alternative_voting" nullable="false" remarks="Defines whether alternative voting applies to this question" size="3" type="TINYINT UNSIGNED" typeCode="-6"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="7" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -2331,14 +2330,14 @@
             <child catalog="faf" column="voting_subject_id" foreignKey="voting_subject_of_voting_question" implied="false" onDeleteCascade="false" table="voting_question"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="subject_key" nullable="false" remarks="With this key the 'subject' can be loaded from the messages table" size="255" type="VARCHAR" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="begin_of_vote_time" nullable="false" remarks="" size="26" type="DATETIME" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="end_of_vote_time" nullable="false" remarks="" size="26" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="2" name="begin_of_vote_time" nullable="false" remarks="" size="19" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="end_of_vote_time" nullable="false" remarks="" size="19" type="DATETIME" typeCode="93"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="min_games_to_vote" nullable="false" remarks="The number of games a player must have to in order to vote" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="description_key" nullable="true" remarks="The 'description-key' of the voting subject with it additional information (HTML) can be loaded from the messages table" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="topic_url" nullable="true" remarks="An URL to a page with additional information, e.g. a forum post." size="16777215" type="MEDIUMTEXT" typeCode="-1"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="7" name="reveal_winner" nullable="false" remarks="When set to true after voting ended the winner is calculated and shown publicly" size="3" type="TINYINT UNSIGNED" typeCode="-6"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="create_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="update_time" nullable="false" remarks="" size="26" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="8" name="create_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="current_timestamp()" digits="0" id="9" name="update_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>

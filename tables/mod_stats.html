@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>mod_stats - faf Database</title>
+        <title>mod_stats - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -117,7 +123,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="mod_stats.mod_id references mod.id via mod_stats_ibfk_1"><a href='mod.html'>mod</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">mod_stats_ibfk_1<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                                <td class="constraint detail">mod_stats_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -205,7 +212,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -244,19 +257,19 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="mod_stats.html" target="_top" title="mod_stats" alt="" coords="272,5,601,221">
+<area shape="rect" id="node1" href="mod_stats.html" target="_top" title="mod_stats" alt="" coords="272,5,600,221">
 <area shape="rect" id="node2" href="mod.html" target="_top" title="mod" alt="" coords="5,8,228,243">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/mod_stats.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="mod.html" target="_top" title="mod" alt="" coords="224,113,447,348">
-<area shape="rect" id="node2" href="license.html" target="_top" title="license" alt="" coords="23,256,162,344">
-<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="5,151,180,239">
-<area shape="rect" id="node4" href="mod_reviews_summary.html" target="_top" title="mod_reviews_summary" alt="" coords="524,5,787,93">
-<area shape="rect" id="node5" href="mod_stats.html" target="_top" title="mod_stats" alt="" coords="491,111,820,327">
-<area shape="rect" id="node6" href="mod_version.html" target="_top" title="mod_version" alt="" coords="564,344,747,432">
+<area shape="rect" id="node1" href="mod.html" target="_top" title="mod" alt="" coords="215,113,437,348">
+<area shape="rect" id="node2" href="license.html" target="_top" title="license" alt="" coords="21,256,155,344">
+<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="5,151,171,239">
+<area shape="rect" id="node4" href="mod_reviews_summary.html" target="_top" title="mod_reviews_summary" alt="" coords="513,5,778,93">
+<area shape="rect" id="node5" href="mod_stats.html" target="_top" title="mod_stats" alt="" coords="481,111,809,327">
+<area shape="rect" id="node6" href="mod_version.html" target="_top" title="mod_version" alt="" coords="555,344,736,432">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/mod_stats.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -278,7 +291,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

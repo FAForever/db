@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>group_permission_assignment - faf Database</title>
+        <title>group_permission_assignment - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -100,7 +100,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -147,7 +153,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="group_permission_assignment.group_id references user_group.id via group_permission_assignment_ibfk_1"><a href='user_group.html'>user_group</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">group_permission_assignment_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">group_permission_assignment_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -168,7 +175,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="group_permission_assignment.permission_id references group_permission.id via group_permission_assignment_ibfk_2"><a href='group_permission.html'>group_permission</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">group_permission_assignment_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">group_permission_assignment_ibfk_2</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -177,7 +185,7 @@
                                 <tr>
                                     <td><span id="create_time">create_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -194,7 +202,7 @@
                                 <tr>
                                     <td><span id="update_time">update_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -222,7 +230,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -273,18 +287,18 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="group_permission_assignment.html" target="_top" title="group_permission_assignment" alt="" coords="269,41,735,257">
-<area shape="rect" id="node2" href="user_group.html" target="_top" title="user_group" alt="" coords="27,5,204,152">
-<area shape="rect" id="node3" href="group_permission.html" target="_top" title="group_permission" alt="" coords="5,169,225,287">
+<area shape="rect" id="node1" href="group_permission_assignment.html" target="_top" title="group_permission_assignment" alt="" coords="271,41,735,257">
+<area shape="rect" id="node2" href="user_group.html" target="_top" title="user_group" alt="" coords="27,5,205,152">
+<area shape="rect" id="node3" href="group_permission.html" target="_top" title="group_permission" alt="" coords="5,169,227,287">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/group_permission_assignment.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="group_permission_assignment.html" target="_top" title="group_permission_assignment" alt="" coords="269,111,735,327">
-<area shape="rect" id="node2" href="user_group.html" target="_top" title="user_group" alt="" coords="27,5,204,152">
-<area shape="rect" id="node3" href="group_permission.html" target="_top" title="group_permission" alt="" coords="5,172,225,289">
-<area shape="rect" id="node4" href="user_group_assignment.html" target="_top" title="user_group_assignment" alt="" coords="371,5,633,93">
+<area shape="rect" id="node1" href="group_permission_assignment.html" target="_top" title="group_permission_assignment" alt="" coords="271,111,735,327">
+<area shape="rect" id="node2" href="user_group.html" target="_top" title="user_group" alt="" coords="27,5,205,152">
+<area shape="rect" id="node3" href="group_permission.html" target="_top" title="group_permission" alt="" coords="5,172,227,289">
+<area shape="rect" id="node4" href="user_group_assignment.html" target="_top" title="user_group_assignment" alt="" coords="369,5,636,93">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/group_permission_assignment.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -306,7 +320,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

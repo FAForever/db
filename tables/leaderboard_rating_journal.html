@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>leaderboard_rating_journal - faf Database</title>
+        <title>leaderboard_rating_journal - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -134,7 +140,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="leaderboard_rating_journal.game_player_stats_id references game_player_stats.id via leaderboard_rating_journal_ibfk_1"><a href='game_player_stats.html'>game_player_stats</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">leaderboard_rating_journal_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">leaderboard_rating_journal_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -155,7 +162,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="leaderboard_rating_journal.leaderboard_id references leaderboard.id via leaderboard_rating_journal_ibfk_2"><a href='leaderboard.html'>leaderboard</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">leaderboard_rating_journal_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">leaderboard_rating_journal_ibfk_2</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -232,7 +240,7 @@
                                 <tr>
                                     <td><span id="create_time">create_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -249,7 +257,7 @@
                                 <tr>
                                     <td><span id="update_time">update_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -277,7 +285,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -328,21 +342,21 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="275,100,695,433">
-<area shape="rect" id="node2" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="5,5,231,269">
-<area shape="rect" id="node3" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="28,287,208,463">
+<area shape="rect" id="node1" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="276,100,696,433">
+<area shape="rect" id="node2" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="5,5,232,269">
+<area shape="rect" id="node3" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="30,287,207,463">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/leaderboard_rating_journal.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="439,37,664,301">
-<area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="224,69,395,157">
-<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="5,137,180,225">
-<area shape="rect" id="node4" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="802,468,1034,556">
-<area shape="rect" id="node5" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="461,319,641,495">
-<area shape="rect" id="node6" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="708,5,1128,339">
-<area shape="rect" id="node7" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="799,356,1037,444">
+<area shape="rect" id="node1" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="428,37,655,301">
+<area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="215,69,384,157">
+<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="5,137,171,225">
+<area shape="rect" id="node4" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="793,468,1025,556">
+<area shape="rect" id="node5" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="453,319,630,495">
+<area shape="rect" id="node6" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="699,5,1119,339">
+<area shape="rect" id="node7" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="789,356,1028,444">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/leaderboard_rating_journal.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -364,7 +378,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

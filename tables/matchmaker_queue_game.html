@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>matchmaker_queue_game - faf Database</title>
+        <title>matchmaker_queue_game - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -117,7 +123,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="matchmaker_queue_game.matchmaker_queue_id references matchmaker_queue.id via matchmaker_queue_game_ibfk_1"><a href='matchmaker_queue.html'>matchmaker_queue</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">matchmaker_queue_game_ibfk_1<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">matchmaker_queue_game_ibfk_1</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -138,7 +145,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="matchmaker_queue_game.game_stats_id references game_stats.id via matchmaker_queue_game_ibfk_2"><a href='game_stats.html'>game_stats</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">matchmaker_queue_game_ibfk_2<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">matchmaker_queue_game_ibfk_2</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -158,7 +166,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -203,7 +217,7 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="288,100,673,228">
+<area shape="rect" id="node1" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="288,100,672,228">
 <area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="35,228,214,580">
 <area shape="rect" id="node3" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="5,5,244,211">
 </map>
@@ -211,21 +225,21 @@
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="coop_leaderboard.html" target="_top" title="coop_leaderboard" alt="" coords="653,532,876,620">
-<area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="319,312,498,664">
-<area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="38,111,213,199">
-<area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="5,503,245,591">
-<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="34,397,217,485">
-<area shape="rect" id="node9" href="game_validity.html" target="_top" title="game_validity" alt="" coords="29,608,221,696">
-<area shape="rect" id="node3" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="652,216,877,304">
-<area shape="rect" id="node5" href="game_review.html" target="_top" title="game_review" alt="" coords="672,321,857,409">
-<area shape="rect" id="node6" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="629,427,900,515">
-<area shape="rect" id="node10" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="289,681,528,887">
-<area shape="rect" id="node11" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="35,772,215,860">
-<area shape="rect" id="node12" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="572,637,957,765">
-<area shape="rect" id="node13" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="606,783,923,871">
-<area shape="rect" id="node14" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="649,5,880,93">
-<area shape="rect" id="node15" href="teamkills.html" target="_top" title="teamkills" alt="" coords="686,111,843,199">
+<area shape="rect" id="node1" href="coop_leaderboard.html" target="_top" title="coop_leaderboard" alt="" coords="655,532,878,620">
+<area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="322,295,501,647">
+<area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="44,111,209,199">
+<area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="5,485,248,573">
+<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="37,380,217,468">
+<area shape="rect" id="node9" href="game_validity.html" target="_top" title="game_validity" alt="" coords="32,591,221,679">
+<area shape="rect" id="node3" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="653,216,880,304">
+<area shape="rect" id="node5" href="game_review.html" target="_top" title="game_review" alt="" coords="675,321,859,409">
+<area shape="rect" id="node6" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="629,427,904,515">
+<area shape="rect" id="node10" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="292,664,531,869">
+<area shape="rect" id="node11" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="38,755,215,843">
+<area shape="rect" id="node12" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="575,637,959,765">
+<area shape="rect" id="node13" href="matchmaker_queue_map_pool.html" target="_top" title="matchmaker_queue_map_pool" alt="" coords="605,783,928,871">
+<area shape="rect" id="node14" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="651,5,882,93">
+<area shape="rect" id="node15" href="teamkills.html" target="_top" title="teamkills" alt="" coords="690,111,843,199">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/matchmaker_queue_game.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -247,7 +261,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

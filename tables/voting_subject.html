@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>voting_subject - faf Database</title>
+        <title>voting_subject - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -113,11 +119,13 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="vote.voting_subject_id references voting_subject.id via voting_subject_of_vote"><a href='vote.html'>vote</a><span class='relatedKey'>.voting_subject_id</span></td>
-                                                <td class="constraint detail">voting_subject_of_vote<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">voting_subject_of_vote</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                             <tr>
                                                 <td title="voting_question.voting_subject_id references voting_subject.id via voting_subject_of_voting_question"><a href='voting_question.html'>voting_question</a><span class='relatedKey'>.voting_subject_id</span></td>
-                                                <td class="constraint detail">voting_subject_of_voting_question<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">voting_subject_of_voting_question</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -147,7 +155,7 @@
                                 <tr>
                                     <td><span id="begin_of_vote_time">begin_of_vote_time</span></td>
                                     <td>DATETIME</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -164,7 +172,7 @@
                                 <tr>
                                     <td><span id="end_of_vote_time">end_of_vote_time</span></td>
                                     <td>DATETIME</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -249,7 +257,7 @@
                                 <tr>
                                     <td><span id="create_time">create_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -266,7 +274,7 @@
                                 <tr>
                                     <td><span id="update_time">update_time</span></td>
                                     <td>TIMESTAMP</td>
-                                    <td>26</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>current_timestamp()</td>
@@ -294,7 +302,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="indexes_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead>
                                 <tr>
                                     <th>Constraint Name</th>
@@ -333,21 +347,21 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="vote.html" target="_top" title="vote" alt="" coords="444,5,629,181">
-<area shape="rect" id="node2" href="voting_subject.html" target="_top" title="voting_subject" alt="" coords="5,143,389,505">
-<area shape="rect" id="node3" href="voting_question.html" target="_top" title="voting_question" alt="" coords="433,199,640,345">
+<area shape="rect" id="node1" href="vote.html" target="_top" title="vote" alt="" coords="436,5,621,181">
+<area shape="rect" id="node2" href="voting_subject.html" target="_top" title="voting_subject" alt="" coords="5,143,381,505">
+<area shape="rect" id="node3" href="voting_question.html" target="_top" title="voting_question" alt="" coords="425,199,632,345">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/voting_subject.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="vote.html" target="_top" title="vote" alt="" coords="686,5,871,181">
-<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="449,37,624,125">
-<area shape="rect" id="node3" href="voting_subject.html" target="_top" title="voting_subject" alt="" coords="5,165,389,528">
-<area shape="rect" id="node4" href="voting_answer.html" target="_top" title="voting_answer" alt="" coords="967,68,1162,156">
-<area shape="rect" id="node5" href="voting_choice.html" target="_top" title="voting_choice" alt="" coords="684,199,873,287">
-<area shape="rect" id="node6" href="voting_question.html" target="_top" title="voting_question" alt="" coords="433,196,640,343">
-<area shape="rect" id="node7" href="winner_for_voting_question.html" target="_top" title="winner_for_voting_question" alt="" coords="917,233,1212,321">
+<area shape="rect" id="node1" href="vote.html" target="_top" title="vote" alt="" coords="677,5,863,181">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="446,37,611,125">
+<area shape="rect" id="node3" href="voting_subject.html" target="_top" title="voting_subject" alt="" coords="5,169,381,532">
+<area shape="rect" id="node4" href="voting_answer.html" target="_top" title="voting_answer" alt="" coords="961,68,1155,156">
+<area shape="rect" id="node5" href="voting_choice.html" target="_top" title="voting_choice" alt="" coords="676,199,864,287">
+<area shape="rect" id="node6" href="voting_question.html" target="_top" title="voting_question" alt="" coords="425,196,632,343">
+<area shape="rect" id="node7" href="winner_for_voting_question.html" target="_top" title="winner_for_voting_question" alt="" coords="908,233,1208,321">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/voting_subject.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -369,7 +383,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>

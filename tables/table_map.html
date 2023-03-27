@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>table_map - faf Database</title>
+        <title>table_map - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>faf</b> Database</a>
+                            <a href="../index.html" class="navbar-brand"><b>faf</b></a><span class="navbar-brand" style="padding-left: 0">.faf</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -87,7 +87,13 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table id="standard_table" class="table table-bordered table-striped dataTable" role="grid">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
                                 <thead align='left'>
                                 <tr>
                                     <th>Column</th>
@@ -304,7 +310,8 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
                                                 <td title="table_map.mapuid&#39;s name implies that it&#39;s a child of map.id, but it doesn&#39;t reference that column."><a href='map.html'>map</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">Implied Constraint<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                                <td class="constraint detail">Implied Constraint</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -334,25 +341,25 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="table_map.html" target="_top" title="table_map" alt="" coords="5,5,329,403">
+<area shape="rect" id="node1" href="table_map.html" target="_top" title="table_map" alt="" coords="5,5,328,403">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/table_map.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="oneimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagramImplied" name="oneDegreeRelationshipsDiagramImplied">
-<area shape="rect" id="node1" href="table_map.html" target="_top" title="table_map" alt="" coords="272,5,596,403">
+<area shape="rect" id="node1" href="table_map.html" target="_top" title="table_map" alt="" coords="272,5,595,403">
 <area shape="rect" id="node2" href="map.html" target="_top" title="map" alt="" coords="5,331,228,565">
 </map>
                                         <a name='diagram'><img id="oneimpliedDegreeImg" src="../diagrams/tables/table_map.implied1degrees.png" usemap="#oneDegreeRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twoimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagramImplied" name="twoDegreesRelationshipsDiagramImplied">
-<area shape="rect" id="node1" href="map.html" target="_top" title="map" alt="" coords="224,108,447,343">
-<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="5,145,180,233">
-<area shape="rect" id="node3" href="license.html" target="_top" title="license" alt="" coords="23,251,162,339">
-<area shape="rect" id="node4" href="map_reviews_summary.html" target="_top" title="map_reviews_summary" alt="" coords="521,5,784,93">
-<area shape="rect" id="node5" href="map_version.html" target="_top" title="map_version" alt="" coords="561,111,744,199">
-<area shape="rect" id="node6" href="table_map.html" target="_top" title="table_map" alt="" coords="491,216,815,613">
+<area shape="rect" id="node1" href="map.html" target="_top" title="map" alt="" coords="215,108,437,343">
+<area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="5,145,171,233">
+<area shape="rect" id="node3" href="license.html" target="_top" title="license" alt="" coords="21,251,155,339">
+<area shape="rect" id="node4" href="map_reviews_summary.html" target="_top" title="map_reviews_summary" alt="" coords="510,5,775,93">
+<area shape="rect" id="node5" href="map_version.html" target="_top" title="map_version" alt="" coords="553,111,733,199">
+<area shape="rect" id="node6" href="table_map.html" target="_top" title="table_map" alt="" coords="481,216,804,613">
 </map>
                                         <a name='diagram'><img id="twoimpliedDegreeImg" src="../diagrams/tables/table_map.implied2degrees.png" usemap="#twoDegreesRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
                                     </div>
@@ -370,7 +377,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">(select `v`.`id` AS `id`,`m`.`display_name` AS `name`,`v`.`description` AS `description`,`v`.`max_players` AS `max_players`,`m`.`map_type` AS `map_type`,`m`.`battle_type` AS `battle_type`,`v`.`width` AS `map_sizeX`,`v`.`height` AS `map_sizeY`,`v`.`version` AS `version`,`v`.`filename` AS `filename`,`v`.`hidden` AS `hidden`,`m`.`id` AS `mapuid` from (`faf`.`map` `m` join `faf`.`map_version` `v` on(`m`.`id` = `v`.`map_id`)))</textarea>
+                            <textarea id="sql-script-codemirror" name="sql-script-codemirror" rows="" style="display: none;">(select &#96;v&#96;.&#96;id&#96; AS &#96;id&#96;,&#96;m&#96;.&#96;display_name&#96; AS &#96;name&#96;,&#96;v&#96;.&#96;description&#96; AS &#96;description&#96;,&#96;v&#96;.&#96;max_players&#96; AS &#96;max_players&#96;,&#96;m&#96;.&#96;map_type&#96; AS &#96;map_type&#96;,&#96;m&#96;.&#96;battle_type&#96; AS &#96;battle_type&#96;,&#96;v&#96;.&#96;width&#96; AS &#96;map_sizeX&#96;,&#96;v&#96;.&#96;height&#96; AS &#96;map_sizeY&#96;,&#96;v&#96;.&#96;version&#96; AS &#96;version&#96;,&#96;v&#96;.&#96;filename&#96; AS &#96;filename&#96;,&#96;v&#96;.&#96;hidden&#96; AS &#96;hidden&#96;,&#96;m&#96;.&#96;id&#96; AS &#96;mapuid&#96; from (&#96;faf&#96;.&#96;map&#96; &#96;m&#96; join &#96;faf&#96;.&#96;map_version&#96; &#96;v&#96; on(&#96;m&#96;.&#96;id&#96; &#61; &#96;v&#96;.&#96;map_id&#96;)))</textarea>
                             <div style="padding-top: 5px;"><hr></div>
                             <div class="box box-solid">
                                 <div class="box-header with-border">
@@ -401,7 +408,7 @@
                         <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
                         <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
                     </div>
-                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.2</a></strong>
                 </div>
                 <!-- /.container -->
             </footer>
