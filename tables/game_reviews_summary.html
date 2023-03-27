@@ -245,6 +245,23 @@
                                     </td>
                                     <td><p>Lower bound of Wilson score confidence interval for a Bernoulli parameter</p></td>
                                 </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="average_score">average_score</span></td>
+                                    <td>FLOAT</td>
+                                    <td>12</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -287,6 +304,12 @@
                                     <td><span title='Ascending'>Asc</span></td>
                                     <td>game_id</td>
                                 </tr>
+                                <tr>
+                                    <td title='Indexed'>game_rev_sum_avg_score_ix</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>average_score</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div><!-- /.box-body -->
@@ -310,7 +333,7 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="228,5,597,280">
+<area shape="rect" id="node1" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="228,5,597,309">
 <area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="5,37,184,389">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/game_reviews_summary.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
@@ -318,17 +341,17 @@
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
 <area shape="rect" id="node1" href="coop_leaderboard.html" target="_top" title="coop_leaderboard" alt="" coords="588,111,811,199">
-<area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="292,343,471,695">
-<area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="44,719,209,807">
-<area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="5,403,248,491">
-<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="37,508,217,596">
-<area shape="rect" id="node9" href="game_validity.html" target="_top" title="game_validity" alt="" coords="32,613,221,701">
+<area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="292,372,471,724">
+<area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="44,748,209,836">
+<area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="5,432,248,520">
+<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="37,537,217,625">
+<area shape="rect" id="node9" href="game_validity.html" target="_top" title="game_validity" alt="" coords="32,643,221,731">
 <area shape="rect" id="node3" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="586,5,813,93">
-<area shape="rect" id="node5" href="game_review.html" target="_top" title="game_review" alt="" coords="607,613,791,701">
-<area shape="rect" id="node6" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="515,216,884,491">
-<area shape="rect" id="node10" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="555,508,844,596">
-<area shape="rect" id="node11" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="584,719,815,807">
-<area shape="rect" id="node12" href="teamkills.html" target="_top" title="teamkills" alt="" coords="623,824,776,912">
+<area shape="rect" id="node5" href="game_review.html" target="_top" title="game_review" alt="" coords="607,643,791,731">
+<area shape="rect" id="node6" href="game_reviews_summary.html" target="_top" title="game_reviews_summary" alt="" coords="515,216,884,520">
+<area shape="rect" id="node10" href="matchmaker_queue_game.html" target="_top" title="matchmaker_queue_game" alt="" coords="555,537,844,625">
+<area shape="rect" id="node11" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="584,748,815,836">
+<area shape="rect" id="node12" href="teamkills.html" target="_top" title="teamkills" alt="" coords="623,853,776,941">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/game_reviews_summary.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
