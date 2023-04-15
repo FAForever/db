@@ -9,7 +9,7 @@ INSERT INTO `matchmaker_queue` (id, technical_name, featured_mod_id, leaderboard
 (2,'tmm2v2',0,3,'matchmaker_queue.tmm2v2.name',2,NULL,1),
 (3,'tmm4v4_full_share',0,4,'matchmaker_queue.tmm4v4_full_share.name',4,NULL,1),
 (4,'tmm4v4_share_until_death',0,5,'matchmaker_queue.tmm4v4_share_until_death.name',4,'{"GameOptions":{"Share":"ShareUntilDeath"}}',0),
-(5,'tmm3v3',0,6,'matchmaker_queue.tmm3v3.name',3,NULL,0)
+(5,'tmm3v3',0,6,'matchmaker_queue.tmm3v3.name',3,NULL,1)
 -- add new row above this comment (don't forget to append the comma to the previous one)
 ON DUPLICATE KEY UPDATE
     technical_name=VALUES(technical_name),
