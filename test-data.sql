@@ -9,11 +9,8 @@ DELETE FROM moderation_report;
 DELETE FROM teamkills;
 DELETE FROM unique_id_users;
 DELETE FROM uniqueid;
-DELETE FROM global_rating;
-DELETE FROM ladder1v1_rating;
 DELETE FROM uniqueid_exempt;
 DELETE FROM friends_and_foes;
-DELETE FROM ladder_map;
 DELETE FROM tutorial;
 DELETE FROM map_version_review;
 DELETE FROM map_version_reviews_summary;
@@ -25,7 +22,6 @@ DELETE FROM mod_version_reviews_summary;
 DELETE FROM mod_version;
 DELETE FROM `mod`;
 DELETE FROM mod_stats;
-DELETE FROM oauth_clients;
 DELETE FROM updates_faf;
 DELETE FROM updates_faf_files;
 DELETE FROM avatars;
@@ -38,9 +34,6 @@ DELETE FROM game_review;
 DELETE FROM game_reviews_summary;
 DELETE FROM game_stats;
 DELETE FROM game_featuredMods;
-DELETE FROM ladder_division_score;
-DELETE FROM ladder_division;
-DELETE FROM lobby_admin;
 DELETE FROM name_history;
 DELETE FROM user_group_assignment;
 DELETE FROM user_group;
@@ -91,23 +84,9 @@ INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) V
 INSERT INTO user_group (id, technical_name, parent_group_id, public, name_key) VALUES (28, 'faf_moderators_global', 7, 1, 'user_group.faf.moderators.global');
 
 -- Permissions
-insert into lobby_admin (user_id, `group`) values (1,2);
 insert into user_group_assignment(user_id, group_id)  values (1, (SELECT id from user_group WHERE technical_name = 'faf_server_administrators'));
 insert into user_group_assignment(user_id, group_id)  values (2, (SELECT id from user_group WHERE technical_name = 'faf_moderators_global'));
 
--- global rating
-insert into global_rating (id, mean, deviation, numGames, is_active)
-values
-(1, 2000, 125, 5, 1),
-(2, 1500, 75, 2, 1),
-(3, 1650, 62.52, 2, 1);
-
--- ladder rating
-insert into ladder1v1_rating (id, mean, deviation, numGames, is_active)
-values
-  (1, 2000, 125, 5, 1),
-  (2, 1500, 75, 2, 1),
-  (3, 1650, 62.52, 2, 1);
 
 -- UniqueID_exempt
 insert into uniqueid_exempt (user_id, reason) values (1, 'Because test');
@@ -160,10 +139,6 @@ values
 (15, 'SCMP 015', 8, 512, 512, 1, 'maps/scmp_015.zip', 0, 15),
 (16, 'SCMP 015', 8, 512, 512, 2, 'maps/scmp_015.v0002.zip', 0, 15),
 (17, 'SCMP 015', 8, 512, 512, 3, 'maps/scmp_015.v0003.zip', 0, 15);
-
-insert into ladder_map (id, idmap) values
-(1,1),
-(2,2);
 
 INSERT INTO `coop_map` (`type`, `name`, `description`, `version`, `filename`)
 VALUES (0, 'FA Campaign map', 'A map from the FA campaign', 2, 'maps/scmp_coop_123.v0002.zip'),
@@ -255,12 +230,6 @@ insert into clan_membership (clan_id, player_id) values
   (2, 4),
   (3, 1);
 
--- sample oauth_client for Postman
-insert into oauth_clients (id, name, client_secret, redirect_uris, default_redirect_uri, default_scope) VALUES
-  ('3bc8282c-7730-11e5-8bcf-feff819cdc9f ', 'Downlord''s FAF Client', '{noop}6035bd78-7730-11e5-8bcf-feff819cdc9f', '', '', 'read_events read_achievements upload_map'),
-  ('faf-website', 'faf-website', '{noop}banana', 'http://localhost:8020', 'http://localhost:8020', 'public_profile write_account_data create_user'),
-  ('postman', 'postman', '{noop}postman', 'http://localhost https://www.getpostman.com/oauth2/callback', 'https://www.getpostman.com/oauth2/callback', 'read_events read_achievements upload_map upload_mod write_account_data');
-
 insert into updates_faf (id, filename, path) values
     (1, 'ForgedAlliance.exe', 'bin'),
     (11, 'effects.nx2', 'gamedata'),
@@ -287,21 +256,5 @@ insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES
 insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (2, 'Like it', 2, 4, 1);
 insert into mod_version_review (id, text, user_id, score, mod_version_id) VALUES (3, 'Funny', 3, 4, 1);
 
-INSERT INTO ladder_division VALUES
-(1, 'League 1 - Division A', 1, 10.0),
-(2, 'League 1 - Division B', 1, 30.0),
-(3, 'League 1 - Division C', 1, 50.0),
-(4, 'League 2 - Division D', 2, 20.0),
-(5, 'League 2 - Division E', 2, 60.0),
-(6, 'League 2 - Division F', 2, 100.0),
-(7, 'League 3 - Division D', 3, 100.0),
-(8, 'League 3 - Division E', 3, 200.0),
-(9, 'League 3 - Division F', 3, 9999.0);
-
-INSERT INTO ladder_division_score (season, user_id, league, score, games) VALUES
-  (1, 1, 1, 9.5, 4),
-(1, 2, 1, 49.5, 70),
-(1, 3, 2, 0.0, 39),
-(1, 4, 3, 10.0, 121);
 
 INSERT INTO email_domain_blacklist VALUES ('spam.org');
