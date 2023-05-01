@@ -109,7 +109,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="id">id</span></td>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="id">id</span></td>
                                     <td>SMALLINT UNSIGNED</td>
                                     <td>5</td>
                                     <td title=''></td>
@@ -121,6 +121,11 @@
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="updates_coop.id&#39;s name implies that it&#39;s a child of leaderboard.id, but it doesn&#39;t reference that column."><a href='leaderboard.html'>leaderboard</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">Implied Constraint</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
                                         </table>
                                     </td>
                                     <td></td>
@@ -213,6 +218,8 @@
                                 <h5>Close relationships within degrees of separation</h5>
                                 <ul class="nav nav-tabs pull-left ui-sortable-handle">
                                     <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                    <li class=""><a href="#oneimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">One implied</a></li>
+                                    <li class=""><a href="#twoimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two implied</a></li>
                                 </ul>
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
@@ -220,6 +227,41 @@
 <area shape="rect" id="node1" href="updates_coop.html" target="_top" title="updates_coop" alt="" coords="5,5,319,163">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/updates_coop.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="oneimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagramImplied" name="oneDegreeRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="updates_coop.html" target="_top" title="updates_coop" alt="" coords="227,5,540,163">
+<area shape="rect" id="node2" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="5,8,183,184">
+</map>
+                                        <a name='diagram'><img id="oneimpliedDegreeImg" src="../diagrams/tables/updates_coop.implied1degrees.png" usemap="#oneDegreeRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twoimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagramImplied" name="twoDegreesRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="267,5,499,93">
+<area shape="rect" id="node2" href="leaderboard.html" target="_top" title="leaderboard" alt="" coords="5,1179,183,1355">
+<area shape="rect" id="node3" href="leaderboard_rating_journal.html" target="_top" title="leaderboard_rating_journal" alt="" coords="235,111,531,199">
+<area shape="rect" id="node4" href="matchmaker_queue.html" target="_top" title="matchmaker_queue" alt="" coords="264,216,503,304">
+<area shape="rect" id="node5" href="updates_balancetesting.html" target="_top" title="updates_balancetesting" alt="" coords="249,321,518,409">
+<area shape="rect" id="node6" href="updates_blackops.html" target="_top" title="updates_blackops" alt="" coords="273,427,494,515">
+<area shape="rect" id="node7" href="updates_civilians.html" target="_top" title="updates_civilians" alt="" coords="275,532,491,620">
+<area shape="rect" id="node8" href="updates_claustrophobia.html" target="_top" title="updates_claustrophobia" alt="" coords="248,637,519,725">
+<area shape="rect" id="node9" href="updates_coop.html" target="_top" title="updates_coop" alt="" coords="227,743,540,900">
+<area shape="rect" id="node10" href="updates_diamond.html" target="_top" title="updates_diamond" alt="" coords="273,917,494,1005">
+<area shape="rect" id="node11" href="updates_equilibrium.html" target="_top" title="updates_equilibrium" alt="" coords="261,1023,505,1111">
+<area shape="rect" id="node12" href="updates_faf.html" target="_top" title="updates_faf" alt="" coords="297,1128,470,1216">
+<area shape="rect" id="node13" href="updates_fafbeta.html" target="_top" title="updates_fafbeta" alt="" coords="279,1233,488,1321">
+<area shape="rect" id="node14" href="updates_fafdevelop.html" target="_top" title="updates_fafdevelop" alt="" coords="265,1339,501,1427">
+<area shape="rect" id="node15" href="updates_gw.html" target="_top" title="updates_gw" alt="" coords="297,1444,470,1532">
+<area shape="rect" id="node16" href="updates_koth.html" target="_top" title="updates_koth" alt="" coords="289,1549,477,1637">
+<area shape="rect" id="node17" href="updates_labwars.html" target="_top" title="updates_labwars" alt="" coords="277,1655,490,1743">
+<area shape="rect" id="node18" href="updates_murderparty.html" target="_top" title="updates_murderparty" alt="" coords="256,1760,511,1848">
+<area shape="rect" id="node19" href="updates_nomads.html" target="_top" title="updates_nomads" alt="" coords="276,1865,491,1953">
+<area shape="rect" id="node20" href="updates_phantomx.html" target="_top" title="updates_phantomx" alt="" coords="267,1971,500,2059">
+<area shape="rect" id="node21" href="updates_tutorials.html" target="_top" title="updates_tutorials" alt="" coords="273,2076,493,2164">
+<area shape="rect" id="node22" href="updates_vanilla.html" target="_top" title="updates_vanilla" alt="" coords="281,2181,485,2269">
+<area shape="rect" id="node23" href="updates_xtremewars.html" target="_top" title="updates_xtremewars" alt="" coords="259,2287,507,2375">
+</map>
+                                        <a name='diagram'><img id="twoimpliedDegreeImg" src="../diagrams/tables/updates_coop.implied2degrees.png" usemap="#twoDegreesRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
                                     </div>
                                 </div>
                             </div>
