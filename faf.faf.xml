@@ -328,7 +328,7 @@
             <column ascending="true" name="gamemod"/>
          </index>
       </table>
-      <table catalog="faf" name="game_player_stats" numRows="27022" remarks="" type="TABLE">
+      <table catalog="faf" name="game_player_stats" numRows="27184" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5">
             <child catalog="faf" column="game_player_stats_id" foreignKey="leaderboard_rating_journal_ibfk_1" implied="false" onDeleteCascade="false" table="leaderboard_rating_journal"/>
          </column>
@@ -588,7 +588,7 @@
             <column ascending="true" name="username"/>
          </index>
       </table>
-      <table catalog="faf" name="ladder1v1_rating" numRows="23424" remarks="" type="TABLE">
+      <table catalog="faf" name="ladder1v1_rating" numRows="22835" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="ladder1v1_rating_ibfk_1" implied="false" onDeleteCascade="true" table="login"/>
          </column>
@@ -798,7 +798,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="reason" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="expires_at" nullable="true" remarks="" size="19" type="DATETIME" typeCode="93"/>
       </table>
-      <table catalog="faf" name="login" numRows="23830" remarks="login" type="TABLE">
+      <table catalog="faf" name="login" numRows="23815" remarks="login" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="idUser" foreignKey="avatars_ibfk_1" implied="false" onDeleteCascade="false" table="avatars"/>
             <child catalog="faf" column="author_id" foreignKey="ban_revoke_author" implied="false" onDeleteCascade="false" table="ban"/>
@@ -992,7 +992,7 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="plays" nullable="false" remarks="Number of times a map version has been played. Should be updated each time games_played is updated in map_version Values start at 0" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="draws" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
       </table>
-      <table catalog="faf" name="map_version" numRows="17169" remarks="" type="TABLE">
+      <table catalog="faf" name="map_version" numRows="17020" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mapId" foreignKey="mapid_fkey" implied="false" onDeleteCascade="false" table="game_stats"/>
             <child catalog="faf" column="map_version_id" foreignKey="map_pool_map_version_ibfk_2" implied="false" onDeleteCascade="false" table="map_pool_map_version"/>
@@ -1195,6 +1195,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="license" nullable="false" remarks="" size="10" type="INT" typeCode="4">
             <parent catalog="faf" column="id" foreignKey="mod_license_id_fk" implied="false" onDeleteCascade="false" table="license"/>
          </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="repository_url" nullable="true" remarks="Link to repository" size="255" type="VARCHAR" typeCode="12"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="PRIMARY" unique="true">
             <column ascending="true" name="id"/>
@@ -1247,7 +1248,7 @@
             <column ascending="true" name="mod_id"/>
          </index>
       </table>
-      <table catalog="faf" name="mod_version" numRows="4008" remarks="" type="TABLE">
+      <table catalog="faf" name="mod_version" numRows="4158" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_review_ibfk_2" implied="false" onDeleteCascade="false" table="mod_version_review"/>
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_reviews_summary_mod_version" implied="false" onDeleteCascade="false" table="mod_version_reviews_summary"/>
@@ -1413,7 +1414,7 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table catalog="faf" name="patchs_table" numRows="22522" remarks="" type="TABLE">
+      <table catalog="faf" name="patchs_table" numRows="22610" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idpatchs_table" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fromMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="toMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -1495,7 +1496,7 @@
             <column ascending="true" name="report_id"/>
          </index>
       </table>
-      <table catalog="faf" name="schema_version" numRows="30" remarks="" type="TABLE">
+      <table catalog="faf" name="schema_version" numRows="31" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="installed_rank" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="version" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="false" remarks="" size="200" type="VARCHAR" typeCode="12"/>
