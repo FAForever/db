@@ -160,7 +160,7 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="version">version</span></td>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="version">version</span></td>
                                     <td>SMALLINT</td>
                                     <td>5</td>
                                     <td title=''></td>
@@ -172,6 +172,11 @@
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="table_mod.version&#39;s name implies that it&#39;s a child of terms_of_service.version, but it doesn&#39;t reference that column."><a href='terms_of_service.html'>terms_of_service</a><span class='relatedKey'>.version</span></td>
+                                                <td class="constraint detail">Implied Constraint</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
                                         </table>
                                     </td>
                                     <td></td>
@@ -381,6 +386,8 @@
                                 <h5>Close relationships within degrees of separation</h5>
                                 <ul class="nav nav-tabs pull-left ui-sortable-handle">
                                     <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                    <li class=""><a href="#oneimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">One implied</a></li>
+                                    <li class=""><a href="#twoimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two implied</a></li>
                                 </ul>
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
@@ -388,6 +395,22 @@
 <area shape="rect" id="node1" href="table_mod.html" target="_top" title="table_mod" alt="" coords="5,5,319,491">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/table_mod.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="oneimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagramImplied" name="oneDegreeRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="table_mod.html" target="_top" title="table_mod" alt="" coords="261,5,575,491">
+<area shape="rect" id="node2" href="terms_of_service.html" target="_top" title="terms_of_service" alt="" coords="5,96,217,243">
+</map>
+                                        <a name='diagram'><img id="oneimpliedDegreeImg" src="../diagrams/tables/table_mod.implied1degrees.png" usemap="#oneDegreeRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twoimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagramImplied" name="twoDegreesRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="login.html" target="_top" title="login" alt="" coords="329,5,507,93">
+<area shape="rect" id="node2" href="terms_of_service.html" target="_top" title="terms_of_service" alt="" coords="5,108,217,255">
+<area shape="rect" id="node3" href="mod_version.html" target="_top" title="mod_version" alt="" coords="327,111,509,199">
+<area shape="rect" id="node4" href="table_mod.html" target="_top" title="table_mod" alt="" coords="261,216,575,701">
+</map>
+                                        <a name='diagram'><img id="twoimpliedDegreeImg" src="../diagrams/tables/table_mod.implied2degrees.png" usemap="#twoDegreesRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
                                     </div>
                                 </div>
                             </div>
