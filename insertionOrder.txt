@@ -82,6 +82,7 @@ voting_answer
 winner_for_voting_question
 teamkills
 ban
+account_deletion_requests
 achievement_statistics
 coturn_servers
 email_domain_blacklist

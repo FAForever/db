@@ -26,6 +26,7 @@ event_definitions
 email_domain_blacklist
 coturn_servers
 achievement_statistics
+account_deletion_requests
 ban
 teamkills
 winner_for_voting_question
