@@ -1,2 +1,0 @@
-ALTER TABLE matchmaker_queue
-  ADD COLUMN veto_count TINYINT UNSIGNED NOT NULL DEFAULT 0;
