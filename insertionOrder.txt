@@ -28,6 +28,7 @@ game_player_stats
 vote
 coop_leaderboard
 coop_map
+game_join_log
 game_reviews_summary
 login_log
 map_reviews_summary
