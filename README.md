@@ -25,7 +25,7 @@ Where you have to replace `root` and `banana` with your custom credentials. (If 
 
 You can now check the current version via running:
 
-    select version from schema_version order by installed_rank desc limit 1
+    select version from flyway_schema_history order by installed_rank desc limit 1
 
 ### Updating the database
 First you need to pull the faf-stack repo and checkout the branch with the db version you want. Now you can migrate to the latest version using:
