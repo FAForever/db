@@ -148,10 +148,27 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="game_id">game_id</span></td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="game_id">game_id</span></td>
                                     <td>INT UNSIGNED</td>
                                     <td>10</td>
                                     <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="ip">ip</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>45</td>
+                                    <td title='nullable'>√</td>
                                     <td title=''></td>
                                     <td>null</td>
                                     <td>
@@ -218,10 +235,22 @@
                                     <td>id</td>
                                 </tr>
                                 <tr>
-                                    <td title='Indexed'>game_join_log_login_id_fk</td>
+                                    <td title='Indexed'>game_join_log_game_id_player_id_index</td>
                                     <td>Performance</td>
-                                    <td><span title='Ascending'>Asc</span></td>
-                                    <td>player_id</td>
+                                    <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
+                                    <td>game_id + player_id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_join_log_ip_player_id_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
+                                    <td>ip + player_id</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>game_join_log_player_id_ip_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
+                                    <td>player_id + ip</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -246,7 +275,7 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="game_join_log.html" target="_top" title="game_join_log" alt="" coords="243,5,613,192">
+<area shape="rect" id="node1" href="game_join_log.html" target="_top" title="game_join_log" alt="" coords="243,5,613,221">
 <area shape="rect" id="node2" href="login.html" target="_top" title="login" alt="" coords="5,37,199,301">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/game_join_log.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
@@ -263,27 +292,27 @@
 <area shape="rect" id="node6" href="clan_membership.html" target="_top" title="clan_membership" alt="" coords="955,629,1208,717">
 <area shape="rect" id="node7" href="featured_mods_owners.html" target="_top" title="featured_mods_owners" alt="" coords="565,712,873,800">
 <area shape="rect" id="node8" href="friends_and_foes.html" target="_top" title="friends_and_foes" alt="" coords="595,817,843,905">
-<area shape="rect" id="node9" href="game_join_log.html" target="_top" title="game_join_log" alt="" coords="533,923,904,1109">
+<area shape="rect" id="node9" href="game_join_log.html" target="_top" title="game_join_log" alt="" coords="533,923,904,1139">
 <area shape="rect" id="node10" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="949,268,1214,356">
 <area shape="rect" id="node12" href="game_review.html" target="_top" title="game_review" alt="" coords="976,373,1187,461">
-<area shape="rect" id="node13" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="583,1127,854,1215">
-<area shape="rect" id="node15" href="login_log.html" target="_top" title="login_log" alt="" coords="633,1232,804,1320">
-<area shape="rect" id="node16" href="map.html" target="_top" title="map" alt="" coords="631,1337,806,1425">
-<area shape="rect" id="node17" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="579,1443,859,1531">
-<area shape="rect" id="node18" href="mod.html" target="_top" title="mod" alt="" coords="631,1548,806,1636">
-<area shape="rect" id="node19" href="mod_version_review.html" target="_top" title="mod_version_review" alt="" coords="579,1653,859,1741">
-<area shape="rect" id="node20" href="name_history.html" target="_top" title="name_history" alt="" coords="611,1759,826,1847">
-<area shape="rect" id="node21" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="574,1864,863,1952">
-<area shape="rect" id="node22" href="player_events.html" target="_top" title="player_events" alt="" coords="609,1969,829,2057">
+<area shape="rect" id="node13" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="583,1156,854,1244">
+<area shape="rect" id="node15" href="login_log.html" target="_top" title="login_log" alt="" coords="633,1261,804,1349">
+<area shape="rect" id="node16" href="map.html" target="_top" title="map" alt="" coords="631,1367,806,1455">
+<area shape="rect" id="node17" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="579,1472,859,1560">
+<area shape="rect" id="node18" href="mod.html" target="_top" title="mod" alt="" coords="631,1577,806,1665">
+<area shape="rect" id="node19" href="mod_version_review.html" target="_top" title="mod_version_review" alt="" coords="579,1683,859,1771">
+<area shape="rect" id="node20" href="name_history.html" target="_top" title="name_history" alt="" coords="611,1788,826,1876">
+<area shape="rect" id="node21" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="574,1893,863,1981">
+<area shape="rect" id="node22" href="player_events.html" target="_top" title="player_events" alt="" coords="609,1999,829,2087">
 <area shape="rect" id="node23" href="reported_user.html" target="_top" title="reported_user" alt="" coords="1259,367,1479,455">
-<area shape="rect" id="node24" href="service_links.html" target="_top" title="service_links" alt="" coords="615,2075,823,2163">
-<area shape="rect" id="node25" href="table_map_comments.html" target="_top" title="table_map_comments" alt="" coords="572,2180,865,2268">
+<area shape="rect" id="node24" href="service_links.html" target="_top" title="service_links" alt="" coords="615,2104,823,2192">
+<area shape="rect" id="node25" href="table_map_comments.html" target="_top" title="table_map_comments" alt="" coords="572,2209,865,2297">
 <area shape="rect" id="node26" href="teamkills.html" target="_top" title="teamkills" alt="" coords="995,479,1168,567">
-<area shape="rect" id="node27" href="unique_id_users.html" target="_top" title="unique_id_users" alt="" coords="599,2285,839,2373">
-<area shape="rect" id="node28" href="uniqueid_exempt.html" target="_top" title="uniqueid_exempt" alt="" coords="593,2391,844,2479">
-<area shape="rect" id="node29" href="user_group_assignment.html" target="_top" title="user_group_assignment" alt="" coords="561,2496,876,2584">
-<area shape="rect" id="node30" href="user_notes.html" target="_top" title="user_notes" alt="" coords="624,2601,813,2689">
-<area shape="rect" id="node31" href="vote.html" target="_top" title="vote" alt="" coords="647,2707,790,2795">
+<area shape="rect" id="node27" href="unique_id_users.html" target="_top" title="unique_id_users" alt="" coords="599,2315,839,2403">
+<area shape="rect" id="node28" href="uniqueid_exempt.html" target="_top" title="uniqueid_exempt" alt="" coords="593,2420,844,2508">
+<area shape="rect" id="node29" href="user_group_assignment.html" target="_top" title="user_group_assignment" alt="" coords="561,2525,876,2613">
+<area shape="rect" id="node30" href="user_notes.html" target="_top" title="user_notes" alt="" coords="624,2631,813,2719">
+<area shape="rect" id="node31" href="vote.html" target="_top" title="vote" alt="" coords="647,2736,790,2824">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/game_join_log.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
