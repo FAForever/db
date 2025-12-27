@@ -62,7 +62,7 @@ insert into login (id, login, email, password, steamid) values (7, 'steambie', '
 insert into login (id, login, email, password, ip) values (8, 'ipv6', 'ipv6@example.com', SHA2('ipv6', 256), '0000:0000:0000:0000:0000:0000:127.127.127.127');
 
 -- Service links
-INSERT INTO `service_links` VALUES ('e8e4edd5-af12-11ed-b20e-0242c0a8a002',7,'STEAM','111111',0,1);
+INSERT INTO `service_links` VALUES ('e8e4edd5-af12-11ed-b20e-0242c0a8a002',7,'STEAM','111111',0,1),('e8e4edd5-af12-11ed-b20e-0242c0a8a001',1,'STEAM','1',0,1);
 
 -- Name history
 insert into name_history (id, change_time, user_id, previous_name) values
@@ -154,7 +154,7 @@ values (1, 'faf', 'FAF', 'Forged Alliance Forever', 1, 'https://github.com/FAFor
        (25, 'coop', 'Coop', 'Multiplayer campaign games', 1, 'https://github.com/FAForever/fa-coop.git', 'master', 'cop', TRUE);
 
 insert into game_stats (id, startTime, gameName, gameType, gameMod, `host`, mapId, validity)
-values (1, NOW(), 'Test game', '0', 6, 1, 1, 0);
+values (1, NOW(), 'Test game', 'DEMORALIZATION', 6, 1, 1, 0);
 
 insert into leaderboard (id, technical_name, name_key, description_key)
 values (1, "global", "leaderboard.global.name", "leaderboard.global.desc"),
