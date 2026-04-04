@@ -86,6 +86,7 @@ teamkills
 ban
 account_deletion_requests
 achievement_statistics
+altcha_challenge
 coturn_servers
 email_domain_blacklist
 event_definitions

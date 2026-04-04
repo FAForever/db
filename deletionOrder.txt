@@ -25,6 +25,7 @@ faction
 event_definitions
 email_domain_blacklist
 coturn_servers
+altcha_challenge
 achievement_statistics
 account_deletion_requests
 ban

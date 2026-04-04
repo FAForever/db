@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>patchs_table - faf.faf</title>
+        <title>altcha_challenge - faf.faf</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>patchs_table</h1><p><span id="recordNumber">22542</span> rows</p><br />
+                    <h1>altcha_challenge</h1><p><span id="recordNumber">0</span> rows</p><br />
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -109,27 +109,10 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="idpatchs_table">idpatchs_table</span></td>
-                                    <td>INT UNSIGNED</td>
-                                    <td>10</td>
-                                    <td title=''></td>
-                                    <td title='Automatically updated by the database'>√</td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="fromMd5">fromMd5</span></td>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="challenge">challenge</span></td>
                                     <td>VARCHAR</td>
-                                    <td>45</td>
-                                    <td title='nullable'>√</td>
+                                    <td>64</td>
+                                    <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
                                     <td>
@@ -143,27 +126,10 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="toMd5">toMd5</span></td>
-                                    <td>VARCHAR</td>
-                                    <td>45</td>
-                                    <td title='nullable'>√</td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="expires_at">expires_at</span></td>
+                                    <td>DATETIME</td>
+                                    <td>19</td>
                                     <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="patchFile">patchFile</span></td>
-                                    <td>VARCHAR</td>
-                                    <td>200</td>
-                                    <td title='nullable'>√</td>
                                     <td title=''></td>
                                     <td>null</td>
                                     <td>
@@ -210,7 +176,13 @@
                                     <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> PRIMARY</td>
                                     <td>Primary key</td>
                                     <td><span title='Ascending'>Asc</span></td>
-                                    <td>idpatchs_table</td>
+                                    <td>challenge</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>idx_altcha_challenge_expires_at</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>expires_at</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -234,9 +206,9 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="patchs_table.html" target="_top" title="patchs_table" alt="" coords="5,5,331,192">
+<area shape="rect" id="node1" href="altcha_challenge.html" target="_top" title="altcha_challenge" alt="" coords="5,5,328,133">
 </map>
-                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/patchs_table.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/altcha_challenge.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                 </div>
                             </div>
