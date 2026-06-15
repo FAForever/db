@@ -135,6 +135,11 @@
                                                 <td class="constraint detail">avatars_ibfk_2</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
+                                            <tr>
+                                                <td title="login.avatar_id references avatars_list.id via fk_login_avatar"><a href='login.html'>login</a><span class='relatedKey'>.avatar_id</span></td>
+                                                <td class="constraint detail">fk_login_avatar</td>
+                                                <td class="constraint detail"><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                            </tr>
                                         </table>
                                     </td>
                                     <td>
@@ -310,16 +315,46 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="515,5,685,181">
-<area shape="rect" id="node2" href="avatars_list.html" target="_top" title="avatars_list" alt="" coords="5,61,471,336">
+<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="752,97,923,273">
+<area shape="rect" id="node2" href="avatars_list.html" target="_top" title="avatars_list" alt="" coords="5,225,471,500">
+<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="515,5,708,299">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/avatars_list.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="515,15,685,191">
-<area shape="rect" id="node2" href="avatars_list.html" target="_top" title="avatars_list" alt="" coords="5,111,471,385">
-<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="141,5,335,93">
+<area shape="rect" id="node1" href="avatars.html" target="_top" title="avatars" alt="" coords="830,5,989,93">
+<area shape="rect" id="node2" href="avatars_list.html" target="_top" title="avatars_list" alt="" coords="5,404,471,679">
+<area shape="rect" id="node3" href="login.html" target="_top" title="login" alt="" coords="515,833,708,921">
+<area shape="rect" id="node15" href="terms_of_service.html" target="_top" title="terms_of_service" alt="" coords="115,831,361,919">
+<area shape="rect" id="node4" href="ban.html" target="_top" title="ban" alt="" coords="1468,325,1595,413">
+<area shape="rect" id="node5" href="moderation_report.html" target="_top" title="moderation_report" alt="" coords="1111,407,1377,495">
+<area shape="rect" id="node12" href="game_stats.html" target="_top" title="game_stats" alt="" coords="812,567,1007,655">
+<area shape="rect" id="node6" href="clan.html" target="_top" title="clan" alt="" coords="822,796,997,884">
+<area shape="rect" id="node7" href="clan_membership.html" target="_top" title="clan_membership" alt="" coords="1117,864,1371,952">
+<area shape="rect" id="node8" href="featured_mods_owners.html" target="_top" title="featured_mods_owners" alt="" coords="755,937,1063,1025">
+<area shape="rect" id="node9" href="friends_and_foes.html" target="_top" title="friends_and_foes" alt="" coords="785,1043,1033,1131">
+<area shape="rect" id="node10" href="game_join_log.html" target="_top" title="game_join_log" alt="" coords="799,1148,1020,1236">
+<area shape="rect" id="node11" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="1111,512,1377,600">
+<area shape="rect" id="node13" href="game_review.html" target="_top" title="game_review" alt="" coords="1139,617,1349,705">
+<area shape="rect" id="node14" href="leaderboard_rating.html" target="_top" title="leaderboard_rating" alt="" coords="774,1253,1045,1341">
+<area shape="rect" id="node16" href="login_log.html" target="_top" title="login_log" alt="" coords="824,1359,995,1447">
+<area shape="rect" id="node17" href="map.html" target="_top" title="map" alt="" coords="822,1464,997,1552">
+<area shape="rect" id="node18" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="769,1569,1049,1657">
+<area shape="rect" id="node19" href="mod.html" target="_top" title="mod" alt="" coords="822,1675,997,1763">
+<area shape="rect" id="node20" href="mod_version_review.html" target="_top" title="mod_version_review" alt="" coords="769,1780,1049,1868">
+<area shape="rect" id="node21" href="name_history.html" target="_top" title="name_history" alt="" coords="802,1885,1017,1973">
+<area shape="rect" id="node22" href="player_achievements.html" target="_top" title="player_achievements" alt="" coords="765,1991,1054,2079">
+<area shape="rect" id="node23" href="player_events.html" target="_top" title="player_events" alt="" coords="799,2096,1019,2184">
+<area shape="rect" id="node24" href="reported_user.html" target="_top" title="reported_user" alt="" coords="1421,611,1641,699">
+<area shape="rect" id="node25" href="service_links.html" target="_top" title="service_links" alt="" coords="805,2201,1013,2289">
+<area shape="rect" id="node26" href="table_map_comments.html" target="_top" title="table_map_comments" alt="" coords="763,2307,1056,2395">
+<area shape="rect" id="node27" href="teamkills.html" target="_top" title="teamkills" alt="" coords="1157,723,1331,811">
+<area shape="rect" id="node28" href="unique_id_users.html" target="_top" title="unique_id_users" alt="" coords="789,2412,1029,2500">
+<area shape="rect" id="node29" href="uniqueid_exempt.html" target="_top" title="uniqueid_exempt" alt="" coords="784,2517,1035,2605">
+<area shape="rect" id="node30" href="user_group_assignment.html" target="_top" title="user_group_assignment" alt="" coords="752,111,1067,199">
+<area shape="rect" id="node31" href="user_notes.html" target="_top" title="user_notes" alt="" coords="815,216,1004,304">
+<area shape="rect" id="node32" href="vote.html" target="_top" title="vote" alt="" coords="838,321,981,409">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/avatars_list.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>

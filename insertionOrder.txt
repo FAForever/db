@@ -1,9 +1,9 @@
 game_featuredMods
 terms_of_service
+avatars_list
 license
 voting_subject
 achievement_definitions
-avatars_list
 coop_scenario
 game_validity
 group_permission

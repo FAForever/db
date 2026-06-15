@@ -108,9 +108,9 @@ map_pool
 group_permission
 game_validity
 coop_scenario
-avatars_list
 achievement_definitions
 voting_subject
 license
+avatars_list
 terms_of_service
 game_featuredMods
