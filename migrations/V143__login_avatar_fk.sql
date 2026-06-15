@@ -4,7 +4,7 @@
 -- reconciler to repair any drift.
 
 ALTER TABLE login
-  ADD COLUMN avatar_id mediumint(8) unsigned DEFAULT NULL,
+  ADD COLUMN avatar_id int(11) unsigned DEFAULT NULL,
   ADD CONSTRAINT fk_login_avatar
     FOREIGN KEY (avatar_id) REFERENCES avatars_list (id)
     ON DELETE SET NULL ON UPDATE CASCADE;
