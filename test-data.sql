@@ -120,25 +120,25 @@ values
 (14, 'SCMP_014', 'FFA', 'skirmish', 3, 1),
 (15, 'SCMP_015', 'FFA', 'skirmish', 3, 1);
 
-insert into map_version (id, description, max_players, width, height, version, filename, hidden, map_id)
+insert into map_version (id, description, max_players, width, height, version, folder_name, hidden, map_id)
 values
-(1, 'SCMP 001', 8, 1024, 1024, 1, 'maps/scmp_001.zip', 0, 1),
-(2, 'SCMP 002', 8, 1024, 1024, 1, 'maps/scmp_002.zip', 0, 2),
-(3, 'SCMP 003', 8, 1024, 1024, 1, 'maps/scmp_003.zip', 0, 3),
-(4, 'SCMP 004', 8, 1024, 1024, 1, 'maps/scmp_004.zip', 0, 4),
-(5, 'SCMP 005', 8, 2048, 2048, 1, 'maps/scmp_005.zip', 0, 5),
-(6, 'SCMP 006', 8, 1024, 1024, 1, 'maps/scmp_006.zip', 0, 6),
-(7, 'SCMP 007', 8, 512, 512, 1, 'maps/scmp_007.zip', 0, 7),
-(8, 'SCMP 008', 8, 1024, 1024, 1, 'maps/scmp_008.zip', 0, 8),
-(9, 'SCMP 009', 8, 1024, 1024, 1, 'maps/scmp_009.zip', 0, 9),
-(10, 'SCMP 010', 8, 1024, 1024, 1, 'maps/scmp_010.zip', 0, 10),
-(11, 'SCMP 011', 8, 2048, 2048, 1, 'maps/scmp_011.zip', 0, 11),
-(12, 'SCMP 012', 8, 256, 256, 1, 'maps/scmp_012.zip', 0, 12),
-(13, 'SCMP 013', 8, 256, 256, 1, 'maps/scmp_013.zip', 0, 13),
-(14, 'SCMP 014', 8, 1024, 1024, 1, 'maps/scmp_014.zip', 0, 14),
-(15, 'SCMP 015', 8, 512, 512, 1, 'maps/scmp_015.zip', 0, 15),
-(16, 'SCMP 015', 8, 512, 512, 2, 'maps/scmp_015.v0002.zip', 0, 15),
-(17, 'SCMP 015', 8, 512, 512, 3, 'maps/scmp_015.v0003.zip', 0, 15);
+(1, 'SCMP 001', 8, 1024, 1024, 1, 'scmp_001', 0, 1),
+(2, 'SCMP 002', 8, 1024, 1024, 1, 'scmp_002', 0, 2),
+(3, 'SCMP 003', 8, 1024, 1024, 1, 'scmp_003', 0, 3),
+(4, 'SCMP 004', 8, 1024, 1024, 1, 'scmp_004', 0, 4),
+(5, 'SCMP 005', 8, 2048, 2048, 1, 'scmp_005', 0, 5),
+(6, 'SCMP 006', 8, 1024, 1024, 1, 'scmp_006', 0, 6),
+(7, 'SCMP 007', 8, 512, 512, 1, 'scmp_007', 0, 7),
+(8, 'SCMP 008', 8, 1024, 1024, 1, 'scmp_008', 0, 8),
+(9, 'SCMP 009', 8, 1024, 1024, 1, 'scmp_009', 0, 9),
+(10, 'SCMP 010', 8, 1024, 1024, 1, 'scmp_010', 0, 10),
+(11, 'SCMP 011', 8, 2048, 2048, 1, 'scmp_011', 0, 11),
+(12, 'SCMP 012', 8, 256, 256, 1, 'scmp_012', 0, 12),
+(13, 'SCMP 013', 8, 256, 256, 1, 'scmp_013', 0, 13),
+(14, 'SCMP 014', 8, 1024, 1024, 1, 'scmp_014', 0, 14),
+(15, 'SCMP 015', 8, 512, 512, 1, 'scmp_015', 0, 15),
+(16, 'SCMP 015', 8, 512, 512, 2, 'scmp_015.v0002', 0, 15),
+(17, 'SCMP 015', 8, 512, 512, 3, 'scmp_015.v0003', 0, 15);
 
 INSERT INTO `coop_map` (`type`, `name`, `description`, `version`, `filename`)
 VALUES (0, 'FA Campaign map', 'A map from the FA campaign', 2, 'maps/scmp_coop_123.v0002.zip'),
