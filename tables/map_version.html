@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>map_version</h1><p><span id="recordNumber">18020</span> rows</p><br />
+                    <h1>map_version</h1><p><span id="recordNumber">17363</span> rows</p><br />
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -241,7 +241,7 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="filename">filename</span></td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="folder_name">folder_name</span></td>
                                     <td>VARCHAR</td>
                                     <td>200</td>
                                     <td title=''></td>
@@ -398,6 +398,23 @@
                                     </td>
                                     <td><p>When this entry was updated</p></td>
                                 </tr>
+                                <tr>
+                                    <td><span id="filename">filename</span></td>
+                                    <td>VARCHAR</td>
+                                    <td>200</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -435,10 +452,10 @@
                                     <td>id</td>
                                 </tr>
                                 <tr>
-                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> filename</td>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> folder_name</td>
                                     <td>Must be unique</td>
                                     <td><span title='Ascending'>Asc</span></td>
-                                    <td>filename</td>
+                                    <td>folder_name</td>
                                 </tr>
                                 <tr>
                                     <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> map_id_version</td>
@@ -478,7 +495,7 @@
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
 <area shape="rect" id="node1" href="game_stats.html" target="_top" title="game_stats" alt="" coords="893,5,1101,357">
-<area shape="rect" id="node2" href="map_version.html" target="_top" title="map_version" alt="" coords="312,692,759,1201">
+<area shape="rect" id="node2" href="map_version.html" target="_top" title="map_version" alt="" coords="312,692,759,1231">
 <area shape="rect" id="node4" href="map.html" target="_top" title="map" alt="" coords="5,959,268,1193">
 <area shape="rect" id="node3" href="map_pool_map_version.html" target="_top" title="map_pool_map_version" alt="" coords="843,375,1151,551">
 <area shape="rect" id="node5" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="857,568,1137,744">
@@ -494,7 +511,7 @@
 <area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="1131,108,1339,460">
 <area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="5,1136,199,1224">
 <area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="631,204,914,292">
-<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="549,629,996,1139">
+<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="549,600,996,1139">
 <area shape="rect" id="node9" href="game_validity.html" target="_top" title="game_validity" alt="" coords="663,345,882,433">
 <area shape="rect" id="node3" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="1509,5,1775,93">
 <area shape="rect" id="node5" href="game_review.html" target="_top" title="game_review" alt="" coords="1537,433,1747,521">
@@ -517,7 +534,7 @@
                                     <div class="chart tab-pane " id="oneimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagramImplied" name="oneDegreeRelationshipsDiagramImplied">
 <area shape="rect" id="node1" href="game_stats.html" target="_top" title="game_stats" alt="" coords="893,5,1101,357">
-<area shape="rect" id="node2" href="map_version.html" target="_top" title="map_version" alt="" coords="312,692,759,1201">
+<area shape="rect" id="node2" href="map_version.html" target="_top" title="map_version" alt="" coords="312,692,759,1231">
 <area shape="rect" id="node4" href="map.html" target="_top" title="map" alt="" coords="5,959,268,1193">
 <area shape="rect" id="node3" href="map_pool_map_version.html" target="_top" title="map_pool_map_version" alt="" coords="843,375,1151,551">
 <area shape="rect" id="node5" href="map_version_review.html" target="_top" title="map_version_review" alt="" coords="857,568,1137,744">
@@ -531,9 +548,9 @@
                                         <map id="twoDegreesRelationshipsDiagramImplied" name="twoDegreesRelationshipsDiagramImplied">
 <area shape="rect" id="node1" href="coop_leaderboard.html" target="_top" title="coop_leaderboard" alt="" coords="1513,111,1771,199">
 <area shape="rect" id="node2" href="game_stats.html" target="_top" title="game_stats" alt="" coords="1131,108,1339,460">
-<area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="5,1173,199,1261">
+<area shape="rect" id="node4" href="login.html" target="_top" title="login" alt="" coords="5,1203,199,1291">
 <area shape="rect" id="node7" href="game_featuredMods.html" target="_top" title="game_featuredMods" alt="" coords="631,197,914,285">
-<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="549,667,996,1176">
+<area shape="rect" id="node8" href="map_version.html" target="_top" title="map_version" alt="" coords="549,667,996,1205">
 <area shape="rect" id="node9" href="game_validity.html" target="_top" title="game_validity" alt="" coords="663,339,882,427">
 <area shape="rect" id="node3" href="game_player_stats.html" target="_top" title="game_player_stats" alt="" coords="1509,5,1775,93">
 <area shape="rect" id="node5" href="game_review.html" target="_top" title="game_review" alt="" coords="1537,433,1747,521">

@@ -4036,7 +4036,7 @@
         "tableType": "Table",
         "keyClass": "indexedColumn",
         "keyTitle": "Indexed",
-        "name": "<i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>filename",
+        "name": "<i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>folder_name",
         "type": "VARCHAR",
         "length": 200,
         "nullable": "",
@@ -4155,6 +4155,20 @@
         "autoUpdated": "",
         "defaultValue": "current_timestamp()",
         "comments": "<p>When this entry was updated</p>"
+    },
+    {
+        "tableName": "map_version",
+        "tableFileName": "map_version",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "filename",
+        "type": "VARCHAR",
+        "length": 200,
+        "nullable": "√",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": ""
     },
     {
         "tableName": "map_version_review",
@@ -6391,7 +6405,7 @@
         "name": "filename",
         "type": "VARCHAR",
         "length": 200,
-        "nullable": "",
+        "nullable": "√",
         "autoUpdated": "",
         "defaultValue": "null",
         "comments": ""
