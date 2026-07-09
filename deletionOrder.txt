@@ -86,6 +86,7 @@ game_reviews_summary
 game_join_log
 coop_map
 coop_leaderboard
+account_request
 vote
 game_player_stats
 clan

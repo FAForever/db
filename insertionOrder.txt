@@ -26,6 +26,7 @@ moderation_report
 clan
 game_player_stats
 vote
+account_request
 coop_leaderboard
 coop_map
 game_join_log
