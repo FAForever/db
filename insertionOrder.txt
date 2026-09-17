@@ -65,6 +65,7 @@ avatars
 clan_membership
 featured_mods_owners
 friends_and_foes
+game_desync
 game_review
 group_permission_assignment
 leaderboard_rating

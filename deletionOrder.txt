@@ -48,6 +48,7 @@ leaderboard_rating_journal
 leaderboard_rating
 group_permission_assignment
 game_review
+game_desync
 friends_and_foes
 featured_mods_owners
 clan_membership

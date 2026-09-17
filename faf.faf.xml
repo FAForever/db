@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<database name="faf" schema="faf" type="MySQL - 5.5.5-10.6.27-MariaDB-ubu2204">
+<database name="faf" schema="faf" type="MySQL - 5.5.5-10.6.28-MariaDB-ubu2204">
    <tables>
       <table catalog="faf" name="account_deletion_requests" numRows="0" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="random uuid (as it's also used for lookup of state by user)" size="36" type="VARCHAR" typeCode="12"/>
@@ -356,6 +356,26 @@
             <column ascending="true" name="subject_id"/>
          </index>
       </table>
+      <table catalog="faf" name="game_desync" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="game_id" nullable="false" remarks="game in which the desync was reported" size="10" type="INT UNSIGNED" typeCode="4">
+            <parent catalog="faf" column="id" foreignKey="game_desync_game_stats_id_fk" implied="false" onDeleteCascade="false" table="game_stats"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="player_id" nullable="false" remarks="player whose client reported the desync" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
+            <parent catalog="faf" column="id" foreignKey="game_desync_login_id_fk" implied="false" onDeleteCascade="false" table="login"/>
+         </column>
+         <column autoUpdated="false" defaultValue="current_timestamp(3)" digits="0" id="2" name="reported_at" nullable="false" remarks="time of the first report of this player" size="23" type="DATETIME" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="game_time" nullable="true" remarks="seconds since game launch, derived by the server" size="10" type="INT UNSIGNED" typeCode="4"/>
+         <primaryKey column="game_id" sequenceNumberInPK="1"/>
+         <primaryKey column="player_id" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="game_id"/>
+            <column ascending="true" name="player_id"/>
+         </index>
+         <index name="idx_game_desync_player_reported_at" unique="false">
+            <column ascending="true" name="player_id"/>
+            <column ascending="true" name="reported_at"/>
+         </index>
+      </table>
       <table catalog="faf" name="game_featuredMods" numRows="17" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="This table is managed by Flyway. Do not manually edit records." size="3" type="TINYINT UNSIGNED" typeCode="-6">
             <child catalog="faf" column="moduid" foreignKey="featured_mods_owners_ibfk_1" implied="false" onDeleteCascade="true" table="featured_mods_owners"/>
@@ -405,7 +425,7 @@
             <column ascending="true" name="ip"/>
          </index>
       </table>
-      <table catalog="faf" name="game_player_stats" numRows="26487" remarks="" type="TABLE">
+      <table catalog="faf" name="game_player_stats" numRows="26618" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="20" type="BIGINT UNSIGNED" typeCode="-5">
             <child catalog="faf" column="game_player_stats_id" foreignKey="leaderboard_rating_journal_ibfk_1" implied="false" onDeleteCascade="false" table="leaderboard_rating_journal"/>
          </column>
@@ -496,6 +516,7 @@
       <table catalog="faf" name="game_stats" numRows="10090" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4">
             <child catalog="faf" column="gameuid" foreignKey="coop_leaderboard_ibfk_1" implied="false" onDeleteCascade="false" table="coop_leaderboard"/>
+            <child catalog="faf" column="game_id" foreignKey="game_desync_game_stats_id_fk" implied="false" onDeleteCascade="false" table="game_desync"/>
             <child catalog="faf" column="gameId" foreignKey="game_id_fk" implied="false" onDeleteCascade="false" table="game_player_stats"/>
             <child catalog="faf" column="game_id" foreignKey="game_review_ibfk_2" implied="false" onDeleteCascade="false" table="game_review"/>
             <child catalog="faf" column="game_id" foreignKey="game_reviews_summary_game" implied="false" onDeleteCascade="false" table="game_reviews_summary"/>
@@ -723,7 +744,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="reason" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="expires_at" nullable="true" remarks="" size="19" type="DATETIME" typeCode="93"/>
       </table>
-      <table catalog="faf" name="login" numRows="23890" remarks="login" type="TABLE">
+      <table catalog="faf" name="login" numRows="23875" remarks="login" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="user_id" foreignKey="account_request_login_id_fk" implied="false" onDeleteCascade="true" table="account_request"/>
             <child catalog="faf" column="idUser" foreignKey="avatars_ibfk_1" implied="false" onDeleteCascade="false" table="avatars"/>
@@ -735,6 +756,7 @@
             <child catalog="faf" column="uid" foreignKey="featured_mods_owners_ibfk_2" implied="false" onDeleteCascade="true" table="featured_mods_owners"/>
             <child catalog="faf" column="subject_id" foreignKey="friends_and_foes_subject_login_id_fk" implied="false" onDeleteCascade="false" table="friends_and_foes"/>
             <child catalog="faf" column="user_id" foreignKey="friends_and_foes_user_login_id_fk" implied="false" onDeleteCascade="false" table="friends_and_foes"/>
+            <child catalog="faf" column="player_id" foreignKey="game_desync_login_id_fk" implied="false" onDeleteCascade="false" table="game_desync"/>
             <child catalog="faf" column="player_id" foreignKey="game_join_log_login_id_fk" implied="false" onDeleteCascade="false" table="game_join_log"/>
             <child catalog="faf" column="playerId" foreignKey="fk_game_player_stats_player" implied="false" onDeleteCascade="false" table="game_player_stats"/>
             <child catalog="faf" column="user_id" foreignKey="game_review_ibfk_1" implied="false" onDeleteCascade="false" table="game_review"/>
@@ -823,7 +845,7 @@
             <column ascending="true" name="success"/>
          </index>
       </table>
-      <table catalog="faf" name="map" numRows="9335" remarks="" type="TABLE">
+      <table catalog="faf" name="map" numRows="9340" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="map_id" foreignKey="map_reviews_summary_ibfk_1" implied="false" onDeleteCascade="false" table="map_reviews_summary"/>
             <child catalog="faf" column="map_id" foreignKey="map" implied="false" onDeleteCascade="true" table="map_version"/>
@@ -926,7 +948,7 @@
          <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="plays" nullable="false" remarks="Number of times a map version has been played. Should be updated each time games_played is updated in map_version Values start at 0" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="draws" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
       </table>
-      <table catalog="faf" name="map_version" numRows="16576" remarks="" type="TABLE">
+      <table catalog="faf" name="map_version" numRows="16924" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mapId" foreignKey="mapid_fkey" implied="false" onDeleteCascade="false" table="game_stats"/>
             <child catalog="faf" column="map_version_id" foreignKey="map_pool_map_version_ibfk_2" implied="false" onDeleteCascade="false" table="map_pool_map_version"/>
@@ -1186,7 +1208,7 @@
             <column ascending="true" name="mod_id"/>
          </index>
       </table>
-      <table catalog="faf" name="mod_version" numRows="3945" remarks="" type="TABLE">
+      <table catalog="faf" name="mod_version" numRows="3915" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="8" type="MEDIUMINT UNSIGNED" typeCode="4">
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_review_ibfk_2" implied="false" onDeleteCascade="false" table="mod_version_review"/>
             <child catalog="faf" column="mod_version_id" foreignKey="mod_version_reviews_summary_mod_version" implied="false" onDeleteCascade="false" table="mod_version_reviews_summary"/>
@@ -1317,7 +1339,7 @@
             <column ascending="true" name="user_id"/>
          </index>
       </table>
-      <table catalog="faf" name="patchs_table" numRows="22571" remarks="" type="TABLE">
+      <table catalog="faf" name="patchs_table" numRows="21976" remarks="" type="TABLE">
          <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idpatchs_table" nullable="false" remarks="" size="10" type="INT UNSIGNED" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="fromMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="toMd5" nullable="true" remarks="" size="45" type="VARCHAR" typeCode="12"/>
@@ -1399,7 +1421,7 @@
             <column ascending="true" name="report_id"/>
          </index>
       </table>
-      <table catalog="faf" name="schema_version" numRows="47" remarks="" type="TABLE">
+      <table catalog="faf" name="schema_version" numRows="48" remarks="" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="installed_rank" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="version" nullable="true" remarks="" size="50" type="VARCHAR" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="false" remarks="" size="200" type="VARCHAR" typeCode="12"/>
